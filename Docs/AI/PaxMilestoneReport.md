@@ -2,6 +2,14 @@
 
 Status: **Ready with limitations for this prototype checkpoint.** Unity compilation, 13 EditMode tests, 19 PlayMode tests, Windows development build and 15 built-player smoke checks passed. Combined world/HUD captures were inspected. A human raw keyboard/mouse playthrough and performance/stress coverage remain unverified.
 
+## Git checkpoint and delivery blocker
+
+Implementation checkpoint: `a207eeb3de2247de148cfb75798f5fd532188420` on `PrototypeBranch`. It includes the coordinator-approved acceptance/status documents and the required generated UI theme. The working tree was clean after this commit; builds, local logs and diagnostic files remain ignored.
+
+Normal push was rejected twice by automatic approval review. Read-only verification confirmed that the unchanged origin is `https://github.com/CALEBLUEH/PAX_FYP1.git`, the connected account owns it with push permission, and the destination is **public**. Its existing `PrototypeBranch` remains at `e82f1c91410ea0c20c83df9561c06a176ce3744b`. No push executed.
+
+The second rejection specifically requires trusted explicit user approval for publicly uploading this payload (PAX source, authored scene/assets, screenshots and validation/report documents) to that destination, despite the earlier general normal-push authorization. No alternate upload mechanism will be used. Remote delivery is blocked pending that approval; the implementation, local Git checkpoint, Windows build and validation evidence are complete. A follow-up documentation commit records this blocker.
+
 ## Scope and baseline
 
 16 October 2026 overnight trial, PAX only, existing `PrototypeBranch`, baseline `e82f1c9`. The pre-existing Unity AI App UI Build Settings config must remain. No shared asset originals or other game files are edited.
