@@ -1,0 +1,6 @@
+{
+  "name": "Pax.Editor",
+  "rootNamespace": "Pax.Editor",
+  "references": ["Pax.Runtime"],
+  "includePlatforms": ["Editor"]
+}

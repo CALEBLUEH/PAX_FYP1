@@ -1,0 +1,6 @@
+{
+  "name": "Pax.EditModeTests",
+  "references": ["Pax.Runtime", "Pax.Editor"],
+  "includePlatforms": ["Editor"],
+  "optionalUnityReferences": ["TestAssemblies"]
+}

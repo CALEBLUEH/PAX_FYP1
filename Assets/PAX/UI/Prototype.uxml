@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement name="hud" style="position: absolute; left: 16px; top: 12px; padding-left: 14px; padding-right: 14px; padding-top: 10px; padding-bottom: 10px; background-color: rgba(12, 21, 31, 0.9); border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px;" picking-mode="Ignore">
+        <ui:Label text="PAX  /  Movement · Building · Cutaway" style="font-size: 20px; color: rgb(231, 245, 249); -unity-font-style: bold;" picking-mode="Ignore" />
+        <ui:Label text="WASD Move   ·   Space Hold / tap jump   ·   R Respawn" style="font-size: 14px; color: rgb(225, 235, 239); margin-top: 5px;" picking-mode="Ignore" />
+        <ui:Label text="LMB Mine   ·   RMB Place   ·   Left Ctrl Smart / precise   ·   G Target faded solids" style="font-size: 14px; color: rgb(225, 235, 239);" picking-mode="Ignore" />
+        <ui:Label text="Q / E Rotate   ·   MMB drag Orbit / tilt   ·   Wheel Zoom   ·   Home Reset view" style="font-size: 14px; color: rgb(225, 235, 239);" picking-mode="Ignore" />
+        <ui:Label text="Yellow = mine   ·   Green / red = place   ·   Cyan ghosts above / orange below" style="font-size: 13px; color: rgb(170, 211, 220); margin-top: 4px;" picking-mode="Ignore" />
+        <ui:Label name="status" text="Loading test island…" style="font-size: 13px; color: rgb(183, 231, 193); margin-top: 8px; white-space: normal;" picking-mode="Ignore" />
+    </ui:VisualElement>
+</ui:UXML>

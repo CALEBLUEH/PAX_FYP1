@@ -1,0 +1,5 @@
+{
+  "name": "Pax.PlayModeTests",
+  "references": ["Pax.Runtime"],
+  "optionalUnityReferences": ["TestAssemblies"]
+}
