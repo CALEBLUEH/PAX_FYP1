@@ -66,6 +66,14 @@ namespace Pax
             var status=captureDocument.rootVisualElement.Q<Label>("status");
             Check(status!=null && !string.IsNullOrWhiteSpace(status.text) && status.worldBound.width>50,"Authored HUD laid out and status updated");
             Check(player.Grounded,"Player starts grounded");
+            var expedition = FindFirstObjectByType<PaxExpedition>();
+            if (expedition != null)
+            {
+                FindFirstObjectByType<PaxExpeditionInput>().enabled = false;
+                yield return RunExpedition(expedition, player, world, builder, cameraRig, cutaway);
+                Finish();
+                yield break;
+            }
             var generated = FindFirstObjectByType<PaxGeneratedIsland>();
             if (generated != null)
             {
@@ -137,6 +145,72 @@ namespace Pax
             }
             Finish();
         }
+        private static IEnumerator WaitFrames(int count) { for (int i = 0; i < count; i++) yield return null; }
+
+        private IEnumerator RunExpedition(PaxExpedition mission, PaxPlayer player, PaxWorld world, PaxBuilder builder, PaxCamera cameraRig, PaxCutaway cutaway)
+        {
+            var objective = captureDocument.rootVisualElement.Q<Label>("expedition-objective");
+            Check(objective != null && objective.worldBound.width > 200 && mission.Stage == PaxExpeditionStage.Survey && mission.RepairCount == 0, "Authored expedition HUD starts with clear survey and six empty repair cells");
+            Capture("Expedition-01-Start-HUD.png");
+            cameraRig.enabled = false; cameraRig.transform.position = mission.Sites[0].transform.position;
+            yield return WaitFrames(40);
+            Check(mission.SurveyedCount == 0, "Camera position alone cannot survey a shelter");
+            cameraRig.enabled = true;
+            for (int index = mission.Sites.Length - 1; index >= 0; index--)
+            {
+                var site = mission.Sites[index];
+                player.Warp(site.transform.position); cameraRig.SnapToTarget();
+                yield return WaitFrames(45); cutaway.RefreshNow();
+                bool solids = true, precedence = true;
+                foreach (var block in world.Blocks)
+                {
+                    solids &= block.Solid.enabled && block.SolidShadow != null;
+                    if (cutaway.IsObstruction(block)) precedence &= cutaway.TargetFor(block) <= 0.04f;
+                }
+                Check(site.Surveyed && solids && precedence, site.Title + " real player visit registers with solid/cutaway invariants");
+                if (site.Title == "Cave") { yield return new WaitForSecondsRealtime(0.2f); Capture("Expedition-02-Cave-HUD.png"); }
+            }
+            yield return WaitFrames(30);
+            Check(mission.SurveyedCount == 3 && mission.Stage == PaxExpeditionStage.Repair && !mission.TryActivate(), "Out-of-order and repeated visits produce one survey per site, without premature completion");
+            player.Warp(new Vector3(1, 0.03f, -3)); cameraRig.SnapToTarget(); yield return WaitFrames(10);
+            Check(builder.Place(new Vector3Int(-2, 0, -3)) && mission.RepairCount == 0, "Unrelated placement does not repair the beacon");
+            var ordered = new List<PaxRepairMarker>(mission.Repairs);
+            ordered.Sort((a, b) => { int c = a.Cell.z.CompareTo(b.Cell.z); return c != 0 ? c : a.Cell.x.CompareTo(b.Cell.x); });
+            foreach (var marker in ordered) Check(builder.Place(marker.Cell), "Validated placement at required repair cell " + marker.Cell);
+            yield return WaitFrames(5);
+            bool blueprintsHidden = true;
+            foreach (var marker in mission.Repairs) blueprintsHidden &= !marker.GetComponent<Renderer>().enabled;
+            Check(mission.RepairCount == 6 && blueprintsHidden && mission.Stage == PaxExpeditionStage.Return, "Only actual solid repairs count and their blueprint visuals retire");
+            Check(!mission.TryActivate(), "Repaired platform cannot remotely activate the beacon");
+            yield return new WaitForSecondsRealtime(0.2f); Capture("Expedition-03-Repaired-HUD.png");
+            Vector3 forward = Vector3.ProjectOnPlane(cameraRig.transform.forward, Vector3.up).normalized;
+            Vector3 right = Vector3.Cross(Vector3.up, forward);
+            player.SetCommand(new Vector2(Vector3.Dot(Vector3.back, right), Vector3.Dot(Vector3.back, forward)), true, true);
+            yield return WaitFrames(30); player.SetCommand(Vector2.zero, false, false); yield return WaitFrames(35);
+            Check(player.Grounded && Mathf.Abs(player.transform.position.y - 1) < 0.06f && mission.AtBeacon, "Real held jump lands on the repaired one-tile platform");
+            Check(mission.TryActivate() && mission.Stage == PaxExpeditionStage.Complete, "Survey, construction, player return and activation complete the expedition");
+            int revision = world.Revision;
+            Check(mission.TryActivate() && world.Revision == revision, "Repeated activation is idempotent and leaves sandbox edits available");
+            yield return new WaitForSecondsRealtime(0.2f); Capture("Expedition-04-Complete-HUD.png");
+            var save = FindFirstObjectByType<PaxPlaytestSave>();
+            save.UseValidationDirectory(Path.Combine(output, "SaveSlot-" + Guid.NewGuid().ToString("N")));
+            Check(Path.GetFileName(save.SavePath).StartsWith("pax-expedition-", StringComparison.Ordinal) && save.SaveEdits(), "Expedition writes tile state to an independent disposable validation slot");
+            player.Warp(new Vector3(1, 0.03f, -3)); yield return WaitFrames(10);
+            Check(builder.Mine(new Vector3Int(1, 0, -5)), "Required repair can be mined after completion");
+            yield return WaitFrames(2);
+            Check(mission.Stage == PaxExpeditionStage.Repair && mission.RepairCount == 5 && !mission.TryActivate() && save.SaveEdits(), "Removing a repair revokes completion; incomplete construction saves normally");
+            Check(save.LoadEdits(true), "Previous tile save loads the complete platform"); yield return WaitFrames(2);
+            Check(mission.RepairCount == 6 && mission.Stage == PaxExpeditionStage.Return, "Loaded repairs are inferred and require fresh beacon activation");
+            Check(save.LoadEdits(), "Current tile save loads the incomplete platform"); yield return WaitFrames(2);
+            Check(mission.RepairCount == 5 && mission.Stage == PaxExpeditionStage.Repair, "Loading missing repair tiles immediately updates objective state");
+            string savedBytes = File.ReadAllText(save.SavePath); revision = world.Revision;
+            mission.RestartSurvey();
+            Check(mission.SurveyedCount == 0 && mission.RepairCount == 5 && world.Revision == revision && savedBytes == File.ReadAllText(save.SavePath), "Replay resets session journal while keeping construction and save bytes");
+            Check(save.LoadEdits(true), "Replay can reload retained construction"); yield return WaitFrames(2);
+            Check(mission.RepairCount == 6 && mission.SurveyedCount == 0 && mission.Stage == PaxExpeditionStage.Survey, "Loading repairs never restores session-only shelter visits");
+            cameraRig.SnapToTarget(); yield return new WaitForSecondsRealtime(0.2f); Capture("Expedition-05-Replay-HUD.png");
+        }
+
         private IEnumerator RunGeneratedIsland(PaxGeneratedIsland island, PaxPlayer player, PaxWorld world, PaxBuilder builder, PaxCamera cameraRig, PaxCutaway cutaway)
         {
             Check(world.Blocks.Count == island.AuthoredTileCount && world.CaptureEdits().Placed.Count == 0 && world.CaptureEdits().Removed.Count == 0, "Saved generated baseline loaded without runtime regeneration");

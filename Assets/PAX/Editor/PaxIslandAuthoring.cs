@@ -24,7 +24,7 @@ namespace Pax.Editor
             Debug.Log("PAX_AUTHORING_PROJECT_CONFIRMED " + actualAssets);
         }
 
-        private static void RequireProjectIdentity()
+        public static void RequireProjectIdentity()
         {
             string[] args = Environment.GetCommandLineArgs();
             int index = Array.IndexOf(args, "-paxAuthoringProject");

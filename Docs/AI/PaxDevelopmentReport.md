@@ -2,7 +2,9 @@
 
 16 October 2026. Local development only; public pushing remains denied and will not be attempted.
 
-The supervised run stopped after three validated implementation milestones. The later trip authorization completed ONE scoped generation milestone from `4afd11e` in the same isolated checkout: editable seed/settings, deterministic saved terrain/structures and distinct save slots. **34 EditMode, 45 PlayMode (plus a final 3-case generated-world rerun), Windows build and 20 built-player checks passed.** See [PaxGenerationMilestone.md](PaxGenerationMilestone.md) for evidence, controls and limits. Waiting for the coordinator's AS handoff; no next PAX milestone is started. The previous stop audit below remains historical evidence. Public publication remains prohibited.
+The supervised run stopped after three validated implementation milestones. Trip rotation 1 completed the generation milestone from `4afd11e`: editable seed/settings, deterministic saved terrain/structures and distinct save slots. Its checkpoint is `54bcfa5`; see [PaxGenerationMilestone.md](PaxGenerationMilestone.md).
+
+**Trip rotation 2 completed ONE expedition milestone from `54bcfa5`: survey three shelters, repair six marked platform cells, then return/jump onto the pad and activate the beacon.** Session-only visits/replay and tile-save-derived repairs keep construction and objective state coherent. A separate scene/slot preserves both prior sandboxes. **36 EditMode, 51 PlayMode, Windows build and 31 built-player checks passed; all five live HUD/world captures were inspected.** See [PaxExpeditionMilestone.md](PaxExpeditionMilestone.md) for controls, evidence and limits. Waiting for AS rotation; no next PAX milestone is started. The previous stop audit below remains historical evidence. Public publication remains prohibited.
 
 ## Workspace and protection
 
