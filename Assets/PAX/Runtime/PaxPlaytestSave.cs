@@ -14,6 +14,9 @@ namespace Pax
         public string SavePath => ResolvePath(Application.persistentDataPath);
         public string BackupPath => SavePath + ".bak";
         private string testDirectory;
+        private PaxResourceSession resourceSession;
+        public void UseResourceSession(PaxResourceSession session)
+        { resourceSession = session; Status = "Finite mode: F5 saves stockpile + tiles; F9 loads; F8 previous snapshot."; }
 
         public void Configure(PaxWorld grid, PaxPlayer motor) { world = grid; player = motor; }
 
@@ -37,6 +40,7 @@ namespace Pax
 
         public bool SaveEdits()
         {
+            if (resourceSession != null) { bool saved = resourceSession.Save(out string status); Status = status; return saved; }
             try
             {
                 PaxSaveFile.Write(SavePath, world.CaptureEdits(), previous => world.ValidateEdits(previous, out _));
@@ -49,6 +53,7 @@ namespace Pax
 
         public bool LoadEdits(bool previous = false)
         {
+            if (resourceSession != null) { bool loaded = resourceSession.Load(previous, out string status); Status = status; return loaded; }
             try
             {
                 var data = PaxSaveFile.Read(previous ? BackupPath : SavePath);

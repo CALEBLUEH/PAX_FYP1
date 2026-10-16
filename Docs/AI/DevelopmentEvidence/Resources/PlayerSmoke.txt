@@ -1,0 +1,36 @@
+PASS Scene components loaded
+PASS Authored HUD laid out and status updated
+PASS Player starts grounded
+PASS Finite mode starts with deliberate five-material mapping and zero stocks
+PASS Empty stock refuses placement without changing tiles or units
+PASS Authored Stone mining awards exactly once at (0, 0, -1)
+PASS Authored Stone mining awards exactly once at (-1, 0, -1)
+PASS Authored Stone mining awards exactly once at (-2, 0, -1)
+PASS Authored Stone mining awards exactly once at (0, 0, 0)
+PASS Authored Stone mining awards exactly once at (-1, 0, 0)
+PASS Authored Stone mining awards exactly once at (-2, 0, 0)
+PASS Repeated mining cannot award the removed node again
+PASS Stocks are material-specific; wrong selected supply does not spend Stone
+PASS Protected mining and player-overlap placement leave stocks unchanged
+PASS Gathered snapshot atomically saves stockpile and removed resource tiles
+PASS House visit and cutaway/collision remain valid in finite mode
+PASS Cave visit and cutaway/collision remain valid in finite mode
+PASS Ruin visit and cutaway/collision remain valid in finite mode
+PASS Required Stone repair spends one unit only on success (0, 0, -6)
+PASS Required Stone repair spends one unit only on success (1, 0, -6)
+PASS Required Stone repair spends one unit only on success (2, 0, -6)
+PASS Required Stone repair spends one unit only on success (0, 0, -5)
+PASS Required Stone repair spends one unit only on success (1, 0, -5)
+PASS Required Stone repair spends one unit only on success (2, 0, -5)
+PASS Built snapshot records six solid repairs and spent stock together
+PASS Gather-spend-survey loop ends with real platform jump and beacon activation
+PASS Mining a placed Stone repair refunds its actual ID, not the selected Roof
+PASS Removing a finite repair revokes beacon completion
+PASS Repeated full loads restore absolute zero stock and complete tiles without multiplication
+PASS Previous full snapshot restores gathered stocks with unbuilt platform
+PASS Current full snapshot restores spent stocks with built platform
+PASS A forged extra unit rejects both states before mutation
+PASS Incompatible resource primary is archived without replacing valid combined backup
+PASS Tile-only import is explicitly refused in finite mode
+PASS Valid combined snapshot can repair the rejected tile-only primary
+PASS Survey replay keeps resources, construction and snapshot bytes unchanged

@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dae3afcf8648f2446ad1489db3206e18, type: 3}
+  m_Name: ResourceRules
+  m_EditorClassIdentifier: Pax.Runtime::Pax.PaxResourceRules
+  entries:
+  - id: default
+    start: 0
+    authoredYield: 1
+    limit: 64
+  - id: timber
+    start: 0
+    authoredYield: 1
+    limit: 64
+  - id: stone
+    start: 0
+    authoredYield: 1
+    limit: 64
+  - id: earth
+    start: 0
+    authoredYield: 1
+    limit: 64
+  - id: roof
+    start: 0
+    authoredYield: 1
+    limit: 64

@@ -25,6 +25,19 @@ namespace Pax
             public bool Mineable;
         }
         public string SaveSignature { get; private set; }
+        public IEnumerable<Vector3Int> AuthoredCells => authored.Keys;
+        public bool TryGetAuthored(Vector3Int cell, out Material material, out bool mineable)
+        {
+            material = null; mineable = false;
+            if (!authored.TryGetValue(cell, out var template)) return false;
+            material = template.Material; mineable = template.Mineable; return true;
+        }
+        public bool TryIdentifyMaterial(Material material, out string id)
+        {
+            id = null;
+            if (material == blockPrefab.SurfaceMaterial && TryResolveMaterial("default", out _)) { id = "default"; return true; }
+            return constructionPalette != null && constructionPalette.TryIdentify(material, out id) && TryResolveMaterial(id, out _);
+        }
         private PaxMaterialPalette constructionPalette;
         public bool UsePalette(PaxMaterialPalette palette, out string reason)
         {
@@ -44,8 +57,7 @@ namespace Pax
         }
         private string IdentifyMaterial(Material material)
         {
-            if (material == blockPrefab.SurfaceMaterial && TryResolveMaterial("default", out _)) return "default";
-            if (constructionPalette != null && constructionPalette.TryIdentify(material, out string id) && TryResolveMaterial(id, out _)) return id;
+            if (TryIdentifyMaterial(material, out string id)) return id;
             throw new System.IO.InvalidDataException("Placed material is not registered in this world's construction palette. Existing saves were kept.");
         }
 

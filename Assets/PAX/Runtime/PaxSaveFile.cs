@@ -96,9 +96,7 @@ namespace Pax
 
         public static PaxTileEdits Read(string path)
         {
-            if (!File.Exists(path)) throw new FileNotFoundException("No playtest save exists yet. Press Save first.", path);
-            if (new FileInfo(path).Length > MaximumBytes) throw new InvalidDataException("Save exceeds the playtest size limit.");
-            return Decode(File.ReadAllText(path, Encoding.UTF8));
+            return Decode(PaxAtomicFile.Read(path));
         }
 
         public static void Write(string path, PaxTileEdits data, Func<PaxTileEdits, bool> compatible = null)
@@ -108,33 +106,11 @@ namespace Pax
             if (compatible == null && normalized.Materials.Values.Any(id => id != "default"))
                 throw new InvalidDataException("Non-default material writes require world/palette compatibility validation.");
             if (compatible != null && !compatible(normalized)) throw new InvalidDataException("Tile edits are incompatible with this authored world.");
-            Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(path)));
-            string temporary = path + ".tmp-" + Guid.NewGuid().ToString("N");
-            try
+            PaxAtomicFile.Write(path, content, previous =>
             {
-                using (var file = new FileStream(temporary, FileMode.CreateNew, FileAccess.Write, FileShare.None))
-                using (var writer = new StreamWriter(file, new UTF8Encoding(false)))
-                {
-                    writer.Write(content);
-                    writer.Flush();
-                    file.Flush(true);
-                }
-                if (!File.Exists(path)) File.Move(temporary, path);
-                else
-                {
-                    bool currentValid;
-                    try
-                    {
-                        var previousData = Read(path);
-                        currentValid = previousData.World == normalized.World && (compatible != null ? compatible(previousData) : previousData.Materials.Values.All(id => id == "default"));
-                    }
-                    catch (Exception error) when (IsExpectedFailure(error)) { currentValid = false; }
-                    // A malformed primary is preserved separately; it must not replace the valid .bak.
-                    string previous = currentValid ? path + ".bak" : path + ".invalid-" + Guid.NewGuid().ToString("N");
-                    File.Replace(temporary, path, previous);
-                }
-            }
-            finally { if (File.Exists(temporary)) File.Delete(temporary); }
+                var previousData = Decode(previous);
+                return previousData.World == normalized.World && (compatible != null ? compatible(previousData) : previousData.Materials.Values.All(id => id == "default"));
+            });
         }
 
         public static bool IsExpectedFailure(Exception error) => error is IOException || error is InvalidDataException || error is UnauthorizedAccessException ||

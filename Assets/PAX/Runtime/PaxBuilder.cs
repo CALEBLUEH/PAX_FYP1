@@ -32,6 +32,8 @@ namespace Pax
         private int feedbackLayer;
         private float feedbackReach;
         private string selectedMaterialId = "default";
+        private PaxStockpile stockpile;
+        public void UseStockpile(PaxStockpile resources) => stockpile = resources;
         public string SelectedMaterialId => selectedMaterialId;
         public bool TrySelectMaterial(string id)
         {
@@ -114,6 +116,9 @@ namespace Pax
                 case PaxActionBlock.Occluded: return "A solid tile blocks the path. Approach from a clear side.";
                 case PaxActionBlock.Protected: return "Protected foundation. Mine an upper tile.";
                 case PaxActionBlock.InvalidMaterial: return "Construction material unavailable. Select a valid palette slot.";
+                case PaxActionBlock.InsufficientResources: return "Not enough of the selected material. Mine matching blocks first (cost: 1).";
+                case PaxActionBlock.StockpileFull: return "Stockpile is full for this material. Spend units before mining.";
+                case PaxActionBlock.ResourceUnavailable: return "Resource mapping is unavailable; action kept unchanged.";
                 default: return "Tile was removed. Select another tile.";
             }
         }
@@ -139,7 +144,8 @@ namespace Pax
             var bounds = new Bounds(PaxGrid.Centre(cell), Vector3.one * 0.98f);
             if (bounds.Intersects(player.BodyBounds)) return PaxActionBlock.PlayerOverlap;
             if (!world.HasSupport(cell)) return PaxActionBlock.Unsupported;
-            return HasLineOfSight(cell) ? PaxActionBlock.None : PaxActionBlock.Occluded;
+            if (!HasLineOfSight(cell)) return PaxActionBlock.Occluded;
+            return stockpile == null ? PaxActionBlock.None : stockpile.PlacementStatus(selectedMaterialId);
         }
         public bool CanPlaceAt(Vector3Int cell) => EvaluatePlacement(cell) == PaxActionBlock.None;
         public PaxActionBlock EvaluateMining(Vector3Int cell)
@@ -148,13 +154,17 @@ namespace Pax
             if (!PaxGrid.InReach(player.Chest, cell, reach)) return PaxActionBlock.OutOfReach;
             if (!world.TryGet(cell, out var block)) return PaxActionBlock.MissingTile;
             if (!block.Mineable) return PaxActionBlock.Protected;
-            return HasLineOfSight(cell) ? PaxActionBlock.None : PaxActionBlock.Occluded;
+            if (!HasLineOfSight(cell)) return PaxActionBlock.Occluded;
+            return stockpile == null ? PaxActionBlock.None : stockpile.MiningStatus(cell, out _, out _);
         }
         public bool Mine(Vector3Int cell)
         {
             var reason = EvaluateMining(cell);
             if (reason != PaxActionBlock.None) { ShowAction($"Cannot mine {cell}: {Explain(reason)}"); return false; }
+            string id = null; int amount = 0;
+            if (stockpile != null && stockpile.MiningStatus(cell, out id, out amount) != PaxActionBlock.None) return false;
             bool changed = world.TryMine(cell);
+            if (changed && stockpile != null) stockpile.CommitMine(cell, id, amount);
             ShowAction(changed ? $"Mined {cell}" : $"Cannot mine {cell}: {Explain(PaxActionBlock.MissingTile)}");
             return changed;
         }
@@ -163,6 +173,7 @@ namespace Pax
             var reason = EvaluatePlacement(cell);
             if (reason != PaxActionBlock.None) { ShowAction($"Cannot place {cell}: {Explain(reason)}"); return false; }
             bool changed = world.TryAdd(cell, selectedMaterialId);
+            if (changed && stockpile != null) stockpile.CommitPlacement(selectedMaterialId);
             ShowAction(changed ? $"Placed {cell}" : $"Cannot place {cell}: world changed; aim again.");
             return changed;
         }

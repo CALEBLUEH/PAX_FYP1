@@ -12,6 +12,9 @@ namespace Pax
         Occluded,
         Protected,
         MissingTile,
-        InvalidMaterial
+        InvalidMaterial,
+        InsufficientResources,
+        StockpileFull,
+        ResourceUnavailable
     }
 }

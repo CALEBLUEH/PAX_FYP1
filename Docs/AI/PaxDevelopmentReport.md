@@ -6,7 +6,9 @@ The supervised run stopped after three validated implementation milestones. Trip
 
 Trip rotation 2 completed the expedition milestone from `54bcfa5` in checkpoint `8ec66cb`: survey three shelters, repair six cells and activate the beacon, with session-only journal and tile-derived repairs. See [PaxExpeditionMilestone.md](PaxExpeditionMilestone.md).
 
-**Current trip milestone completed ONE durable material palette from `8ec66cb`: five editable construction choices, number-key selection, material sample/validity previews, and version 2 stable-ID tile persistence with strict version 1 migration/recovery.** A new scene/slot preserves all three prior scenes. **45 full EditMode + 23 focused final codec/palette checks, 55 PlayMode, Windows build and 46 built-player checks passed.** Six actual HUD/world captures were inspected. See [PaxPaletteMilestone.md](PaxPaletteMilestone.md) for compatibility, controls, evidence and limits. Waiting for AS rotation; no next PAX milestone is started. Previous stop audits remain historical evidence. Public publication remains prohibited.
+The durable material palette checkpoint is `fb3736c`: five editable choices and typed v2 tile persistence with strict v1 migration/recovery. See [PaxPaletteMilestone.md](PaxPaletteMilestone.md).
+
+**Current trip milestone completed ONE finite resource expedition from `fb3736c`: mine recoverable material stocks, spend matching units on the beacon, and atomically save/load exact tiles + stocks + once-only harvest history.** A separate authored scene/slot preserves all four unlimited scenes. Conservation validation prevents tile-only import/repeated-load/yield-rebuild duplication. **56 EditMode, 61 PlayMode, Windows build and 36 built-player checks passed; all five live HUD/world captures inspected.** See [PaxResourceMilestone.md](PaxResourceMilestone.md) for rules, compatibility, evidence and limits. Waiting for AS rotation; no next PAX milestone started. Previous stop audits remain historical evidence. Public publication remains prohibited.
 
 ## Workspace and protection
 

@@ -66,6 +66,13 @@ namespace Pax
             var status=captureDocument.rootVisualElement.Q<Label>("status");
             Check(status!=null && !string.IsNullOrWhiteSpace(status.text) && status.worldBound.width>50,"Authored HUD laid out and status updated");
             Check(player.Grounded,"Player starts grounded");
+            var resources = FindFirstObjectByType<PaxStockpile>();
+            if (resources != null)
+            {
+                FindFirstObjectByType<PaxExpeditionInput>().enabled = false;
+                yield return RunResources(resources, player, world, builder, cameraRig, cutaway);
+                Finish(); yield break;
+            }
             var materialSelection = FindFirstObjectByType<PaxMaterialSelection>();
             if (materialSelection != null)
             {
@@ -153,6 +160,54 @@ namespace Pax
             Finish();
         }
         private static IEnumerator WaitFrames(int count) { for (int i = 0; i < count; i++) yield return null; }
+
+        private IEnumerator RunResources(PaxStockpile pile, PaxPlayer player, PaxWorld world, PaxBuilder builder, PaxCamera rig, PaxCutaway cutaway)
+        {
+            var selection=FindFirstObjectByType<PaxMaterialSelection>(); var mission=FindFirstObjectByType<PaxExpedition>(); var save=FindFirstObjectByType<PaxPlaytestSave>();
+            save.UseValidationDirectory(Path.Combine(output,"ResourceSave-"+Guid.NewGuid().ToString("N")));
+            Check(pile.Ready && pile.Palette.Entries.Count==5 && pile.Count("stone")==0,"Finite mode starts with deliberate five-material mapping and zero stocks");
+            selection.SelectNumber(3); builder.SetPointer(rig.View.WorldToScreenPoint(new Vector3(1,0.02f,-5)),false,false);
+            int revision=world.Revision;
+            Check(!builder.Place(new Vector3Int(1,0,-5)) && pile.Count("stone")==0 && world.Revision==revision,"Empty stock refuses placement without changing tiles or units");
+            yield return new WaitForSecondsRealtime(0.2f); Capture("Resources-00-Empty-HUD.png");
+            int mined=0; var cells=FindFirstObjectByType<PaxResourceCache>().Cells;
+            foreach(var cell in cells) { bool success=builder.Mine(cell); if(success) mined++; Check(success && pile.Count("stone")==mined,"Authored Stone mining awards exactly once at "+cell); }
+            Check(!builder.Mine(cells[0]) && pile.Count("stone")==6,"Repeated mining cannot award the removed node again");
+            selection.SelectNumber(5); Check(!builder.Place(new Vector3Int(1,0,-5)) && pile.Count("stone")==6 && pile.Count("roof")==0,"Stocks are material-specific; wrong selected supply does not spend Stone"); selection.SelectNumber(3);
+            Check(!builder.Mine(new Vector3Int(0,-3,-3)) && !builder.Place(new Vector3Int(0,0,-3)) && pile.Count("stone")==6,"Protected mining and player-overlap placement leave stocks unchanged");
+            Check(save.SaveEdits() && PaxResourceSnapshot.Decode(PaxAtomicFile.Read(save.SavePath)).Counts["stone"]==6,"Gathered snapshot atomically saves stockpile and removed resource tiles");
+            yield return new WaitForSecondsRealtime(0.2f); Capture("Resources-01-Gathered-HUD.png");
+            foreach(var site in mission.Sites)
+            {
+                player.Warp(site.transform.position); rig.SnapToTarget(); yield return WaitFrames(45); cutaway.RefreshNow();
+                bool solid=true; foreach(var block in world.Blocks) { solid &= block.Solid.enabled && block.SolidShadow!=null; if(cutaway.IsObstruction(block)) solid &= cutaway.TargetFor(block)<=0.04f; }
+                Check(site.Surveyed && solid,site.Title+" visit and cutaway/collision remain valid in finite mode");
+            }
+            player.Warp(new Vector3(1,0.03f,-3)); rig.SnapToTarget(); yield return WaitFrames(10);
+            var ordered=new List<PaxRepairMarker>(mission.Repairs); ordered.Sort((a,b)=>{int c=a.Cell.z.CompareTo(b.Cell.z);return c!=0?c:a.Cell.x.CompareTo(b.Cell.x);});
+            int placed=0; foreach(var repair in ordered) { bool success=builder.Place(repair.Cell); if(success) placed++; Check(success && pile.Count("stone")==6-placed,"Required Stone repair spends one unit only on success "+repair.Cell); }
+            yield return WaitFrames(2);
+            Check(mission.RepairCount==6 && pile.Count("stone")==0 && save.SaveEdits(),"Built snapshot records six solid repairs and spent stock together");
+            var forward=Vector3.ProjectOnPlane(rig.transform.forward,Vector3.up).normalized; var right=Vector3.Cross(Vector3.up,forward);
+            player.SetCommand(new Vector2(Vector3.Dot(Vector3.back,right),Vector3.Dot(Vector3.back,forward)),true,true); yield return WaitFrames(30); player.SetCommand(Vector2.zero,false,false); yield return WaitFrames(35);
+            Check(player.Grounded && Mathf.Abs(player.transform.position.y-1)<0.06f && mission.TryActivate() && mission.Stage==PaxExpeditionStage.Complete,"Gather-spend-survey loop ends with real platform jump and beacon activation");
+            yield return new WaitForSecondsRealtime(0.2f); Capture("Resources-02-Complete-HUD.png");
+            selection.SelectNumber(5); Check(builder.Mine(new Vector3Int(1,0,-5)) && pile.Count("stone")==1 && pile.Count("roof")==0,"Mining a placed Stone repair refunds its actual ID, not the selected Roof");
+            yield return WaitFrames(2); Check(mission.Stage==PaxExpeditionStage.Repair,"Removing a finite repair revokes beacon completion");
+            player.Warp(new Vector3(1,0.03f,-3)); rig.SnapToTarget(); yield return WaitFrames(10);
+            bool repeated=true; for(int i=0;i<3;i++) repeated &= save.LoadEdits() && pile.Count("stone")==0 && world.Contains(new Vector3Int(1,0,-5));
+            Check(repeated,"Repeated full loads restore absolute zero stock and complete tiles without multiplication");
+            Check(save.LoadEdits(true) && pile.Count("stone")==6 && !world.Contains(new Vector3Int(1,0,-5)),"Previous full snapshot restores gathered stocks with unbuilt platform");
+            Check(save.LoadEdits() && pile.Count("stone")==0 && world.Contains(new Vector3Int(1,0,-5)),"Current full snapshot restores spent stocks with built platform");
+            var invalid=pile.Capture(); invalid.Counts["stone"]=1; revision=world.Revision; string backup=File.ReadAllText(save.BackupPath);
+            File.WriteAllText(save.SavePath,invalid.Encode()); Check(!save.LoadEdits() && pile.Count("stone")==0 && world.Revision==revision,"A forged extra unit rejects both states before mutation");
+            Check(save.SaveEdits() && backup==File.ReadAllText(save.BackupPath) && Directory.GetFiles(Path.GetDirectoryName(save.SavePath),"*.invalid-*").Length==1,"Incompatible resource primary is archived without replacing valid combined backup");
+            File.WriteAllText(save.SavePath,PaxSaveFile.Encode(world.CaptureEdits())); Check(!save.LoadEdits() && pile.Count("stone")==0 && world.Revision==revision,"Tile-only import is explicitly refused in finite mode"); Check(save.SaveEdits(),"Valid combined snapshot can repair the rejected tile-only primary");
+            yield return new WaitForSecondsRealtime(0.2f); Capture("Resources-03-Restored-HUD.png");
+            revision=world.Revision; string bytes=File.ReadAllText(save.SavePath); mission.RestartSurvey();
+            Check(mission.SurveyedCount==0 && mission.RepairCount==6 && pile.Count("stone")==0 && revision==world.Revision && bytes==File.ReadAllText(save.SavePath),"Survey replay keeps resources, construction and snapshot bytes unchanged");
+            yield return new WaitForSecondsRealtime(0.2f); Capture("Resources-04-Replay-HUD.png");
+        }
 
         private IEnumerator RunPalette(PaxMaterialSelection selection, PaxPlayer player, PaxWorld world, PaxBuilder builder, PaxCamera cameraRig, PaxCutaway cutaway)
         {
