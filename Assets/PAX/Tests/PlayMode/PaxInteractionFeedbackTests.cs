@@ -113,11 +113,33 @@ namespace Pax.Tests
             builder.ToggleCursor();
             builder.Select(rig.View.WorldToScreenPoint(PaxGrid.Centre(new Vector3Int(-3, 1, -3))));
             Assert.IsFalse(builder.Place(new Vector3Int(0, 0, -3)));
-            for (int i = 0; i < 15; i++) yield return null;
+            yield return new WaitForSecondsRealtime(0.2f); // HUD refresh uses unscaled time, not captureDeltaTime.
             var root = Object.FindFirstObjectByType<UIDocument>().rootVisualElement;
             Assert.That(root.Q<Label>("mining").text, Is.EqualTo(builder.MiningStatus));
             Assert.That(root.Q<Label>("placement").text, Is.EqualTo(builder.PlacementStatus));
             Assert.That(root.Q<Label>("action").text, Does.Contain("Step aside"));
+        }
+
+        [Test]
+        public void UnchangedPointerRevalidatesFeedbackAfterPhysicalWorldChanges()
+        {
+            builder.ToggleCursor();
+            var target = new Vector3Int(-3, 1, -3);
+            Vector2 point = rig.View.WorldToScreenPoint(PaxGrid.Centre(target));
+            builder.Select(point);
+            Assert.That(builder.MiningBlock, Is.EqualTo(PaxActionBlock.None));
+            var wall = new Vector3Int(-1, 1, -3);
+            Assert.IsTrue(world.TryAdd(wall));
+            Physics.SyncTransforms();
+            builder.Select(point);
+            Assert.That(builder.CandidateCell, Is.EqualTo(target));
+            Assert.That(builder.MiningBlock, Is.EqualTo(PaxActionBlock.Occluded));
+            Assert.That(builder.MiningStatus, Does.Contain("solid tile"));
+            Assert.IsTrue(world.TryMine(wall));
+            Physics.SyncTransforms();
+            builder.Select(point);
+            Assert.That(builder.MiningBlock, Is.EqualTo(PaxActionBlock.None));
+            Assert.That(builder.MiningStatus, Does.Contain("Ready"));
         }
     }
 }

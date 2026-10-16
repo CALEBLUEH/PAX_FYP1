@@ -1,0 +1,21 @@
+PASS Scene components loaded
+PASS Authored HUD laid out and status updated
+PASS Player starts grounded
+PASS Out-of-range target retains an invalid preview and specific reason
+PASS Movement in built player
+PASS Held jump reaches two tiles
+PASS Jump lands on solid floor
+PASS Supported placement in built player
+PASS Mining updates built player world
+PASS Player-overlap placement rejected
+PASS Out-of-reach mining rejected
+PASS Authored playtest save component loaded
+PASS Local save and previous-save backup written
+PASS Malformed save rejected without world mutation
+PASS Previous save recovers edited tile in built player
+PASS Corrupt primary preserved while saving recovered edits
+PASS Solid collision and obstruction precedence at (-6.00, 0.03, 6.00)
+PASS Solid collision and obstruction precedence at (7.00, 0.03, 7.00)
+PASS Solid collision and obstruction precedence at (6.00, 0.03, -7.00)
+PASS Solid collision and obstruction precedence at (0.00, 0.03, -7.00)
+PASS Solid collision and obstruction precedence at (0.00, -2.97, 7.00)

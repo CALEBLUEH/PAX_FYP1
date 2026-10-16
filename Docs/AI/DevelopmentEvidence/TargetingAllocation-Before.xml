@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-16 03:06:59Z" end-time="2026-10-16 03:07:00Z" duration="1.3068346">
+  <test-suite type="TestSuite" id="1053" name="PAX_FYP1" fullname="PAX_FYP1" runstate="Runnable" testcasecount="41" result="Passed" start-time="2026-10-16 03:06:59Z" end-time="2026-10-16 03:07:00Z" duration="1.306835" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1048" name="Pax.PlayModeTests.dll" fullname="C:/Users/user/.codex/worktrees/pax-development/PAX_FYP1/Library/ScriptAssemblies/Pax.PlayModeTests.dll" runstate="Runnable" testcasecount="41" result="Passed" start-time="2026-10-16 03:06:59Z" end-time="2026-10-16 03:07:00Z" duration="1.296646" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="22908" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1049" name="Pax" fullname="Pax" runstate="Runnable" testcasecount="41" result="Passed" start-time="2026-10-16 03:06:59Z" end-time="2026-10-16 03:07:00Z" duration="1.295403" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1050" name="Tests" fullname="Pax.Tests" runstate="Runnable" testcasecount="41" result="Passed" start-time="2026-10-16 03:06:59Z" end-time="2026-10-16 03:07:00Z" duration="1.294607" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1046" name="PaxTargetingAllocationTests" fullname="Pax.Tests.PaxTargetingAllocationTests" classname="Pax.Tests.PaxTargetingAllocationTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-16 03:06:59Z" end-time="2026-10-16 03:07:00Z" duration="1.292739" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1047" name="MeasureStableTargetingAllocations" fullname="Pax.Tests.PaxTargetingAllocationTests.MeasureStableTargetingAllocations" methodname="MeasureStableTargetingAllocations" classname="Pax.Tests.PaxTargetingAllocationTests" runstate="Runnable" seed="2081599274" result="Passed" start-time="2026-10-16 03:06:59Z" end-time="2026-10-16 03:07:00Z" duration="1.279553" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PAX_ALLOCATION_CONTROL: managed counter=0; Unity frame-counter delta=262176; unit=Bytes
+PAX_TARGETING_MEASURE: SMART + VISIBLE: 500 calls; 493282 excess frame bytes over 1706 idle bytes; 986.56 estimated bytes/call; 107.646 ms
+PAX_TARGETING_MEASURE: PRECISE + VISIBLE: 500 calls; 468000 excess frame bytes over 1706 idle bytes; 936.00 estimated bytes/call; 4.791 ms
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/user/AppData/LocalLow/DefaultCompany/PAX_FYP1\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

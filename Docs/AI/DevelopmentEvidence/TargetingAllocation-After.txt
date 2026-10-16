@@ -1,0 +1,2 @@
+SMART + VISIBLE: 500 calls; 5210 excess frame bytes over 1706 idle bytes; 10.42 estimated bytes/call; 98.457 ms
+PRECISE + VISIBLE: 500 calls; 0 excess frame bytes over 1706 idle bytes; 0.00 estimated bytes/call; 3.567 ms

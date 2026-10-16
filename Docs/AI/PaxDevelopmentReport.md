@@ -12,8 +12,8 @@
 ## Milestones
 
 1. Complete, local commit `d93703f07fe95c06cfbb9e8c5f918df8231d6897`: actionable mining/placement rejection reasons, predictable preview feedback and editable authored HUD. Range, support, collision, ghost targeting, LOS, bounds and protected tiles are preserved.
-2. Validated and ready for local commit: local edited-tile save/load for repeatable playtests, versioned validation, malformed-input rejection and a recoverable previous save.
-3. After those: choose small essential improvements from measured evidence, validating and locally committing each milestone. Continue until a stop instruction.
+2. Complete, local commit `466f3190ef2f3de93ae1f53f454691ffd9e0c9c1`: local edited-tile save/load for repeatable playtests, versioned validation, malformed-input rejection and a recoverable previous save.
+3. Validated and ready for local commit: reduce measured unchanged-target feedback allocations while preserving live selection/validation and Inspector tuning. Continue until a stop instruction.
 
 ## Validation and permission state
 
@@ -46,6 +46,20 @@
 - Current and previous files are treated as compatible only after schema and authored-world edit validation. A syntactically valid protected-removal or wrong-world primary is preserved separately instead of replacing a recoverable `.bak`.
 
 Manual persistence check: place/mine some tiles, press F5, make a different edit, then press F9 to restore the saved edits. Save another state and press F8 to recover the prior valid save. The normal slot is `Application.persistentDataPath/PAXPlaytests/pax-playtest.xml`; `.bak` holds the previous valid save. Loading does not move the player, and asks the player to step aside if restored solids would overlap the body. It restores edited tile state, not inventory, camera state or a full game profile.
+
+## Milestone 3 measurement
+
+A bounded PlayMode probe warms targeting, freezes command input/presentation changes, then measures 500 unchanged-pointer selections in each cursor mode. The managed per-thread counter returned zero even for a known allocation; raw `GC.Alloc` marker values also failed the control. Those results are not allocation evidence. A measurement-only brace error was corrected before any runtime optimization.
+
+The replacement Unity `GC Allocated In Frame` recorder verifies its unit is Bytes and detected a **262,176-byte delta** for a known 256-KiB allocation. With matched idle frames, its baseline was **493,282 excess frame bytes / 500 smart selections** and **468,000 / 500 precise selections** (`TargetingAllocation-Before.txt` and XML). These are frame-wide estimates, not per-thread totals or a frame-rate benchmark.
+
+The improvement caches only unchanged feedback text, avoids list-enumerator allocation and redundant material assignments. Live target/physics/visibility evaluation is retained; the cache includes candidate/placement cells, both action reasons, signed layer and editable reach. A regression checks that the same pointer immediately reflects a new/removed physical blocker.
+
+The matched post-change probe passed its known-allocation control and measured **5,210 excess frame bytes / 500 smart selections** and **0 excess / 500 precise selections** (the latter at the matched idle-frame level). This is roughly 99% lower measured excess allocation in this bounded repeated-target case; it is not a claim that whole-game GC or frame time is zero. Timings were 107.65→98.46 ms smart and 4.79→3.57 ms precise per 500 calls, descriptive single-run figures only. Full regressions and target build validation are next.
+
+First full regression run: 41/42 passed. A HUD text assertion read the initial label while the builder state had correctly changed; the new unchanged-pointer blocker regression passed. A bounded passing probe measured 15 captured frames as only 0.0492s unscaled, below the HUD's 0.1s polling interval. The test now waits on the actual unscaled clock and retains its exact label/action assertions; no runtime UI binding change was justified. Temporary probe logging was removed. Full rerun and build remain before milestone completion.
+
+Final full regression: **42/42 PlayMode cases passed** (`DevelopmentEvidence/TargetingPlayMode.xml`), including the validated byte-valued allocation control/budget and unchanged-pointer physical-blocker updates. Runtime serialization/wiring and persistence code are unchanged from milestone 2's 26/26 EditMode pass. Windows build passed with 0 errors, the same 485 inference-package warnings, 187,308,863 bytes and 13.45s (`TargetingBuildSummary.txt`); **21/21 player checks passed** (`TargetingPlayerSmoke.txt`) with no runtime errors/warnings.
 
 ## Real unattended prompt observed
 

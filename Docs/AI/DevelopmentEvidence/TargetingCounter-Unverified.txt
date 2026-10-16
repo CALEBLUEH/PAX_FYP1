@@ -1,0 +1,2 @@
+SMART + VISIBLE: 500 calls; 0 bytes; 0.00 bytes/call; 110.829 ms
+PRECISE + VISIBLE: 500 calls; 0 bytes; 0.00 bytes/call; 4.664 ms

@@ -25,6 +25,12 @@ namespace Pax
         private Material mineMaterial;
         private string lastAction;
         private float lastActionUntil;
+        private bool hasFeedback;
+        private Vector3Int? feedbackCell;
+        private Vector3Int feedbackPlacement;
+        private PaxActionBlock feedbackMiningBlock, feedbackPlacementBlock;
+        private int feedbackLayer;
+        private float feedbackReach;
         public string Mode => (smartCursor ? "SMART" : "PRECISE") + (targetHiddenSolids ? " + GHOST SOLIDS" : " + VISIBLE");
         public string Status { get; private set; } = "Point at a tile";
         public bool CanPlace { get; private set; }
@@ -176,8 +182,10 @@ namespace Pax
                 Vector3 direction = aim - player.Chest;
                 float best = float.PositiveInfinity;
                 selected = null;
-                foreach (var block in world.Blocks)
+                var blocks = world.Blocks;
+                for (int blockIndex = 0; blockIndex < blocks.Count; blockIndex++)
                 {
+                    var block = blocks[blockIndex];
                     if (block == null || !block.Mineable || (!targetHiddenSolids && block.Visibility < 0.12f) || !PaxGrid.InReach(player.Chest, block.Cell, reach)) continue;
                     Vector3 delta = PaxGrid.Centre(block.Cell) - player.Chest;
                     float angle = Vector3.Angle(direction, delta);
@@ -202,9 +210,7 @@ namespace Pax
             if (candidate == null)
             {
                 MiningBlock = PlacementBlock = PaxActionBlock.NoTarget;
-                MiningStatus = "Mine: " + Explain(MiningBlock);
-                PlacementStatus = "Place: " + Explain(PlacementBlock);
-                Status = MiningStatus + " | " + PlacementStatus;
+                RefreshFeedback();
                 return;
             }
             minePreview.position = PaxGrid.Centre(candidate.Cell);
@@ -213,10 +219,31 @@ namespace Pax
             MiningBlock = EvaluateMining(candidate.Cell);
             PlacementBlock = EvaluatePlacement(placement);
             CanPlace = PlacementBlock == PaxActionBlock.None;
-            placeVisual.sharedMaterial = CanPlace ? validMaterial : invalidMaterial;
-            mineVisual.sharedMaterial = MiningBlock == PaxActionBlock.None ? mineMaterial : invalidMaterial;
-            int level = candidate.Cell.y - Mathf.FloorToInt(player.StableFeetHeight + 0.05f);
-            MiningStatus = $"Mine {candidate.Cell} | Layer {level:+0;-0;0}: {Explain(MiningBlock)}";
+            var placementMaterial = CanPlace ? validMaterial : invalidMaterial;
+            var miningMaterial = MiningBlock == PaxActionBlock.None ? mineMaterial : invalidMaterial;
+            if (placeVisual.sharedMaterial != placementMaterial) placeVisual.sharedMaterial = placementMaterial;
+            if (mineVisual.sharedMaterial != miningMaterial) mineVisual.sharedMaterial = miningMaterial;
+            RefreshFeedback();
+        }
+
+        private void RefreshFeedback()
+        {
+            var cell = CandidateCell;
+            int layer = cell.HasValue ? cell.Value.y - Mathf.FloorToInt(player.StableFeetHeight + 0.05f) : 0;
+            if (hasFeedback && cell == feedbackCell && placement == feedbackPlacement &&
+                MiningBlock == feedbackMiningBlock && PlacementBlock == feedbackPlacementBlock && layer == feedbackLayer && reach == feedbackReach) return;
+            hasFeedback = true;
+            feedbackCell = cell; feedbackPlacement = placement;
+            feedbackMiningBlock = MiningBlock; feedbackPlacementBlock = PlacementBlock;
+            feedbackLayer = layer; feedbackReach = reach;
+            if (!cell.HasValue)
+            {
+                MiningStatus = "Mine: " + Explain(MiningBlock);
+                PlacementStatus = "Place: " + Explain(PlacementBlock);
+                Status = MiningStatus + " | " + PlacementStatus;
+                return;
+            }
+            MiningStatus = $"Mine {cell.Value} | Layer {layer:+0;-0;0}: {Explain(MiningBlock)}";
             PlacementStatus = $"Place {placement}: {Explain(PlacementBlock)}";
             Status = MiningStatus + " | " + PlacementStatus;
         }
