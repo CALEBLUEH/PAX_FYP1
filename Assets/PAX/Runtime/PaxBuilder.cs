@@ -14,11 +14,17 @@ namespace Pax
         [SerializeField, Range(8, 100)] private float smartConeDegrees = 48;
         [SerializeField] private bool smartCursor = true;
         [SerializeField] private bool targetHiddenSolids;
+        [SerializeField, Min(0.5f)] private float actionFeedbackSeconds = 2;
         private readonly RaycastHit[] hits = new RaycastHit[128];
         private Vector2 pointer;
         private bool mine, place;
         private PaxBlock selected;
+        private PaxBlock candidate;
         private Vector3Int placement;
+        private Renderer mineVisual;
+        private Material mineMaterial;
+        private string lastAction;
+        private float lastActionUntil;
         public string Mode => (smartCursor ? "SMART" : "PRECISE") + (targetHiddenSolids ? " + GHOST SOLIDS" : " + VISIBLE");
         public string Status { get; private set; } = "Point at a tile";
         public bool CanPlace { get; private set; }
@@ -27,12 +33,26 @@ namespace Pax
         public Transform MiningPreview => minePreview;
         public Transform PlacementPreview => placePreview;
         public bool PlacementUsesValidMaterial => placeVisual.sharedMaterial == validMaterial;
+        public Vector3Int? CandidateCell => candidate != null ? candidate.Cell : (Vector3Int?)null;
+        public PaxActionBlock MiningBlock { get; private set; } = PaxActionBlock.NoTarget;
+        public PaxActionBlock PlacementBlock { get; private set; } = PaxActionBlock.NoTarget;
+        public string MiningStatus { get; private set; } = "Mine: aim at a tile";
+        public string PlacementStatus { get; private set; } = "Place: aim at a tile";
+        public string LastAction => Time.unscaledTime <= lastActionUntil ? lastAction : string.Empty;
+        public bool MiningUsesInvalidMaterial => mineVisual != null && mineVisual.sharedMaterial == invalidMaterial;
 
         public void Configure(PaxWorld grid, PaxPlayer motor, Camera camera, Transform mining, Transform placing,
             Renderer placingRenderer, Material valid, Material invalid)
         {
             world = grid; player = motor; view = camera; minePreview = mining; placePreview = placing;
             placeVisual = placingRenderer; validMaterial = valid; invalidMaterial = invalid;
+            CacheMiningVisual();
+        }
+        private void Awake() => CacheMiningVisual();
+        private void CacheMiningVisual()
+        {
+            mineVisual = minePreview.GetComponent<Renderer>();
+            mineMaterial = mineVisual.sharedMaterial;
         }
         public void ToggleCursor() => smartCursor = !smartCursor;
         public void ToggleGhostTargets() => targetHiddenSolids = !targetHiddenSolids;
@@ -44,9 +64,44 @@ namespace Pax
         private void LateUpdate()
         {
             Select(pointer);
-            if (mine && selected != null) Mine(selected.Cell);
-            else if (place && CanPlace) Place(placement);
+            bool changed = false;
+            if (mine) changed = candidate != null ? Mine(candidate.Cell) : RejectMissingTarget("mine");
+            else if (place) changed = candidate != null ? Place(placement) : RejectMissingTarget("place");
             mine = place = false;
+            if (changed)
+            {
+                Physics.SyncTransforms();
+                Select(pointer);
+            }
+        }
+
+        private bool RejectMissingTarget(string action)
+        {
+            ShowAction($"Cannot {action}: {Explain(PaxActionBlock.NoTarget)}");
+            return false;
+        }
+
+        private void ShowAction(string message)
+        {
+            lastAction = message;
+            lastActionUntil = Time.unscaledTime + actionFeedbackSeconds;
+        }
+
+        public string Explain(PaxActionBlock reason)
+        {
+            switch (reason)
+            {
+                case PaxActionBlock.None: return "Ready";
+                case PaxActionBlock.NoTarget: return "Aim at a tile or rotate for a clear view.";
+                case PaxActionBlock.OutsideWorld: return "Outside test-island bounds. Choose a cell inside the world.";
+                case PaxActionBlock.OutOfReach: return $"Move within {reach:0.#} tiles of the cell (including height).";
+                case PaxActionBlock.Occupied: return "Cell already occupied. Choose an empty adjacent cell.";
+                case PaxActionBlock.PlayerOverlap: return "Player occupies this cell. Step aside.";
+                case PaxActionBlock.Unsupported: return "No face support. Attach to an existing tile.";
+                case PaxActionBlock.Occluded: return "A solid tile blocks the path. Approach from a clear side.";
+                case PaxActionBlock.Protected: return "Protected foundation. Mine an upper tile.";
+                default: return "Tile was removed. Select another tile.";
+            }
         }
 
         public bool HasLineOfSight(Vector3Int cell)
@@ -60,16 +115,42 @@ namespace Pax
             return true;
         }
 
-        public bool CanPlaceAt(Vector3Int cell)
+        public PaxActionBlock EvaluatePlacement(Vector3Int cell)
         {
-            if (!world.InBounds(cell) || world.Contains(cell) || !world.HasSupport(cell) || !PaxGrid.InReach(player.Chest, cell, reach)) return false;
+            if (!world.InBounds(cell)) return PaxActionBlock.OutsideWorld;
+            if (!PaxGrid.InReach(player.Chest, cell, reach)) return PaxActionBlock.OutOfReach;
+            if (world.Contains(cell)) return PaxActionBlock.Occupied;
             // Slightly shrink for shared faces; touching a supporting floor is legal.
             var bounds = new Bounds(PaxGrid.Centre(cell), Vector3.one * 0.98f);
-            if (bounds.Intersects(player.BodyBounds)) return false;
-            return HasLineOfSight(cell);
+            if (bounds.Intersects(player.BodyBounds)) return PaxActionBlock.PlayerOverlap;
+            if (!world.HasSupport(cell)) return PaxActionBlock.Unsupported;
+            return HasLineOfSight(cell) ? PaxActionBlock.None : PaxActionBlock.Occluded;
         }
-        public bool Mine(Vector3Int cell) => PaxGrid.InReach(player.Chest, cell, reach) && HasLineOfSight(cell) && world.TryMine(cell);
-        public bool Place(Vector3Int cell) => CanPlaceAt(cell) && world.TryAdd(cell);
+        public bool CanPlaceAt(Vector3Int cell) => EvaluatePlacement(cell) == PaxActionBlock.None;
+        public PaxActionBlock EvaluateMining(Vector3Int cell)
+        {
+            if (!world.InBounds(cell)) return PaxActionBlock.OutsideWorld;
+            if (!PaxGrid.InReach(player.Chest, cell, reach)) return PaxActionBlock.OutOfReach;
+            if (!world.TryGet(cell, out var block)) return PaxActionBlock.MissingTile;
+            if (!block.Mineable) return PaxActionBlock.Protected;
+            return HasLineOfSight(cell) ? PaxActionBlock.None : PaxActionBlock.Occluded;
+        }
+        public bool Mine(Vector3Int cell)
+        {
+            var reason = EvaluateMining(cell);
+            if (reason != PaxActionBlock.None) { ShowAction($"Cannot mine {cell}: {Explain(reason)}"); return false; }
+            bool changed = world.TryMine(cell);
+            ShowAction(changed ? $"Mined {cell}" : $"Cannot mine {cell}: {Explain(PaxActionBlock.MissingTile)}");
+            return changed;
+        }
+        public bool Place(Vector3Int cell)
+        {
+            var reason = EvaluatePlacement(cell);
+            if (reason != PaxActionBlock.None) { ShowAction($"Cannot place {cell}: {Explain(reason)}"); return false; }
+            bool changed = world.TryAdd(cell);
+            ShowAction(changed ? $"Placed {cell}" : $"Cannot place {cell}: world changed; aim again.");
+            return changed;
+        }
 
         public void Select(Vector2 screenPoint)
         {
@@ -87,6 +168,8 @@ namespace Pax
                 nearest = hits[i].distance; aim = hits[i].point; normal = hits[i].normal;
                 selected = block; foundSurface = true;
             }
+            PaxBlock surface = selected;
+            Vector3 surfaceNormal = normal;
             if (smartCursor)
             {
                 if (!foundSurface && new Plane(Vector3.up, player.Chest).Raycast(ray, out float distance)) aim = ray.GetPoint(distance);
@@ -109,19 +192,33 @@ namespace Pax
                     normal = abs.y >= abs.x && abs.y >= abs.z ? Vector3.up * Mathf.Sign(toward.y) :
                         abs.x >= abs.z ? Vector3.right * Mathf.Sign(toward.x) : Vector3.forward * Mathf.Sign(toward.z);
                 }
+                else { selected = surface; normal = surfaceNormal; }
             }
+            candidate = selected;
             if (selected != null && (!PaxGrid.InReach(player.Chest, selected.Cell, reach) || !HasLineOfSight(selected.Cell))) selected = null;
-            minePreview.gameObject.SetActive(selected != null);
-            placePreview.gameObject.SetActive(selected != null);
+            minePreview.gameObject.SetActive(candidate != null);
+            placePreview.gameObject.SetActive(candidate != null);
             CanPlace = false;
-            if (selected == null) { Status = "No reachable visible tile"; return; }
-            minePreview.position = PaxGrid.Centre(selected.Cell);
-            placement = selected.Cell + Vector3Int.RoundToInt(normal);
+            if (candidate == null)
+            {
+                MiningBlock = PlacementBlock = PaxActionBlock.NoTarget;
+                MiningStatus = "Mine: " + Explain(MiningBlock);
+                PlacementStatus = "Place: " + Explain(PlacementBlock);
+                Status = MiningStatus + " | " + PlacementStatus;
+                return;
+            }
+            minePreview.position = PaxGrid.Centre(candidate.Cell);
+            placement = candidate.Cell + Vector3Int.RoundToInt(normal);
             placePreview.position = PaxGrid.Centre(placement);
-            CanPlace = CanPlaceAt(placement);
+            MiningBlock = EvaluateMining(candidate.Cell);
+            PlacementBlock = EvaluatePlacement(placement);
+            CanPlace = PlacementBlock == PaxActionBlock.None;
             placeVisual.sharedMaterial = CanPlace ? validMaterial : invalidMaterial;
-            int level = selected.Cell.y - Mathf.FloorToInt(player.StableFeetHeight + 0.05f);
-            Status = $"Mine {selected.Cell} | Layer {level:+0;-0;0} | Place {placement} {(CanPlace ? "ready" : "blocked")}";
+            mineVisual.sharedMaterial = MiningBlock == PaxActionBlock.None ? mineMaterial : invalidMaterial;
+            int level = candidate.Cell.y - Mathf.FloorToInt(player.StableFeetHeight + 0.05f);
+            MiningStatus = $"Mine {candidate.Cell} | Layer {level:+0;-0;0}: {Explain(MiningBlock)}";
+            PlacementStatus = $"Place {placement}: {Explain(PlacementBlock)}";
+            Status = MiningStatus + " | " + PlacementStatus;
         }
     }
 }

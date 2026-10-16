@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="13" result="Passed" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-16 02:32:16Z" end-time="2026-10-16 02:32:21Z" duration="4.796377">
+  <test-suite type="TestSuite" id="1000" name="PAX_FYP1" fullname="PAX_FYP1" runstate="Runnable" testcasecount="13" result="Passed" start-time="2026-10-16 02:32:16Z" end-time="2026-10-16 02:32:21Z" duration="4.796377" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1018" name="Pax.EditModeTests.dll" fullname="C:/Users/user/.codex/worktrees/pax-development/PAX_FYP1/Library/ScriptAssemblies/Pax.EditModeTests.dll" runstate="Runnable" testcasecount="13" result="Passed" start-time="2026-10-16 02:32:16Z" end-time="2026-10-16 02:32:21Z" duration="4.787763" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="26620" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1019" name="Pax" fullname="Pax" runstate="Runnable" testcasecount="13" result="Passed" start-time="2026-10-16 02:32:16Z" end-time="2026-10-16 02:32:21Z" duration="4.787347" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1020" name="Tests" fullname="Pax.Tests" runstate="Runnable" testcasecount="13" result="Passed" start-time="2026-10-16 02:32:16Z" end-time="2026-10-16 02:32:21Z" duration="4.787133" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1002" name="PaxGridTests" fullname="Pax.Tests.PaxGridTests" classname="Pax.Tests.PaxGridTests" runstate="Runnable" testcasecount="13" result="Passed" start-time="2026-10-16 02:32:16Z" end-time="2026-10-16 02:32:21Z" duration="4.786408" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1016" name="AuthoredSceneHasRequiredReferencesAndUniqueCells" fullname="Pax.Tests.PaxGridTests.AuthoredSceneHasRequiredReferencesAndUniqueCells" methodname="AuthoredSceneHasRequiredReferencesAndUniqueCells" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="1989522046" result="Passed" start-time="2026-10-16 02:32:16Z" end-time="2026-10-16 02:32:18Z" duration="1.269274" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1017" name="AuthoringIsIdempotentAndPreservesBuildConfig" fullname="Pax.Tests.PaxGridTests.AuthoringIsIdempotentAndPreservesBuildConfig" methodname="AuthoringIsIdempotentAndPreservesBuildConfig" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="904182953" result="Passed" start-time="2026-10-16 02:32:18Z" end-time="2026-10-16 02:32:21Z" duration="3.058175" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PAX scene already exists. Preserving authored assets.
+]]></output>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1014" name="CellCentreRoundTrips" fullname="Pax.Tests.PaxGridTests.CellCentreRoundTrips" classname="Pax.Tests.PaxGridTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-16 02:32:21Z" end-time="2026-10-16 02:32:21Z" duration="0.432899" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1011" name="CellCentreRoundTrips(-4,-3,-2)" fullname="Pax.Tests.PaxGridTests.CellCentreRoundTrips(-4,-3,-2)" methodname="CellCentreRoundTrips" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="608664107" result="Passed" start-time="2026-10-16 02:32:21Z" end-time="2026-10-16 02:32:21Z" duration="0.002712" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1012" name="CellCentreRoundTrips(0,0,0)" fullname="Pax.Tests.PaxGridTests.CellCentreRoundTrips(0,0,0)" methodname="CellCentreRoundTrips" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="734985068" result="Passed" start-time="2026-10-16 02:32:21Z" end-time="2026-10-16 02:32:21Z" duration="0.000120" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1013" name="CellCentreRoundTrips(5,8,2)" fullname="Pax.Tests.PaxGridTests.CellCentreRoundTrips(5,8,2)" methodname="CellCentreRoundTrips" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="30446258" result="Passed" start-time="2026-10-16 02:32:21Z" end-time="2026-10-16 02:32:21Z" duration="0.000060" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="ParameterizedMethod" id="1010" name="HeightLayersMatchDesign" fullname="Pax.Tests.PaxGridTests.HeightLayersMatchDesign" classname="Pax.Tests.PaxGridTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-16 02:32:21Z" end-time="2026-10-16 02:32:21Z" duration="0.011609" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1003" name="HeightLayersMatchDesign(-2,1.0f)" fullname="Pax.Tests.PaxGridTests.HeightLayersMatchDesign(-2,1.0f)" methodname="HeightLayersMatchDesign" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="571434404" result="Passed" start-time="2026-10-16 02:32:21Z" end-time="2026-10-16 02:32:21Z" duration="0.001000" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1004" name="HeightLayersMatchDesign(-1,1.0f)" fullname="Pax.Tests.PaxGridTests.HeightLayersMatchDesign(-1,1.0f)" methodname="HeightLayersMatchDesign" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="2079903271" result="Passed" start-time="2026-10-16 02:32:21Z" end-time="2026-10-16 02:32:21Z" duration="0.000101" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1005" name="HeightLayersMatchDesign(0,0.75f)" fullname="Pax.Tests.PaxGridTests.HeightLayersMatchDesign(0,0.75f)" methodname="HeightLayersMatchDesign" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="1160649998" result="Passed" start-time="2026-10-16 02:32:21Z" end-time="2026-10-16 02:32:21Z" duration="0.000054" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1006" name="HeightLayersMatchDesign(1,0.5f)" fullname="Pax.Tests.PaxGridTests.HeightLayersMatchDesign(1,0.5f)" methodname="HeightLayersMatchDesign" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="1132191101" result="Passed" start-time="2026-10-16 02:32:21Z" end-time="2026-10-16 02:32:21Z" duration="0.000043" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1007" name="HeightLayersMatchDesign(2,0.25f)" fullname="Pax.Tests.PaxGridTests.HeightLayersMatchDesign(2,0.25f)" methodname="HeightLayersMatchDesign" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="1752425940" result="Passed" start-time="2026-10-16 02:32:21Z" end-time="2026-10-16 02:32:21Z" duration="0.000041" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1008" name="HeightLayersMatchDesign(3,0.1f)" fullname="Pax.Tests.PaxGridTests.HeightLayersMatchDesign(3,0.1f)" methodname="HeightLayersMatchDesign" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="362948683" result="Passed" start-time="2026-10-16 02:32:21Z" end-time="2026-10-16 02:32:21Z" duration="0.000044" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1009" name="HeightLayersMatchDesign(4,0.0f)" fullname="Pax.Tests.PaxGridTests.HeightLayersMatchDesign(4,0.0f)" methodname="HeightLayersMatchDesign" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="216614609" result="Passed" start-time="2026-10-16 02:32:21Z" end-time="2026-10-16 02:32:21Z" duration="0.000042" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1015" name="ReachIsThreeDimensionalAndIncludesBoundary" fullname="Pax.Tests.PaxGridTests.ReachIsThreeDimensionalAndIncludesBoundary" methodname="ReachIsThreeDimensionalAndIncludesBoundary" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="34863286" result="Passed" start-time="2026-10-16 02:32:21Z" end-time="2026-10-16 02:32:21Z" duration="0.000304" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/user/AppData/LocalLow/DefaultCompany/PAX_FYP1\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

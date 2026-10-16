@@ -67,6 +67,13 @@ namespace Pax
             Check(status!=null && !string.IsNullOrWhiteSpace(status.text) && status.worldBound.width>50,"Authored HUD laid out and status updated");
             Check(player.Grounded,"Player starts grounded");
             Capture("01-Open-field-HUD.png");
+            builder.ToggleCursor();
+            builder.SetPointer(cameraRig.View.WorldToScreenPoint(PaxGrid.Centre(new Vector3Int(-6,3,9))),false,false);
+            for(int i=0;i<15;i++) yield return null;
+            Check(builder.MiningBlock==PaxActionBlock.OutOfReach && builder.MiningUsesInvalidMaterial,"Out-of-range target retains an invalid preview and specific reason");
+            Capture("00-Out-of-range-HUD.png");
+            builder.ToggleCursor();
+            builder.SetPointer(cameraRig.View.WorldToScreenPoint(PaxGrid.Centre(new Vector3Int(-3,1,-3))),false,false);
             Vector3 before=player.transform.position;
             player.SetCommand(Vector2.up,false,false);
             for(int i=0;i<30;i++) yield return null;
