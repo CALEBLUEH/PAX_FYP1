@@ -91,6 +91,25 @@ namespace Pax
             Check(builder.Mine(new Vector3Int(-2,0,-3)),"Mining updates built player world");
             Check(!builder.Place(new Vector3Int(0,0,-3)),"Player-overlap placement rejected");
             Check(!builder.Mine(new Vector3Int(10,0,10)),"Out-of-reach mining rejected");
+            var saveSession=FindFirstObjectByType<PaxPlaytestSave>();
+            Check(saveSession!=null,"Authored playtest save component loaded");
+            if(saveSession!=null)
+            {
+                string saveDirectory=Path.Combine(output,"SaveSlot-"+Guid.NewGuid().ToString("N"));
+                saveSession.UseValidationDirectory(saveDirectory);
+                var savedCell=new Vector3Int(-2,0,-3);
+                bool savedA=builder.Place(savedCell) && saveSession.SaveEdits();
+                bool savedB=builder.Mine(savedCell) && saveSession.SaveEdits();
+                Check(savedA && savedB && File.Exists(saveSession.BackupPath),"Local save and previous-save backup written");
+                File.WriteAllText(saveSession.SavePath,"<corrupt");
+                int beforeLoad=world.Revision;
+                Check(!saveSession.LoadEdits() && world.Revision==beforeLoad,"Malformed save rejected without world mutation");
+                Check(saveSession.LoadEdits(true) && world.Contains(savedCell),"Previous save recovers edited tile in built player");
+                Check(saveSession.SaveEdits() && Directory.GetFiles(saveDirectory,"*.invalid-*").Length==1,"Corrupt primary preserved while saving recovered edits");
+                for(int i=0;i<15;i++) yield return null;
+                Capture("07-Recovered-save-HUD.png");
+                builder.Mine(savedCell);
+            }
             int index=2;
             foreach(var position in new[]{new Vector3(-6,0.03f,6),new Vector3(7,0.03f,7),new Vector3(6,0.03f,-7),new Vector3(0,0.03f,-7),new Vector3(0,-2.97f,7)})
             {

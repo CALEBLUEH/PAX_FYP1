@@ -95198,6 +95198,10 @@ MonoBehaviour:
   player: {fileID: 1853066078}
   builder: {fileID: 1640765942}
   cutaway: {fileID: 254663240}
+  playtestSave: {fileID: 2126474002}
+  refreshInterval: 0.1
+  readyColor: {r: 0.6, g: 0.95, b: 0.7, a: 1}
+  blockedColor: {r: 1, g: 0.65, b: 0.5, a: 1}
 --- !u!114 &1307452692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117953,6 +117957,7 @@ MonoBehaviour:
   smartConeDegrees: 48
   smartCursor: 1
   targetHiddenSolids: 0
+  actionFeedbackSeconds: 2
 --- !u!4 &1640765943
 Transform:
   m_ObjectHideFlags: 0
@@ -132697,6 +132702,10 @@ MonoBehaviour:
   resetCamera: 278
   respawn: 114
   spawn: {fileID: 165908846}
+  playtestSave: {fileID: 2126474002}
+  saveEdits: 286
+  loadEdits: 290
+  loadPrevious: 289
   rotateSpeed: 90
   mouseOrbitSpeed: 3
   zoomSpeed: 2
@@ -151794,6 +151803,7 @@ GameObject:
   - component: {fileID: 2126474000}
   - component: {fileID: 2126473999}
   - component: {fileID: 2126474001}
+  - component: {fileID: 2126474002}
   m_Layer: 0
   m_Name: Editable tile world
   m_TagString: Untagged
@@ -153544,6 +153554,22 @@ MonoBehaviour:
   world: {fileID: 2126473999}
   sun: {fileID: 391923378}
   sunlightDistance: 50
+--- !u!114 &2126474002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126473998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2c0832f031e1ea48ae330c86e88c2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Pax.Runtime::Pax.PaxPlaytestSave
+  world: {fileID: 2126473999}
+  player: {fileID: 1853066078}
+  saveFolder: PAXPlaytests
+  saveFile: pax-playtest.xml
 --- !u!1001 &2126945866
 PrefabInstance:
   m_ObjectHideFlags: 0

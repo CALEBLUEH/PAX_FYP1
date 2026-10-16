@@ -160,6 +160,9 @@ namespace Pax.Editor
             builder.Configure(world,player,camera,minePreview,placePreview,placePreview.GetComponent<Renderer>(),valid,invalid);
             var input = playerObject.AddComponent<PaxInput>();
             input.Configure(player,rig,builder,spawn);
+            var playtestSave = world.gameObject.AddComponent<PaxPlaytestSave>();
+            playtestSave.Configure(world,player);
+            input.ConfigureSave(playtestSave);
             var cutaway = new GameObject("Contextual cutaway").AddComponent<PaxCutaway>();
             cutaway.Configure(world,player,camera);
 
@@ -178,7 +181,9 @@ namespace Pax.Editor
             var document = hudObject.AddComponent<UIDocument>();
             document.panelSettings = panel;
             document.visualTreeAsset = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(Root + "/UI/Prototype.uxml");
-            hudObject.AddComponent<PaxHud>().Configure(document,player,builder,cutaway);
+            var hud = hudObject.AddComponent<PaxHud>();
+            hud.Configure(document,player,builder,cutaway);
+            hud.ConfigureSave(playtestSave);
             Label("OPEN FIELD",new Vector3(-1,0.04f,-7),camera.transform.rotation);
             Label("HOUSE",new Vector3(-6,0.04f,1),camera.transform.rotation);
             Label("CAVE",new Vector3(7,0.04f,1),camera.transform.rotation);
@@ -251,6 +256,7 @@ namespace Pax.Editor
             EnsureWorldLighting();
             EnsureCaveDoorLintel();
             EnsurePlayerClearance();
+            EnsurePlaytestSave();
             var report = BuildPipeline.BuildPlayer(new BuildPlayerOptions
             {
                 scenes = new[] { ScenePath },
@@ -337,6 +343,25 @@ namespace Pax.Editor
             EditorSceneManager.MarkSceneDirty(scene);
             EditorSceneManager.SaveScene(scene);
             Debug.Log("PAX_PLAYER_CLEARANCE_AUTHORING_OK");
+        }
+
+        public static void EnsurePlaytestSave()
+        {
+            var scene=EditorSceneManager.OpenScene(ScenePath,OpenSceneMode.Single);
+            var world=Object.FindFirstObjectByType<PaxWorld>();
+            var player=Object.FindFirstObjectByType<PaxPlayer>();
+            var session=world.GetComponent<PaxPlaytestSave>();
+            if(session!=null) return;
+            session=world.gameObject.AddComponent<PaxPlaytestSave>();
+            session.Configure(world,player);
+            var input=Object.FindFirstObjectByType<PaxInput>();
+            var hud=Object.FindFirstObjectByType<PaxHud>();
+            Undo.RecordObject(input,"Wire PAX playtest persistence input");
+            Undo.RecordObject(hud,"Wire PAX playtest persistence HUD");
+            input.ConfigureSave(session); hud.ConfigureSave(session);
+            EditorSceneManager.MarkSceneDirty(scene);
+            EditorSceneManager.SaveScene(scene);
+            Debug.Log("PAX_PLAYTEST_SAVE_AUTHORING_OK");
         }
     }
 }

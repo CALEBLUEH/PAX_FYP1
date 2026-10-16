@@ -19,6 +19,7 @@ namespace Pax
         public bool Mineable => mineable;
         public Collider Solid => solid;
         public Renderer SolidShadow => solidShadow;
+        public Material SurfaceMaterial => visual.sharedMaterial;
         public float Visibility { get; private set; } = 1;
         public float GhostRelevance { get; private set; } = 1;
         public float Sunlight { get; private set; } = 1;
