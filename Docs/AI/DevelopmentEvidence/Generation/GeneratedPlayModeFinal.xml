@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Passed" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-16 08:42:32Z" end-time="2026-10-16 08:42:36Z" duration="3.7982182">
+  <test-suite type="TestSuite" id="1058" name="PAX_FYP1" fullname="PAX_FYP1" runstate="Runnable" testcasecount="45" result="Passed" start-time="2026-10-16 08:42:32Z" end-time="2026-10-16 08:42:36Z" duration="3.798218" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1053" name="Pax.PlayModeTests.dll" fullname="C:/Users/user/.codex/worktrees/pax-development/PAX_FYP1/Library/ScriptAssemblies/Pax.PlayModeTests.dll" runstate="Runnable" testcasecount="45" result="Passed" start-time="2026-10-16 08:42:32Z" end-time="2026-10-16 08:42:36Z" duration="3.788025" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="27936" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1054" name="Pax" fullname="Pax" runstate="Runnable" testcasecount="45" result="Passed" start-time="2026-10-16 08:42:32Z" end-time="2026-10-16 08:42:36Z" duration="3.786876" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1055" name="Tests" fullname="Pax.Tests" runstate="Runnable" testcasecount="45" result="Passed" start-time="2026-10-16 08:42:32Z" end-time="2026-10-16 08:42:36Z" duration="3.786501" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1001" name="PaxGeneratedIslandTests" fullname="Pax.Tests.PaxGeneratedIslandTests" classname="Pax.Tests.PaxGeneratedIslandTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-16 08:42:32Z" end-time="2026-10-16 08:42:36Z" duration="3.784448" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1002" name="AuthoredSpawnAndEveryTwoHighDoorHaveRealCollisionAndCutaway" fullname="Pax.Tests.PaxGeneratedIslandTests.AuthoredSpawnAndEveryTwoHighDoorHaveRealCollisionAndCutaway" methodname="AuthoredSpawnAndEveryTwoHighDoorHaveRealCollisionAndCutaway" classname="Pax.Tests.PaxGeneratedIslandTests" runstate="Runnable" seed="19206209" result="Passed" start-time="2026-10-16 08:42:32Z" end-time="2026-10-16 08:42:34Z" duration="1.825586" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1004" name="DifferentAuthoredWorldRejectsSaveAndEditingSettingsDoesNotRegenerate" fullname="Pax.Tests.PaxGeneratedIslandTests.DifferentAuthoredWorldRejectsSaveAndEditingSettingsDoesNotRegenerate" methodname="DifferentAuthoredWorldRejectsSaveAndEditingSettingsDoesNotRegenerate" classname="Pax.Tests.PaxGeneratedIslandTests" runstate="Runnable" seed="1109247482" result="Passed" start-time="2026-10-16 08:42:34Z" end-time="2026-10-16 08:42:35Z" duration="1.253280" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1003" name="MiningPlacementAndSaveRoundTripPreserveGeneratedMaterialsAndSolids" fullname="Pax.Tests.PaxGeneratedIslandTests.MiningPlacementAndSaveRoundTripPreserveGeneratedMaterialsAndSolids" methodname="MiningPlacementAndSaveRoundTripPreserveGeneratedMaterialsAndSolids" classname="Pax.Tests.PaxGeneratedIslandTests" runstate="Runnable" seed="1984957137" result="Passed" start-time="2026-10-16 08:42:35Z" end-time="2026-10-16 08:42:36Z" duration="0.691332" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/user/AppData/LocalLow/DefaultCompany/PAX_FYP1\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

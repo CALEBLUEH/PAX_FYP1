@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/PAX/Scenes/PaxPrototype.unity
     guid: e9610388edd667a449e1518abf02d7db
+  - enabled: 1
+    path: Assets/PAX/Scenes/PaxGeneratedIsland.unity
+    guid: 87cafc0ae5d64364c90e9936857e724d
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
   m_UseUCBPForAssetBundles: 0

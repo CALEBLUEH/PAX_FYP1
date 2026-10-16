@@ -66,6 +66,13 @@ namespace Pax
             var status=captureDocument.rootVisualElement.Q<Label>("status");
             Check(status!=null && !string.IsNullOrWhiteSpace(status.text) && status.worldBound.width>50,"Authored HUD laid out and status updated");
             Check(player.Grounded,"Player starts grounded");
+            var generated = FindFirstObjectByType<PaxGeneratedIsland>();
+            if (generated != null)
+            {
+                yield return RunGeneratedIsland(generated, player, world, builder, cameraRig, cutaway);
+                Finish();
+                yield break;
+            }
             Capture("01-Open-field-HUD.png");
             builder.ToggleCursor();
             builder.SetPointer(cameraRig.View.WorldToScreenPoint(PaxGrid.Centre(new Vector3Int(-6,3,9))),false,false);
@@ -130,6 +137,59 @@ namespace Pax
             }
             Finish();
         }
+        private IEnumerator RunGeneratedIsland(PaxGeneratedIsland island, PaxPlayer player, PaxWorld world, PaxBuilder builder, PaxCamera cameraRig, PaxCutaway cutaway)
+        {
+            Check(world.Blocks.Count == island.AuthoredTileCount && world.CaptureEdits().Placed.Count == 0 && world.CaptureEdits().Removed.Count == 0, "Saved generated baseline loaded without runtime regeneration");
+            Capture("Generation-Spawn-HUD.png");
+            cameraRig.Zoom(-7);
+            for (int i = 0; i < 10; i++) yield return null;
+            Capture("Generation-Overview-HUD.png");
+            cameraRig.ResetView();
+            Vector3 start = player.transform.position;
+            player.SetCommand(Vector2.up, false, false);
+            for (int i = 0; i < 25; i++) yield return null;
+            player.SetCommand(Vector2.zero, false, false);
+            Check(Vector3.Distance(start, player.transform.position) > 1.4f, "Generated spawn supports camera-relative movement");
+            player.Warp(island.SpawnMarker.position);
+            for (int i = 0; i < 15; i++) yield return null;
+            var edit = new Vector3Int(-2, 0, -3);
+            var terrain = new Vector3Int(1, -1, -3); // Nearest floor face is visible from spawn.
+            Check(builder.Place(edit), "Generated world supports validated placement");
+            var save = FindFirstObjectByType<PaxPlaytestSave>();
+            save.UseValidationDirectory(Path.Combine(output, "SaveSlot-" + Guid.NewGuid().ToString("N")));
+            Check(Path.GetFileName(save.SavePath).StartsWith("pax-island-", StringComparison.Ordinal), "Generated scene has a separate authored save slot");
+            Check(save.SaveEdits() && builder.Mine(edit) && save.LoadEdits() && world.Contains(edit), "Generated tile edits persist and reload in Windows player");
+            Check(builder.Mine(terrain) && !world.Contains(terrain), "Generated terrain can be mined downward");
+            Check(save.LoadEdits() && world.TryGet(terrain, out var restored) && restored.Solid.enabled, "Loading restores authored terrain material and collision");
+            var incompatible = world.CaptureEdits(); incompatible.World = new string('0', 64);
+            int revision = world.Revision;
+            Check(!world.TryApplyEdits(incompatible, player.BodyBounds, out _) && revision == world.Revision, "Different-world save rejected without mutation");
+            builder.Mine(edit);
+            foreach (var structure in island.Structures)
+            {
+                player.Warp((Vector3)structure.door + new Vector3(0, 0.03f, -1));
+                player.enabled = false;
+                var body = player.GetComponent<CharacterController>();
+                for (int i = 0; i < 45; i++) { body.Move(new Vector3(0, -2f / 60, 4.5f / 60)); yield return null; }
+                Check(player.transform.position.z > structure.door.z + 1, structure.kind + " two-high doorway is traversable");
+                for (int i = 0; i < 55; i++) { body.Move(new Vector3(0, -2f / 60, 4.5f / 60)); yield return null; }
+                Check(player.transform.position.z < structure.centre.z + 1.1f, structure.kind + " wall retains physical collision");
+                player.enabled = true;
+                player.Warp((Vector3)structure.centre + Vector3.up * 0.03f); cameraRig.SnapToTarget();
+                for (int i = 0; i < 45; i++) yield return null;
+                cutaway.RefreshNow();
+                bool solid = true, precedence = true;
+                foreach (var block in world.Blocks)
+                {
+                    solid &= block.Solid.enabled && block.SolidShadow != null && block.SolidShadow.enabled;
+                    if (cutaway.IsObstruction(block)) precedence &= cutaway.TargetFor(block) <= 0.04f;
+                }
+                Check(solid && precedence && (structure.kind == "Ruin" || cutaway.RoofCoverage > 0), structure.kind + " roof/cutaway preserves collision and obstruction priority");
+                yield return new WaitForSecondsRealtime(0.2f);
+                Capture("Generation-" + structure.kind + "-HUD.png");
+            }
+        }
+
         private void Capture(string file)
         {
             var previous=RenderTexture.active;

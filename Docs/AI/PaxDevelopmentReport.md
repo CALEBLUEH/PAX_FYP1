@@ -1,8 +1,8 @@
-# PAX supervised development
+# PAX local development
 
 16 October 2026. Local development only; public pushing remains denied and will not be attempted.
 
-**Stopped at the human/coordinator's explicit instruction.** Three validated implementation milestones are locally committed. The next visibility stress case had only been announced/read for planning; no runtime or test implementation for it was started. No further development or publication will proceed in this run.
+The supervised run stopped after three validated implementation milestones. The later trip authorization completed ONE scoped generation milestone from `4afd11e` in the same isolated checkout: editable seed/settings, deterministic saved terrain/structures and distinct save slots. **34 EditMode, 45 PlayMode (plus a final 3-case generated-world rerun), Windows build and 20 built-player checks passed.** See [PaxGenerationMilestone.md](PaxGenerationMilestone.md) for evidence, controls and limits. Waiting for the coordinator's AS handoff; no next PAX milestone is started. The previous stop audit below remains historical evidence. Public publication remains prohibited.
 
 ## Workspace and protection
 

@@ -1,0 +1,20 @@
+PASS Scene components loaded
+PASS Authored HUD laid out and status updated
+PASS Player starts grounded
+PASS Saved generated baseline loaded without runtime regeneration
+PASS Generated spawn supports camera-relative movement
+PASS Generated world supports validated placement
+PASS Generated scene has a separate authored save slot
+PASS Generated tile edits persist and reload in Windows player
+PASS Generated terrain can be mined downward
+PASS Loading restores authored terrain material and collision
+PASS Different-world save rejected without mutation
+PASS House two-high doorway is traversable
+PASS House wall retains physical collision
+PASS House roof/cutaway preserves collision and obstruction priority
+PASS Cave two-high doorway is traversable
+PASS Cave wall retains physical collision
+PASS Cave roof/cutaway preserves collision and obstruction priority
+PASS Ruin two-high doorway is traversable
+PASS Ruin wall retains physical collision
+PASS Ruin roof/cutaway preserves collision and obstruction priority
