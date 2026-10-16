@@ -2,6 +2,8 @@
 
 16 October 2026. Local development only; public pushing remains denied and will not be attempted.
 
+**Stopped at the human/coordinator's explicit instruction.** Three validated implementation milestones are locally committed. The next visibility stress case had only been announced/read for planning; no runtime or test implementation for it was started. No further development or publication will proceed in this run.
+
 ## Workspace and protection
 
 - Sole implementation workspace: `C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1`.
@@ -13,12 +15,13 @@
 
 1. Complete, local commit `d93703f07fe95c06cfbb9e8c5f918df8231d6897`: actionable mining/placement rejection reasons, predictable preview feedback and editable authored HUD. Range, support, collision, ghost targeting, LOS, bounds and protected tiles are preserved.
 2. Complete, local commit `466f3190ef2f3de93ae1f53f454691ffd9e0c9c1`: local edited-tile save/load for repeatable playtests, versioned validation, malformed-input rejection and a recoverable previous save.
-3. Validated and ready for local commit: reduce measured unchanged-target feedback allocations while preserving live selection/validation and Inspector tuning. Continue until a stop instruction.
+3. Complete, local commit `af8752ee5afbe202ffad2310f27008c58a0ed5b2`: reduce measured unchanged-target feedback allocations while preserving live selection/validation and Inspector tuning.
+4. Not started: the fully-enclosed visibility stress case remains a future validation item. The stop arrived during planning reads; no new stress-fixture/runtime/test code was added.
 
 ## Validation and permission state
 
 - Preparation: original branch/changes verified; managed worktree created and attached; existing CodexWorkspace fast-forward completed normally.
-- No implementation validation claimed yet for this run. The accepted prototype contains earlier 13 EditMode / 19 PlayMode passes and a successful Windows build; those are baseline evidence only.
+- Completed checkpoint evidence is listed below. Latest relevant suites: 26/26 EditMode (milestone 2), 42/42 PlayMode (milestone 3), and 21/21 Windows player checks. The accepted prototype's earlier evidence remains separate.
 - Public upload remains specifically denied. It is optional and does not block local implementation.
 
 ## Milestone 1 implementation
@@ -64,3 +67,12 @@ Final full regression: **42/42 PlayMode cases passed** (`DevelopmentEvidence/Tar
 ## Real unattended prompt observed
 
 The human reported a Windows Defender Firewall popup for Unity private/public network access and instructed development to continue without broadly allowing inbound access. The most recent launch was Editor batch authoring (`EnsurePlaytestSave`, PID 26632), which exited normally; before that was the Windows development-player UX smoke run (PID 4400), also exited. Editor bridge/debugger/player-discovery services may explain the prompt, but listener diagnosis belongs to the coordinator. No firewall rules, network permissions or inbound dependencies were changed here. Local compile/tests and save-file work continue.
+
+## Stop audit and handoff
+
+- Runtime/feature commits: UX `d93703f07fe95c06cfbb9e8c5f918df8231d6897`; persistence `466f3190ef2f3de93ae1f53f454691ffd9e0c9c1`; measured targeting feedback `af8752ee5afbe202ffad2310f27008c58a0ed5b2`. A final documentation-only commit records this stop audit.
+- The isolated branch remains `CodexWorkspace`. Original `PrototypeBranch` still points at accepted checkpoint `42ad02073e331bc10031d3fdeb4bab0b8f128417` (including implementation `a207eeb`). Its three initial modified/untracked files matched their startup SHA256 hashes exactly at the final audit.
+- No `Unity.exe` or `PAX.exe` process was running at the final process audit. No app was force-killed. Build outputs, local logs and validation save slots are ignored artifacts.
+- Current Windows build: `C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Builds\PAX-Prototype-Windows\PAX.exe`. Preserve the adjacent data/runtime files. Normal launch uses F5/F9/F8 for the user's local playtest slot; `-paxSmoke` uses a separate disposable slot.
+- Build status: 0 errors, 485 unchanged installed inference-package shader warnings. Public GitHub pushing remains specifically denied and was not retried in this supervised run. Native Git/file-copy worktree access used scoped approvals; no local permission blocker remains. The firewall popup is recorded without changing its rules.
+- Remaining limits: human raw keyboard/mouse playthrough, fully-enclosed stress and long-fall/display-frame-rate/performance coverage remain distinct from the automated checks. The allocation result is only the matched repeated-target estimate; no whole-game FPS claim is made. Absolute Samsara remained idle.
