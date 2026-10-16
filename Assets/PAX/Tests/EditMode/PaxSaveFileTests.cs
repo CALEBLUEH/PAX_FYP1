@@ -48,7 +48,7 @@ namespace Pax.Tests
             var error = Assert.Catch(() => PaxSaveFile.Decode(input));
             Assert.IsTrue(PaxSaveFile.IsExpectedFailure(error));
         }
-        [TestCase("version=\"1\"", "version=\"2\"")]
+        [TestCase("version=\"2\"", "version=\"99\"")]
         [TestCase("<removed />", "<removed /><removed />")]
         [TestCase("<removed />", "<unknown />")]
         [TestCase("x=\"1\"", "x=\"1.5\"")]

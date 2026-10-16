@@ -1,0 +1,27 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement name="hud" style="position: absolute; left: 16px; top: 12px; padding-left: 14px; padding-right: 14px; padding-top: 10px; padding-bottom: 10px; background-color: rgba(12, 21, 31, 0.9); border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px;" picking-mode="Ignore">
+        <ui:Label text="PAX  /  Movement · Building · Cutaway" style="font-size: 20px; color: rgb(231, 245, 249); -unity-font-style: bold;" picking-mode="Ignore" />
+        <ui:Label text="WASD Move   ·   Space Hold / tap jump   ·   R Respawn" style="font-size: 14px; color: rgb(225, 235, 239); margin-top: 5px;" picking-mode="Ignore" />
+        <ui:Label text="LMB Mine   ·   RMB Place   ·   Left Ctrl Smart / precise   ·   G Target faded solids" style="font-size: 14px; color: rgb(225, 235, 239);" picking-mode="Ignore" />
+        <ui:Label text="Q / E Rotate   ·   MMB drag Orbit / tilt   ·   Wheel Zoom   ·   Home Reset view" style="font-size: 14px; color: rgb(225, 235, 239);" picking-mode="Ignore" />
+        <ui:Label text="Yellow = mine ready   ·   Red = action blocked   ·   Cyan = platform blueprint" style="font-size: 13px; color: rgb(170, 211, 220); margin-top: 4px;" picking-mode="Ignore" />
+        <ui:Label name="status" text="Loading expedition…" style="font-size: 13px; color: rgb(183, 231, 193); margin-top: 8px; white-space: normal;" picking-mode="Ignore" />
+        <ui:Label name="mining" text="Mine: aim at a tile" style="font-size: 13px; max-width: 600px; white-space: normal; margin-top: 6px;" picking-mode="Ignore" />
+        <ui:Label name="placement" text="Place: aim at a tile" style="font-size: 13px; max-width: 600px; white-space: normal;" picking-mode="Ignore" />
+        <ui:Label name="action" text="" style="font-size: 13px; max-width: 600px; white-space: normal; margin-top: 6px; color: rgb(245, 230, 180);" picking-mode="Ignore" />
+        <ui:Label name="save" text="F5 Save edits · F9 Load · F8 Previous save" style="font-size: 13px; max-width: 600px; white-space: normal; margin-top: 6px; color: rgb(191, 210, 245);" picking-mode="Ignore" />
+    </ui:VisualElement>
+    <ui:VisualElement name="expedition-panel" style="position: absolute; right: 16px; top: 12px; width: 385px; padding-left: 14px; padding-right: 14px; padding-top: 12px; padding-bottom: 12px; background-color: rgba(12, 21, 31, 0.93); border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px;" picking-mode="Ignore">
+        <ui:Label name="expedition-title" text="Quiet Shoal / Survey beacon" style="font-size: 19px; color: rgb(255, 211, 139); -unity-font-style: bold; white-space: normal;" picking-mode="Ignore" />
+        <ui:Label name="expedition-intro" text="Read the shelter marks. Restore the island signal." style="font-size: 13px; color: rgb(210, 225, 230); white-space: normal; margin-top: 6px;" picking-mode="Ignore" />
+        <ui:Label name="expedition-objective" text="Survey the three shelters." style="font-size: 15px; color: rgb(255, 228, 177); white-space: normal; margin-top: 10px;" picking-mode="Ignore" />
+        <ui:Label name="expedition-sites" text="House / Cave / Ruin" style="font-size: 13px; color: rgb(210, 236, 224); white-space: normal; margin-top: 8px;" picking-mode="Ignore" />
+        <ui:Label name="expedition-repairs" text="Survey 0/3 · Solid platform cells 0/6" style="font-size: 14px; color: rgb(137, 224, 241); white-space: normal; margin-top: 8px;" picking-mode="Ignore" />
+        <ui:Label text="F Activate beacon   ·   F6 Restart survey" style="font-size: 13px; color: rgb(231, 245, 249); margin-top: 10px;" picking-mode="Ignore" />
+        <ui:Label name="expedition-action" text="Survey visits are session-only. Tile saves keep construction." style="font-size: 12px; color: rgb(190, 204, 220); white-space: normal; margin-top: 6px;" picking-mode="Ignore" />
+        <ui:Label name="expedition-persistence" text="Session journal: resets on reload / F6. F5/F9/F8 store tiles only; loading rechecks repairs." style="font-size: 12px; color: rgb(167, 188, 207); white-space: normal; margin-top: 8px;" picking-mode="Ignore" />
+    </ui:VisualElement>
+    <ui:VisualElement style="position: absolute; left: 16px; bottom: 16px; width: 610px; padding-left: 14px; padding-right: 14px; padding-top: 10px; padding-bottom: 10px; background-color: rgba(12, 21, 31, 0.93);" picking-mode="Ignore">
+        <ui:Label name="construction-palette" text="1 Grass · 2 Timber · 3 Stone · 4 Earth · 5 Roof" style="font-size: 14px; color: rgb(235, 242, 225); white-space: normal;" picking-mode="Ignore" />
+    </ui:VisualElement>
+</ui:UXML>

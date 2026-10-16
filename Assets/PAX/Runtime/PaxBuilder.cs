@@ -31,6 +31,13 @@ namespace Pax
         private PaxActionBlock feedbackMiningBlock, feedbackPlacementBlock;
         private int feedbackLayer;
         private float feedbackReach;
+        private string selectedMaterialId = "default";
+        public string SelectedMaterialId => selectedMaterialId;
+        public bool TrySelectMaterial(string id)
+        {
+            if (!world.TryResolveMaterial(id, out _)) return false;
+            selectedMaterialId = id; return true;
+        }
         public string Mode => (smartCursor ? "SMART" : "PRECISE") + (targetHiddenSolids ? " + GHOST SOLIDS" : " + VISIBLE");
         public string Status { get; private set; } = "Point at a tile";
         public bool CanPlace { get; private set; }
@@ -106,6 +113,7 @@ namespace Pax
                 case PaxActionBlock.Unsupported: return "No face support. Attach to an existing tile.";
                 case PaxActionBlock.Occluded: return "A solid tile blocks the path. Approach from a clear side.";
                 case PaxActionBlock.Protected: return "Protected foundation. Mine an upper tile.";
+                case PaxActionBlock.InvalidMaterial: return "Construction material unavailable. Select a valid palette slot.";
                 default: return "Tile was removed. Select another tile.";
             }
         }
@@ -123,6 +131,7 @@ namespace Pax
 
         public PaxActionBlock EvaluatePlacement(Vector3Int cell)
         {
+            if (!world.TryResolveMaterial(selectedMaterialId, out _)) return PaxActionBlock.InvalidMaterial;
             if (!world.InBounds(cell)) return PaxActionBlock.OutsideWorld;
             if (!PaxGrid.InReach(player.Chest, cell, reach)) return PaxActionBlock.OutOfReach;
             if (world.Contains(cell)) return PaxActionBlock.Occupied;
@@ -153,7 +162,7 @@ namespace Pax
         {
             var reason = EvaluatePlacement(cell);
             if (reason != PaxActionBlock.None) { ShowAction($"Cannot place {cell}: {Explain(reason)}"); return false; }
-            bool changed = world.TryAdd(cell);
+            bool changed = world.TryAdd(cell, selectedMaterialId);
             ShowAction(changed ? $"Placed {cell}" : $"Cannot place {cell}: world changed; aim again.");
             return changed;
         }

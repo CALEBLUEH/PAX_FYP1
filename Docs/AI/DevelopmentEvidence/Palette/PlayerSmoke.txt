@@ -1,0 +1,46 @@
+PASS Scene components loaded
+PASS Authored HUD laid out and status updated
+PASS Player starts grounded
+PASS Editable palette starts with legacy-compatible default material
+PASS Selected material sample keeps the green valid placement outline
+PASS Selected material sample keeps the red blocked placement outline
+PASS Number selection and validated placement of timber
+PASS Number selection and validated placement of stone
+PASS Number selection and validated placement of earth
+PASS Number selection and validated placement of roof
+PASS Invalid slot/ID retains selected material and world without partial action
+PASS Windows save writes version 2 stable material IDs
+PASS Mine/replace with a different material writes a current and previous save
+PASS Previous mixed-material save loads
+PASS Every previous tile restores exact material, collider and independent shadow
+PASS Current save restores the replacement material
+PASS Unknown saved material rejects all mutations
+PASS Incompatible primary is preserved without overwriting the valid backup
+PASS Authored expedition HUD starts with clear survey and six empty repair cells
+PASS Camera position alone cannot survey a shelter
+PASS Ruin real player visit registers with solid/cutaway invariants
+PASS Cave real player visit registers with solid/cutaway invariants
+PASS House real player visit registers with solid/cutaway invariants
+PASS Out-of-order and repeated visits produce one survey per site, without premature completion
+PASS Unrelated placement does not repair the beacon
+PASS Validated placement at required repair cell (0, 0, -6)
+PASS Validated placement at required repair cell (1, 0, -6)
+PASS Validated placement at required repair cell (2, 0, -6)
+PASS Validated placement at required repair cell (0, 0, -5)
+PASS Validated placement at required repair cell (1, 0, -5)
+PASS Validated placement at required repair cell (2, 0, -5)
+PASS Only actual solid repairs count and their blueprint visuals retire
+PASS Repaired platform cannot remotely activate the beacon
+PASS Real held jump lands on the repaired one-tile platform
+PASS Survey, construction, player return and activation complete the expedition
+PASS Repeated activation is idempotent and leaves sandbox edits available
+PASS Expedition writes tile state to an independent disposable validation slot
+PASS Required repair can be mined after completion
+PASS Removing a repair revokes completion; incomplete construction saves normally
+PASS Previous tile save loads the complete platform
+PASS Loaded repairs are inferred and require fresh beacon activation
+PASS Current tile save loads the incomplete platform
+PASS Loading missing repair tiles immediately updates objective state
+PASS Replay resets session journal while keeping construction and save bytes
+PASS Replay can reload retained construction
+PASS Loading repairs never restores session-only shelter visits

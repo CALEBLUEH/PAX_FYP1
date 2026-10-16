@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Pax
@@ -16,12 +17,19 @@ namespace Pax
 
         public static string Encode(PaxTileEdits data)
         {
+            var placedCells = new HashSet<Vector3Int>(data.Placed);
+            if (data.Materials.Keys.Any(cell => !placedCells.Contains(cell)) || data.Version == 1 && data.Materials.Count != 0)
+                throw new InvalidDataException("Material metadata does not match the save version or placed cells.");
             var root = new XElement("pax-playtest", new XAttribute("version", data.Version), new XAttribute("world", data.World));
             foreach (var pair in new[] { ("removed", data.Removed), ("placed", data.Placed) })
             {
                 var group = new XElement(pair.Item1);
                 foreach (var cell in pair.Item2)
-                    group.Add(new XElement("cell", new XAttribute("x", cell.x), new XAttribute("y", cell.y), new XAttribute("z", cell.z)));
+                {
+                    var element = new XElement("cell", new XAttribute("x", cell.x), new XAttribute("y", cell.y), new XAttribute("z", cell.z));
+                    if (pair.Item1 == "placed" && data.Version == 2) element.Add(new XAttribute("material", data.Materials.TryGetValue(cell, out var id) ? id ?? "" : "default"));
+                    group.Add(element);
+                }
                 root.Add(group);
             }
             return new XDocument(root).ToString();
@@ -38,7 +46,7 @@ namespace Pax
                 var root = XDocument.Load(reader).Root;
                 if (root == null || root.Name != "pax-playtest") throw new InvalidDataException("Not a PAX playtest save.");
                 RequireAttributes(root, "version", "world");
-                if (!int.TryParse((string)root.Attribute("version"), NumberStyles.Integer, CultureInfo.InvariantCulture, out int version) || version != PaxTileEdits.CurrentVersion)
+                if (!int.TryParse((string)root.Attribute("version"), NumberStyles.Integer, CultureInfo.InvariantCulture, out int version) || (version != 1 && version != PaxTileEdits.CurrentVersion))
                     throw new InvalidDataException("Unsupported save version. The current world was kept.");
                 string world = (string)root.Attribute("world");
                 if (world == null || world.Length != 64 || world.Any(c => !Uri.IsHexDigit(c))) throw new InvalidDataException("Save world signature is missing or invalid.");
@@ -50,11 +58,22 @@ namespace Pax
                 {
                     if (group.HasAttributes || HasDataText(group)) throw new InvalidDataException("Invalid tile section.");
                     var destination = group.Name == "removed" ? data.Removed : data.Placed;
+                    var seen = new HashSet<Vector3Int>();
                     foreach (var cell in group.Elements())
                     {
                         if (cell.Name != "cell" || cell.HasElements || HasDataText(cell)) throw new InvalidDataException("Unknown tile data. Save was not applied.");
-                        RequireAttributes(cell, "x", "y", "z");
-                        destination.Add(new Vector3Int(ReadInt(cell, "x"), ReadInt(cell, "y"), ReadInt(cell, "z")));
+                        bool typed = group.Name == "placed" && version == 2;
+                        if (typed) RequireAttributes(cell, "x", "y", "z", "material");
+                        else RequireAttributes(cell, "x", "y", "z");
+                        var position = new Vector3Int(ReadInt(cell, "x"), ReadInt(cell, "y"), ReadInt(cell, "z"));
+                        if (!seen.Add(position)) throw new InvalidDataException("Repeated tile coordinates in save section.");
+                        destination.Add(position);
+                        if (typed)
+                        {
+                            string id = (string)cell.Attribute("material");
+                            if (!PaxMaterialPalette.IsValidId(id)) throw new InvalidDataException("Malformed construction material ID.");
+                            data.Materials.Add(position, id);
+                        }
                         if (data.Removed.Count + data.Placed.Count > MaximumEdits) throw new InvalidDataException("Too many tile edits in this save.");
                     }
                 }
@@ -86,6 +105,8 @@ namespace Pax
         {
             string content = Encode(data);
             var normalized = Decode(content); // Never replace a recoverable file with invalid data.
+            if (compatible == null && normalized.Materials.Values.Any(id => id != "default"))
+                throw new InvalidDataException("Non-default material writes require world/palette compatibility validation.");
             if (compatible != null && !compatible(normalized)) throw new InvalidDataException("Tile edits are incompatible with this authored world.");
             Directory.CreateDirectory(Path.GetDirectoryName(Path.GetFullPath(path)));
             string temporary = path + ".tmp-" + Guid.NewGuid().ToString("N");
@@ -102,7 +123,11 @@ namespace Pax
                 else
                 {
                     bool currentValid;
-                    try { var previousData = Read(path); currentValid = compatible == null || compatible(previousData); }
+                    try
+                    {
+                        var previousData = Read(path);
+                        currentValid = previousData.World == normalized.World && (compatible != null ? compatible(previousData) : previousData.Materials.Values.All(id => id == "default"));
+                    }
                     catch (Exception error) when (IsExpectedFailure(error)) { currentValid = false; }
                     // A malformed primary is preserved separately; it must not replace the valid .bak.
                     string previous = currentValid ? path + ".bak" : path + ".invalid-" + Guid.NewGuid().ToString("N");

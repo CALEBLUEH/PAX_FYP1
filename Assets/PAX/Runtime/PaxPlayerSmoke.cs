@@ -66,6 +66,13 @@ namespace Pax
             var status=captureDocument.rootVisualElement.Q<Label>("status");
             Check(status!=null && !string.IsNullOrWhiteSpace(status.text) && status.worldBound.width>50,"Authored HUD laid out and status updated");
             Check(player.Grounded,"Player starts grounded");
+            var materialSelection = FindFirstObjectByType<PaxMaterialSelection>();
+            if (materialSelection != null)
+            {
+                FindFirstObjectByType<PaxExpeditionInput>().enabled = false;
+                yield return RunPalette(materialSelection, player, world, builder, cameraRig, cutaway);
+                Finish(); yield break;
+            }
             var expedition = FindFirstObjectByType<PaxExpedition>();
             if (expedition != null)
             {
@@ -147,7 +154,49 @@ namespace Pax
         }
         private static IEnumerator WaitFrames(int count) { for (int i = 0; i < count; i++) yield return null; }
 
-        private IEnumerator RunExpedition(PaxExpedition mission, PaxPlayer player, PaxWorld world, PaxBuilder builder, PaxCamera cameraRig, PaxCutaway cutaway)
+        private IEnumerator RunPalette(PaxMaterialSelection selection, PaxPlayer player, PaxWorld world, PaxBuilder builder, PaxCamera cameraRig, PaxCutaway cutaway)
+        {
+            var cells = new[] { new Vector3Int(-2,0,-3), new Vector3Int(2,0,-3), new Vector3Int(-1,0,-3), new Vector3Int(1,0,-3) };
+            string[] ids = { "timber", "stone", "earth", "roof" };
+            Check(selection.Palette.Validate(out _) && builder.SelectedMaterialId == "default", "Editable palette starts with legacy-compatible default material");
+            selection.SelectNumber(2); builder.ToggleCursor();
+            builder.SetPointer(cameraRig.View.WorldToScreenPoint(new Vector3(2, 0.02f, -3)), false, false);
+            yield return WaitFrames(5);
+            Check(builder.CanPlace && builder.PlacementUsesValidMaterial && world.TryResolveMaterial("timber", out var previewTimber) && selection.PreviewSample.sharedMaterial == previewTimber, "Selected material sample keeps the green valid placement outline");
+            yield return new WaitForSecondsRealtime(0.2f); Capture("Palette-00-Valid-Preview-HUD.png");
+            builder.SetPointer(cameraRig.View.WorldToScreenPoint(player.transform.position + Vector3.up * 0.02f), false, false);
+            yield return WaitFrames(5);
+            Check(!builder.CanPlace && !builder.PlacementUsesValidMaterial, "Selected material sample keeps the red blocked placement outline");
+            yield return new WaitForSecondsRealtime(0.2f); Capture("Palette-00-Blocked-Preview-HUD.png");
+            builder.ToggleCursor();
+            for (int i = 0; i < cells.Length; i++)
+                Check(selection.SelectNumber(i + 2) && builder.Place(cells[i]), "Number selection and validated placement of " + ids[i]);
+            yield return WaitFrames(5);
+            string selected = builder.SelectedMaterialId; int revision = world.Revision;
+            Check(!selection.SelectNumber(9) && !builder.TrySelectMaterial("unregistered") && builder.SelectedMaterialId == selected && world.Revision == revision, "Invalid slot/ID retains selected material and world without partial action");
+            yield return new WaitForSecondsRealtime(0.2f); Capture("Palette-01-Mixed-HUD.png");
+            var save = FindFirstObjectByType<PaxPlaytestSave>();
+            save.UseValidationDirectory(Path.Combine(output, "PaletteSave-" + Guid.NewGuid().ToString("N")));
+            Check(save.SaveEdits() && PaxSaveFile.Read(save.SavePath).Version == 2, "Windows save writes version 2 stable material IDs");
+            Check(builder.Mine(cells[2]) && selection.SelectNumber(2) && builder.Place(cells[2]) && save.SaveEdits(), "Mine/replace with a different material writes a current and previous save");
+            Check(save.LoadEdits(true), "Previous mixed-material save loads");
+            bool exact = true;
+            for (int i = 0; i < cells.Length; i++) exact &= world.TryGet(cells[i], out var block) && world.TryResolveMaterial(ids[i], out var material) && block.SurfaceMaterial == material && block.Solid.enabled && block.SolidShadow != null;
+            Check(exact, "Every previous tile restores exact material, collider and independent shadow");
+            yield return new WaitForSecondsRealtime(0.2f); Capture("Palette-02-Restored-HUD.png");
+            Check(save.LoadEdits() && world.TryGet(cells[2], out var current) && world.TryResolveMaterial("timber", out var timber) && current.SurfaceMaterial == timber, "Current save restores the replacement material");
+            var invalid = world.CaptureEdits(); invalid.Materials[cells[0]] = "unregistered"; revision = world.Revision;
+            Check(!world.TryApplyEdits(invalid, player.BodyBounds, out _) && world.Revision == revision, "Unknown saved material rejects all mutations");
+            string backup = File.ReadAllText(save.BackupPath), primary = File.ReadAllText(save.SavePath);
+            File.WriteAllText(save.SavePath, primary.Replace("material=\"timber\"", "material=\"unregistered\""));
+            Check(!save.LoadEdits() && world.Revision == revision && save.SaveEdits() && backup == File.ReadAllText(save.BackupPath) && Directory.GetFiles(Path.GetDirectoryName(save.SavePath), "*.invalid-*").Length == 1, "Incompatible primary is preserved without overwriting the valid backup");
+            foreach (var cell in cells) world.TryMine(cell);
+            Physics.SyncTransforms(); yield return WaitFrames(2);
+            selection.SelectNumber(3);
+            yield return RunExpedition(FindFirstObjectByType<PaxExpedition>(), player, world, builder, cameraRig, cutaway, "pax-palette-");
+        }
+
+        private IEnumerator RunExpedition(PaxExpedition mission, PaxPlayer player, PaxWorld world, PaxBuilder builder, PaxCamera cameraRig, PaxCutaway cutaway, string slotPrefix = "pax-expedition-")
         {
             var objective = captureDocument.rootVisualElement.Q<Label>("expedition-objective");
             Check(objective != null && objective.worldBound.width > 200 && mission.Stage == PaxExpeditionStage.Survey && mission.RepairCount == 0, "Authored expedition HUD starts with clear survey and six empty repair cells");
@@ -194,7 +243,7 @@ namespace Pax
             yield return new WaitForSecondsRealtime(0.2f); Capture("Expedition-04-Complete-HUD.png");
             var save = FindFirstObjectByType<PaxPlaytestSave>();
             save.UseValidationDirectory(Path.Combine(output, "SaveSlot-" + Guid.NewGuid().ToString("N")));
-            Check(Path.GetFileName(save.SavePath).StartsWith("pax-expedition-", StringComparison.Ordinal) && save.SaveEdits(), "Expedition writes tile state to an independent disposable validation slot");
+            Check(Path.GetFileName(save.SavePath).StartsWith(slotPrefix, StringComparison.Ordinal) && save.SaveEdits(), "Expedition writes tile state to an independent disposable validation slot");
             player.Warp(new Vector3(1, 0.03f, -3)); yield return WaitFrames(10);
             Check(builder.Mine(new Vector3Int(1, 0, -5)), "Required repair can be mined after completion");
             yield return WaitFrames(2);

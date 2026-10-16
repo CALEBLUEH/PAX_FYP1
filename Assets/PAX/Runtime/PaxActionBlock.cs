@@ -11,6 +11,7 @@ namespace Pax
         Unsupported,
         Occluded,
         Protected,
-        MissingTile
+        MissingTile,
+        InvalidMaterial
     }
 }

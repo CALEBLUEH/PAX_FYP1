@@ -25,6 +25,29 @@ namespace Pax
             public bool Mineable;
         }
         public string SaveSignature { get; private set; }
+        private PaxMaterialPalette constructionPalette;
+        public bool UsePalette(PaxMaterialPalette palette, out string reason)
+        {
+            reason = null;
+            if (palette == null || !palette.Validate(out reason)) return false;
+            if (!palette.TryResolve("default", out var material) || material != blockPrefab.SurfaceMaterial)
+            { reason = "Default palette material must match the legacy tile prefab material."; return false; }
+            constructionPalette = palette;
+            return true;
+        }
+        public bool TryResolveMaterial(string id, out Material material)
+        {
+            material = null;
+            if (!PaxMaterialPalette.IsValidId(id)) return false;
+            if (constructionPalette == null) { if (id != "default") return false; material = blockPrefab.SurfaceMaterial; return true; }
+            return constructionPalette.TryResolve("default", out var legacy) && legacy == blockPrefab.SurfaceMaterial && constructionPalette.TryResolve(id, out material);
+        }
+        private string IdentifyMaterial(Material material)
+        {
+            if (material == blockPrefab.SurfaceMaterial && TryResolveMaterial("default", out _)) return "default";
+            if (constructionPalette != null && constructionPalette.TryIdentify(material, out string id) && TryResolveMaterial(id, out _)) return id;
+            throw new System.IO.InvalidDataException("Placed material is not registered in this world's construction palette. Existing saves were kept.");
+        }
 
         private void Awake()
         {
@@ -66,12 +89,14 @@ namespace Pax
             return false;
         }
 
-        public bool TryAdd(Vector3Int cell)
+        public bool TryAdd(Vector3Int cell) => TryAdd(cell, "default");
+        public bool TryAdd(Vector3Int cell, string materialId)
         {
-            if (!InBounds(cell) || Contains(cell)) return false;
+            if (!InBounds(cell) || Contains(cell) || !TryResolveMaterial(materialId, out var material)) return false;
             var block = Instantiate(blockPrefab, PaxGrid.Centre(cell), Quaternion.identity, blockRoot);
             block.name = $"Tile {cell.x},{cell.y},{cell.z}";
             block.Configure(cell, block.GetComponent<Renderer>(), block.GetComponent<Collider>());
+            block.GetComponent<Renderer>().sharedMaterial = material;
             cells.Add(cell, block);
             blocks.Add(block);
             Revision++;
@@ -97,7 +122,7 @@ namespace Pax
                     data.Removed.Add(pair.Key);
             foreach (var block in blocks)
                 if (!authored.TryGetValue(block.Cell, out var original) || block.SurfaceMaterial != original.Material || block.Mineable != original.Mineable)
-                    data.Placed.Add(block.Cell);
+                { data.Placed.Add(block.Cell); data.Materials.Add(block.Cell, IdentifyMaterial(block.SurfaceMaterial)); }
             data.Removed.Sort(CompareCells);
             data.Placed.Sort(CompareCells);
             return data;
@@ -111,11 +136,11 @@ namespace Pax
 
         public bool ValidateEdits(PaxTileEdits data, out string reason) => TryValidateEdits(data, out _, out _, out reason);
 
-        private bool TryValidateEdits(PaxTileEdits data, out HashSet<Vector3Int> removed, out HashSet<Vector3Int> placed, out string reason)
+        private bool TryValidateEdits(PaxTileEdits data, out HashSet<Vector3Int> removed, out Dictionary<Vector3Int, Material> placed, out string reason)
         {
             reason = null;
-            removed = placed = null;
-            if (data == null || data.Version != PaxTileEdits.CurrentVersion || data.World != SaveSignature)
+            removed = null; placed = null;
+            if (data == null || (data.Version != 1 && data.Version != PaxTileEdits.CurrentVersion) || data.World != SaveSignature)
             { reason = "Save belongs to a different authored world or version."; return false; }
             if (data.Removed.Count + data.Placed.Count > PaxSaveFile.MaximumEdits)
             { reason = "Save exceeds the tile-edit limit."; return false; }
@@ -125,11 +150,17 @@ namespace Pax
                 if (!removed.Add(cell) || !authored.TryGetValue(cell, out var template) || !template.Mineable)
                 { reason = "Save has repeated, unknown or protected removals."; return false; }
             }
-            placed = new HashSet<Vector3Int>();
+            var placedCells = new HashSet<Vector3Int>(data.Placed);
+            if (data.Version == 1 && data.Materials.Count != 0 || data.Materials.Keys.Any(cell => !placedCells.Contains(cell)))
+            { reason = "Save has incompatible or orphaned material metadata."; return false; }
+            placed = new Dictionary<Vector3Int, Material>();
             foreach (var cell in data.Placed)
             {
-                if (!placed.Add(cell) || !InBounds(cell) || authored.ContainsKey(cell) && !removed.Contains(cell))
+                if (placed.ContainsKey(cell) || !InBounds(cell) || authored.ContainsKey(cell) && !removed.Contains(cell))
                 { reason = "Save has repeated, occupied or out-of-bounds placements."; return false; }
+                string id = data.Version == 1 || !data.Materials.TryGetValue(cell, out string savedId) ? "default" : savedId;
+                if (!TryResolveMaterial(id, out var material)) { reason = "Save uses an unknown or invalid construction material ID."; return false; }
+                placed.Add(cell, material);
             }
             return true;
         }
@@ -139,7 +170,7 @@ namespace Pax
             if (!TryValidateEdits(data, out var removed, out var placed, out reason)) return false;
             var target = new Dictionary<Vector3Int, TileTemplate>();
             foreach (var pair in authored) if (!removed.Contains(pair.Key)) target.Add(pair.Key, pair.Value);
-            foreach (var cell in placed) target.Add(cell, new TileTemplate { Material = blockPrefab.SurfaceMaterial, Mineable = true });
+            foreach (var pair in placed) target.Add(pair.Key, new TileTemplate { Material = pair.Value, Mineable = true });
             foreach (var pair in target)
             {
                 bool unchanged = cells.TryGetValue(pair.Key, out var current) && current.SurfaceMaterial == pair.Value.Material && current.Mineable == pair.Value.Mineable;

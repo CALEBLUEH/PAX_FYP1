@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/PAX/Scenes/PaxExpedition.unity
     guid: 6cff6799c53e9334cb0a86e367e044b0
+  - enabled: 1
+    path: Assets/PAX/Scenes/PaxPaletteExpedition.unity
+    guid: e95f7c21b2572404f91d8697843df74c
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
   m_UseUCBPForAssetBundles: 0

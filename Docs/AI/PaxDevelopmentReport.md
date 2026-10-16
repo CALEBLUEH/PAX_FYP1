@@ -4,7 +4,9 @@
 
 The supervised run stopped after three validated implementation milestones. Trip rotation 1 completed the generation milestone from `4afd11e`: editable seed/settings, deterministic saved terrain/structures and distinct save slots. Its checkpoint is `54bcfa5`; see [PaxGenerationMilestone.md](PaxGenerationMilestone.md).
 
-**Trip rotation 2 completed ONE expedition milestone from `54bcfa5`: survey three shelters, repair six marked platform cells, then return/jump onto the pad and activate the beacon.** Session-only visits/replay and tile-save-derived repairs keep construction and objective state coherent. A separate scene/slot preserves both prior sandboxes. **36 EditMode, 51 PlayMode, Windows build and 31 built-player checks passed; all five live HUD/world captures were inspected.** See [PaxExpeditionMilestone.md](PaxExpeditionMilestone.md) for controls, evidence and limits. Waiting for AS rotation; no next PAX milestone is started. The previous stop audit below remains historical evidence. Public publication remains prohibited.
+Trip rotation 2 completed the expedition milestone from `54bcfa5` in checkpoint `8ec66cb`: survey three shelters, repair six cells and activate the beacon, with session-only journal and tile-derived repairs. See [PaxExpeditionMilestone.md](PaxExpeditionMilestone.md).
+
+**Current trip milestone completed ONE durable material palette from `8ec66cb`: five editable construction choices, number-key selection, material sample/validity previews, and version 2 stable-ID tile persistence with strict version 1 migration/recovery.** A new scene/slot preserves all three prior scenes. **45 full EditMode + 23 focused final codec/palette checks, 55 PlayMode, Windows build and 46 built-player checks passed.** Six actual HUD/world captures were inspected. See [PaxPaletteMilestone.md](PaxPaletteMilestone.md) for compatibility, controls, evidence and limits. Waiting for AS rotation; no next PAX milestone is started. Previous stop audits remain historical evidence. Public publication remains prohibited.
 
 ## Workspace and protection
 
