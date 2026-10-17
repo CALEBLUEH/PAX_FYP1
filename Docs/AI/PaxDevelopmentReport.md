@@ -1,6 +1,6 @@
 # PAX local development
 
-16 October 2026. Local development only; public pushing remains denied and will not be attempted.
+18 October 2026. Local development only; public pushing remains denied and will not be attempted.
 
 The supervised run stopped after three validated implementation milestones. Trip rotation 1 completed the generation milestone from `4afd11e`: editable seed/settings, deterministic saved terrain/structures and distinct save slots. Its checkpoint is `54bcfa5`; see [PaxGenerationMilestone.md](PaxGenerationMilestone.md).
 
@@ -8,13 +8,15 @@ Trip rotation 2 completed the expedition milestone from `54bcfa5` in checkpoint 
 
 The durable material palette checkpoint is `fb3736c`: five editable choices and typed v2 tile persistence with strict v1 migration/recovery. See [PaxPaletteMilestone.md](PaxPaletteMilestone.md).
 
-**Current trip milestone completed ONE finite resource expedition from `fb3736c`: mine recoverable material stocks, spend matching units on the beacon, and atomically save/load exact tiles + stocks + once-only harvest history.** A separate authored scene/slot preserves all four unlimited scenes. Conservation validation prevents tile-only import/repeated-load/yield-rebuild duplication. **56 EditMode, 61 PlayMode, Windows build and 36 built-player checks passed; all five live HUD/world captures inspected.** See [PaxResourceMilestone.md](PaxResourceMilestone.md) for rules, compatibility, evidence and limits. Waiting for AS rotation; no next PAX milestone started. Previous stop audits remain historical evidence. Public publication remains prohibited.
+The finite resource expedition checkpoint is `7e4dce5`: recoverable stocks, matching resource spending and atomic tile/stock/harvest persistence. Its 56 EditMode, 61 PlayMode and 36 player checks are recorded in [PaxResourceMilestone.md](PaxResourceMilestone.md).
+
+**Current trip rotation 5 completes ONE Lowtide / Lamplighter's Chart episode from `7e4dce5`: gather five Timber and three Stone, restore the crossing and lookout stairs with exact materials, physically traverse the route and recover the chart revealing Ember Reach.** A separate authored scene/UI/slot/build preserves all five earlier scenes. **57/57 EditMode, 64/64 PlayMode, final 1/1 copy/idempotence, Windows build (0 errors), and 42/42 built-player checks passed.** Final HUD copy reads “F Recover chart”; world/HUD captures and retry/conservation evidence are archived. See [PaxChartMilestone.md](PaxChartMilestone.md) for evidence, effort, controls and the raw OS input limitation. Waiting for AS rotation; no next PAX milestone started. Previous stop audits remain historical evidence. Public publication remains prohibited.
 
 ## Workspace and protection
 
 - Sole implementation workspace: `C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1`.
 - Branch: existing `CodexWorkspace`, fast-forwarded from `e82f1c9` to accepted prototype `42ad020`.
-- Original checkout: `C:\Users\user\Documents\GitHub\PAX_FYP1`, still on `PrototypeBranch`. Its modified scene, Build Settings and untracked SceneTemplateSettings file must remain unchanged. Their SHA256 baselines are retained by this chat for verification.
+- Original checkout: `C:\Users\user\Documents\GitHub\PAX_FYP1`, still on `PrototypeBranch` at `42ad020`. The current audit shows its existing modified Build Settings and coordinator-owned untracked `Docs/AI/TripDevelopmentStatus.md`; neither was edited. Protected scene/Build Settings SHA256 hashes match the rotation's baseline.
 - Absolute Samsara and shared asset originals remain untouched. No external assets, installations, publishing or paid APIs are needed.
 
 ## Milestones

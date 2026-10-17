@@ -66,6 +66,9 @@ namespace Pax
             var status=captureDocument.rootVisualElement.Q<Label>("status");
             Check(status!=null && !string.IsNullOrWhiteSpace(status.text) && status.worldBound.width>50,"Authored HUD laid out and status updated");
             Check(player.Grounded,"Player starts grounded");
+            var chartRoute=FindFirstObjectByType<PaxChartRoute>();
+            if(chartRoute!=null)
+            {FindFirstObjectByType<PaxExpeditionInput>().enabled=false;yield return RunChart(chartRoute,player,world,builder,cameraRig,cutaway);Finish();yield break;}
             var resources = FindFirstObjectByType<PaxStockpile>();
             if (resources != null)
             {
@@ -160,6 +163,59 @@ namespace Pax
             Finish();
         }
         private static IEnumerator WaitFrames(int count) { for (int i = 0; i < count; i++) yield return null; }
+        private bool chartRouteFailed;
+        private IEnumerator ChartWalk(Vector3 target,PaxPlayer player,PaxCamera rig)
+        {
+            for(int frame=0;frame<180;frame++)
+            {var delta=target-player.transform.position;delta.y=0;if(delta.magnitude<0.09f){player.SetCommand(Vector2.zero,false,false);yield break;}var forward=Vector3.ProjectOnPlane(rig.transform.forward,Vector3.up).normalized;var right=Vector3.Cross(Vector3.up,forward);player.SetCommand(new Vector2(Vector3.Dot(delta.normalized,right),Vector3.Dot(delta.normalized,forward)),false,false);yield return null;}
+            player.SetCommand(Vector2.zero,false,false);Check(false,"Physical chart walk blocked toward "+target+" at "+player.transform.position);chartRouteFailed=true;
+        }
+        private IEnumerator ChartClick(Vector3 surface,PaxRepairMarker marker,PaxBuilder builder,PaxCamera rig,bool expectedMatch=true)
+        {rig.SnapToTarget();builder.SetPointer(rig.View.WorldToScreenPoint(surface),false,true);yield return WaitFrames(3);Check(marker.IsSolid==expectedMatch,"Pointer-frame repair material match="+expectedMatch+" at "+marker.Cell);if(marker.IsSolid!=expectedMatch)chartRouteFailed=true;}
+        private IEnumerator RunChart(PaxChartRoute route,PaxPlayer player,PaxWorld world,PaxBuilder builder,PaxCamera rig,PaxCutaway cutaway)
+        {
+            var pile=FindFirstObjectByType<PaxStockpile>();var mission=FindFirstObjectByType<PaxExpedition>();var save=FindFirstObjectByType<PaxPlaytestSave>();var selection=FindFirstObjectByType<PaxMaterialSelection>();
+            save.UseValidationDirectory(Path.Combine(output,"ChartSave-"+Guid.NewGuid().ToString("N")));
+            Check(pile.Ready&&route.Timber.Length==5&&route.Stone.Length==3&&mission.SurveyedCount==0,"Distinct chart expedition starts with finite mixed-material objective and no discoveries");
+            rig.Zoom(-8);yield return new WaitForSecondsRealtime(0.2f);Capture("Chart-00-Camp-Overview.png");rig.ResetView();
+            foreach(var cell in FindFirstObjectByType<PaxResourceCache>().Cells)Check(builder.Mine(cell),"Gather authored route supply "+cell);
+            Check(pile.Count("timber")==5&&pile.Count("stone")==3&&save.SaveEdits(),"Finite camp supplies and harvested world save as one snapshot");
+            yield return ChartWalk(route.Departure.position,player,rig);if(chartRouteFailed)yield break;yield return WaitFrames(40);Check(mission.Sites[0].Surveyed,"Physical walk discovers the departure log");
+            yield return ChartWalk(route.NearBank.position,player,rig);if(chartRouteFailed)yield break;builder.ToggleCursor();rig.Orbit(180,0);rig.SnapToTarget();
+            var first=route.Timber[0];selection.SelectNumber(3);yield return ChartClick(PaxGrid.Centre(first.Cell-Vector3Int.right)+new Vector3(0.501f,0,0),first,builder,rig,false);
+            Check(world.TryGet(first.Cell,out var wrong)&&world.TryResolveMaterial("stone",out var stone)&&wrong.SurfaceMaterial==stone&&route.TimberCount==0&&pile.Count("stone")==2,"Wrong-material solid does not count as a Timber repair");
+            Check(save.SaveEdits()&&builder.Mine(first.Cell)&&pile.Count("stone")==3,"Wrong-material repair can be saved then mined for its actual unit");selection.SelectNumber(2);
+            yield return ChartClick(PaxGrid.Centre(first.Cell-Vector3Int.right)+new Vector3(0.501f,0,0),first,builder,rig);if(chartRouteFailed)yield break;Check(pile.Count("timber")==4&&save.SaveEdits(),"Corrected Timber repair spends only Timber and checkpoints partial route");
+            int built=0;
+            foreach(var marker in route.Timber)
+            {
+                if(!marker.IsSolid)yield return ChartClick(PaxGrid.Centre(marker.Cell-Vector3Int.right)+new Vector3(0.501f,0,0),marker,builder,rig);
+                if(chartRouteFailed)yield break;built++;yield return ChartWalk(PaxGrid.Centre(marker.Cell)+Vector3.up*0.53f,player,rig);if(chartRouteFailed)yield break;
+                Check(player.Grounded&&Mathf.Abs(player.transform.position.y)<0.08f&&pile.Count("timber")==5-built,"Actual walk on constructed Timber crossing segment "+built);
+            }
+            yield return ChartWalk(new Vector3(2,0.03f,0),player,rig);yield return ChartWalk(route.Mooring.position,player,rig);if(chartRouteFailed)yield break;yield return WaitFrames(40);
+            Check(mission.Sites[1].Surveyed&&route.TimberCount==5,"Crossing reaches the far mooring discovery");builder.SetPointer(new Vector2(-10000,-10000),false,false);yield return new WaitForSecondsRealtime(0.2f);Capture("Chart-01-Crossing-HUD.png");
+            yield return ChartWalk(route.Takeoff.position,player,rig);if(chartRouteFailed)yield break;rig.ResetView();rig.SnapToTarget();selection.SelectNumber(3);
+            foreach(var marker in route.Stone){yield return ChartClick((Vector3)marker.Cell+new Vector3(0,0.02f,0),marker,builder,rig);if(chartRouteFailed)yield break;}
+            Check(route.StoneCount==3&&pile.Count("stone")==0&&!mission.TryActivate(),"Exact Stone stairs consume three units; remote chart activation still rejects");
+            for(int jump=0;jump<2;jump++)
+            {var forward=Vector3.ProjectOnPlane(rig.transform.forward,Vector3.up).normalized;var right=Vector3.Cross(Vector3.up,forward);player.SetCommand(new Vector2(Vector3.Dot(Vector3.right,right),Vector3.Dot(Vector3.right,forward)),true,true);yield return WaitFrames(jump==0?13:34);player.SetCommand(Vector2.zero,false,false);yield return WaitFrames(45);Check(player.Grounded&&Mathf.Abs(player.transform.position.y-(jump+1))<0.08f,"Real held jump lands on chart route level "+(jump+1));}
+            yield return ChartWalk(route.Chart.position,player,rig);if(chartRouteFailed)yield break;yield return WaitFrames(40);cutaway.RefreshNow();
+            bool physical=true;foreach(var block in world.Blocks){physical&=block.Solid.enabled&&block.SolidShadow!=null;if(cutaway.IsObstruction(block))physical&=cutaway.TargetFor(block)<=0.04f;}
+            Check(physical&&mission.SurveyedCount==3&&mission.TryActivate()&&mission.Stage==PaxExpeditionStage.Complete,"Unwarped traversal recovers the chart with canopy/collision/obstruction invariants");
+            Check(mission.Objective.Contains("Ember Reach")&&pile.Count("timber")==0&&pile.Count("stone")==0&&save.SaveEdits(),"Chart reveals an original destination and completed route saves without resource rewards");
+            int revision=world.Revision;Check(mission.TryActivate()&&world.Revision==revision&&pile.Count("stone")==0,"Repeated chart recovery is idempotent");
+            yield return ChartWalk(route.UpperLanding.position+Vector3.forward,player,rig);if(chartRouteFailed)yield break;builder.SetPointer(new Vector2(-10000,-10000),false,false);yield return new WaitForSecondsRealtime(0.2f);Capture("Chart-02-Recovered-HUD.png");
+            Check(save.LoadEdits(true)&&route.TimberCount==1&&route.StoneCount==0&&pile.Count("timber")==4&&pile.Count("stone")==3,"Previous partial-route snapshot restores exact mixed resources and matching repairs");yield return WaitFrames(3);Check(mission.Stage==PaxExpeditionStage.Repair,"Rollback revokes completed route state");
+            bool stable=true;for(int i=0;i<3;i++)stable&=save.LoadEdits()&&route.TimberCount==5&&route.StoneCount==3&&pile.Count("timber")==0&&pile.Count("stone")==0;
+            yield return WaitFrames(3);bool needsActivation=mission.Stage==PaxExpeditionStage.Return;
+            yield return ChartWalk(route.Chart.position,player,rig);if(chartRouteFailed)yield break;yield return WaitFrames(3);
+            Check(stable&&needsActivation&&mission.TryActivate(),"Repeated completed-snapshot loads do not multiply supplies and require explicit reactivation");
+            yield return ChartWalk(route.UpperLanding.position+Vector3.forward,player,rig);if(chartRouteFailed)yield break;yield return new WaitForSecondsRealtime(0.2f);Capture("Chart-03-Retry-HUD.png");
+            yield return ChartWalk(route.UpperLanding.position+Vector3.forward,player,rig);if(chartRouteFailed)yield break;
+            revision=world.Revision;string bytes=File.ReadAllText(save.SavePath);mission.RestartSurvey();
+            Check(mission.SurveyedCount==0&&mission.RepairCount==8&&world.Revision==revision&&pile.Count("timber")==0&&pile.Count("stone")==0&&bytes==File.ReadAllText(save.SavePath),"Replay keeps route, finite stocks and snapshot bytes; only discoveries restart");yield return new WaitForSecondsRealtime(0.2f);Capture("Chart-04-Replay-HUD.png");
+        }
 
         private IEnumerator RunResources(PaxStockpile pile, PaxPlayer player, PaxWorld world, PaxBuilder builder, PaxCamera rig, PaxCutaway cutaway)
         {

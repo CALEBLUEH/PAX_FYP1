@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/PAX/Scenes/PaxResourceExpedition.unity
     guid: 90247a0ad01356e468463c03d81be2b3
+  - enabled: 1
+    path: Assets/PAX/Scenes/PaxLamplighterChart.unity
+    guid: 5855734dd68e84c4fb318ca27738abe4
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
   m_UseUCBPForAssetBundles: 0

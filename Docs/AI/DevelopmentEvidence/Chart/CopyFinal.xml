@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="1" result="Passed" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-17 21:13:05Z" end-time="2026-10-17 21:13:22Z" duration="17.2737178">
+  <test-suite type="TestSuite" id="1000" name="PAX_FYP1" fullname="PAX_FYP1" runstate="Runnable" testcasecount="57" result="Passed" start-time="2026-10-17 21:13:05Z" end-time="2026-10-17 21:13:22Z" duration="17.273718" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1073" name="Pax.EditModeTests.dll" fullname="C:/Users/user/.codex/worktrees/pax-development/PAX_FYP1/Library/ScriptAssemblies/Pax.EditModeTests.dll" runstate="Runnable" testcasecount="57" result="Passed" start-time="2026-10-17 21:13:05Z" end-time="2026-10-17 21:13:22Z" duration="17.265770" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="62556" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1074" name="Pax" fullname="Pax" runstate="Runnable" testcasecount="57" result="Passed" start-time="2026-10-17 21:13:05Z" end-time="2026-10-17 21:13:22Z" duration="17.265160" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1075" name="Tests" fullname="Pax.Tests" runstate="Runnable" testcasecount="57" result="Passed" start-time="2026-10-17 21:13:05Z" end-time="2026-10-17 21:13:22Z" duration="17.264946" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1002" name="PaxChartAuthoringTests" fullname="Pax.Tests.PaxChartAuthoringTests" classname="Pax.Tests.PaxChartAuthoringTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-17 21:13:05Z" end-time="2026-10-17 21:13:22Z" duration="17.262972" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1003" name="ChartSceneIsAuthoredWiredBoundedAndIdempotent" fullname="Pax.Tests.PaxChartAuthoringTests.ChartSceneIsAuthoredWiredBoundedAndIdempotent" methodname="ChartSceneIsAuthoredWiredBoundedAndIdempotent" classname="Pax.Tests.PaxChartAuthoringTests" runstate="Runnable" seed="114083528" result="Passed" start-time="2026-10-17 21:13:05Z" end-time="2026-10-17 21:13:22Z" duration="17.249298" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+Lamplighter chart exists; preserving scene and saves.
+PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/user/AppData/LocalLow/DefaultCompany/PAX_FYP1\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
