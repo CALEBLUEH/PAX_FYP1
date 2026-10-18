@@ -39,6 +39,22 @@ namespace Pax
         {
             output = Path.GetFullPath(Path.Combine(Application.dataPath,"../SmokeEvidence"));
             Directory.CreateDirectory(output);
+            if (Array.IndexOf(Environment.GetCommandLineArgs(), "-paxReviewEmber") >= 0)
+            {
+                DontDestroyOnLoad(gameObject); Time.captureDeltaTime = 1f / 60; var menu = FindFirstObjectByType<PaxExpeditionSelection>(); menu.UseValidationInput();
+                for (int i = 0; i < 3; i++) { menu.ProcessInput(false, false, false, false); yield return null; }
+                captureCamera = Camera.main; captureDocument = FindFirstObjectByType<UIDocument>(); captureTarget = new RenderTexture(1600, 900, 24); captureTarget.Create(); captureCamera.targetTexture = captureTarget;
+                originalPanel = captureDocument.panelSettings; capturePanel = Instantiate(originalPanel); capturePanel.targetTexture = captureTarget; capturePanel.clearColor = false; captureDocument.panelSettings = capturePanel;
+                yield return new WaitForSecondsRealtime(3.5f); yield return WaitFrames(15); Capture("Ember-00-Selection.png");
+                var button = captureDocument.rootVisualElement.Q<Button>("select-ember"); var hit = captureDocument.rootVisualElement.panel.Pick(button.worldBound.center);
+                Check(button.enabledInHierarchy && (hit == button || button.Contains(hit)), "Third authored Ember card is available and hit-testable");
+                var mouse = new Event { type = EventType.MouseDown, button = 0, mousePosition = button.worldBound.center };
+                using (var down = PointerDownEvent.GetPooled(mouse)) button.SendEvent(down); mouse.type = EventType.MouseUp; using (var up = PointerUpEvent.GetPooled(mouse)) button.SendEvent(up);
+                Check(menu.Loading, "Actual third-card pointer events own the Ember launch"); CloseCapture();
+                float loadStarted = Time.realtimeSinceStartup, deadline = loadStarted + 20;
+                while (SceneManager.GetActiveScene().name != "PaxEmberReach" && Time.realtimeSinceStartup < deadline) yield return null;
+                Check(SceneManager.GetActiveScene().name == "PaxEmberReach", "Selection launches the distinct Ember scene; actual=" + SceneManager.GetActiveScene().name + "; seconds=" + (Time.realtimeSinceStartup - loadStarted).ToString("F3")); if (failures > 0) { Finish(); yield break; }
+            }
             if (Array.IndexOf(Environment.GetCommandLineArgs(), "-paxReviewChart") >= 0)
             { DontDestroyOnLoad(gameObject); yield return SceneManager.LoadSceneAsync("PaxLamplighterChart"); }
             var pause = FindFirstObjectByType<PaxPause>();
@@ -79,6 +95,8 @@ namespace Pax
             Check(player.Grounded,"Player starts grounded");
             if (pause != null && Array.IndexOf(Environment.GetCommandLineArgs(), "-paxPauseSmoke") >= 0)
                 yield return RunPause(pause, input, player, world, builder, cameraRig);
+            if (FindFirstObjectByType<PaxCompletionLamps>() != null)
+            { FindFirstObjectByType<PaxExpeditionInput>().enabled = false; yield return RunEmber(player, world, builder, cameraRig, cutaway); Finish(); yield break; }
             var chartRoute=FindFirstObjectByType<PaxChartRoute>();
             if(chartRoute!=null)
             {FindFirstObjectByType<PaxExpeditionInput>().enabled=false;yield return RunChart(chartRoute,player,world,builder,cameraRig,cutaway);Finish();yield break;}
@@ -232,6 +250,46 @@ namespace Pax
             Capture("Pause-" + prefix + "-Resumed.png");
         }
         private bool chartRouteFailed;
+        private IEnumerator RunEmber(PaxPlayer player, PaxWorld world, PaxBuilder builder, PaxCamera rig, PaxCutaway cutaway)
+        {
+            var route = FindFirstObjectByType<PaxChartRoute>(); var stocks = FindFirstObjectByType<PaxStockpile>(); var mission = FindFirstObjectByType<PaxExpedition>(); var save = FindFirstObjectByType<PaxPlaytestSave>(); var lamps = FindFirstObjectByType<PaxCompletionLamps>();
+            save.UseValidationDirectory(Path.Combine(output, "EmberSave-" + Guid.NewGuid().ToString("N")));
+            Check(route.Timber.Length == 5 && route.Stone.Length == 2 && mission.SurveyedCount == 0 && Path.GetFileName(save.SavePath).StartsWith("pax-ember-"), "Ember starts with 5/2 finite route, empty journal and independent slot");
+            rig.Zoom(-8); yield return new WaitForSecondsRealtime(0.2f); Capture("Ember-01-Ridge-Overview.png"); rig.ResetView();
+            foreach (var cell in FindFirstObjectByType<PaxResourceCache>().Cells) Check(builder.Mine(cell), "Gather reachable Ember supply " + cell);
+            Check(stocks.Count("timber") == 5 && stocks.Count("stone") == 2, "Seven authored cache blocks exactly fund the mixed ridge repairs");
+            var original = FindFirstObjectByType<PaxResourceCache>().Cells[0]; builder.TrySelectMaterial("timber"); bool conserved = true;
+            for (int i = 0; i < 3; i++) conserved &= builder.Place(original) && stocks.Count("timber") == 4 && builder.Mine(original) && stocks.Count("timber") == 5;
+            Check(conserved, "Rebuilding and mining the same original cache three times never farms supplies");
+            yield return ChartWalk(route.Departure.position, player, rig); if (chartRouteFailed) yield break; yield return WaitFrames(35); Check(mission.Sites[0].Surveyed, "Physical walk reads the Wind ledger");
+            yield return ChartWalk(route.NearBank.position, player, rig); if (chartRouteFailed) yield break; builder.ToggleCursor(); rig.Orbit(180, 0); builder.TrySelectMaterial("stone");
+            var first = route.Timber[0]; yield return ChartClick(PaxGrid.Centre(first.Cell - Vector3Int.forward) + Vector3.forward * 0.501f, first, builder, rig, false);
+            Check(world.Contains(first.Cell) && !first.IsSolid && stocks.Count("stone") == 1 && builder.Mine(first.Cell) && stocks.Count("stone") == 2, "Wrong Stone crossing tile does not count and refunds its actual unit"); builder.TrySelectMaterial("timber");
+            for (int i = 0; i < 5; i++)
+            {
+                if (i == 2) { yield return ChartWalk(route.Mooring.position, player, rig); if (chartRouteFailed) yield break; yield return WaitFrames(35); Check(mission.Sites[1].Surveyed, "North crossing reaches the Leeward cairn and east bank"); builder.SetPointer(new Vector2(-10000, -10000), false, false); yield return new WaitForSecondsRealtime(0.2f); Capture("Ember-02-Cairn-HUD.png"); }
+                var marker = route.Timber[i]; var direction = i < 2 ? Vector3Int.forward : Vector3Int.right;
+                yield return ChartClick(PaxGrid.Centre(marker.Cell - direction) + (Vector3)direction * 0.501f, marker, builder, rig); if (chartRouteFailed) yield break;
+                if (i == 0) Check(save.SaveEdits(), "Checkpoint one Timber crossing tile with exact 4 Timber / 2 Stone stocks");
+                yield return ChartWalk(PaxGrid.Centre(marker.Cell) + Vector3.up * 0.53f, player, rig); if (chartRouteFailed) yield break;
+                Check(player.Grounded && Mathf.Abs(player.transform.position.y) < 0.08f && stocks.Count("timber") == 4 - i, "Actual grounded walk on Ember crossing segment " + (i + 1));
+            }
+            rig.ResetView(); builder.TrySelectMaterial("stone"); foreach (var marker in route.Stone) { yield return ChartClick((Vector3)marker.Cell + new Vector3(0, 0.02f, 0), marker, builder, rig); if (chartRouteFailed) yield break; }
+            Check(route.StoneCount == 2 && stocks.Count("stone") == 0 && !mission.TryActivate(), "Two reachable matching Stone repairs spend two units; remote completion rejects");
+            for (int jump = 0; jump < 2; jump++)
+            { var f = Vector3.ProjectOnPlane(rig.transform.forward, Vector3.up).normalized; var r = Vector3.Cross(Vector3.up, f); player.SetCommand(new Vector2(Vector3.Dot(Vector3.right, r), Vector3.Dot(Vector3.right, f)), true, true); yield return WaitFrames(jump == 0 ? 13 : 34); player.SetCommand(Vector2.zero, false, false); yield return WaitFrames(45); Check(player.Grounded && Mathf.Abs(player.transform.position.y - (jump + 1)) < 0.08f, "Real held jump lands on Ember ridge level " + (jump + 1)); }
+            yield return ChartWalk(route.Chart.position, player, rig); if (chartRouteFailed) yield break; yield return WaitFrames(35);
+            Check(mission.SurveyedCount == 3 && mission.RepairCount == 7 && mission.TryActivate() && save.SaveEdits(), "Unwarped north/east traversal reaches the keeper and completes with zero rewards"); yield return WaitFrames(3);
+            var properties = new MaterialPropertyBlock(); bool green = lamps.Complete; foreach (var lamp in lamps.AdditionalLamps) { lamp.GetPropertyBlock(properties); var color = properties.GetColor("_Color"); green &= color.g > color.r; }
+            Check(green && mission.Objective.Contains("home offered forward") && stocks.Count("timber") == 0 && stocks.Count("stone") == 0, "Three-lamp payoff uses mission completion, original field-note text and exact zero stocks");
+            cutaway.RefreshNow(); Check(System.Linq.Enumerable.All(world.Blocks, block => block.Solid.enabled && block.SolidShadow != null && (!cutaway.IsObstruction(block) || cutaway.TargetFor(block) <= 0.04f)), "Ridge construction retains collision, logical shadow and obstruction presentation invariants");
+            builder.SetPointer(new Vector2(-10000, -10000), false, false); rig.Zoom(-3); yield return new WaitForSecondsRealtime(0.2f); Capture("Ember-03-Three-Lamps-HUD.png");
+            Check(save.LoadEdits(true) && stocks.Count("timber") == 4 && stocks.Count("stone") == 2 && mission.RepairCount == 1, "Previous partial-route snapshot restores exact 4/2 stocks and one matching repair"); yield return WaitFrames(3); Check(!lamps.Complete, "Rollback revokes the lamp payoff");
+            bool stable = true; for (int i = 0; i < 3; i++) stable &= save.LoadEdits() && stocks.Count("timber") == 0 && stocks.Count("stone") == 0 && mission.RepairCount == 7;
+            yield return WaitFrames(3); Check(stable && mission.TryActivate(), "Repeated full loads neither mint resources nor bypass explicit reactivation");
+            string bytes = File.ReadAllText(save.SavePath); int revision = world.Revision; mission.RestartSurvey(); yield return WaitFrames(3);
+            Check(mission.SurveyedCount == 0 && mission.RepairCount == 7 && world.Revision == revision && !lamps.Complete && bytes == File.ReadAllText(save.SavePath), "F6 field-note replay keeps repairs, zero stocks and snapshot bytes; lamps return dormant"); yield return new WaitForSecondsRealtime(0.2f); Capture("Ember-04-Replay-HUD.png");
+        }
         private IEnumerator ChartWalk(Vector3 target,PaxPlayer player,PaxCamera rig)
         {
             for(int frame=0;frame<180;frame++)
@@ -516,11 +574,16 @@ namespace Pax
             File.WriteAllLines(Path.Combine(output,"PlayerSmoke.txt"),checks);
             Debug.Log($"PAX_PLAYER_SMOKE: {checks.Count-failures}/{checks.Count} passed; evidence {output}");
             Time.captureDeltaTime=0;
+            CloseCapture();
+            Application.Quit(failures==0?0:1);
+        }
+        private void CloseCapture()
+        {
             if(captureCamera!=null) captureCamera.targetTexture=null;
             if(captureDocument!=null && originalPanel!=null) captureDocument.panelSettings=originalPanel;
             if(capturePanel!=null) Destroy(capturePanel);
             if(captureTarget!=null) { captureTarget.Release(); Destroy(captureTarget); }
-            Application.Quit(failures==0?0:1);
+            captureCamera=null; captureDocument=null; captureTarget=null; capturePanel=null;
         }
     }
 }

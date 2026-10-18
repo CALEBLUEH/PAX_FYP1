@@ -10,13 +10,16 @@ namespace Pax
         [SerializeField] private UIDocument document;
         [SerializeField] private string resourceScenePath;
         [SerializeField] private string chartScenePath;
+        [SerializeField] private string emberScenePath;
+        [SerializeField] private KeyCode emberKey = KeyCode.Alpha3;
         [SerializeField] private KeyCode resourceKey = KeyCode.Alpha1, chartKey = KeyCode.Alpha2;
         [SerializeField] private string readyMessage = "Both expeditions are available. Choose a fresh expedition.";
         [SerializeField] private string releaseMessage = "Release held keys and mouse buttons to choose.";
         [SerializeField] private string focusMessage = "Return to this window, then release held controls to choose.";
         [SerializeField] private string loadingMessage = "Opening a fresh expedition… No snapshot is loaded automatically.";
         [SerializeField] private string unavailableMessage = "This authored scene is unavailable in the build.";
-        private Button resource, chart;
+        private Button resource, chart, ember;
+        private bool emberWasHeld;
         private Label status;
         private bool focused = true, awaitingRelease = true, loading, hardware = true, resourceWasHeld, chartWasHeld, focusPending = true;
         private int transitionFrame = -1;
@@ -25,32 +28,39 @@ namespace Pax
         public bool Loading => loading;
         public string ResourceScenePath => resourceScenePath;
         public string ChartScenePath => chartScenePath;
+        public string EmberScenePath => emberScenePath;
         public void Configure(UIDocument ui, string resourcePath, string chartPath)
         { document = ui; resourceScenePath = resourcePath; chartScenePath = chartPath; }
         private void Awake() { if (!Application.isBatchMode) focused = Application.isFocused; }
         private void Start()
         {
             resource = document.rootVisualElement.Q<Button>("select-resource"); chart = document.rootVisualElement.Q<Button>("select-chart");
+            ember = document.rootVisualElement.Q<Button>("select-ember");
             status = document.rootVisualElement.Q<Label>("selection-status");
-            resource.clicked += OnResource; chart.clicked += OnChart; Present();
+            resource.clicked += OnResource; chart.clicked += OnChart; ember.clicked += OnEmber; Present();
         }
         private void Update()
         {
-            if (hardware) ProcessInput(Input.GetKey(resourceKey), Input.GetKey(chartKey), Input.anyKey || Input.mouseScrollDelta.sqrMagnitude > 0);
+            if (hardware) ProcessInput(Input.GetKey(resourceKey), Input.GetKey(chartKey), Input.GetKey(emberKey), Input.anyKey || Input.mouseScrollDelta.sqrMagnitude > 0);
             else Present();
         }
         public void ProcessInput(bool resourceHeld, bool chartHeld, bool anyHeld)
+            => ProcessInput(resourceHeld, chartHeld, false, anyHeld);
+        public void ProcessInput(bool resourceHeld, bool chartHeld, bool emberHeld, bool anyHeld)
         {
             bool first = resourceHeld && !resourceWasHeld, second = chartHeld && !chartWasHeld;
+            bool third = emberHeld && !emberWasHeld; emberWasHeld = emberHeld;
             resourceWasHeld = resourceHeld; chartWasHeld = chartHeld;
             if (!isActiveAndEnabled || !focused || loading) { Present(); return; }
-            if (awaitingRelease && !anyHeld && !resourceHeld && !chartHeld)
+            if (awaitingRelease && !anyHeld && !resourceHeld && !chartHeld && !emberHeld)
             { awaitingRelease = false; transitionFrame = Time.frameCount; }
-            if (Ready) { if (first) LaunchResource(); else if (second) LaunchChart(); }
+            if (Ready) { if (first) LaunchResource(); else if (second) LaunchChart(); else if (third) LaunchEmber(); }
             Present();
         }
         public bool LaunchResource() => Launch(resourceScenePath);
         public bool LaunchChart() => Launch(chartScenePath);
+        public bool LaunchEmber() => Launch(emberScenePath);
+        private void OnEmber() => LaunchEmber();
         private void OnResource() => LaunchResource();
         private void OnChart() => LaunchChart();
         private bool Launch(string path)
@@ -63,6 +73,7 @@ namespace Pax
         {
             if (resource == null) return;
             resource.SetEnabled(Ready); chart.SetEnabled(Ready);
+            ember.SetEnabled(Ready);
             status.text = !focused ? focusMessage : loading ? loadingMessage : !Ready ? releaseMessage : error ?? readyMessage;
             if (Ready && focusPending) { resource.Focus(); focusPending = false; }
         }
@@ -71,6 +82,7 @@ namespace Pax
             if (!isActiveAndEnabled) return;
             focused = hasFocus; awaitingRelease = true; transitionFrame = Time.frameCount;
             resourceWasHeld = chartWasHeld = true; focusPending = true; Present();
+            emberWasHeld = true;
         }
         private void OnApplicationFocus(bool hasFocus) { if (hardware) ProcessFocus(hasFocus); }
         private void OnApplicationPause(bool paused) { if (hardware) ProcessFocus(!paused && Application.isFocused); }
@@ -83,6 +95,7 @@ namespace Pax
         {
             if (resource != null) resource.clicked -= OnResource;
             if (chart != null) chart.clicked -= OnChart;
+            if (ember != null) ember.clicked -= OnEmber;
         }
     }
 }

@@ -244,9 +244,11 @@ MonoBehaviour:
   document: {fileID: 2045238278}
   resourceScenePath: Assets/PAX/Scenes/PaxResourceExpedition.unity
   chartScenePath: Assets/PAX/Scenes/PaxLamplighterChart.unity
+  emberScenePath: Assets/PAX/Scenes/PaxEmberReach.unity
+  emberKey: 51
   resourceKey: 49
   chartKey: 50
-  readyMessage: Both expeditions are available. Choose a fresh expedition.
+  readyMessage: All three expeditions are available. Choose a fresh expedition.
   releaseMessage: Release held keys and mouse buttons to choose.
   focusMessage: Return to this window, then release held controls to choose.
   loadingMessage: "Opening a fresh expedition\u2026 No snapshot is loaded automatically."

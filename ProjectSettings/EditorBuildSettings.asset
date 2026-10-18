@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/PAX/Scenes/PaxExpeditionSelection.unity
     guid: 04f3fe716fbb0534e83e31a3ed40f096
+  - enabled: 1
+    path: Assets/PAX/Scenes/PaxEmberReach.unity
+    guid: 6c6f28730731a624584343a44628e079
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
   m_UseUCBPForAssetBundles: 0

@@ -1,13 +1,13 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements">
     <ui:VisualElement style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; background-color: rgb(9, 19, 29); align-items: center; justify-content: center;">
-        <ui:VisualElement style="width: 1150px; max-width: 95%; padding-left: 28px; padding-right: 28px; padding-top: 24px; padding-bottom: 24px;">
+        <ui:VisualElement style="width: 1370px; max-width: 95%; padding-left: 28px; padding-right: 28px; padding-top: 24px; padding-bottom: 24px;">
             <ui:Label text="PAX / Field expeditions" style="font-size: 34px; -unity-font-style: bold; color: rgb(255, 215, 145);" />
             <ui:Label text="Gather finite materials. Rebuild a route. Discover what remains." style="font-size: 20px; color: rgb(204, 225, 235); margin-top: 8px;" />
             <ui:Label name="selection-status" text="Release held controls to choose." style="font-size: 16px; color: rgb(137, 224, 241); margin-top: 14px; white-space: normal;" />
             <ui:VisualElement style="flex-direction: row; margin-top: 20px;">
                 <ui:VisualElement style="flex-grow: 1; flex-basis: 0; margin-right: 10px; padding-left: 22px; padding-right: 22px; padding-top: 20px; padding-bottom: 20px; background-color: rgb(20, 35, 48); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;">
                     <ui:Label text="01 / QUIET SHOAL" style="font-size: 15px; -unity-font-style: bold; color: rgb(137, 224, 241);" />
-                    <ui:Label text="The survey beacon" style="font-size: 27px; -unity-font-style: bold; color: rgb(239, 246, 241); margin-top: 8px;" />
+                    <ui:Label text="The survey beacon" style="font-size: 24px; -unity-font-style: bold; color: rgb(239, 246, 241); margin-top: 8px;" />
                     <ui:Label text="Three shelters survived the storm. Read their marks and restore the island's signal." style="font-size: 19px; white-space: normal; color: rgb(216, 233, 231); margin-top: 12px;" />
                     <ui:Label text="Mine the six Stone cache blocks near camp. Select 3 Stone, rebuild the six cyan pad cells and survey all three shelters. Jump onto the platform; F activates the beacon." style="font-size: 17px; white-space: normal; color: rgb(204, 225, 235); margin-top: 16px;" />
                     <ui:Label text="Available · fresh world · zero starting stocks" style="font-size: 15px; color: rgb(255, 222, 167); white-space: normal; margin-top: 18px;" />
@@ -15,16 +15,24 @@
                 </ui:VisualElement>
                 <ui:VisualElement style="flex-grow: 1; flex-basis: 0; margin-left: 10px; padding-left: 22px; padding-right: 22px; padding-top: 20px; padding-bottom: 20px; background-color: rgb(20, 35, 48); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;">
                     <ui:Label text="02 / LOWTIDE" style="font-size: 15px; -unity-font-style: bold; color: rgb(137, 224, 241);" />
-                    <ui:Label text="The lamplighter's chart" style="font-size: 27px; -unity-font-style: bold; color: rgb(239, 246, 241); margin-top: 8px;" />
+                    <ui:Label text="The lamplighter's chart" style="font-size: 24px; -unity-font-style: bold; color: rgb(239, 246, 241); margin-top: 8px;" />
                     <ui:Label text="A broken approach hides the last chart. Cross the channel and discover where the inland lamps lead." style="font-size: 19px; white-space: normal; color: rgb(216, 233, 231); margin-top: 12px;" />
                     <ui:Label text="Gather 5 Timber + 3 Stone. Match five amber crossing cells with Timber and three cyan stair cells with Stone. Read all three marks; F recovers the chart at the lookout." style="font-size: 17px; white-space: normal; color: rgb(204, 225, 235); margin-top: 16px;" />
                     <ui:Label text="Available · fresh world · zero starting stocks" style="font-size: 15px; color: rgb(255, 222, 167); white-space: normal; margin-top: 18px;" />
                     <ui:Button name="select-chart" text="2  Start Lowtide fresh" style="height: 48px; font-size: 19px; margin-top: 14px;" />
                 </ui:VisualElement>
+                <ui:VisualElement style="flex-grow: 1; flex-basis: 0; margin-left: 10px; padding-left: 22px; padding-right: 22px; padding-top: 20px; padding-bottom: 20px; background-color: rgb(20, 35, 48); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px;">
+                    <ui:Label text="03 / EMBER REACH" style="font-size: 15px; -unity-font-style: bold; color: rgb(137, 224, 241);" />
+                    <ui:Label text="The ridge of three lamps" style="font-size: 24px; -unity-font-style: bold; color: rgb(239, 246, 241); margin-top: 8px; white-space: normal;" />
+                    <ui:Label text="The chart was right. Leave a safe way across the broken ridge for the next walker." style="font-size: 19px; white-space: normal; color: rgb(216, 233, 231); margin-top: 12px;" />
+                    <ui:Label text="Gather 5 Timber + 2 Stone. Cross north, turn east at the cairn, then rebuild the keeper's steps. Read three field notes; F at the bowl rekindles the three lamps." style="font-size: 17px; white-space: normal; color: rgb(204, 225, 235); margin-top: 16px;" />
+                    <ui:Label text="Available · fresh world · zero starting stocks" style="font-size: 15px; color: rgb(255, 222, 167); white-space: normal; margin-top: 18px;" />
+                    <ui:Button name="select-ember" text="3  Start Ember Reach fresh" style="height: 48px; font-size: 18px; margin-top: 14px;" />
+                </ui:VisualElement>
             </ui:VisualElement>
             <ui:Label text="YOUR SAVES STAY SEPARATE" style="font-size: 15px; -unity-font-style: bold; color: rgb(137, 224, 241); margin-top: 24px;" />
             <ui:Label text="Each launch starts fresh; nothing loads automatically. Inside an expedition, F9 explicitly loads its existing tiles + finite stocks snapshot. F5 saves both together; F8 recovers the previous valid snapshot. Discoveries and activation are session-only. F6 resets only that journal, keeping builds and stocks. Returning here discards live unsaved state after confirmation; saved files are retained." style="font-size: 17px; color: rgb(216, 233, 231); white-space: normal; margin-top: 8px;" />
-            <ui:Label text="Choose with 1 / 2 or a button. Tab / arrows + Enter also work. In an expedition: WASD move · Space jump · LMB mine / RMB place · 1–5 materials · Ctrl precise / smart · Q/E orbit · Esc pause / full controls." style="font-size: 16px; color: rgb(183, 207, 222); white-space: normal; margin-top: 14px;" />
+            <ui:Label text="Choose with 1 / 2 / 3 or a button. Tab / arrows + Enter also work. In an expedition: WASD move · Space jump · LMB mine / RMB place · 1–5 materials · Ctrl precise / smart · Q/E orbit · Esc pause / full controls." style="font-size: 16px; color: rgb(183, 207, 222); white-space: normal; margin-top: 14px;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

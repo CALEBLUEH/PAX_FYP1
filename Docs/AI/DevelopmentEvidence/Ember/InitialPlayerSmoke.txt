@@ -1,0 +1,3 @@
+PASS Third authored Ember card is available and hit-testable
+PASS Actual third-card pointer events own the Ember launch
+FAIL Selection launches the distinct Ember scene

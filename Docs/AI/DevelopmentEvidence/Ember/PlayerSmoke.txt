@@ -1,0 +1,43 @@
+PASS Third authored Ember card is available and hit-testable
+PASS Actual third-card pointer events own the Ember launch
+PASS Selection launches the distinct Ember scene; actual=PaxEmberReach; seconds=0.096
+PASS Scene components loaded
+PASS Authored HUD laid out and status updated
+PASS Player starts grounded
+PASS Ember starts with 5/2 finite route, empty journal and independent slot
+PASS Gather reachable Ember supply (0, 0, -6)
+PASS Gather reachable Ember supply (-1, 0, -6)
+PASS Gather reachable Ember supply (1, 0, -6)
+PASS Gather reachable Ember supply (-2, 0, -6)
+PASS Gather reachable Ember supply (2, 0, -6)
+PASS Gather reachable Ember supply (-1, 0, -3)
+PASS Gather reachable Ember supply (-2, 0, -3)
+PASS Seven authored cache blocks exactly fund the mixed ridge repairs
+PASS Rebuilding and mining the same original cache three times never farms supplies
+PASS Physical walk reads the Wind ledger
+PASS Pointer-frame repair material match=False at (0, -1, -1)
+PASS Wrong Stone crossing tile does not count and refunds its actual unit
+PASS Pointer-frame repair material match=True at (0, -1, -1)
+PASS Checkpoint one Timber crossing tile with exact 4 Timber / 2 Stone stocks
+PASS Actual grounded walk on Ember crossing segment 1
+PASS Pointer-frame repair material match=True at (0, -1, 0)
+PASS Actual grounded walk on Ember crossing segment 2
+PASS North crossing reaches the Leeward cairn and east bank
+PASS Pointer-frame repair material match=True at (3, -1, 3)
+PASS Actual grounded walk on Ember crossing segment 3
+PASS Pointer-frame repair material match=True at (4, -1, 3)
+PASS Actual grounded walk on Ember crossing segment 4
+PASS Pointer-frame repair material match=True at (5, -1, 3)
+PASS Actual grounded walk on Ember crossing segment 5
+PASS Pointer-frame repair material match=True at (7, 1, 3)
+PASS Pointer-frame repair material match=True at (6, 0, 3)
+PASS Two reachable matching Stone repairs spend two units; remote completion rejects
+PASS Real held jump lands on Ember ridge level 1
+PASS Real held jump lands on Ember ridge level 2
+PASS Unwarped north/east traversal reaches the keeper and completes with zero rewards
+PASS Three-lamp payoff uses mission completion, original field-note text and exact zero stocks
+PASS Ridge construction retains collision, logical shadow and obstruction presentation invariants
+PASS Previous partial-route snapshot restores exact 4/2 stocks and one matching repair
+PASS Rollback revokes the lamp payoff
+PASS Repeated full loads neither mint resources nor bypass explicit reactivation
+PASS F6 field-note replay keeps repairs, zero stocks and snapshot bytes; lamps return dormant
