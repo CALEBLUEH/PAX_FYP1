@@ -1,0 +1,711 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="91" result="Passed" total="91" passed="91" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-18 17:34:55Z" end-time="2026-10-18 17:36:10Z" duration="75.5989553">
+  <test-suite type="TestSuite" id="1113" name="PAX_FYP1" fullname="PAX_FYP1" runstate="Runnable" testcasecount="91" result="Passed" start-time="2026-10-18 17:34:55Z" end-time="2026-10-18 17:36:10Z" duration="75.598955" total="91" passed="91" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1108" name="Pax.PlayModeTests.dll" fullname="C:/Users/user/.codex/worktrees/pax-development/PAX_FYP1/Library/ScriptAssemblies/Pax.PlayModeTests.dll" runstate="Runnable" testcasecount="91" result="Passed" start-time="2026-10-18 17:34:55Z" end-time="2026-10-18 17:36:10Z" duration="75.589090" total="91" passed="91" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="77940" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1109" name="Pax" fullname="Pax" runstate="Runnable" testcasecount="91" result="Passed" start-time="2026-10-18 17:34:55Z" end-time="2026-10-18 17:36:10Z" duration="75.588140" total="91" passed="91" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1110" name="Tests" fullname="Pax.Tests" runstate="Runnable" testcasecount="91" result="Passed" start-time="2026-10-18 17:34:55Z" end-time="2026-10-18 17:36:10Z" duration="75.587693" total="91" passed="91" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1001" name="PaxChartRouteTests" fullname="Pax.Tests.PaxChartRouteTests" classname="Pax.Tests.PaxChartRouteTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 17:34:55Z" end-time="2026-10-18 17:34:58Z" duration="3.001115" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1002" name="PhysicalMixedMaterialRouteLeadsToChartAndCompletesWithoutWarp" fullname="Pax.Tests.PaxChartRouteTests.PhysicalMixedMaterialRouteLeadsToChartAndCompletesWithoutWarp" methodname="PhysicalMixedMaterialRouteLeadsToChartAndCompletesWithoutWarp" classname="Pax.Tests.PaxChartRouteTests" runstate="Runnable" seed="621396622" result="Passed" start-time="2026-10-18 17:34:55Z" end-time="2026-10-18 17:34:57Z" duration="1.912991" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1004" name="SavedCompletedRouteCanRetryWithoutRespawningSuppliesOrKeepingDiscoveries" fullname="Pax.Tests.PaxChartRouteTests.SavedCompletedRouteCanRetryWithoutRespawningSuppliesOrKeepingDiscoveries" methodname="SavedCompletedRouteCanRetryWithoutRespawningSuppliesOrKeepingDiscoveries" classname="Pax.Tests.PaxChartRouteTests" runstate="Runnable" seed="909742692" result="Passed" start-time="2026-10-18 17:34:57Z" end-time="2026-10-18 17:34:57Z" duration="0.682294" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1003" name="WrongMaterialCanBeRecoveredAndSnapshotRetryNeverMintsUnits" fullname="Pax.Tests.PaxChartRouteTests.WrongMaterialCanBeRecoveredAndSnapshotRetryNeverMintsUnits" methodname="WrongMaterialCanBeRecoveredAndSnapshotRetryNeverMintsUnits" classname="Pax.Tests.PaxChartRouteTests" runstate="Runnable" seed="1627844453" result="Passed" start-time="2026-10-18 17:34:57Z" end-time="2026-10-18 17:34:58Z" duration="0.393103" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1005" name="PaxContinueTests" fullname="Pax.Tests.PaxContinueTests" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-18 17:34:58Z" end-time="2026-10-18 17:35:08Z" duration="9.806800" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1007" name="ChartMappingRestoresExactWorldStocksAndHistory" fullname="Pax.Tests.PaxContinueTests.ChartMappingRestoresExactWorldStocksAndHistory" methodname="ChartMappingRestoresExactWorldStocksAndHistory" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" seed="287785015" result="Passed" start-time="2026-10-18 17:34:58Z" end-time="2026-10-18 17:34:59Z" duration="1.142054" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1011" name="ContinueRechecksFilesChangedAfterMenuSelectionAndKeepsFreshStateOnFailure" fullname="Pax.Tests.PaxContinueTests.ContinueRechecksFilesChangedAfterMenuSelectionAndKeepsFreshStateOnFailure" methodname="ContinueRechecksFilesChangedAfterMenuSelectionAndKeepsFreshStateOnFailure" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" seed="1803943492" result="Passed" start-time="2026-10-18 17:34:59Z" end-time="2026-10-18 17:35:00Z" duration="1.086728" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1009" name="CorruptPrimaryRecoversOnlyItsCompatibleBackupWithoutAnyFileWrites" fullname="Pax.Tests.PaxContinueTests.CorruptPrimaryRecoversOnlyItsCompatibleBackupWithoutAnyFileWrites" methodname="CorruptPrimaryRecoversOnlyItsCompatibleBackupWithoutAnyFileWrites" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" seed="597411678" result="Passed" start-time="2026-10-18 17:35:00Z" end-time="2026-10-18 17:35:01Z" duration="1.116942" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1008" name="EmberMappingRestoresExactWorldStocksAndHistory" fullname="Pax.Tests.PaxContinueTests.EmberMappingRestoresExactWorldStocksAndHistory" methodname="EmberMappingRestoresExactWorldStocksAndHistory" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" seed="28022439" result="Passed" start-time="2026-10-18 17:35:01Z" end-time="2026-10-18 17:35:02Z" duration="1.140020" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1013" name="FocusPauseDuringContinueRequiresExplicitResumeAndHeldActionsCannotClickThrough" fullname="Pax.Tests.PaxContinueTests.FocusPauseDuringContinueRequiresExplicitResumeAndHeldActionsCannotClickThrough" methodname="FocusPauseDuringContinueRequiresExplicitResumeAndHeldActionsCannotClickThrough" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" seed="1577623799" result="Passed" start-time="2026-10-18 17:35:02Z" end-time="2026-10-18 17:35:04Z" duration="1.394111" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1010" name="MissingForgedWrongWorldAndWrongRulesNeverEnableContinueOrBlockFresh" fullname="Pax.Tests.PaxContinueTests.MissingForgedWrongWorldAndWrongRulesNeverEnableContinueOrBlockFresh" methodname="MissingForgedWrongWorldAndWrongRulesNeverEnableContinueOrBlockFresh" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" seed="1476738573" result="Passed" start-time="2026-10-18 17:35:04Z" end-time="2026-10-18 17:35:05Z" duration="1.118685" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1006" name="ResourceMappingRestoresExactWorldStocksAndHistory" fullname="Pax.Tests.PaxContinueTests.ResourceMappingRestoresExactWorldStocksAndHistory" methodname="ResourceMappingRestoresExactWorldStocksAndHistory" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" seed="1070727707" result="Passed" start-time="2026-10-18 17:35:05Z" end-time="2026-10-18 17:35:06Z" duration="1.686479" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1012" name="SpawnOverlapRejectsValidPrimaryWithoutFallbackThenManualF9WorksAfterWalkingAside" fullname="Pax.Tests.PaxContinueTests.SpawnOverlapRejectsValidPrimaryWithoutFallbackThenManualF9WorksAfterWalkingAside" methodname="SpawnOverlapRejectsValidPrimaryWithoutFallbackThenManualF9WorksAfterWalkingAside" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" seed="1536357133" result="Passed" start-time="2026-10-18 17:35:06Z" end-time="2026-10-18 17:35:08Z" duration="1.119197" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1014" name="PaxEmberTests" fullname="Pax.Tests.PaxEmberTests" classname="Pax.Tests.PaxEmberTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 17:35:08Z" end-time="2026-10-18 17:35:10Z" duration="2.903799" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1016" name="MixedRetryAndRepeatedHarvestRebuildCannotMintSupplies" fullname="Pax.Tests.PaxEmberTests.MixedRetryAndRepeatedHarvestRebuildCannotMintSupplies" methodname="MixedRetryAndRepeatedHarvestRebuildCannotMintSupplies" classname="Pax.Tests.PaxEmberTests" runstate="Runnable" seed="1193961847" result="Passed" start-time="2026-10-18 17:35:08Z" end-time="2026-10-18 17:35:08Z" duration="0.427062" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1015" name="RidgeCompletionUsesActualNorthEastBuildWalkAndTwoJumpsWithoutWarp" fullname="Pax.Tests.PaxEmberTests.RidgeCompletionUsesActualNorthEastBuildWalkAndTwoJumpsWithoutWarp" methodname="RidgeCompletionUsesActualNorthEastBuildWalkAndTwoJumpsWithoutWarp" classname="Pax.Tests.PaxEmberTests" runstate="Runnable" seed="895306584" result="Passed" start-time="2026-10-18 17:35:08Z" end-time="2026-10-18 17:35:09Z" duration="0.726919" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1017" name="ThirdSelectionKeyAndButtonReturnToIndependentFreshSlot" fullname="Pax.Tests.PaxEmberTests.ThirdSelectionKeyAndButtonReturnToIndependentFreshSlot" methodname="ThirdSelectionKeyAndButtonReturnToIndependentFreshSlot" classname="Pax.Tests.PaxEmberTests" runstate="Runnable" seed="1426542245" result="Passed" start-time="2026-10-18 17:35:09Z" end-time="2026-10-18 17:35:10Z" duration="1.747339" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1018" name="PaxEntryTests" fullname="Pax.Tests.PaxEntryTests" classname="Pax.Tests.PaxEntryTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-18 17:35:10Z" end-time="2026-10-18 17:35:18Z" duration="7.356615" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1019" name="BothKeyboardRoutesLaunchFreshAndRequireReleaseAfterFocus" fullname="Pax.Tests.PaxEntryTests.BothKeyboardRoutesLaunchFreshAndRequireReleaseAfterFocus" methodname="BothKeyboardRoutesLaunchFreshAndRequireReleaseAfterFocus" classname="Pax.Tests.PaxEntryTests" runstate="Runnable" seed="870114160" result="Passed" start-time="2026-10-18 17:35:10Z" end-time="2026-10-18 17:35:12Z" duration="1.574216" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1021" name="ChartCancelPreservesLiveStateAndConfirmedReentryLoadsOnlyOnExplicitF9" fullname="Pax.Tests.PaxEntryTests.ChartCancelPreservesLiveStateAndConfirmedReentryLoadsOnlyOnExplicitF9" methodname="ChartCancelPreservesLiveStateAndConfirmedReentryLoadsOnlyOnExplicitF9" classname="Pax.Tests.PaxEntryTests" runstate="Runnable" seed="1890707471" result="Passed" start-time="2026-10-18 17:35:12Z" end-time="2026-10-18 17:35:13Z" duration="1.355430" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1022" name="EscapeCancelsConfirmationAndHeldKeysCannotResumeOrDiscard" fullname="Pax.Tests.PaxEntryTests.EscapeCancelsConfirmationAndHeldKeysCannotResumeOrDiscard" methodname="EscapeCancelsConfirmationAndHeldKeysCannotResumeOrDiscard" classname="Pax.Tests.PaxEntryTests" runstate="Runnable" seed="1970255672" result="Passed" start-time="2026-10-18 17:35:13Z" end-time="2026-10-18 17:35:14Z" duration="0.925313" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1020" name="ResourceCancelPreservesLiveStateAndConfirmedReentryLoadsOnlyOnExplicitF9" fullname="Pax.Tests.PaxEntryTests.ResourceCancelPreservesLiveStateAndConfirmedReentryLoadsOnlyOnExplicitF9" methodname="ResourceCancelPreservesLiveStateAndConfirmedReentryLoadsOnlyOnExplicitF9" classname="Pax.Tests.PaxEntryTests" runstate="Runnable" seed="234089427" result="Passed" start-time="2026-10-18 17:35:14Z" end-time="2026-10-18 17:35:16Z" duration="1.950085" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1023" name="ReturnRestoresNonUnitClockAndNewLaunchConsumesHeldGameplay" fullname="Pax.Tests.PaxEntryTests.ReturnRestoresNonUnitClockAndNewLaunchConsumesHeldGameplay" methodname="ReturnRestoresNonUnitClockAndNewLaunchConsumesHeldGameplay" classname="Pax.Tests.PaxEntryTests" runstate="Runnable" seed="261838548" result="Passed" start-time="2026-10-18 17:35:16Z" end-time="2026-10-18 17:35:18Z" duration="1.548033" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1024" name="PaxExpeditionTests" fullname="Pax.Tests.PaxExpeditionTests" classname="Pax.Tests.PaxExpeditionTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-18 17:35:18Z" end-time="2026-10-18 17:35:25Z" duration="6.955035" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1030" name="AuthoredHudShowsProgressCompletionAndSessionPersistenceNotice" fullname="Pax.Tests.PaxExpeditionTests.AuthoredHudShowsProgressCompletionAndSessionPersistenceNotice" methodname="AuthoredHudShowsProgressCompletionAndSessionPersistenceNotice" classname="Pax.Tests.PaxExpeditionTests" runstate="Runnable" seed="1246739005" result="Passed" start-time="2026-10-18 17:35:18Z" end-time="2026-10-18 17:35:19Z" duration="1.552461" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1026" name="BothVisitOrdersAndRepeatedVisitsAreIdempotent" fullname="Pax.Tests.PaxExpeditionTests.BothVisitOrdersAndRepeatedVisitsAreIdempotent" methodname="BothVisitOrdersAndRepeatedVisitsAreIdempotent" classname="Pax.Tests.PaxExpeditionTests" runstate="Runnable" seed="980734037" result="Passed" start-time="2026-10-18 17:35:19Z" end-time="2026-10-18 17:35:20Z" duration="1.152776" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1025" name="CameraRoofAndInterruptedShortVisitsCannotSurvey" fullname="Pax.Tests.PaxExpeditionTests.CameraRoofAndInterruptedShortVisitsCannotSurvey" methodname="CameraRoofAndInterruptedShortVisitsCannotSurvey" classname="Pax.Tests.PaxExpeditionTests" runstate="Runnable" seed="2136081848" result="Passed" start-time="2026-10-18 17:35:20Z" end-time="2026-10-18 17:35:21Z" duration="0.851582" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1028" name="CompletionRequiresRealJumpReturnAndRepairRemovalRevokesIt" fullname="Pax.Tests.PaxExpeditionTests.CompletionRequiresRealJumpReturnAndRepairRemovalRevokesIt" methodname="CompletionRequiresRealJumpReturnAndRepairRemovalRevokesIt" classname="Pax.Tests.PaxExpeditionTests" runstate="Runnable" seed="1686030157" result="Passed" start-time="2026-10-18 17:35:21Z" end-time="2026-10-18 17:35:22Z" duration="0.989162" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1027" name="EarlyRepairsUnrelatedTilesAndDisabledOrTriggerSolidsAreHandled" fullname="Pax.Tests.PaxExpeditionTests.EarlyRepairsUnrelatedTilesAndDisabledOrTriggerSolidsAreHandled" methodname="EarlyRepairsUnrelatedTilesAndDisabledOrTriggerSolidsAreHandled" classname="Pax.Tests.PaxExpeditionTests" runstate="Runnable" seed="1591811071" result="Passed" start-time="2026-10-18 17:35:22Z" end-time="2026-10-18 17:35:23Z" duration="0.649944" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1029" name="SavesPreviousSaveResetAndReloadDeriveRepairsWithoutSavingVisits" fullname="Pax.Tests.PaxExpeditionTests.SavesPreviousSaveResetAndReloadDeriveRepairsWithoutSavingVisits" methodname="SavesPreviousSaveResetAndReloadDeriveRepairsWithoutSavingVisits" classname="Pax.Tests.PaxExpeditionTests" runstate="Runnable" seed="1216132014" result="Passed" start-time="2026-10-18 17:35:23Z" end-time="2026-10-18 17:35:25Z" duration="1.756086" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1031" name="PaxFiniteResourceTests" fullname="Pax.Tests.PaxFiniteResourceTests" classname="Pax.Tests.PaxFiniteResourceTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-18 17:35:25Z" end-time="2026-10-18 17:35:29Z" duration="4.307956" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1036" name="AuthoredHigherYieldCannotBeFarmedByRebuildingSameTileAndLimitsBlockMining" fullname="Pax.Tests.PaxFiniteResourceTests.AuthoredHigherYieldCannotBeFarmedByRebuildingSameTileAndLimitsBlockMining" methodname="AuthoredHigherYieldCannotBeFarmedByRebuildingSameTileAndLimitsBlockMining" classname="Pax.Tests.PaxFiniteResourceTests" runstate="Runnable" seed="1074948985" result="Passed" start-time="2026-10-18 17:35:25Z" end-time="2026-10-18 17:35:25Z" duration="0.678613" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1033" name="CombinedCurrentPreviousRepeatedLoadsRestoreExactStocksAndTiles" fullname="Pax.Tests.PaxFiniteResourceTests.CombinedCurrentPreviousRepeatedLoadsRestoreExactStocksAndTiles" methodname="CombinedCurrentPreviousRepeatedLoadsRestoreExactStocksAndTiles" classname="Pax.Tests.PaxFiniteResourceTests" runstate="Runnable" seed="1955449507" result="Passed" start-time="2026-10-18 17:35:25Z" end-time="2026-10-18 17:35:26Z" duration="0.699833" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1035" name="IncompatiblePrimaryNeverReplacesValidCombinedBackup" fullname="Pax.Tests.PaxFiniteResourceTests.IncompatiblePrimaryNeverReplacesValidCombinedBackup" methodname="IncompatiblePrimaryNeverReplacesValidCombinedBackup" classname="Pax.Tests.PaxFiniteResourceTests" runstate="Runnable" seed="2015638133" result="Passed" start-time="2026-10-18 17:35:26Z" end-time="2026-10-18 17:35:27Z" duration="0.688425" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1034" name="InvalidCountsWorldRulesLedgerTileOnlyAndBodyOverlapLeaveBothStatesIntact" fullname="Pax.Tests.PaxFiniteResourceTests.InvalidCountsWorldRulesLedgerTileOnlyAndBodyOverlapLeaveBothStatesIntact" methodname="InvalidCountsWorldRulesLedgerTileOnlyAndBodyOverlapLeaveBothStatesIntact" classname="Pax.Tests.PaxFiniteResourceTests" runstate="Runnable" seed="1212178257" result="Passed" start-time="2026-10-18 17:35:27Z" end-time="2026-10-18 17:35:28Z" duration="0.760914" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1032" name="SuccessfulEditsAccountOnceFailedEditsNeverGainOrSpend" fullname="Pax.Tests.PaxFiniteResourceTests.SuccessfulEditsAccountOnceFailedEditsNeverGainOrSpend" methodname="SuccessfulEditsAccountOnceFailedEditsNeverGainOrSpend" classname="Pax.Tests.PaxFiniteResourceTests" runstate="Runnable" seed="1045852707" result="Passed" start-time="2026-10-18 17:35:28Z" end-time="2026-10-18 17:35:28Z" duration="0.839171" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1037" name="UnmappedMaterialsAndUnaccountedWorldEditsCannotMintOrSaveResources" fullname="Pax.Tests.PaxFiniteResourceTests.UnmappedMaterialsAndUnaccountedWorldEditsCannotMintOrSaveResources" methodname="UnmappedMaterialsAndUnaccountedWorldEditsCannotMintOrSaveResources" classname="Pax.Tests.PaxFiniteResourceTests" runstate="Runnable" seed="1629286362" result="Passed" start-time="2026-10-18 17:35:28Z" end-time="2026-10-18 17:35:29Z" duration="0.638055" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1038" name="PaxFrontierPlayTests" fullname="Pax.Tests.PaxFrontierPlayTests" classname="Pax.Tests.PaxFrontierPlayTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 17:35:29Z" end-time="2026-10-18 17:35:32Z" duration="2.900749" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1040" name="EarnedGeneratedResourceRoundTripKeepsHarvestHistoryAndRejectsForgedBudget" fullname="Pax.Tests.PaxFrontierPlayTests.EarnedGeneratedResourceRoundTripKeepsHarvestHistoryAndRejectsForgedBudget" methodname="EarnedGeneratedResourceRoundTripKeepsHarvestHistoryAndRejectsForgedBudget" classname="Pax.Tests.PaxFrontierPlayTests" runstate="Runnable" seed="500542915" result="Passed" start-time="2026-10-18 17:35:29Z" end-time="2026-10-18 17:35:31Z" duration="1.582393" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1041" name="FocusPauseRequiresResumeAndBlocksGeneratedWorldSaveAndHeldMovement" fullname="Pax.Tests.PaxFrontierPlayTests.FocusPauseRequiresResumeAndBlocksGeneratedWorldSaveAndHeldMovement" methodname="FocusPauseRequiresResumeAndBlocksGeneratedWorldSaveAndHeldMovement" classname="Pax.Tests.PaxFrontierPlayTests" runstate="Runnable" seed="1828991258" result="Passed" start-time="2026-10-18 17:35:31Z" end-time="2026-10-18 17:35:31Z" duration="0.653796" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1039" name="SavedLayoutUsesExistingSignatureAndDefinitionEditsNeverRegenerate" fullname="Pax.Tests.PaxFrontierPlayTests.SavedLayoutUsesExistingSignatureAndDefinitionEditsNeverRegenerate" methodname="SavedLayoutUsesExistingSignatureAndDefinitionEditsNeverRegenerate" classname="Pax.Tests.PaxFrontierPlayTests" runstate="Runnable" seed="2101387454" result="Passed" start-time="2026-10-18 17:35:31Z" end-time="2026-10-18 17:35:32Z" duration="0.662476" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1042" name="PaxGeneratedIslandTests" fullname="Pax.Tests.PaxGeneratedIslandTests" classname="Pax.Tests.PaxGeneratedIslandTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 17:35:32Z" end-time="2026-10-18 17:35:35Z" duration="3.069823" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1043" name="AuthoredSpawnAndEveryTwoHighDoorHaveRealCollisionAndCutaway" fullname="Pax.Tests.PaxGeneratedIslandTests.AuthoredSpawnAndEveryTwoHighDoorHaveRealCollisionAndCutaway" methodname="AuthoredSpawnAndEveryTwoHighDoorHaveRealCollisionAndCutaway" classname="Pax.Tests.PaxGeneratedIslandTests" runstate="Runnable" seed="356394923" result="Passed" start-time="2026-10-18 17:35:32Z" end-time="2026-10-18 17:35:33Z" duration="1.240360" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1045" name="DifferentAuthoredWorldRejectsSaveAndEditingSettingsDoesNotRegenerate" fullname="Pax.Tests.PaxGeneratedIslandTests.DifferentAuthoredWorldRejectsSaveAndEditingSettingsDoesNotRegenerate" methodname="DifferentAuthoredWorldRejectsSaveAndEditingSettingsDoesNotRegenerate" classname="Pax.Tests.PaxGeneratedIslandTests" runstate="Runnable" seed="375530977" result="Passed" start-time="2026-10-18 17:35:33Z" end-time="2026-10-18 17:35:34Z" duration="1.174250" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1044" name="MiningPlacementAndSaveRoundTripPreserveGeneratedMaterialsAndSolids" fullname="Pax.Tests.PaxGeneratedIslandTests.MiningPlacementAndSaveRoundTripPreserveGeneratedMaterialsAndSolids" methodname="MiningPlacementAndSaveRoundTripPreserveGeneratedMaterialsAndSolids" classname="Pax.Tests.PaxGeneratedIslandTests" runstate="Runnable" seed="519266066" result="Passed" start-time="2026-10-18 17:35:34Z" end-time="2026-10-18 17:35:35Z" duration="0.653283" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1046" name="PaxInteractionFeedbackTests" fullname="Pax.Tests.PaxInteractionFeedbackTests" classname="Pax.Tests.PaxInteractionFeedbackTests" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-10-18 17:35:35Z" end-time="2026-10-18 17:35:41Z" duration="6.235558" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1057" name="AuthoredHudShowsSeparateReasonsAndClickFeedback" fullname="Pax.Tests.PaxInteractionFeedbackTests.AuthoredHudShowsSeparateReasonsAndClickFeedback" methodname="AuthoredHudShowsSeparateReasonsAndClickFeedback" classname="Pax.Tests.PaxInteractionFeedbackTests" runstate="Runnable" seed="1205816746" result="Passed" start-time="2026-10-18 17:35:35Z" end-time="2026-10-18 17:35:36Z" duration="0.758210" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1052" name="InvalidPlacementExplainsItsSpecificCauseWithoutMutation" fullname="Pax.Tests.PaxInteractionFeedbackTests.InvalidPlacementExplainsItsSpecificCauseWithoutMutation" classname="Pax.Tests.PaxInteractionFeedbackTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-18 17:35:36Z" end-time="2026-10-18 17:35:39Z" duration="2.724765" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1047" name="InvalidPlacementExplainsItsSpecificCauseWithoutMutation(0,0,-3,PlayerOverlap)" fullname="Pax.Tests.PaxInteractionFeedbackTests.InvalidPlacementExplainsItsSpecificCauseWithoutMutation(0,0,-3,PlayerOverlap)" methodname="InvalidPlacementExplainsItsSpecificCauseWithoutMutation" classname="Pax.Tests.PaxInteractionFeedbackTests" runstate="Runnable" seed="850601443" result="Passed" start-time="2026-10-18 17:35:36Z" end-time="2026-10-18 17:35:36Z" duration="0.542937" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1048" name="InvalidPlacementExplainsItsSpecificCauseWithoutMutation(-3,0,-3,Occupied)" fullname="Pax.Tests.PaxInteractionFeedbackTests.InvalidPlacementExplainsItsSpecificCauseWithoutMutation(-3,0,-3,Occupied)" methodname="InvalidPlacementExplainsItsSpecificCauseWithoutMutation" classname="Pax.Tests.PaxInteractionFeedbackTests" runstate="Runnable" seed="101775933" result="Passed" start-time="2026-10-18 17:35:36Z" end-time="2026-10-18 17:35:37Z" duration="0.537856" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1049" name="InvalidPlacementExplainsItsSpecificCauseWithoutMutation(0,4,-3,Unsupported)" fullname="Pax.Tests.PaxInteractionFeedbackTests.InvalidPlacementExplainsItsSpecificCauseWithoutMutation(0,4,-3,Unsupported)" methodname="InvalidPlacementExplainsItsSpecificCauseWithoutMutation" classname="Pax.Tests.PaxInteractionFeedbackTests" runstate="Runnable" seed="1686485305" result="Passed" start-time="2026-10-18 17:35:37Z" end-time="2026-10-18 17:35:37Z" duration="0.547370" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1050" name="InvalidPlacementExplainsItsSpecificCauseWithoutMutation(20,0,0,OutsideWorld)" fullname="Pax.Tests.PaxInteractionFeedbackTests.InvalidPlacementExplainsItsSpecificCauseWithoutMutation(20,0,0,OutsideWorld)" methodname="InvalidPlacementExplainsItsSpecificCauseWithoutMutation" classname="Pax.Tests.PaxInteractionFeedbackTests" runstate="Runnable" seed="233682671" result="Passed" start-time="2026-10-18 17:35:37Z" end-time="2026-10-18 17:35:38Z" duration="0.543165" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1051" name="InvalidPlacementExplainsItsSpecificCauseWithoutMutation(10,0,-3,OutOfReach)" fullname="Pax.Tests.PaxInteractionFeedbackTests.InvalidPlacementExplainsItsSpecificCauseWithoutMutation(10,0,-3,OutOfReach)" methodname="InvalidPlacementExplainsItsSpecificCauseWithoutMutation" classname="Pax.Tests.PaxInteractionFeedbackTests" runstate="Runnable" seed="2066639009" result="Passed" start-time="2026-10-18 17:35:38Z" end-time="2026-10-18 17:35:39Z" duration="0.551621" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1056" name="MovingIntoPreviewMakesItInvalidWithoutMovingThePredictedCell" fullname="Pax.Tests.PaxInteractionFeedbackTests.MovingIntoPreviewMakesItInvalidWithoutMovingThePredictedCell" methodname="MovingIntoPreviewMakesItInvalidWithoutMovingThePredictedCell" classname="Pax.Tests.PaxInteractionFeedbackTests" runstate="Runnable" seed="1188028974" result="Passed" start-time="2026-10-18 17:35:39Z" end-time="2026-10-18 17:35:39Z" duration="0.537786" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1055" name="OutOfReachSurfaceRetainsRedPreviewAndExplainsRejectedClick" fullname="Pax.Tests.PaxInteractionFeedbackTests.OutOfReachSurfaceRetainsRedPreviewAndExplainsRejectedClick" methodname="OutOfReachSurfaceRetainsRedPreviewAndExplainsRejectedClick" classname="Pax.Tests.PaxInteractionFeedbackTests" runstate="Runnable" seed="1374674679" result="Passed" start-time="2026-10-18 17:35:39Z" end-time="2026-10-18 17:35:40Z" duration="0.549280" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1054" name="PhysicalObstructionExplainsRejectionEvenIfTheWallIsFaded" fullname="Pax.Tests.PaxInteractionFeedbackTests.PhysicalObstructionExplainsRejectionEvenIfTheWallIsFaded" methodname="PhysicalObstructionExplainsRejectionEvenIfTheWallIsFaded" classname="Pax.Tests.PaxInteractionFeedbackTests" runstate="Runnable" seed="1548693972" result="Passed" start-time="2026-10-18 17:35:40Z" end-time="2026-10-18 17:35:40Z" duration="0.551540" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1053" name="ProtectedAndRemovedTargetsHaveActionableMiningFeedback" fullname="Pax.Tests.PaxInteractionFeedbackTests.ProtectedAndRemovedTargetsHaveActionableMiningFeedback" methodname="ProtectedAndRemovedTargetsHaveActionableMiningFeedback" classname="Pax.Tests.PaxInteractionFeedbackTests" runstate="Runnable" seed="163264490" result="Passed" start-time="2026-10-18 17:35:40Z" end-time="2026-10-18 17:35:41Z" duration="0.549167" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1058" name="UnchangedPointerRevalidatesFeedbackAfterPhysicalWorldChanges" fullname="Pax.Tests.PaxInteractionFeedbackTests.UnchangedPointerRevalidatesFeedbackAfterPhysicalWorldChanges" methodname="UnchangedPointerRevalidatesFeedbackAfterPhysicalWorldChanges" classname="Pax.Tests.PaxInteractionFeedbackTests" runstate="Runnable" seed="1098603370" result="Passed" start-time="2026-10-18 17:35:41Z" end-time="2026-10-18 17:35:41Z" duration="0.560280" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1059" name="PaxPalettePersistenceTests" fullname="Pax.Tests.PaxPalettePersistenceTests" classname="Pax.Tests.PaxPalettePersistenceTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-18 17:35:41Z" end-time="2026-10-18 17:35:45Z" duration="3.506280" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1060" name="LegacyFileLoadsGrassMigratesPrimaryAndRetainsLegacyBackupAndSignature" fullname="Pax.Tests.PaxPalettePersistenceTests.LegacyFileLoadsGrassMigratesPrimaryAndRetainsLegacyBackupAndSignature" methodname="LegacyFileLoadsGrassMigratesPrimaryAndRetainsLegacyBackupAndSignature" classname="Pax.Tests.PaxPalettePersistenceTests" runstate="Runnable" seed="615194754" result="Passed" start-time="2026-10-18 17:35:41Z" end-time="2026-10-18 17:35:42Z" duration="1.237105" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1061" name="MixedMaterialsMineReplacePrimaryAndPreviousRestoreExactly" fullname="Pax.Tests.PaxPalettePersistenceTests.MixedMaterialsMineReplacePrimaryAndPreviousRestoreExactly" methodname="MixedMaterialsMineReplacePrimaryAndPreviousRestoreExactly" classname="Pax.Tests.PaxPalettePersistenceTests" runstate="Runnable" seed="1369178838" result="Passed" start-time="2026-10-18 17:35:42Z" end-time="2026-10-18 17:35:43Z" duration="0.692758" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1063" name="NumberSelectionPreviewValidityAndInvalidSelectionKeepAuthoritativeState" fullname="Pax.Tests.PaxPalettePersistenceTests.NumberSelectionPreviewValidityAndInvalidSelectionKeepAuthoritativeState" methodname="NumberSelectionPreviewValidityAndInvalidSelectionKeepAuthoritativeState" classname="Pax.Tests.PaxPalettePersistenceTests" runstate="Runnable" seed="2039474672" result="Passed" start-time="2026-10-18 17:35:43Z" end-time="2026-10-18 17:35:44Z" duration="0.873286" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1062" name="UnknownWrongWorldAndInvalidReplacementNeverMutateWorldOrValidFiles" fullname="Pax.Tests.PaxPalettePersistenceTests.UnknownWrongWorldAndInvalidReplacementNeverMutateWorldOrValidFiles" methodname="UnknownWrongWorldAndInvalidReplacementNeverMutateWorldOrValidFiles" classname="Pax.Tests.PaxPalettePersistenceTests" runstate="Runnable" seed="1732023920" result="Passed" start-time="2026-10-18 17:35:44Z" end-time="2026-10-18 17:35:45Z" duration="0.701036" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1064" name="PaxPauseTests" fullname="Pax.Tests.PaxPauseTests" classname="Pax.Tests.PaxPauseTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-18 17:35:45Z" end-time="2026-10-18 17:35:51Z" duration="6.310597" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1070" name="ChartAuthoredButtonConsumesClickAndRequiresRelease" fullname="Pax.Tests.PaxPauseTests.ChartAuthoredButtonConsumesClickAndRequiresRelease" methodname="ChartAuthoredButtonConsumesClickAndRequiresRelease" classname="Pax.Tests.PaxPauseTests" runstate="Runnable" seed="1328638130" result="Passed" start-time="2026-10-18 17:35:45Z" end-time="2026-10-18 17:35:45Z" duration="0.390580" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1068" name="ChartDiscoveryDwellStopsAndContinuesExactly" fullname="Pax.Tests.PaxPauseTests.ChartDiscoveryDwellStopsAndContinuesExactly" methodname="ChartDiscoveryDwellStopsAndContinuesExactly" classname="Pax.Tests.PaxPauseTests" runstate="Runnable" seed="810665731" result="Passed" start-time="2026-10-18 17:35:45Z" end-time="2026-10-18 17:35:46Z" duration="0.995033" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1066" name="ChartPauseFreezesAirborneStateAndRejectsAllActions" fullname="Pax.Tests.PaxPauseTests.ChartPauseFreezesAirborneStateAndRejectsAllActions" methodname="ChartPauseFreezesAirborneStateAndRejectsAllActions" classname="Pax.Tests.PaxPauseTests" runstate="Runnable" seed="304496650" result="Passed" start-time="2026-10-18 17:35:46Z" end-time="2026-10-18 17:35:47Z" duration="0.663460" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1071" name="DisableRestoresOwnedNonUnitClockAndReenableDoesNotDuplicateButton" fullname="Pax.Tests.PaxPauseTests.DisableRestoresOwnedNonUnitClockAndReenableDoesNotDuplicateButton" methodname="DisableRestoresOwnedNonUnitClockAndReenableDoesNotDuplicateButton" classname="Pax.Tests.PaxPauseTests" runstate="Runnable" seed="845055171" result="Passed" start-time="2026-10-18 17:35:47Z" end-time="2026-10-18 17:35:47Z" duration="0.357964" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1069" name="ResourceAuthoredButtonConsumesClickAndRequiresRelease" fullname="Pax.Tests.PaxPauseTests.ResourceAuthoredButtonConsumesClickAndRequiresRelease" methodname="ResourceAuthoredButtonConsumesClickAndRequiresRelease" classname="Pax.Tests.PaxPauseTests" runstate="Runnable" seed="930430708" result="Passed" start-time="2026-10-18 17:35:47Z" end-time="2026-10-18 17:35:48Z" duration="0.625151" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1067" name="ResourceDiscoveryDwellStopsAndContinuesExactly" fullname="Pax.Tests.PaxPauseTests.ResourceDiscoveryDwellStopsAndContinuesExactly" methodname="ResourceDiscoveryDwellStopsAndContinuesExactly" classname="Pax.Tests.PaxPauseTests" runstate="Runnable" seed="885723307" result="Passed" start-time="2026-10-18 17:35:48Z" end-time="2026-10-18 17:35:49Z" duration="1.296726" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1065" name="ResourcePauseFreezesAirborneStateAndRejectsAllActions" fullname="Pax.Tests.PaxPauseTests.ResourcePauseFreezesAirborneStateAndRejectsAllActions" methodname="ResourcePauseFreezesAirborneStateAndRejectsAllActions" classname="Pax.Tests.PaxPauseTests" runstate="Runnable" seed="43224602" result="Passed" start-time="2026-10-18 17:35:49Z" end-time="2026-10-18 17:35:50Z" duration="0.991818" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1072" name="UnloadRestoresClockAndNextFiniteSceneStartsUnpaused" fullname="Pax.Tests.PaxPauseTests.UnloadRestoresClockAndNextFiniteSceneStartsUnpaused" methodname="UnloadRestoresClockAndNextFiniteSceneStartsUnpaused" classname="Pax.Tests.PaxPauseTests" runstate="Runnable" seed="803242142" result="Passed" start-time="2026-10-18 17:35:50Z" end-time="2026-10-18 17:35:51Z" duration="0.986902" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1073" name="PaxPlaytestSaveTests" fullname="Pax.Tests.PaxPlaytestSaveTests" classname="Pax.Tests.PaxPlaytestSaveTests" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-10-18 17:35:51Z" end-time="2026-10-18 17:35:57Z" duration="6.301312" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1083" name="InvalidWorldEditsNeverPartiallyMutateTheLiveGrid" fullname="Pax.Tests.PaxPlaytestSaveTests.InvalidWorldEditsNeverPartiallyMutateTheLiveGrid" classname="Pax.Tests.PaxPlaytestSaveTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-10-18 17:35:51Z" end-time="2026-10-18 17:35:54Z" duration="3.348827" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1077" name="InvalidWorldEditsNeverPartiallyMutateTheLiveGrid(&quot;protected&quot;)" fullname="Pax.Tests.PaxPlaytestSaveTests.InvalidWorldEditsNeverPartiallyMutateTheLiveGrid(&quot;protected&quot;)" methodname="InvalidWorldEditsNeverPartiallyMutateTheLiveGrid" classname="Pax.Tests.PaxPlaytestSaveTests" runstate="Runnable" seed="2007174002" result="Passed" start-time="2026-10-18 17:35:51Z" end-time="2026-10-18 17:35:52Z" duration="0.548062" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1078" name="InvalidWorldEditsNeverPartiallyMutateTheLiveGrid(&quot;duplicate-removed&quot;)" fullname="Pax.Tests.PaxPlaytestSaveTests.InvalidWorldEditsNeverPartiallyMutateTheLiveGrid(&quot;duplicate-removed&quot;)" methodname="InvalidWorldEditsNeverPartiallyMutateTheLiveGrid" classname="Pax.Tests.PaxPlaytestSaveTests" runstate="Runnable" seed="245129153" result="Passed" start-time="2026-10-18 17:35:52Z" end-time="2026-10-18 17:35:52Z" duration="0.551804" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1079" name="InvalidWorldEditsNeverPartiallyMutateTheLiveGrid(&quot;duplicate-placed&quot;)" fullname="Pax.Tests.PaxPlaytestSaveTests.InvalidWorldEditsNeverPartiallyMutateTheLiveGrid(&quot;duplicate-placed&quot;)" methodname="InvalidWorldEditsNeverPartiallyMutateTheLiveGrid" classname="Pax.Tests.PaxPlaytestSaveTests" runstate="Runnable" seed="1662460578" result="Passed" start-time="2026-10-18 17:35:52Z" end-time="2026-10-18 17:35:53Z" duration="0.555026" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1080" name="InvalidWorldEditsNeverPartiallyMutateTheLiveGrid(&quot;outside&quot;)" fullname="Pax.Tests.PaxPlaytestSaveTests.InvalidWorldEditsNeverPartiallyMutateTheLiveGrid(&quot;outside&quot;)" methodname="InvalidWorldEditsNeverPartiallyMutateTheLiveGrid" classname="Pax.Tests.PaxPlaytestSaveTests" runstate="Runnable" seed="2070548733" result="Passed" start-time="2026-10-18 17:35:53Z" end-time="2026-10-18 17:35:53Z" duration="0.551963" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1081" name="InvalidWorldEditsNeverPartiallyMutateTheLiveGrid(&quot;wrong-world&quot;)" fullname="Pax.Tests.PaxPlaytestSaveTests.InvalidWorldEditsNeverPartiallyMutateTheLiveGrid(&quot;wrong-world&quot;)" methodname="InvalidWorldEditsNeverPartiallyMutateTheLiveGrid" classname="Pax.Tests.PaxPlaytestSaveTests" runstate="Runnable" seed="2107385010" result="Passed" start-time="2026-10-18 17:35:53Z" end-time="2026-10-18 17:35:54Z" duration="0.569493" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1082" name="InvalidWorldEditsNeverPartiallyMutateTheLiveGrid(&quot;occupied&quot;)" fullname="Pax.Tests.PaxPlaytestSaveTests.InvalidWorldEditsNeverPartiallyMutateTheLiveGrid(&quot;occupied&quot;)" methodname="InvalidWorldEditsNeverPartiallyMutateTheLiveGrid" classname="Pax.Tests.PaxPlaytestSaveTests" runstate="Runnable" seed="1781739777" result="Passed" start-time="2026-10-18 17:35:54Z" end-time="2026-10-18 17:35:54Z" duration="0.571089" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1085" name="LoadingRoofEditsInvalidatesVisibilityAndLightAnalysis" fullname="Pax.Tests.PaxPlaytestSaveTests.LoadingRoofEditsInvalidatesVisibilityAndLightAnalysis" methodname="LoadingRoofEditsInvalidatesVisibilityAndLightAnalysis" classname="Pax.Tests.PaxPlaytestSaveTests" runstate="Runnable" seed="648734984" result="Passed" start-time="2026-10-18 17:35:54Z" end-time="2026-10-18 17:35:55Z" duration="0.582943" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1075" name="MalformedPrimaryKeepsWorldAndPreviousSaveCanRecover" fullname="Pax.Tests.PaxPlaytestSaveTests.MalformedPrimaryKeepsWorldAndPreviousSaveCanRecover" methodname="MalformedPrimaryKeepsWorldAndPreviousSaveCanRecover" classname="Pax.Tests.PaxPlaytestSaveTests" runstate="Runnable" seed="899751110" result="Passed" start-time="2026-10-18 17:35:55Z" end-time="2026-10-18 17:35:56Z" duration="0.600689" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1084" name="RestoredSolidsCannotBeLoadedInsideThePlayer" fullname="Pax.Tests.PaxPlaytestSaveTests.RestoredSolidsCannotBeLoadedInsideThePlayer" methodname="RestoredSolidsCannotBeLoadedInsideThePlayer" classname="Pax.Tests.PaxPlaytestSaveTests" runstate="Runnable" seed="1283799566" result="Passed" start-time="2026-10-18 17:35:56Z" end-time="2026-10-18 17:35:56Z" duration="0.590157" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1074" name="SaveLoadAndPreviousSaveRestoreTilesMaterialsAndPhysics" fullname="Pax.Tests.PaxPlaytestSaveTests.SaveLoadAndPreviousSaveRestoreTilesMaterialsAndPhysics" methodname="SaveLoadAndPreviousSaveRestoreTilesMaterialsAndPhysics" classname="Pax.Tests.PaxPlaytestSaveTests" runstate="Runnable" seed="91208557" result="Passed" start-time="2026-10-18 17:35:56Z" end-time="2026-10-18 17:35:57Z" duration="0.591339" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1076" name="SemanticallyInvalidPrimaryCannotReplaceTheRecoverableBackup" fullname="Pax.Tests.PaxPlaytestSaveTests.SemanticallyInvalidPrimaryCannotReplaceTheRecoverableBackup" methodname="SemanticallyInvalidPrimaryCannotReplaceTheRecoverableBackup" classname="Pax.Tests.PaxPlaytestSaveTests" runstate="Runnable" seed="1104612285" result="Passed" start-time="2026-10-18 17:35:57Z" end-time="2026-10-18 17:35:57Z" duration="0.585425" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1086" name="PaxPrototypeTests" fullname="Pax.Tests.PaxPrototypeTests" classname="Pax.Tests.PaxPrototypeTests" runstate="Runnable" testcasecount="19" result="Passed" start-time="2026-10-18 17:35:57Z" end-time="2026-10-18 17:36:10Z" duration="12.262712" total="19" passed="19" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1100" name="ActualObstructionOverridesNearbyAndRoofPreservationWithoutChangingCollision" fullname="Pax.Tests.PaxPrototypeTests.ActualObstructionOverridesNearbyAndRoofPreservationWithoutChangingCollision" methodname="ActualObstructionOverridesNearbyAndRoofPreservationWithoutChangingCollision" classname="Pax.Tests.PaxPrototypeTests" runstate="Runnable" seed="1263654396" result="Passed" start-time="2026-10-18 17:35:57Z" end-time="2026-10-18 17:35:58Z" duration="0.584159" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1091" name="AuthoredStepsUpdateGroundReferenceOnlyAfterRealLandings" fullname="Pax.Tests.PaxPrototypeTests.AuthoredStepsUpdateGroundReferenceOnlyAfterRealLandings" methodname="AuthoredStepsUpdateGroundReferenceOnlyAfterRealLandings" classname="Pax.Tests.PaxPrototypeTests" runstate="Runnable" seed="1346700565" result="Passed" start-time="2026-10-18 17:35:58Z" end-time="2026-10-18 17:35:59Z" duration="0.792562" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1103" name="CameraRotationRestoresOldBlockersAndRoofEditsRefreshContext" fullname="Pax.Tests.PaxPrototypeTests.CameraRotationRestoresOldBlockersAndRoofEditsRefreshContext" methodname="CameraRotationRestoresOldBlockersAndRoofEditsRefreshContext" classname="Pax.Tests.PaxPrototypeTests" runstate="Runnable" seed="2047262156" result="Passed" start-time="2026-10-18 17:35:59Z" end-time="2026-10-18 17:35:59Z" duration="0.630960" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1105" name="CameraZoomOrbitAndRespawnRecoverWithoutWorldReset" fullname="Pax.Tests.PaxPrototypeTests.CameraZoomOrbitAndRespawnRecoverWithoutWorldReset" methodname="CameraZoomOrbitAndRespawnRecoverWithoutWorldReset" classname="Pax.Tests.PaxPrototypeTests" runstate="Runnable" seed="1415971292" result="Passed" start-time="2026-10-18 17:35:59Z" end-time="2026-10-18 17:36:00Z" duration="0.564039" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1090" name="CeilingAndRepeatedAirJumpRespectFullBodyClearance" fullname="Pax.Tests.PaxPrototypeTests.CeilingAndRepeatedAirJumpRespectFullBodyClearance" methodname="CeilingAndRepeatedAirJumpRespectFullBodyClearance" classname="Pax.Tests.PaxPrototypeTests" runstate="Runnable" seed="1096327322" result="Passed" start-time="2026-10-18 17:36:00Z" end-time="2026-10-18 17:36:01Z" duration="0.799694" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1104" name="CutawayFadesAndRestoresWithoutRemovingWorldSolidity" fullname="Pax.Tests.PaxPrototypeTests.CutawayFadesAndRestoresWithoutRemovingWorldSolidity" methodname="CutawayFadesAndRestoresWithoutRemovingWorldSolidity" classname="Pax.Tests.PaxPrototypeTests" runstate="Runnable" seed="1308202203" result="Passed" start-time="2026-10-18 17:36:01Z" end-time="2026-10-18 17:36:01Z" duration="0.678441" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1098" name="FadedSolidCanBeExplicitlyTargetedWithoutRestoringItsOpacity" fullname="Pax.Tests.PaxPrototypeTests.FadedSolidCanBeExplicitlyTargetedWithoutRestoringItsOpacity" methodname="FadedSolidCanBeExplicitlyTargetedWithoutRestoringItsOpacity" classname="Pax.Tests.PaxPrototypeTests" runstate="Runnable" seed="497874109" result="Passed" start-time="2026-10-18 17:36:01Z" end-time="2026-10-18 17:36:02Z" duration="0.561382" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1096" name="FadingAndCameraRotationDoNotTransmitSunlightThroughSolids" fullname="Pax.Tests.PaxPrototypeTests.FadingAndCameraRotationDoNotTransmitSunlightThroughSolids" methodname="FadingAndCameraRotationDoNotTransmitSunlightThroughSolids" classname="Pax.Tests.PaxPrototypeTests" runstate="Runnable" seed="332776487" result="Passed" start-time="2026-10-18 17:36:02Z" end-time="2026-10-18 17:36:03Z" duration="0.560512" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1088" name="HeldJumpReachesTwoTilesAndTapIsLowerWithStableReference" fullname="Pax.Tests.PaxPrototypeTests.HeldJumpReachesTwoTilesAndTapIsLowerWithStableReference" methodname="HeldJumpReachesTwoTilesAndTapIsLowerWithStableReference" classname="Pax.Tests.PaxPrototypeTests" runstate="Runnable" seed="1358566477" result="Passed" start-time="2026-10-18 17:36:03Z" end-time="2026-10-18 17:36:03Z" duration="0.732978" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1102" name="HighHallAndNarrowPassageProvideDifferentLocalContext" fullname="Pax.Tests.PaxPrototypeTests.HighHallAndNarrowPassageProvideDifferentLocalContext" methodname="HighHallAndNarrowPassageProvideDifferentLocalContext" classname="Pax.Tests.PaxPrototypeTests" runstate="Runnable" seed="451844482" result="Passed" start-time="2026-10-18 17:36:03Z" end-time="2026-10-18 17:36:04Z" duration="0.673414" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1101" name="HouseCaveAndLowRoomIncreaseRoofCoverageAndFloodStaysBounded" fullname="Pax.Tests.PaxPrototypeTests.HouseCaveAndLowRoomIncreaseRoofCoverageAndFloodStaysBounded" methodname="HouseCaveAndLowRoomIncreaseRoofCoverageAndFloodStaysBounded" classname="Pax.Tests.PaxPrototypeTests" runstate="Runnable" seed="828856970" result="Passed" start-time="2026-10-18 17:36:04Z" end-time="2026-10-18 17:36:05Z" duration="0.745332" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1093" name="MiningAndPlacementRespectSupportReachAndPlayerClearance" fullname="Pax.Tests.PaxPrototypeTests.MiningAndPlacementRespectSupportReachAndPlayerClearance" methodname="MiningAndPlacementRespectSupportReachAndPlayerClearance" classname="Pax.Tests.PaxPrototypeTests" runstate="Runnable" seed="2065603666" result="Passed" start-time="2026-10-18 17:36:05Z" end-time="2026-10-18 17:36:05Z" duration="0.573635" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1087" name="MovementIsCameraRelativeAndDoesNotFallThroughGround" fullname="Pax.Tests.PaxPrototypeTests.MovementIsCameraRelativeAndDoesNotFallThroughGround" methodname="MovementIsCameraRelativeAndDoesNotFallThroughGround" classname="Pax.Tests.PaxPrototypeTests" runstate="Runnable" seed="216066518" result="Passed" start-time="2026-10-18 17:36:05Z" end-time="2026-10-18 17:36:06Z" duration="0.652309" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1097" name="MovingPlayerCannotBecomeCachedWorldSunlightOcclusion" fullname="Pax.Tests.PaxPrototypeTests.MovingPlayerCannotBecomeCachedWorldSunlightOcclusion" methodname="MovingPlayerCannotBecomeCachedWorldSunlightOcclusion" classname="Pax.Tests.PaxPrototypeTests" runstate="Runnable" seed="166977181" result="Passed" start-time="2026-10-18 17:36:06Z" end-time="2026-10-18 17:36:07Z" duration="0.579387" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1094" name="PreciseCursorTargetsSurfaceAndProducesValidPreview" fullname="Pax.Tests.PaxPrototypeTests.PreciseCursorTargetsSurfaceAndProducesValidPreview" methodname="PreciseCursorTargetsSurfaceAndProducesValidPreview" classname="Pax.Tests.PaxPrototypeTests" runstate="Runnable" seed="785860722" result="Passed" start-time="2026-10-18 17:36:07Z" end-time="2026-10-18 17:36:07Z" duration="0.582000" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1095" name="RotatedPrecisionAndVerticalReachRespectSolidLineOfSight" fullname="Pax.Tests.PaxPrototypeTests.RotatedPrecisionAndVerticalReachRespectSolidLineOfSight" methodname="RotatedPrecisionAndVerticalReachRespectSolidLineOfSight" classname="Pax.Tests.PaxPrototypeTests" runstate="Runnable" seed="1066942469" result="Passed" start-time="2026-10-18 17:36:07Z" end-time="2026-10-18 17:36:08Z" duration="0.581870" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PAX_ROTATED_RAY: cell=(-6, 3, 3) alpha=1.00 reach=False chestLOS=False
+PAX_ROTATED_RAY: cell=(-5, 3, 3) alpha=0.99 reach=False chestLOS=False
+PAX_ROTATED_RAY: cell=(-2, 0, -1) alpha=1.00 reach=True chestLOS=True
+PAX_ROTATED_RAY: cell=(-1, -1, -2) alpha=1.00 reach=True chestLOS=True
+PAX_ROTATED_RAY: cell=(-1, -1, -1) alpha=1.00 reach=True chestLOS=True
+PAX_ROTATED_RAY: cell=(0, -1, -2) alpha=1.00 reach=True chestLOS=True
+PAX_ROTATED_RAY: cell=(-1, -1, -3) alpha=1.00 reach=True chestLOS=False
+PAX_ROTATED_RAY: cell=(0, -1, -3) alpha=1.00 reach=True chestLOS=False
+PAX_ROTATED_RAY: cell=(0, -2, -3) alpha=1.00 reach=True chestLOS=False
+PAX_ROTATED_RAY: cell=(1, -2, -3) alpha=1.00 reach=True chestLOS=False
+PAX_ROTATED_RAY: cell=(0, -2, -4) alpha=1.00 reach=True chestLOS=False
+PAX_ROTATED_RAY: cell=(1, -2, -4) alpha=1.00 reach=True chestLOS=False
+]]></output>
+            </test-case>
+            <test-case id="1089" name="SolidWallBlocksMovementWithoutAutomaticTileClimbing" fullname="Pax.Tests.PaxPrototypeTests.SolidWallBlocksMovementWithoutAutomaticTileClimbing" methodname="SolidWallBlocksMovementWithoutAutomaticTileClimbing" classname="Pax.Tests.PaxPrototypeTests" runstate="Runnable" seed="876669964" result="Passed" start-time="2026-10-18 17:36:08Z" end-time="2026-10-18 17:36:08Z" duration="0.631158" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1099" name="UndergroundCutawayAndGhostsStayLocal" fullname="Pax.Tests.PaxPrototypeTests.UndergroundCutawayAndGhostsStayLocal" methodname="UndergroundCutawayAndGhostsStayLocal" classname="Pax.Tests.PaxPrototypeTests" runstate="Runnable" seed="1778964102" result="Passed" start-time="2026-10-18 17:36:08Z" end-time="2026-10-18 17:36:09Z" duration="0.640216" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1092" name="WalkThroughAuthoredTwoHighCaveEntrance" fullname="Pax.Tests.PaxPrototypeTests.WalkThroughAuthoredTwoHighCaveEntrance" methodname="WalkThroughAuthoredTwoHighCaveEntrance" classname="Pax.Tests.PaxPrototypeTests" runstate="Runnable" seed="1084093730" result="Passed" start-time="2026-10-18 17:36:09Z" end-time="2026-10-18 17:36:10Z" duration="0.694114" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1106" name="PaxTargetingAllocationTests" fullname="Pax.Tests.PaxTargetingAllocationTests" classname="Pax.Tests.PaxTargetingAllocationTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-18 17:36:10Z" end-time="2026-10-18 17:36:10Z" duration="0.666684" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1107" name="MeasureStableTargetingAllocations" fullname="Pax.Tests.PaxTargetingAllocationTests.MeasureStableTargetingAllocations" methodname="MeasureStableTargetingAllocations" classname="Pax.Tests.PaxTargetingAllocationTests" runstate="Runnable" seed="897764742" result="Passed" start-time="2026-10-18 17:36:10Z" end-time="2026-10-18 17:36:10Z" duration="0.665112" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PAX_ALLOCATION_CONTROL: managed counter=0; Unity frame-counter delta=262176; unit=Bytes
+PAX_TARGETING_MEASURE: SMART + VISIBLE: 500 calls; 926 excess frame bytes over 1940 idle bytes; 1.85 estimated bytes/call; 99.150 ms
+PAX_TARGETING_MEASURE: PRECISE + VISIBLE: 500 calls; 0 excess frame bytes over 1940 idle bytes; 0.00 estimated bytes/call; 3.639 ms
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/user/AppData/LocalLow/DefaultCompany/PAX_FYP1\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

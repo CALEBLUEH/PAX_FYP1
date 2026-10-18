@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="3" result="Passed" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-18 17:24:07Z" end-time="2026-10-18 17:24:11Z" duration="3.7235094">
+  <test-suite type="TestSuite" id="1113" name="PAX_FYP1" fullname="PAX_FYP1" runstate="Runnable" testcasecount="91" result="Passed" start-time="2026-10-18 17:24:07Z" end-time="2026-10-18 17:24:11Z" duration="3.723509" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1108" name="Pax.PlayModeTests.dll" fullname="C:/Users/user/.codex/worktrees/pax-development/PAX_FYP1/Library/ScriptAssemblies/Pax.PlayModeTests.dll" runstate="Runnable" testcasecount="91" result="Passed" start-time="2026-10-18 17:24:07Z" end-time="2026-10-18 17:24:11Z" duration="3.710938" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="71960" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1109" name="Pax" fullname="Pax" runstate="Runnable" testcasecount="91" result="Passed" start-time="2026-10-18 17:24:07Z" end-time="2026-10-18 17:24:11Z" duration="3.709815" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1110" name="Tests" fullname="Pax.Tests" runstate="Runnable" testcasecount="91" result="Passed" start-time="2026-10-18 17:24:07Z" end-time="2026-10-18 17:24:11Z" duration="3.709159" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1038" name="PaxFrontierPlayTests" fullname="Pax.Tests.PaxFrontierPlayTests" classname="Pax.Tests.PaxFrontierPlayTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 17:24:07Z" end-time="2026-10-18 17:24:11Z" duration="3.706907" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1040" name="EarnedGeneratedResourceRoundTripKeepsHarvestHistoryAndRejectsForgedBudget" fullname="Pax.Tests.PaxFrontierPlayTests.EarnedGeneratedResourceRoundTripKeepsHarvestHistoryAndRejectsForgedBudget" methodname="EarnedGeneratedResourceRoundTripKeepsHarvestHistoryAndRejectsForgedBudget" classname="Pax.Tests.PaxFrontierPlayTests" runstate="Runnable" seed="1259635522" result="Passed" start-time="2026-10-18 17:24:07Z" end-time="2026-10-18 17:24:10Z" duration="2.388724" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1041" name="FocusPauseRequiresResumeAndBlocksGeneratedWorldSaveAndHeldMovement" fullname="Pax.Tests.PaxFrontierPlayTests.FocusPauseRequiresResumeAndBlocksGeneratedWorldSaveAndHeldMovement" methodname="FocusPauseRequiresResumeAndBlocksGeneratedWorldSaveAndHeldMovement" classname="Pax.Tests.PaxFrontierPlayTests" runstate="Runnable" seed="1020744977" result="Passed" start-time="2026-10-18 17:24:10Z" end-time="2026-10-18 17:24:10Z" duration="0.657449" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1039" name="SavedLayoutUsesExistingSignatureAndDefinitionEditsNeverRegenerate" fullname="Pax.Tests.PaxFrontierPlayTests.SavedLayoutUsesExistingSignatureAndDefinitionEditsNeverRegenerate" methodname="SavedLayoutUsesExistingSignatureAndDefinitionEditsNeverRegenerate" classname="Pax.Tests.PaxFrontierPlayTests" runstate="Runnable" seed="1154781902" result="Passed" start-time="2026-10-18 17:24:10Z" end-time="2026-10-18 17:24:11Z" duration="0.647618" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/user/AppData/LocalLow/DefaultCompany/PAX_FYP1\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="9" result="Passed" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-18 17:22:38Z" end-time="2026-10-18 17:23:09Z" duration="30.948664">
+  <test-suite type="TestSuite" id="1000" name="PAX_FYP1" fullname="PAX_FYP1" runstate="Runnable" testcasecount="74" result="Passed" start-time="2026-10-18 17:22:38Z" end-time="2026-10-18 17:23:09Z" duration="30.948664" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1096" name="Pax.EditModeTests.dll" fullname="C:/Users/user/.codex/worktrees/pax-development/PAX_FYP1/Library/ScriptAssemblies/Pax.EditModeTests.dll" runstate="Runnable" testcasecount="74" result="Passed" start-time="2026-10-18 17:22:38Z" end-time="2026-10-18 17:23:09Z" duration="30.938724" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="78368" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1097" name="Pax" fullname="Pax" runstate="Runnable" testcasecount="74" result="Passed" start-time="2026-10-18 17:22:38Z" end-time="2026-10-18 17:23:09Z" duration="30.937958" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1098" name="Tests" fullname="Pax.Tests" runstate="Runnable" testcasecount="74" result="Passed" start-time="2026-10-18 17:22:38Z" end-time="2026-10-18 17:23:09Z" duration="30.937448" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1016" name="PaxFrontierTests" fullname="Pax.Tests.PaxFrontierTests" classname="Pax.Tests.PaxFrontierTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-10-18 17:22:38Z" end-time="2026-10-18 17:23:09Z" duration="30.935223" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1024" name="DefaultSceneMatchesGeneratedTilesBudgetMarkersAndExplicitReferences" fullname="Pax.Tests.PaxFrontierTests.DefaultSceneMatchesGeneratedTilesBudgetMarkersAndExplicitReferences" methodname="DefaultSceneMatchesGeneratedTilesBudgetMarkersAndExplicitReferences" classname="Pax.Tests.PaxFrontierTests" runstate="Runnable" seed="258852995" result="Passed" start-time="2026-10-18 17:22:38Z" end-time="2026-10-18 17:22:39Z" duration="0.990457" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1023" name="InvalidKnobsAndMissingSheltersFailBeforeGeneration" fullname="Pax.Tests.PaxFrontierTests.InvalidKnobsAndMissingSheltersFailBeforeGeneration" methodname="InvalidKnobsAndMissingSheltersFailBeforeGeneration" classname="Pax.Tests.PaxFrontierTests" runstate="Runnable" seed="1281188145" result="Passed" start-time="2026-10-18 17:22:39Z" end-time="2026-10-18 17:22:39Z" duration="0.002641" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1026" name="NewSceneActionCreatesIdenticalAuthoredWorldWithDistinctSlotAndPreservesPriorOutputs" fullname="Pax.Tests.PaxFrontierTests.NewSceneActionCreatesIdenticalAuthoredWorldWithDistinctSlotAndPreservesPriorOutputs" methodname="NewSceneActionCreatesIdenticalAuthoredWorldWithDistinctSlotAndPreservesPriorOutputs" classname="Pax.Tests.PaxFrontierTests" runstate="Runnable" seed="849826601" result="Passed" start-time="2026-10-18 17:22:39Z" end-time="2026-10-18 17:22:48Z" duration="8.933537" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+PAX_FRONTIER_AUTHORING_OK seed=91873 tiles=2035 budget=3T/2S scene=Assets/PAX/Scenes/FrontierValidation-36a48348944243c18b7e3b0e7a5e07ed.unity
+]]></output>
+            </test-case>
+            <test-case id="1025" name="RepeatAndOverwriteRefusalPreserveAllScenesDefinitionsAndSettings" fullname="Pax.Tests.PaxFrontierTests.RepeatAndOverwriteRefusalPreserveAllScenesDefinitionsAndSettings" methodname="RepeatAndOverwriteRefusalPreserveAllScenesDefinitionsAndSettings" classname="Pax.Tests.PaxFrontierTests" runstate="Runnable" seed="948562807" result="Passed" start-time="2026-10-18 17:22:48Z" end-time="2026-10-18 17:23:08Z" duration="20.233132" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+PAX frontier exists; preserving all scene edits and saves.
+PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+]]></output>
+            </test-case>
+            <test-case id="1017" name="SameDefinitionIsExactSortedAndIndependentOfUnityRandom" fullname="Pax.Tests.PaxFrontierTests.SameDefinitionIsExactSortedAndIndependentOfUnityRandom" methodname="SameDefinitionIsExactSortedAndIndependentOfUnityRandom" classname="Pax.Tests.PaxFrontierTests" runstate="Runnable" seed="640549297" result="Passed" start-time="2026-10-18 17:23:08Z" end-time="2026-10-18 17:23:08Z" duration="0.026032" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1022" name="VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget" fullname="Pax.Tests.PaxFrontierTests.VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget" classname="Pax.Tests.PaxFrontierTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-18 17:23:08Z" end-time="2026-10-18 17:23:09Z" duration="0.733728" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1018" name="VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget(12,0,2,1,2)" fullname="Pax.Tests.PaxFrontierTests.VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget(12,0,2,1,2)" methodname="VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget" classname="Pax.Tests.PaxFrontierTests" runstate="Runnable" seed="1238346437" result="Passed" start-time="2026-10-18 17:23:09Z" end-time="2026-10-18 17:23:09Z" duration="0.028287" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1019" name="VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget(12,2,4,2,5)" fullname="Pax.Tests.PaxFrontierTests.VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget(12,2,4,2,5)" methodname="VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget" classname="Pax.Tests.PaxFrontierTests" runstate="Runnable" seed="432099631" result="Passed" start-time="2026-10-18 17:23:09Z" end-time="2026-10-18 17:23:09Z" duration="0.051429" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1020" name="VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget(16,2,3,2,3)" fullname="Pax.Tests.PaxFrontierTests.VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget(16,2,3,2,3)" methodname="VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget" classname="Pax.Tests.PaxFrontierTests" runstate="Runnable" seed="11516699" result="Passed" start-time="2026-10-18 17:23:09Z" end-time="2026-10-18 17:23:09Z" duration="0.070093" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1021" name="VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget(16,0,4,1,4)" fullname="Pax.Tests.PaxFrontierTests.VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget(16,0,4,1,4)" methodname="VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget" classname="Pax.Tests.PaxFrontierTests" runstate="Runnable" seed="1749544549" result="Passed" start-time="2026-10-18 17:23:09Z" end-time="2026-10-18 17:23:09Z" duration="0.042885" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/user/AppData/LocalLow/DefaultCompany/PAX_FYP1\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

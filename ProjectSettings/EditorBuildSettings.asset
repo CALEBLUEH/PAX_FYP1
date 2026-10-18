@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/PAX/Scenes/PaxEmberReach.unity
     guid: 6c6f28730731a624584343a44628e079
+  - enabled: 1
+    path: Assets/PAX/Scenes/PaxGeneratedFrontier.unity
+    guid: 674ddfc27916ac842abda3764786ffaa
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
   m_UseUCBPForAssetBundles: 0

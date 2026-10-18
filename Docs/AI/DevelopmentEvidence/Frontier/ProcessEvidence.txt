@@ -1,0 +1,50 @@
+Finite generated frontier: trip rotation 10, 19 October 2026 Singapore (UTC+8).
+Isolated workspace: C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1
+Baseline: b5eccbf420e86c6c6e085317a00dc8b4f124fa5c, CodexWorkspace, clean before work.
+Default scene: Assets/PAX/Scenes/PaxGeneratedFrontier.unity, seed 91873, 2035 saved prefab tiles.
+Scene GUID: 674ddfc27916ac842abda3764786ffaa.
+World signature: 0FF516D17A4776476390C87ABDB48370A93E1C1B66AE68333A4B27C4A1E8C11B.
+Build: Builds/PAX-Frontier-Windows/PAX.exe, explicit new-scene-only list.
+Owned snapshot directory: Builds/PAX-Frontier-Windows/SmokeEvidence/FrontierRun-192f5a83eeaa4e8e9887972da3d759fa
+Diagnostics never read or write human persistent save folders.
+
+Final phase proof: 52/52 distinct phase checks, two separate processes.
+Seed PID 71972: 18/18. Started 01:38:40; normal exit by 01:38:59.944.
+- Normal movement to generated House/Cave, pointer mining of exact 3 Timber/2 Stone cache budget.
+- Real doorway collision and existing cutaway keep all solids active; normal visits earn notes.
+- Explicit F5 gathered A, then normal pointer-built first crossing + explicit F5 partial B.
+Final reload PID 80300: 34/34. Started 01:43:16; normal exit by 01:43:30.496.
+- Fresh world/no auto-load, explicit F9 exact B, explicit F8 exact A, F9 B again.
+- Exact tile/material/stock/harvest content, fresh camp/session notes and unchanged primary/backup bytes.
+- Three normal pointer rebuild/mine cycles preserve once-only ledger and counts.
+- Re-earned visits, actual pointer construction of remaining crossing/steps, normal walking/two held jumps, F activation.
+- No Warp, body relocation or injected stock for the complete route. No autosave after completion.
+- Later manual F9 restores partial edits/stocks and invalidates completed repairs; normal walk outside visit radius + F6 resets only journal.
+A = 3 Timber, 2 Stone, 5 harvested originals, no placed repairs.
+B = 2 Timber, 2 Stone, same 5 harvested originals, one Timber crossing at (0,-1,4).
+ExpectedBackup.xml/ExpectedPrimary.xml contain the earned A/B, not constructed fixtures.
+All final player logs have zero runtime warning/error/exception lines and remain in Logs/PAX locally.
+
+Initial reload PID 67972 also passed 34/34, started 01:39:27 and ended by 01:39:39.934.
+Its last replay image caught stale HUD labels despite correct model state. Initial checklist/image retained separately.
+Probe-only normal walk outside survey radius + real unscaled HUD wait fixed capture timing; final rebuild/reload passed.
+This repeated 34 is not added to the 52 distinct final phase check count.
+Seed runs before final probe-only replay timing change; its branch, gameplay and saved world are identical in final build.
+
+Focused EditMode 9/9, focused PlayMode 3/3.
+First full EditMode 73/74: temporary new-scene test deferred Build Settings restoration; later existing pause byte check caught it.
+Cleanup restores/saves list before scene deletion, finishes synchronous import and asserts original settings bytes. Full rerun 74/74.
+Full PlayMode 91/91. Final probe refinements followed these suites; both final builds compile them and Windows proof exercises them.
+32 representative seed/bound combinations and a second real generated scene verify deterministic layout/signatures, reachability and unique slots.
+Final build: 0 errors, 485 inherited inference-shader warnings, 188030475 bytes, 14.5233491 seconds.
+First build: 0 errors, same 485 warnings, 188030455 bytes, 25.4392397 seconds.
+13 final 1280x720 combined camera/UI renders inspected; 1 historical timing image kept separately.
+
+All 8 prior scene hashes preserved (Baseline.json); selection/Continue UI/catalog/panel, old definitions/rules/palettes and packages unchanged.
+Only intended isolated Build Settings change: append the new generated scene, preserve old entries/config object.
+PAX missing metadata 0, duplicate GUID groups 0. Original PrototypeBranch 42ad020 dirty setup and ledger preserved.
+Unrelated AS GUI/import workers 31620/20908/22968 untouched; no force-kill, competing Editor or selected-editor MCP mutation.
+Actual single-agent work: 01:13:11 audit to final player validation 01:43:30 = 30m19s, then archive/report/local checkpoint.
+Physical OS keyboard/mouse/focus timing and extended human play/performance remain unverified.
+Local-only commit; no push/publication/assets/paid calls/reset/goal/automation/delegation.
+After checkpoint and clean proof: WAIT for coordinator / AS rotation. No next milestone started.

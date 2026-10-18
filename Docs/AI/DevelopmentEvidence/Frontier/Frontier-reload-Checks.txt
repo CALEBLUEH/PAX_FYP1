@@ -1,0 +1,34 @@
+PASS Saved generated scene starts grounded, finite and fresh; loading never regenerates or auto-restores
+PASS Authored variable repair budget matches the saved definition
+PASS Pause blocks movement, pointer actions and saving in the generated scene
+PASS Explicit Resume and neutral release restore controls
+PASS New Windows process: explicit F9 restores exact partial world, every stock and harvest history
+PASS Manual load keeps authored camp and starts with fresh session field notes
+PASS F9 reads current and backup without overwriting either file
+PASS Explicit F8 restores the earned gathered backup with matching stocks
+PASS Explicit F9 restores partial repair and matching spent unit together
+PASS Normal pointer construction with timber at (-5, 0, 0)
+PASS Normal pointer mining at (-5, 0, 0)
+PASS Normal pointer construction with timber at (-5, 0, 0)
+PASS Normal pointer mining at (-5, 0, 0)
+PASS Normal pointer construction with timber at (-5, 0, 0)
+PASS Normal pointer mining at (-5, 0, 0)
+PASS Restored once-only harvest history prevents rebuild/mining farming
+PASS Normal walking enters generated House doorway and earns its survey note
+PASS Generated House cutaway keeps every tile collider enabled
+PASS Normal walking enters generated Cave doorway and earns its survey note
+PASS Generated Cave cutaway keeps every tile collider enabled
+PASS Normal walking crosses repaired cell (0, -1, 4)
+PASS Normal pointer construction with timber at (0, -1, 5)
+PASS Normal walking crosses repaired cell (0, -1, 5)
+PASS Normal pointer construction with timber at (0, -1, 6)
+PASS Normal walking crosses repaired cell (0, -1, 6)
+PASS Normal pointer construction with stone at (0, 0, 8)
+PASS Normal pointer construction with stone at (0, 1, 9)
+PASS Normal held jump lands on generated Stone step (0, 0, 8)
+PASS Normal held jump lands on generated Stone step (0, 1, 9)
+PASS Physical generated route reaches all survey marks and matching repairs without Warp
+PASS Existing F activation completes the shelter relay with the exact earned budget
+PASS Completing the route never autosaves or changes current/backup bytes
+PASS F9 rechecks mission repairs after restoring partial world and stocks
+PASS F6 resets only the session journal, preserving finite state
