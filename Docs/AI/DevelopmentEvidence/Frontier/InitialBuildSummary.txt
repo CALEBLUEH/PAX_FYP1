@@ -1,0 +1,6 @@
+Succeeded
+Errors: 0
+Warnings: 485
+Bytes: 188030455
+Duration: 00:00:25.4392397
+Source: initial completed build summary; raw log Logs/PAX/FrontierBuild.log.
