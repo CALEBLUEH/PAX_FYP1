@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="5" result="Passed" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-18 02:45:31Z" end-time="2026-10-18 02:45:39Z" duration="8.8023756">
+  <test-suite type="TestSuite" id="1096" name="PAX_FYP1" fullname="PAX_FYP1" runstate="Runnable" testcasecount="77" result="Passed" start-time="2026-10-18 02:45:31Z" end-time="2026-10-18 02:45:39Z" duration="8.802376" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1091" name="Pax.PlayModeTests.dll" fullname="C:/Users/user/.codex/worktrees/pax-development/PAX_FYP1/Library/ScriptAssemblies/Pax.PlayModeTests.dll" runstate="Runnable" testcasecount="77" result="Passed" start-time="2026-10-18 02:45:31Z" end-time="2026-10-18 02:45:39Z" duration="8.792886" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="59084" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1092" name="Pax" fullname="Pax" runstate="Runnable" testcasecount="77" result="Passed" start-time="2026-10-18 02:45:31Z" end-time="2026-10-18 02:45:39Z" duration="8.792073" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1093" name="Tests" fullname="Pax.Tests" runstate="Runnable" testcasecount="77" result="Passed" start-time="2026-10-18 02:45:31Z" end-time="2026-10-18 02:45:39Z" duration="8.791686" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1005" name="PaxEntryTests" fullname="Pax.Tests.PaxEntryTests" classname="Pax.Tests.PaxEntryTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-18 02:45:31Z" end-time="2026-10-18 02:45:39Z" duration="8.789214" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1006" name="BothKeyboardRoutesLaunchFreshAndRequireReleaseAfterFocus" fullname="Pax.Tests.PaxEntryTests.BothKeyboardRoutesLaunchFreshAndRequireReleaseAfterFocus" methodname="BothKeyboardRoutesLaunchFreshAndRequireReleaseAfterFocus" classname="Pax.Tests.PaxEntryTests" runstate="Runnable" seed="754039899" result="Passed" start-time="2026-10-18 02:45:31Z" end-time="2026-10-18 02:45:33Z" duration="2.544385" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1008" name="ChartCancelPreservesLiveStateAndConfirmedReentryLoadsOnlyOnExplicitF9" fullname="Pax.Tests.PaxEntryTests.ChartCancelPreservesLiveStateAndConfirmedReentryLoadsOnlyOnExplicitF9" methodname="ChartCancelPreservesLiveStateAndConfirmedReentryLoadsOnlyOnExplicitF9" classname="Pax.Tests.PaxEntryTests" runstate="Runnable" seed="2097825725" result="Passed" start-time="2026-10-18 02:45:33Z" end-time="2026-10-18 02:45:35Z" duration="1.513797" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1009" name="EscapeCancelsConfirmationAndHeldKeysCannotResumeOrDiscard" fullname="Pax.Tests.PaxEntryTests.EscapeCancelsConfirmationAndHeldKeysCannotResumeOrDiscard" methodname="EscapeCancelsConfirmationAndHeldKeysCannotResumeOrDiscard" classname="Pax.Tests.PaxEntryTests" runstate="Runnable" seed="1207704829" result="Passed" start-time="2026-10-18 02:45:35Z" end-time="2026-10-18 02:45:36Z" duration="0.989045" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1007" name="ResourceCancelPreservesLiveStateAndConfirmedReentryLoadsOnlyOnExplicitF9" fullname="Pax.Tests.PaxEntryTests.ResourceCancelPreservesLiveStateAndConfirmedReentryLoadsOnlyOnExplicitF9" methodname="ResourceCancelPreservesLiveStateAndConfirmedReentryLoadsOnlyOnExplicitF9" classname="Pax.Tests.PaxEntryTests" runstate="Runnable" seed="850734811" result="Passed" start-time="2026-10-18 02:45:36Z" end-time="2026-10-18 02:45:38Z" duration="2.063353" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1010" name="ReturnRestoresNonUnitClockAndNewLaunchConsumesHeldGameplay" fullname="Pax.Tests.PaxEntryTests.ReturnRestoresNonUnitClockAndNewLaunchConsumesHeldGameplay" methodname="ReturnRestoresNonUnitClockAndNewLaunchConsumesHeldGameplay" classname="Pax.Tests.PaxEntryTests" runstate="Runnable" seed="1342214248" result="Passed" start-time="2026-10-18 02:45:38Z" end-time="2026-10-18 02:45:39Z" duration="1.664814" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/user/AppData/LocalLow/DefaultCompany/PAX_FYP1\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

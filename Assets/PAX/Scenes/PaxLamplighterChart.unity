@@ -23615,6 +23615,8 @@ MonoBehaviour:
     and replace it.'
   pausedMessage: Paused / Controls
   focusMessage: Focus lost / Paused
+  selectionScenePath: Assets/PAX/Scenes/PaxExpeditionSelection.unity
+  returnUnavailableMessage: Selection scene unavailable; expedition kept paused.
 --- !u!1001 &1310388722
 PrefabInstance:
   m_ObjectHideFlags: 0

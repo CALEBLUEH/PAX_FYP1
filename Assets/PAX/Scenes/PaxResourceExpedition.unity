@@ -116958,6 +116958,8 @@ MonoBehaviour:
     beacon on foot, then F activates it.'
   pausedMessage: Paused / Controls
   focusMessage: Focus lost / Paused
+  selectionScenePath: Assets/PAX/Scenes/PaxExpeditionSelection.unity
+  returnUnavailableMessage: Selection scene unavailable; expedition kept paused.
 --- !u!1001 &1309182898
 PrefabInstance:
   m_ObjectHideFlags: 0

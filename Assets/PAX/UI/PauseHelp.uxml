@@ -12,7 +12,17 @@
             <ui:Label text="F5 saves tiles + finite stocks together. F9 loads the current snapshot; F8 recovers the previous valid snapshot. Loading may ask you to step aside from restored blocks. Saves keep construction and resources; discovery visits and activation are session-only. F6 restarts only that journal, keeping builds, stocks and saved files. Pausing does not save or load." style="font-size: 16px; color: rgb(233, 242, 246); white-space: normal; margin-top: 4px;" />
             <ui:Label name="pause-mission" text="Scene mission help" style="font-size: 16px; color: rgb(255, 222, 167); white-space: normal; margin-top: 12px;" />
             <ui:Button name="pause-resume" text="Resume" style="height: 44px; margin-top: 18px; font-size: 19px; -unity-font-style: bold;" />
+            <ui:Button name="pause-selection" text="Return to expedition selection…" style="height: 32px; font-size: 15px; margin-top: 6px;" />
             <ui:Label text="Escape pauses / resumes. Focus loss pauses automatically; returning to the window requires Resume or Escape. Gameplay keys, save/load and mouse actions stay blocked while this panel is open." style="font-size: 14px; color: rgb(183, 207, 222); white-space: normal; margin-top: 8px;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="return-confirmation" style="display: none; width: 660px; max-width: 94%; padding-left: 28px; padding-right: 28px; padding-top: 28px; padding-bottom: 28px; background-color: rgb(20, 35, 48); border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+            <ui:Label text="Leave this expedition?" style="font-size: 27px; -unity-font-style: bold; color: rgb(255, 215, 145);" />
+            <ui:Label text="Returning discards this live world and resource state, including unsaved changes, and the entire session discovery/activation journal. No snapshot is written or loaded. Your existing saved files are retained." style="font-size: 18px; white-space: normal; color: rgb(233, 242, 246); margin-top: 16px;" />
+            <ui:Label text="Launching either expedition again starts its fresh authored world and starting stocks. Only an explicit F9 inside that expedition loads its existing combined snapshot; the journal remains session-only." style="font-size: 16px; white-space: normal; color: rgb(204, 225, 235); margin-top: 14px;" />
+            <ui:Button name="return-cancel" text="Cancel — keep expedition paused" style="height: 44px; font-size: 19px; margin-top: 22px;" />
+            <ui:Button name="return-confirm" text="Discard unsaved state &amp; return" style="height: 40px; font-size: 17px; margin-top: 12px;" />
+            <ui:Label name="return-status" text="Only confirm if you want to discard this live expedition." style="font-size: 14px; white-space: normal; color: rgb(255, 222, 167); margin-top: 14px;" />
+            <ui:Label text="Escape cancels this confirmation and keeps the expedition paused. Tab / arrows move UI focus; Enter chooses the focused button." style="font-size: 14px; white-space: normal; color: rgb(183, 207, 222); margin-top: 10px;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

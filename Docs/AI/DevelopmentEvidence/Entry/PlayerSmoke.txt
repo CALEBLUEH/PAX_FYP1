@@ -1,0 +1,105 @@
+PASS Windows review build opens the authored expedition selection
+PASS Unfocused selection rejects either launch
+PASS Held launch key on refocus cannot launch
+PASS Authored pointer button is visible and hit-testable: select-resource
+PASS Scene transition reaches PaxResourceExpedition
+PASS Launch transition consumes held movement/jump/mouse frames without click-through
+PASS Resources launch owns exactly one gameplay pause and no menu owner
+PASS Resources launch starts a fresh authored world, zero stocks and empty journal
+PASS Resources harvest uses existing finite builder accounting
+PASS Resources explicit F5 writes only its disposable current slot
+PASS Resources unsaved edits are distinct from the retained snapshot
+PASS Resources fixture establishes live session discovery to protect on Cancel
+PASS Authored pointer button is visible and hit-testable: pause-selection
+PASS Resources authored return button opens a separate confirmation
+PASS Resources opening click cannot also confirm discard
+PASS Resources discard dialog defaults keyboard focus to Cancel
+PASS Authored pointer button is visible and hit-testable: return-cancel
+PASS Resources actual Cancel button preserves exact live paused state
+PASS Resources Cancel performs no implicit save/load or backup write
+PASS Authored pointer button is visible and hit-testable: pause-selection
+PASS Resources focus loss cannot confirm discard
+PASS Resources confirmation stays gated on focus regain until release
+PASS Fresh Escape cancels the dialog without resuming
+PASS Holding Escape after Cancel cannot resume or discard
+PASS Authored pointer button is visible and hit-testable: pause-selection
+PASS Authored pointer button is visible and hit-testable: return-confirm
+PASS Resources explicit authored discard button owns one return transition
+PASS Scene transition reaches PaxExpeditionSelection
+PASS Resources return releases the prior pause clock exactly
+PASS Resources confirmed discard retains saved file bytes and writes no backup
+PASS Resources return leaves one selection owner and no gameplay pause owner
+PASS Scene transition reaches PaxLamplighterChart
+PASS Launch transition consumes held movement/jump/mouse frames without click-through
+PASS Chart launch owns exactly one gameplay pause and no menu owner
+PASS Chart launch starts a fresh authored world, zero stocks and empty journal
+PASS Chart harvest uses existing finite builder accounting
+PASS Chart explicit F5 writes only its disposable current slot
+PASS Chart unsaved edits are distinct from the retained snapshot
+PASS Chart fixture establishes live session discovery to protect on Cancel
+PASS Authored pointer button is visible and hit-testable: pause-selection
+PASS Chart authored return button opens a separate confirmation
+PASS Chart opening click cannot also confirm discard
+PASS Chart discard dialog defaults keyboard focus to Cancel
+PASS Authored pointer button is visible and hit-testable: return-cancel
+PASS Chart actual Cancel button preserves exact live paused state
+PASS Chart Cancel performs no implicit save/load or backup write
+PASS Authored pointer button is visible and hit-testable: pause-selection
+PASS Chart focus loss cannot confirm discard
+PASS Chart confirmation stays gated on focus regain until release
+PASS Authored pointer button is visible and hit-testable: return-confirm
+PASS Chart explicit authored discard button owns one return transition
+PASS Scene transition reaches PaxExpeditionSelection
+PASS Chart return releases the prior pause clock exactly
+PASS Chart confirmed discard retains saved file bytes and writes no backup
+PASS Chart return leaves one selection owner and no gameplay pause owner
+PASS Authored pointer button is visible and hit-testable: select-chart
+PASS Scene transition reaches PaxLamplighterChart
+PASS Launch transition consumes held movement/jump/mouse frames without click-through
+PASS Chart launch owns exactly one gameplay pause and no menu owner
+PASS Chart launch starts a fresh authored world, zero stocks and empty journal
+PASS Chart reentry retains exact saved bytes without auto-loading
+PASS Chart explicit F9 alone restores the existing combined snapshot, not the journal
+PASS Chart unsaved edits are distinct from the retained snapshot
+PASS Chart fixture establishes live session discovery to protect on Cancel
+PASS Authored pointer button is visible and hit-testable: pause-selection
+PASS Chart authored return button opens a separate confirmation
+PASS Chart opening click cannot also confirm discard
+PASS Chart discard dialog defaults keyboard focus to Cancel
+PASS Authored pointer button is visible and hit-testable: return-cancel
+PASS Chart actual Cancel button preserves exact live paused state
+PASS Chart Cancel performs no implicit save/load or backup write
+PASS Authored pointer button is visible and hit-testable: pause-selection
+PASS Chart focus loss cannot confirm discard
+PASS Chart confirmation stays gated on focus regain until release
+PASS Authored pointer button is visible and hit-testable: return-confirm
+PASS Chart explicit authored discard button owns one return transition
+PASS Scene transition reaches PaxExpeditionSelection
+PASS Chart return releases the prior pause clock exactly
+PASS Chart confirmed discard retains saved file bytes and writes no backup
+PASS Chart return leaves one selection owner and no gameplay pause owner
+PASS Scene transition reaches PaxResourceExpedition
+PASS Launch transition consumes held movement/jump/mouse frames without click-through
+PASS Resources launch owns exactly one gameplay pause and no menu owner
+PASS Resources launch starts a fresh authored world, zero stocks and empty journal
+PASS Resources reentry retains exact saved bytes without auto-loading
+PASS Resources explicit F9 alone restores the existing combined snapshot, not the journal
+PASS Resources unsaved edits are distinct from the retained snapshot
+PASS Resources fixture establishes live session discovery to protect on Cancel
+PASS Authored pointer button is visible and hit-testable: pause-selection
+PASS Resources authored return button opens a separate confirmation
+PASS Resources opening click cannot also confirm discard
+PASS Resources discard dialog defaults keyboard focus to Cancel
+PASS Authored pointer button is visible and hit-testable: return-cancel
+PASS Resources actual Cancel button preserves exact live paused state
+PASS Resources Cancel performs no implicit save/load or backup write
+PASS Authored pointer button is visible and hit-testable: pause-selection
+PASS Resources focus loss cannot confirm discard
+PASS Resources confirmation stays gated on focus regain until release
+PASS Authored pointer button is visible and hit-testable: return-confirm
+PASS Resources explicit authored discard button owns one return transition
+PASS Scene transition reaches PaxExpeditionSelection
+PASS Resources return releases the prior pause clock exactly
+PASS Resources confirmed discard retains saved file bytes and writes no backup
+PASS Resources return leaves one selection owner and no gameplay pause owner
+PASS Both independent finite slots remain byte-preserved across all four button/keyboard launches
