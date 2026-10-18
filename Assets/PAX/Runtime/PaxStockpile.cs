@@ -47,6 +47,14 @@ namespace Pax
             ready = true;
         }
         public PaxActionBlock PlacementStatus(string id) => !ready || !Usable(id) ? PaxActionBlock.ResourceUnavailable : Count(id) < 1 ? PaxActionBlock.InsufficientResources : PaxActionBlock.None;
+        internal PaxActionBlock PlacementStatus(IReadOnlyDictionary<string,int> costs)
+        {
+            foreach (var cost in costs) if (!ready || !Usable(cost.Key) || cost.Value < 1 || cost.Value > PaxConstructionBlueprint.MaximumCells) return PaxActionBlock.ResourceUnavailable;
+            foreach (var cost in costs) if (Count(cost.Key) < cost.Value) return PaxActionBlock.InsufficientResources;
+            return PaxActionBlock.None;
+        }
+        internal void CommitPlacements(IReadOnlyDictionary<string,int> costs)
+        { foreach (var cost in costs) counts[cost.Key] -= cost.Value; nextRefresh = 0; }
         public PaxActionBlock MiningStatus(Vector3Int cell, out string id, out int amount)
         {
             id = null; amount = 0;

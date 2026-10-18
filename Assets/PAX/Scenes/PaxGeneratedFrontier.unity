@@ -55144,11 +55144,9 @@ MonoBehaviour:
   palette: {fileID: 11400000, guid: a50f3776894ac984984aa47fd0d90b88, type: 2}
   rules: {fileID: 11400000, guid: 6dc7f9fe984754f49a4666a3b7be6f04, type: 2}
   document: {fileID: 1307452692}
-  instructions: Mine 3 Timber at the House forecourt and 2 Stone at the Cave forecourt.
-    Read both stations, then follow the central lane north. Ctrl precise + G includes
-    faded solids; Q/E exposes a forward side face. RMB-build amber Timber cells in
-    order, walk across, then build cyan Stone steps and jump up. F activates at the
-    relay; R returns to camp.
+  instructions: "House: 3 Timber / Cave: 2 Stone. B bridge pair \xB7 N ascending
+    steps \xB7 T rotate \xB7 Backspace or 1\u20135 single-cell. Release, then RMB
+    places all or nothing. Esc: full controls/route."
 --- !u!4 &629878447
 Transform:
   m_ObjectHideFlags: 0
@@ -60271,6 +60269,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6461708288202376902, guid: 22e1f3fa0b34cd74fba399a262c27692, type: 3}
   m_PrefabInstance: {fileID: 695890809}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &696058271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 696058272}
+  m_Layer: 0
+  m_Name: Footprint preview instances
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &696058272
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696058271}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1799232290}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &700541816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111853,7 +111882,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
   m_PanelSettings: {fileID: 11400000, guid: c871ecc7447a77c42a6edcd85b00d425, type: 2}
   m_ParentUI: {fileID: 0}
-  sourceAsset: {fileID: 9197481963319205126, guid: 340b2c05945e0d34a88970e7012a7d33, type: 3}
+  sourceAsset: {fileID: 9197481963319205126, guid: 160a4f86cfa2aed4cb311ccd819a2f0e, type: 3}
   m_SortingOrder: 0
   m_Position: 0
   m_WorldSpaceSizeMode: 1
@@ -111912,13 +111941,13 @@ MonoBehaviour:
   player: {fileID: 1853066078}
   builder: {fileID: 1640765942}
   pauseKey: 27
-  missionHelp: Mine 3 Timber at the House forecourt and 2 Stone at the Cave forecourt.
-    Read both stations, then follow the central lane north. Ctrl precise + G includes
-    faded solids; Q/E exposes a forward side face. RMB-build amber Timber cells in
-    order, walk across, then build cyan Stone steps and jump up. F activates at the
-    relay; R returns to camp. Manual F5 saves, F9 loads, F8 loads previous. Journal
-    is session-only. Each new generated scene has its own slot. This standalone review
-    opens directly; quit normally to leave.
+  missionHelp: "House: gather 3 Timber. Cave: gather 2 Stone. Read both stations.
+    B previews a 2-cell Timber bridge; N previews 2 ascending Stone steps. T rotates
+    90 degrees. Release held controls, then RMB places the entire footprint only
+    if every cell and the full cost are valid. Backspace or 1\u20135 returns to single-cell.
+    Build the remaining bridge cell singly, jump the steps and F connects the relay.
+    Mining refunds actual materials. F5/F9/F8 keep typed tiles, stocks and harvest
+    history; F6 resets only notes. R returns to camp."
   pausedMessage: Paused / Controls
   focusMessage: Focus lost / Paused
   selectionScenePath: 
@@ -154214,6 +154243,66 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6461708288202376902, guid: 22e1f3fa0b34cd74fba399a262c27692, type: 3}
   m_PrefabInstance: {fileID: 1799024659}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1799232288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1799232290}
+  - component: {fileID: 1799232289}
+  m_Layer: 0
+  m_Name: Editable construction blueprints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1799232289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799232288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc96fcbe344cf934099075989e21ec68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Pax.Runtime::Pax.PaxBlueprintBuilder
+  builder: {fileID: 1640765942}
+  pause: {fileID: 1307452695}
+  storage: {fileID: 2126474002}
+  document: {fileID: 1307452692}
+  definitions:
+  - {fileID: 11400000, guid: a4aa23d2c6fda3242a743e87cc4e90c0, type: 2}
+  - {fileID: 11400000, guid: b03f50d83cd83ad44bfe42af5277770b, type: 2}
+  ghostPrefab: {fileID: 440523047723894402, guid: 1e93bae0f1c048240b8521e2fb0d01d6, type: 3}
+  ghostRoot: {fileID: 696058272}
+  validMaterial: {fileID: 2100000, guid: 69ab4bcad7c462d44879bae9a79c1ae6, type: 2}
+  invalidMaterial: {fileID: 2100000, guid: 300f1f998c09a114fb1c6e6eebb31972, type: 2}
+  bridgeKey: 98
+  stepsKey: 110
+  rotateKey: 116
+  cancelKey: 8
+--- !u!4 &1799232290
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1799232288}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 696058272}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1800833162
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -187572,3 +187661,4 @@ SceneRoots:
   - {fileID: 1508379144}
   - {fileID: 1512779103}
   - {fileID: 629878447}
+  - {fileID: 1799232290}

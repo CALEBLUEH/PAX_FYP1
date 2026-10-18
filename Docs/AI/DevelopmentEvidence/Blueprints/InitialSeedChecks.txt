@@ -1,0 +1,22 @@
+PASS Saved generated scene starts grounded, finite and fresh; loading never regenerates or auto-restores
+PASS Authored variable repair budget matches the saved definition
+PASS Pause blocks movement, pointer actions and saving in the generated scene
+PASS Explicit Resume and neutral release restore controls
+PASS Normal pointer mining at (-5, 0, 0)
+PASS Normal pointer mining at (-9, 0, 0)
+PASS Normal pointer mining at (-8, 0, 0)
+PASS Normal walking enters generated House doorway and earns its survey note
+PASS Generated House cutaway keeps every tile collider enabled
+PASS Normal pointer mining at (5, 0, 2)
+PASS Normal pointer mining at (6, 0, 2)
+PASS Normal walking enters generated Cave doorway and earns its survey note
+PASS Generated Cave cutaway keeps every tile collider enabled
+PASS Normal pointer mining earns the exact generated repair budget
+PASS Explicit F5 saves earned gathered world/resources
+PASS Rotated footprint previews every cell as invalid when second cell overlaps the bank
+PASS Explicit blocked footprint click places and spends nothing
+PASS Entire Timber footprint and exact aggregate cost are valid before placement
+PASS One pointer click atomically places both typed Timber cells and charges exactly two units
+PASS Successful footprint clears ghosts and returns to single-cell building
+PASS First crossing blueprint accepts the earned Timber
+PASS Second F5 saves a distinct partial footprint with conserved world/stock/history

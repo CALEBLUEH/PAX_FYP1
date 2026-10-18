@@ -14,6 +14,8 @@ namespace Pax
     {
         private readonly List<string> checks = new List<string>(); private int failures;
         private string output, directory, phase;
+        private bool blueprintMode;
+        private PaxBlueprintBuilder blueprints;
         private PaxGeneratedFrontier frontier; private PaxWorld world; private PaxPlayer player; private PaxCamera rig; private PaxBuilder builder; private PaxStockpile stocks; private PaxPlaytestSave save; private PaxPause pause; private PaxInput input; private PaxExpedition mission;
         private Camera view; private UIDocument document; private PanelSettings original, panel; private RenderTexture target;
         private static string Arg(string key) { var args = Environment.GetCommandLineArgs(); int i = Array.IndexOf(args,key); return i >= 0 && i + 1 < args.Length ? args[i+1] : null; }
@@ -21,6 +23,7 @@ namespace Pax
         private IEnumerator Start()
         {
             output = Path.GetFullPath(Path.Combine(Application.dataPath, "../SmokeEvidence")); directory = Path.GetFullPath(Arg("-paxValidationDir") ?? output); phase = Arg("-paxFrontierPhase");
+            blueprintMode=Array.IndexOf(Environment.GetCommandLineArgs(),"-paxBlueprintSmoke")>=0;
             if (!directory.StartsWith(output.TrimEnd('\\','/') + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase) || phase != "seed" && phase != "reload")
             { Debug.LogError("Frontier probe requires seed/reload and an owned SmokeEvidence child directory."); Application.Quit(2); yield break; }
             Directory.CreateDirectory(directory); Directory.CreateDirectory(output); Time.captureDeltaTime = 1f/60;
@@ -32,14 +35,15 @@ namespace Pax
                 if (error != null) { Check(false,"Fixture aborted: " + error.Message); break; }
                 if (!more) { stack.Pop(); continue; } if (next is IEnumerator nested) stack.Push(nested); else yield return next;
             }
-            CloseCapture(); File.WriteAllLines(Path.Combine(output,"Frontier-" + phase + "-Checks.txt"),checks);
-            Debug.Log("PAX_FRONTIER_SMOKE " + phase + ": " + (checks.Count-failures) + "/" + checks.Count + " passed; owned directory " + directory); Time.timeScale = 1; Time.captureDeltaTime = 0; Application.Quit(failures == 0 ? 0 : 1);
+            CloseCapture(); File.WriteAllLines(Path.Combine(output,(blueprintMode?"Blueprint-":"Frontier-") + phase + "-Checks.txt"),checks);
+            Debug.Log((blueprintMode?"PAX_BLUEPRINT_SMOKE ":"PAX_FRONTIER_SMOKE ") + phase + ": " + (checks.Count-failures) + "/" + checks.Count + " passed; owned directory " + directory); Time.timeScale = 1; Time.captureDeltaTime = 0; Application.Quit(failures == 0 ? 0 : 1);
         }
         private IEnumerator Run()
         {
             frontier = FindFirstObjectByType<PaxGeneratedFrontier>(); if (frontier == null) throw new InvalidOperationException("Expected saved generated frontier scene.");
             world=FindFirstObjectByType<PaxWorld>(); player=FindFirstObjectByType<PaxPlayer>(); rig=FindFirstObjectByType<PaxCamera>(); builder=FindFirstObjectByType<PaxBuilder>(); stocks=FindFirstObjectByType<PaxStockpile>(); save=FindFirstObjectByType<PaxPlaytestSave>(); pause=FindFirstObjectByType<PaxPause>(); input=FindFirstObjectByType<PaxInput>(); mission=frontier.Mission;
             pause.UseValidationInput(); input.enabled=false; FindFirstObjectByType<PaxExpeditionInput>().enabled=false; save.UseValidationDirectory(directory);
+            blueprints=FindFirstObjectByType<PaxBlueprintBuilder>();if(blueprints!=null)blueprints.UseValidationInput();if(blueprintMode&&blueprints==null)throw new InvalidOperationException("Expected authored blueprint component.");
             yield return Release(); yield return Frames(20); SetupCapture(); yield return new WaitForSecondsRealtime(2); yield return Frames(12);
             Check(stocks.Ready && player.Grounded && world.Blocks.Count == frontier.AuthoredTileCount && stocks.Count("timber") == 0 && stocks.Count("stone") == 0 && world.CaptureEdits().Placed.Count == 0, "Saved generated scene starts grounded, finite and fresh; loading never regenerates or auto-restores");
             Check(mission.Repairs.Count(r=>r.RequiredMaterialId=="timber") == frontier.Definition.crossingLength && mission.Repairs.Count(r=>r.RequiredMaterialId=="stone") == frontier.Definition.lookoutHeight, "Authored variable repair budget matches the saved definition");
@@ -50,6 +54,7 @@ namespace Pax
             yield return Release(); pause.Resume(); yield return Release(); Check(!pause.BlocksActions && Time.timeScale==1,"Explicit Resume and neutral release restore controls");
             input.ApplyFrame(new PaxInputFrame { toggleCursor=true, toggleGhostTargets=true });
             var crossing=mission.Repairs.Where(r=>r.RequiredMaterialId=="timber").OrderBy(r=>r.Cell.z).ToArray(); var steps=mission.Repairs.Where(r=>r.RequiredMaterialId=="stone").OrderBy(r=>r.Cell.y).ToArray();
+            int savedRepairs=blueprintMode?2:1;
             if (phase=="reload")
             {
                 string primary=File.ReadAllText(save.SavePath), backup=File.ReadAllText(save.BackupPath); input.ApplyFrame(new PaxInputFrame { load=true }); yield return Frames(5);
@@ -57,7 +62,7 @@ namespace Pax
                 Check(mission.SurveyedCount==0 && Vector3.Distance(player.transform.position,frontier.SpawnMarker.position)<0.1f,"Manual load keeps authored camp and starts with fresh session field notes");
                 Check(primary==File.ReadAllText(save.SavePath) && backup==File.ReadAllText(save.BackupPath),"F9 reads current and backup without overwriting either file");
                 input.ApplyFrame(new PaxInputFrame { previous=true }); yield return Frames(4); Check(stocks.Count("timber")==crossing.Length && mission.RepairCount==0,"Explicit F8 restores the earned gathered backup with matching stocks");
-                input.ApplyFrame(new PaxInputFrame { load=true }); yield return Frames(4); Check(stocks.Count("timber")==crossing.Length-1 && crossing[0].IsSolid,"Explicit F9 restores partial repair and matching spent unit together"); Capture("Frontier-reload-02-Partial.png");
+                input.ApplyFrame(new PaxInputFrame { load=true }); yield return Frames(4); Check(stocks.Count("timber")==crossing.Length-savedRepairs && mission.RepairCount==savedRepairs && crossing[0].IsSolid,"Explicit F9 restores partial typed repairs and matching aggregate spend together");if(blueprintMode)Check(!blueprints.Active&&blueprints.VisibleGhostCount==0,"F9/F8 clear selected blueprint and all footprint ghosts"); yield return new WaitForSecondsRealtime(0.15f); Capture("Frontier-reload-02-Partial.png");
             }
             foreach (string kind in new[] {"House","Cave"})
             {
@@ -74,33 +79,33 @@ namespace Pax
                 yield return Walk(new Vector3(structure.centre.x,0.03f,structure.door.z-2));
                 yield return Walk((Vector3)structure.door+Vector3.up*0.03f); yield return Walk((Vector3)structure.centre+Vector3.up*0.03f); yield return Frames(35);
                 Check(mission.Sites.Single(s=>s.Title.StartsWith(kind,StringComparison.Ordinal)).Surveyed,"Normal walking enters generated " + kind + " doorway and earns its survey note");
-                Check(world.Blocks.All(b=>b.Solid.enabled),"Generated " + kind + " cutaway keeps every tile collider enabled"); Capture("Frontier-"+phase+"-"+kind+".png");
+                Check(world.Blocks.All(b=>b.Solid.enabled),"Generated " + kind + " cutaway keeps every tile collider enabled"); yield return new WaitForSecondsRealtime(0.15f); Capture("Frontier-"+phase+"-"+kind+".png");
                 yield return Walk((Vector3)structure.door+Vector3.up*0.03f); yield return Walk(new Vector3(structure.centre.x,0.03f,structure.door.z-2)); yield return Walk(new Vector3(0,0.03f,structure.door.z-2));
             }
             if(phase=="seed")
             {
                 Check(stocks.Count("timber")==crossing.Length && stocks.Count("stone")==steps.Length && stocks.Capture().Harvested.Count==crossing.Length+steps.Length,"Normal pointer mining earns the exact generated repair budget"); input.ApplyFrame(new PaxInputFrame {save=true}); Check(File.Exists(save.SavePath),"Explicit F5 saves earned gathered world/resources"); Capture("Frontier-seed-02-Gathered.png");
-                yield return Walk(frontier.NearBank.position); yield return Place(crossing[0].Cell,"timber"); Check(crossing[0].IsSolid,"First crossing blueprint accepts the earned Timber"); input.ApplyFrame(new PaxInputFrame {save=true});
+                yield return Walk(frontier.NearBank.position);if(blueprintMode)yield return BlueprintPlace(crossing[0].Cell,0,true);else yield return Place(crossing[0].Cell,"timber"); Check(crossing[0].IsSolid,"First crossing blueprint accepts the earned Timber"); input.ApplyFrame(new PaxInputFrame {save=true});
                 File.Copy(save.SavePath,Path.Combine(directory,"ExpectedPrimary.xml"),true); File.Copy(save.BackupPath,Path.Combine(directory,"ExpectedBackup.xml"),true);
-                Check(stocks.Count("timber")==crossing.Length-1 && stocks.Count("stone")==steps.Length && File.ReadAllText(save.SavePath)!=File.ReadAllText(save.BackupPath),"Second F5 saves a distinct partial edit with conserved world/stock/history"); Capture("Frontier-seed-03-Saved.png"); yield break;
+                Check(stocks.Count("timber")==crossing.Length-savedRepairs && stocks.Count("stone")==steps.Length && mission.RepairCount==savedRepairs && File.ReadAllText(save.SavePath)!=File.ReadAllText(save.BackupPath),"Second F5 saves a distinct partial footprint with conserved world/stock/history"); Capture("Frontier-seed-03-Saved.png"); yield break;
             }
             yield return Walk(frontier.NearBank.position);
             foreach(var repair in crossing) { if(!repair.IsSolid) yield return Place(repair.Cell,"timber"); yield return Walk((Vector3)repair.Cell+Vector3.up*1.03f); Check(player.Grounded,"Normal walking crosses repaired cell " + repair.Cell); }
             yield return Walk(frontier.FarBank.position);
-            foreach(var repair in steps) yield return Place(repair.Cell,"stone");
+            if(blueprintMode)yield return BlueprintPlace(steps[0].Cell,1,false);else foreach(var repair in steps) yield return Place(repair.Cell,"stone");
             foreach(var repair in steps) { yield return Jump((Vector3)repair.Cell+Vector3.up*1.03f); Check(player.Grounded && Mathf.Abs(player.transform.position.y-repair.Cell.y-1)<0.1f,"Normal held jump lands on generated Stone step " + repair.Cell); }
             yield return Walk(mission.BeaconReturn.position); yield return Frames(35); Check(mission.SurveyedCount==3 && mission.RepairCount==mission.Repairs.Length && mission.AtBeacon,"Physical generated route reaches all survey marks and matching repairs without Warp");
             Check(mission.TryActivate() && mission.Stage==PaxExpeditionStage.Complete && stocks.Count("timber")==0 && stocks.Count("stone")==0,"Existing F activation completes the shelter relay with the exact earned budget");
-            builder.SetPointer(new Vector2(-10000,-10000),false,false); rig.ResetView(); rig.Zoom(-3); yield return Frames(15); Capture("Frontier-reload-03-Connected.png");
+            builder.SetPointer(new Vector2(-10000,-10000),false,false); rig.ResetView(); rig.Zoom(-3); yield return Frames(15); yield return new WaitForSecondsRealtime(0.15f); Capture("Frontier-reload-03-Connected.png");
             Check(File.ReadAllText(save.SavePath)==File.ReadAllText(Path.Combine(directory,"ExpectedPrimary.xml")) && File.ReadAllText(save.BackupPath)==File.ReadAllText(Path.Combine(directory,"ExpectedBackup.xml")),"Completing the route never autosaves or changes current/backup bytes");
-            input.ApplyFrame(new PaxInputFrame {load=true}); yield return Frames(5); Check(mission.RepairCount==1 && mission.Stage!=PaxExpeditionStage.Complete && stocks.Count("timber")==crossing.Length-1 && stocks.Count("stone")==steps.Length,"F9 rechecks mission repairs after restoring partial world and stocks");
+            input.ApplyFrame(new PaxInputFrame {load=true}); yield return Frames(5); Check(mission.RepairCount==savedRepairs && mission.Stage!=PaxExpeditionStage.Complete && stocks.Count("timber")==crossing.Length-savedRepairs && stocks.Count("stone")==steps.Length,"F9 rechecks mission repairs after restoring partial world and stocks");
             // Leave the visit radius by normal walking before F6, then wait for the unscaled HUD
             // clock. Fast diagnostic frames alone can capture the preceding label refresh.
             yield return Walk(mission.BeaconReturn.position+new Vector3(1,0,1));
             mission.RestartSurvey(); yield return new WaitForSecondsRealtime(0.2f); yield return Frames(3);
-            Check(mission.SurveyedCount==0 && mission.RepairCount==1 && stocks.Count("timber")==crossing.Length-1,"F6 resets only the session journal, preserving finite state"); Capture("Frontier-reload-04-Replay.png");
+            Check(mission.SurveyedCount==0 && mission.RepairCount==savedRepairs && stocks.Count("timber")==crossing.Length-savedRepairs,"F6 resets only the session journal, preserving finite state"); Capture("Frontier-reload-04-Replay.png");
         }
-        private IEnumerator Release() { for(int i=0;i<4;i++) { pause.ProcessInput(false,false); yield return null; } }
+        private IEnumerator Release() { for(int i=0;i<6;i++) { pause.ProcessInput(false,false);if(blueprints!=null)blueprints.ProcessInput(false,false,false,false,false);yield return null; } }
         private static IEnumerator Frames(int count) { for(int i=0;i<count;i++) yield return null; }
         private IEnumerator Walk(Vector3 destination)
         {
@@ -114,6 +119,7 @@ namespace Pax
         }
         private IEnumerator Mine(Vector3Int cell)
         {
+            if(blueprints!=null)yield return Release();
             bool found=false; Vector3 point=Vector3.zero;
             for(int angle=0;angle<360;angle+=45) { rig.ResetView(); rig.Orbit(angle,0); rig.SnapToTarget(); point=rig.View.WorldToScreenPoint(PaxGrid.Centre(cell)+Vector3.up*0.501f); builder.Select(point); if(builder.CandidateCell==cell && builder.MiningBlock==PaxActionBlock.None) {found=true;break;} }
             if(!found) throw new InvalidOperationException("No normal mining pointer for " + cell + ": " + builder.MiningStatus);
@@ -123,6 +129,7 @@ namespace Pax
         {
             var selection=FindFirstObjectByType<PaxMaterialSelection>(); int number=selection.Palette.Entries.ToList().FindIndex(e=>e.id==id)+1;
             if(!selection.SelectNumber(number)) throw new InvalidOperationException("Material selection unavailable."); bool found=false; Vector3 point=Vector3.zero;
+            if(blueprints!=null)yield return Release();
             foreach(var direction in new[] {Vector3Int.forward,Vector3Int.up,Vector3Int.right,Vector3Int.left,Vector3Int.back})
             {
                 if(!world.Contains(cell-direction)) continue;
@@ -131,9 +138,38 @@ namespace Pax
             if(!found) throw new InvalidOperationException("No normal placement pointer for " + cell + ": " + builder.PlacementStatus);
             builder.SetPointer(point,false,true); yield return Frames(3); Check(world.Contains(cell),"Normal pointer construction with " + id + " at " + cell); if(!world.Contains(cell)) throw new InvalidOperationException(builder.LastAction);
         }
+        private IEnumerator BlueprintPlace(Vector3Int anchor,int index,bool demonstrateBlocked)
+        {
+            yield return Release();blueprints.ProcessInput(index==0,index==1,false,false,true);yield return Release();
+            if(!blueprints.Active)throw new InvalidOperationException("Blueprint selection frame was not accepted.");
+            bool found=false;Vector3 point=Vector3.zero;
+            foreach(var direction in new[]{Vector3Int.forward,Vector3Int.up,Vector3Int.right,Vector3Int.left,Vector3Int.back})
+            {
+                if(!world.Contains(anchor-direction))continue;
+                for(int angle=0;angle<360;angle+=45){rig.ResetView();rig.Orbit(angle,0);rig.SnapToTarget();point=rig.View.WorldToScreenPoint(PaxGrid.Centre(anchor-direction)+(Vector3)direction*0.501f);builder.Select(point);if(builder.SelectedCell.HasValue&&builder.Placement==anchor){found=true;break;}}if(found)break;
+            }
+            if(!found)throw new InvalidOperationException("No normal blueprint pointer anchor: "+anchor);
+            builder.SetPointer(point,false,false);string id=index==0?"timber":"stone",name=index==0?"Timber":"Stone";
+            if(demonstrateBlocked)
+            {
+                string before=stocks.Capture().Encode();int revision=world.Revision;
+                for(int i=0;i<2;i++){blueprints.ProcessInput(false,false,true,false,true);yield return Release();}
+                blueprints.RefreshPreview();Check(!blueprints.PreviewValid&&blueprints.VisibleGhostCount==2,"Rotated footprint previews every cell as invalid when second cell overlaps the bank");yield return new WaitForSecondsRealtime(0.15f);Capture("Frontier-"+phase+"-"+name+"-Invalid.png");
+                input.ApplyFrame(new PaxInputFrame{pointer=point,place=true});yield return Frames(3);Check(before==stocks.Capture().Encode()&&revision==world.Revision,"Explicit blocked footprint click places and spends nothing");
+                for(int i=0;i<2;i++){blueprints.ProcessInput(false,false,true,false,true);yield return Release();}
+            }
+            blueprints.RefreshPreview();Check(blueprints.PreviewValid&&blueprints.VisibleGhostCount==2&&blueprints.Status.Contains("Cost: 2 "+id),"Entire "+name+" footprint and exact aggregate cost are valid before placement");
+            if(!blueprints.PreviewValid)throw new InvalidOperationException(blueprints.Status);
+            yield return new WaitForSecondsRealtime(0.15f);Capture("Frontier-"+phase+"-"+name+"-Valid.png");
+            int count=stocks.Count(id),r=world.Revision;var definition=blueprints.Definitions[index];definition.TryPlan(anchor,blueprints.QuarterTurns,out var planned,out _);
+            input.ApplyFrame(new PaxInputFrame{pointer=point,place=true});yield return Frames(3);
+            Check(planned.All(p=>world.TryGet(p.Cell,out var tile)&&world.TryResolveMaterial(p.MaterialId,out var material)&&tile.SurfaceMaterial==material)&&stocks.Count(id)==count-2&&world.Revision==r+1,"One pointer click atomically places both typed "+name+" cells and charges exactly two units");
+            Check(!blueprints.Active&&blueprints.VisibleGhostCount==0,"Successful footprint clears ghosts and returns to single-cell building");
+            yield return new WaitForSecondsRealtime(0.15f);Capture("Frontier-"+phase+"-"+name+"-Placed.png");
+        }
         private void SetupCapture() { view=Camera.main; document=FindFirstObjectByType<UIDocument>(); original=document.panelSettings; target=new RenderTexture(1280,720,24);target.Create();view.targetTexture=target;panel=Instantiate(original);panel.targetTexture=target;panel.clearColor=false;document.panelSettings=panel; }
         private void LateUpdate() { if(view!=null&&target!=null)view.Render(); }
-        private void Capture(string name) { var old=RenderTexture.active;var bitmap=new Texture2D(1280,720,TextureFormat.RGB24,false);try{RenderTexture.active=target;bitmap.ReadPixels(new Rect(0,0,1280,720),0,0);bitmap.Apply();File.WriteAllBytes(Path.Combine(output,name),bitmap.EncodeToPNG());}finally{RenderTexture.active=old;Destroy(bitmap);} }
+        private void Capture(string name) { if(blueprintMode)name=name.Replace("Frontier-","Blueprint-");var old=RenderTexture.active;var bitmap=new Texture2D(1280,720,TextureFormat.RGB24,false);try{RenderTexture.active=target;bitmap.ReadPixels(new Rect(0,0,1280,720),0,0);bitmap.Apply();File.WriteAllBytes(Path.Combine(output,name),bitmap.EncodeToPNG());}finally{RenderTexture.active=old;Destroy(bitmap);} }
         private void CloseCapture() { if(view!=null)view.targetTexture=null;if(document!=null&&original!=null)document.panelSettings=original;if(panel!=null)Destroy(panel);if(target!=null){target.Release();Destroy(target);} }
     }
 }

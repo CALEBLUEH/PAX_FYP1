@@ -1,0 +1,59 @@
+Atomic construction blueprints, trip rotation 11, 19 October 2026 Singapore (UTC+8).
+Isolated CodexWorkspace: C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1
+Accepted clean baseline: 09e7243 (generated frontier/evidence).
+Actual Unity Assets path and worktree common Git checked before authoring against independent command arguments.
+Expected common Git: C:\Users\user\Documents\GitHub\PAX_FYP1\.git
+Only target scene: Assets/PAX/Scenes/PaxGeneratedFrontier.unity.
+World signature remains 0FF516D17A4776476390C87ABDB48370A93E1C1B66AE68333A4B27C4A1E8C11B.
+Same slot GUID 674ddfc27916ac842abda3764786ffaa, same 2035 authored tiles, exact 3T/2S caches.
+B Timber pair / N Stone ascending pair / T cardinal rotation / Backspace or 1-5 single-cell.
+Ghost prefab has no colliders, uses explicit authored materials/root/UI refs; size 1.01 keeps occupied-cell outline visible.
+No terrain regeneration, new save format/profile, autosave, crafting/economy or selection expansion.
+
+Final Windows build: Builds/PAX-Blueprints-Windows/PAX.exe, explicit one-scene list.
+FinalBuildSummary.txt: 0 errors, 485 inherited shader warnings, 188059942 bytes, 14.0051662 seconds.
+InitialBuildSummary.txt: 188059911 bytes, 21.1204405 seconds, same 0/485.
+IntermediateCaptureBuildSummary.txt: 188059918 bytes, 13.6076035 seconds, same 0/485.
+Prior build directories preserved.
+
+Final owned directory: Builds/PAX-Blueprints-Windows/SmokeEvidence/BlueprintRun-780137fba1b645cdabd9ac608a6e80a3
+Final seed PID 83996: 22/22, started 06:40:50, normal exit 06:41:04.877.
+Final reload PID 82312: 35/35, started 06:41:55, normal exit 06:42:10.506.
+Final distinct phase total: 57/57; zero runtime warnings/errors/exceptions in either final log.
+Diagnostics did not read/write human save directories. Logs are retained locally under Logs/PAX.
+
+Seed earns five caches through normal pointer mining, walks into both shelter stations and F5-saves gathered A.
+A = 3 Timber / 2 Stone, five harvested originals, no placed repairs.
+B preview rotates into occupied bank; explicit invalid click changes neither revision, typed state nor stock.
+Valid Timber pair shows exact 2-unit cost; one pointer click publishes both cells with ONE world revision and exact aggregate spend.
+Second explicit F5 saves partial B = 1 Timber / 2 Stone, same five harvested originals, two typed Timber crossing cells.
+A/B are earned player snapshots, not stock/world fixtures. ExpectedBackup.xml/ExpectedPrimary.xml archive them.
+New process starts fresh, explicitly F9 reads B, F8 reads A, F9 reads B again; exact capture equality and unchanged files checked.
+Load clears selected blueprint and all ghosts. Session notes start fresh at camp.
+Three normal pointer rebuild/mining cycles preserve stocks/once-only ledger.
+Mixed route: remaining Timber cell is single-built; Stone pair previews/places both ascending cells for exact 2 Stone.
+Normal walking + two held jumps + F completes all five repairs and three newly earned notes; no Warp/relocation/injected stock.
+No autosave on completion. Later F9 restores B/stock and invalidates completion; normal walk aside + F6 resets only notes.
+18 final 1280x720 combined world/UI images inspected, including both full footprints valid/invalid/placed, full help, partial reload and payoff.
+
+Initial Windows seed/reload PIDs 78724/78808 passed 22/22 and 35/35 (ended 06:35:48.636 / 06:36:37.980).
+Their shelter/partial images sometimes preceded unscaled HUD polling despite correct model assertions; historical images/checklists retained.
+After green full suites, ONLY opt-in screenshot waits changed: real unscaled 0.15s waits before affected captures.
+Core placement/resource/save/input/ghost/scene data unchanged. All code recompiled and final fresh-directory phases replayed.
+Repeated checks are not added to the final 57 total. No full-suite rerun for screenshot-only timing.
+
+Full EditMode: 78/78 (74 previous +4); full PlayMode: 103/103 (91 previous +12).
+Final focused blueprint PlayMode: 12/12.
+Initial focused 9/10: setup tried to single-build the second bridge tile through the first tile. Fixture now legally steps forward, builds, returns and mines first.
+Expanded focused 11/12: single-cell validator stopped at Unsupported before LOS. Fixture now independently verifies second LOS blocked/first clear then atomic blueprint rejection.
+Initial XMLs retained; safety assertions and placement rules not relaxed.
+EditMode preceded nonserialized feedback/ghost activation refinement; final full PlayMode and Windows cover final runtime behavior.
+
+All 8 prior scene hashes match Baseline.json; selection/Continue, definitions/rules/palettes, packages and isolated Build Settings unchanged.
+New target scene changes are owner/ghost-root/UI/help wiring only; typed-save test asserts exact unchanged world signature.
+PAX missing metadata 0, duplicate GUID groups 0. Original PrototypeBranch 42ad020 dirty setup/ledger and protected hashes preserved.
+Unrelated AS GUI/import worker PIDs 31620/20908/22968 untouched. No competing Editor, force-kill or selected-editor MCP writes.
+Actual work: first audit 06:07:49 to final player validation 06:42:10 = 34m21s, then render audit/archive/report/local commit.
+Single agent. No external assets/downloads/paid calls/publication/reset/new goal/automation/delegation.
+API fixture warps are confined to PlayMode edge-case setup. Physical OS keyboard/mouse/focus and extended human play/performance remain unverified.
+After local checkpoint and clean/idle proof: WAIT for coordinator / AS rotation. No next milestone started.

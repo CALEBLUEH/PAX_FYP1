@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Pax
@@ -35,12 +36,15 @@ namespace Pax
         private float feedbackReach;
         private string selectedMaterialId = "default";
         private PaxStockpile stockpile;
+        private PaxBlueprintBuilder blueprints;
+        public void UseBlueprints(PaxBlueprintBuilder owner) { blueprints = owner; hasFeedback = false; }
         public void UseStockpile(PaxStockpile resources) => stockpile = resources;
         public string SelectedMaterialId => selectedMaterialId;
         public bool TrySelectMaterial(string id)
         {
             if (pause != null && pause.BlocksActions) return false;
             if (!world.TryResolveMaterial(id, out _)) return false;
+            blueprints?.Cancel();
             selectedMaterialId = id; return true;
         }
         public string Mode => (smartCursor ? "SMART" : "PRECISE") + (targetHiddenSolids ? " + GHOST SOLIDS" : " + VISIBLE");
@@ -74,7 +78,7 @@ namespace Pax
         }
         public void ToggleCursor() { if (pause == null || !pause.BlocksActions) smartCursor = !smartCursor; }
         public void ToggleGhostTargets() { if (pause == null || !pause.BlocksActions) targetHiddenSolids = !targetHiddenSolids; }
-        public void ClearPendingActions() { mine = place = false; }
+        public void ClearPendingActions() { mine = place = false; if (blueprints != null) { blueprints.OnActionsCleared(); hasFeedback = false; } }
         public void SetPointer(Vector2 screenPoint, bool minePressed, bool placePressed)
         {
             if (pause != null && pause.BlocksActions) return;
@@ -85,9 +89,10 @@ namespace Pax
         {
             if (pause != null && pause.BlocksActions) { ClearPendingActions(); return; }
             Select(pointer);
+            if (blueprints != null && blueprints.BlocksPointerActions) { mine = place = false; return; }
             bool changed = false;
             if (mine) changed = candidate != null ? Mine(candidate.Cell) : RejectMissingTarget("mine");
-            else if (place) changed = candidate != null ? Place(placement) : RejectMissingTarget("place");
+            else if (place) changed = blueprints != null && blueprints.Active ? blueprints.TryPlaceFromPointer() : candidate != null ? Place(placement) : RejectMissingTarget("place");
             mine = place = false;
             if (changed)
             {
@@ -142,16 +147,60 @@ namespace Pax
 
         public PaxActionBlock EvaluatePlacement(Vector3Int cell)
         {
-            if (!world.TryResolveMaterial(selectedMaterialId, out _)) return PaxActionBlock.InvalidMaterial;
+            var geometry = EvaluatePlacementGeometry(cell, selectedMaterialId, true);
+            return geometry != PaxActionBlock.None ? geometry : stockpile == null ? PaxActionBlock.None : stockpile.PlacementStatus(selectedMaterialId);
+        }
+        private PaxActionBlock EvaluatePlacementGeometry(Vector3Int cell, string materialId, bool checkSupport)
+        {
+            if (!world.TryResolveMaterial(materialId, out _)) return PaxActionBlock.InvalidMaterial;
             if (!world.InBounds(cell)) return PaxActionBlock.OutsideWorld;
             if (!PaxGrid.InReach(player.Chest, cell, reach)) return PaxActionBlock.OutOfReach;
             if (world.Contains(cell)) return PaxActionBlock.Occupied;
             // Slightly shrink for shared faces; touching a supporting floor is legal.
             var bounds = new Bounds(PaxGrid.Centre(cell), Vector3.one * 0.98f);
             if (bounds.Intersects(player.BodyBounds)) return PaxActionBlock.PlayerOverlap;
-            if (!world.HasSupport(cell)) return PaxActionBlock.Unsupported;
+            if (checkSupport && !world.HasSupport(cell)) return PaxActionBlock.Unsupported;
             if (!HasLineOfSight(cell)) return PaxActionBlock.Occluded;
-            return stockpile == null ? PaxActionBlock.None : stockpile.PlacementStatus(selectedMaterialId);
+            return PaxActionBlock.None;
+        }
+        public bool EvaluateBlueprint(PaxConstructionBlueprint definition, Vector3Int anchor, int turns, out Dictionary<string,int> costs, out string reason)
+            => ValidateBlueprint(definition,anchor,turns,out _,out costs,out reason);
+        private bool ValidateBlueprint(PaxConstructionBlueprint definition, Vector3Int anchor, int turns, out PaxBlueprintPlacement[] plan, out Dictionary<string,int> costs, out string reason)
+        {
+            plan = null; costs = new Dictionary<string,int>(); reason = "Assign a valid blueprint.";
+            if (definition == null || !definition.TryPlan(anchor,turns,out plan,out reason)) return false;
+            foreach (var tile in plan) { costs.TryGetValue(tile.MaterialId,out int count); costs[tile.MaterialId] = count+1; }
+            foreach (var tile in plan)
+            {
+                var rejected = EvaluatePlacementGeometry(tile.Cell,tile.MaterialId,false);
+                if (rejected != PaxActionBlock.None) { reason = tile.Cell + ": " + Explain(rejected); return false; }
+            }
+            // Resolve support from existing world cells outward. A floating group cannot support itself.
+            var supported = new HashSet<Vector3Int>(); bool progress;
+            do
+            {
+                progress = false;
+                foreach (var tile in plan)
+                {
+                    if (supported.Contains(tile.Cell)) continue;
+                    bool touches = world.HasSupport(tile.Cell);
+                    if (!touches) foreach (var step in PaxGrid.Neighbours) if (supported.Contains(tile.Cell+step)) { touches = true; break; }
+                    if (touches) { supported.Add(tile.Cell); progress = true; }
+                }
+            } while (progress);
+            if (supported.Count != plan.Length) { reason = "Every footprint group must connect to existing support. Nothing placed or spent."; return false; }
+            var resources = stockpile == null ? PaxActionBlock.ResourceUnavailable : stockpile.PlacementStatus(costs);
+            if (resources != PaxActionBlock.None) { reason = Explain(resources) + " Need the full aggregate cost; nothing placed or spent."; return false; }
+            reason = "Ready — entire footprint fits."; return true;
+        }
+        public bool PlaceBlueprint(PaxConstructionBlueprint definition, Vector3Int anchor, int turns)
+        {
+            if (pause != null && pause.BlocksActions) return false;
+            if (!ValidateBlueprint(definition,anchor,turns,out var plan,out var costs,out string reason)) { ShowAction("Blueprint blocked: " + reason); return false; }
+            if (!world.TryAddBatch(plan)) { ShowAction("Blueprint setup failed or world changed; all tiles and stocks kept."); return false; }
+            stockpile.CommitPlacements(costs);
+            ShowAction("Placed " + definition.Title + ": " + plan.Length + " typed cells, aggregate cost spent once.");
+            hasFeedback = false; blueprints?.OnActionsCleared(); return true;
         }
         public bool CanPlaceAt(Vector3Int cell) => EvaluatePlacement(cell) == PaxActionBlock.None;
         public PaxActionBlock EvaluateMining(Vector3Int cell)
@@ -239,6 +288,7 @@ namespace Pax
             {
                 MiningBlock = PlacementBlock = PaxActionBlock.NoTarget;
                 RefreshFeedback();
+                blueprints?.RefreshPreview();
                 return;
             }
             minePreview.position = PaxGrid.Centre(candidate.Cell);
@@ -252,6 +302,7 @@ namespace Pax
             if (placeVisual.sharedMaterial != placementMaterial) placeVisual.sharedMaterial = placementMaterial;
             if (mineVisual.sharedMaterial != miningMaterial) mineVisual.sharedMaterial = miningMaterial;
             RefreshFeedback();
+            if (blueprints != null && blueprints.Active) { placePreview.gameObject.SetActive(false); blueprints.RefreshPreview(); PlacementStatus = blueprints.Status; }
         }
 
         private void RefreshFeedback()

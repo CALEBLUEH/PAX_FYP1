@@ -1,0 +1,43 @@
+{
+  "Time": "2026-10-19T06:15:26.3699953+08:00",
+  "Commit": "09e7243bc7c3526b590ae3623c67e752c2c945ef",
+  "CommonGit": "C:/Users/user/Documents/GitHub/PAX_FYP1/.git",
+  "Scenes": [
+    {
+      "Path": "C:\\Users\\user\\.codex\\worktrees\\pax-development\\PAX_FYP1\\Assets\\PAX\\Scenes\\PaxEmberReach.unity",
+      "Hash": "030C302EAD6CD0756890E84789486CD698D1244616E1E5BC32BD43D3634356B1"
+    },
+    {
+      "Path": "C:\\Users\\user\\.codex\\worktrees\\pax-development\\PAX_FYP1\\Assets\\PAX\\Scenes\\PaxExpedition.unity",
+      "Hash": "B0C37CBF2D43AB76A29800F1E9D747A849FD176AF1F718556AB2C7011D36C0DD"
+    },
+    {
+      "Path": "C:\\Users\\user\\.codex\\worktrees\\pax-development\\PAX_FYP1\\Assets\\PAX\\Scenes\\PaxExpeditionSelection.unity",
+      "Hash": "82700786941A4F71D2C10F0B3CCA4A5E7A25D022197F861FCCFBE5434CA3BE26"
+    },
+    {
+      "Path": "C:\\Users\\user\\.codex\\worktrees\\pax-development\\PAX_FYP1\\Assets\\PAX\\Scenes\\PaxGeneratedFrontier.unity",
+      "Hash": "2BC48EEF6D97AB423F37CB45FE7C545A49000A764C43805C9632B3C5AAF27829"
+    },
+    {
+      "Path": "C:\\Users\\user\\.codex\\worktrees\\pax-development\\PAX_FYP1\\Assets\\PAX\\Scenes\\PaxGeneratedIsland.unity",
+      "Hash": "E371C42E0A4E7E2B4BBFD3F06B8099F11CC6F61953A1DB2EE6D76133B8DB9612"
+    },
+    {
+      "Path": "C:\\Users\\user\\.codex\\worktrees\\pax-development\\PAX_FYP1\\Assets\\PAX\\Scenes\\PaxLamplighterChart.unity",
+      "Hash": "6D16016155D784416AEC7344F6B20B6402F36FE59985731A016F631C6982F454"
+    },
+    {
+      "Path": "C:\\Users\\user\\.codex\\worktrees\\pax-development\\PAX_FYP1\\Assets\\PAX\\Scenes\\PaxPaletteExpedition.unity",
+      "Hash": "FCA227E30A92ED2253C6E9AA9BB19AFD91A3A7EB56EDDF5890822BD325BD7604"
+    },
+    {
+      "Path": "C:\\Users\\user\\.codex\\worktrees\\pax-development\\PAX_FYP1\\Assets\\PAX\\Scenes\\PaxPrototype.unity",
+      "Hash": "F803F021F58AE74FE51779CFD56FAACAE8CEB8333DAA3B113C28A7A062CF74FA"
+    },
+    {
+      "Path": "C:\\Users\\user\\.codex\\worktrees\\pax-development\\PAX_FYP1\\Assets\\PAX\\Scenes\\PaxResourceExpedition.unity",
+      "Hash": "D66FF2024E0637AFDE3BA113BB9FE4FF830BC40A1F765BB7B9BB1751F5B6CF96"
+    }
+  ]
+}

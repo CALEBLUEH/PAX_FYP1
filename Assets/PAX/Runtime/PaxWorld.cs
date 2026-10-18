@@ -123,6 +123,32 @@ namespace Pax
             return true;
         }
 
+        internal bool TryAddBatch(IReadOnlyList<PaxBlueprintPlacement> plan)
+        {
+            if (plan == null || plan.Count < 2 || plan.Count > PaxConstructionBlueprint.MaximumCells) return false;
+            var unique = new HashSet<Vector3Int>(); var materials = new List<Material>();
+            foreach (var tile in plan)
+            {
+                if (!InBounds(tile.Cell) || Contains(tile.Cell) || !unique.Add(tile.Cell) || !TryResolveMaterial(tile.MaterialId,out var material)) return false;
+                materials.Add(material);
+            }
+            // Stage inactive prefab instances before publishing anything to the live grid.
+            var staged = new List<PaxBlock>();
+            try
+            {
+                for (int i = 0; i < plan.Count; i++)
+                {
+                    var block = Instantiate(blockPrefab,PaxGrid.Centre(plan[i].Cell),Quaternion.identity,blockRoot); staged.Add(block);
+                    block.gameObject.SetActive(false); block.name = "Tile " + plan[i].Cell;
+                    block.Configure(plan[i].Cell,block.GetComponent<Renderer>(),block.GetComponent<Collider>()); block.GetComponent<Renderer>().sharedMaterial = materials[i];
+                }
+            }
+            catch (Exception)
+            { foreach (var block in staged) if (block != null) { block.gameObject.SetActive(false); Destroy(block.gameObject); } return false; }
+            foreach (var block in staged) { cells.Add(block.Cell,block); blocks.Add(block); block.gameObject.SetActive(true); }
+            Revision++; Physics.SyncTransforms(); return true;
+        }
+
         public PaxTileEdits CaptureEdits()
         {
             var data = new PaxTileEdits { World = SaveSignature };

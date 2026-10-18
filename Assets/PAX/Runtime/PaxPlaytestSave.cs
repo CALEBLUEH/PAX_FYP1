@@ -17,6 +17,7 @@ namespace Pax
         public string BackupPath => SavePath + ".bak";
         public string SaveFolder => saveFolder;
         public string SaveFile => saveFile;
+        public event Action LoadRequested;
         internal void ReportContinue(string text) => Status = text;
         internal bool ContinueSaved()
         { if (resourceSession == null) return false; bool loaded = resourceSession.Continue(out string text); Status = text; return loaded; }
@@ -64,6 +65,7 @@ namespace Pax
         public bool LoadEdits(bool previous = false)
         {
             if (pause != null && pause.BlocksActions) return false;
+            LoadRequested?.Invoke();
             if (resourceSession != null) { bool loaded = resourceSession.Load(previous, out string status); Status = status; return loaded; }
             try
             {

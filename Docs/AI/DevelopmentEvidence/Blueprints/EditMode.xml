@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="78" result="Passed" total="78" passed="78" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-18 22:25:54Z" end-time="2026-10-18 22:29:21Z" duration="206.6372902">
+  <test-suite type="TestSuite" id="1000" name="PAX_FYP1" fullname="PAX_FYP1" runstate="Runnable" testcasecount="78" result="Passed" start-time="2026-10-18 22:25:54Z" end-time="2026-10-18 22:29:21Z" duration="206.637290" total="78" passed="78" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1101" name="Pax.EditModeTests.dll" fullname="C:/Users/user/.codex/worktrees/pax-development/PAX_FYP1/Library/ScriptAssemblies/Pax.EditModeTests.dll" runstate="Runnable" testcasecount="78" result="Passed" start-time="2026-10-18 22:25:54Z" end-time="2026-10-18 22:29:21Z" duration="206.620971" total="78" passed="78" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="46132" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1102" name="Pax" fullname="Pax" runstate="Runnable" testcasecount="78" result="Passed" start-time="2026-10-18 22:25:54Z" end-time="2026-10-18 22:29:21Z" duration="206.619557" total="78" passed="78" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1103" name="Tests" fullname="Pax.Tests" runstate="Runnable" testcasecount="78" result="Passed" start-time="2026-10-18 22:25:54Z" end-time="2026-10-18 22:29:21Z" duration="206.618724" total="78" passed="78" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1002" name="PaxBlueprintTests" fullname="Pax.Tests.PaxBlueprintTests" classname="Pax.Tests.PaxBlueprintTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-18 22:25:54Z" end-time="2026-10-18 22:26:16Z" duration="21.806515" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1003" name="CardinalRotationPreservesMaterialsAndInvalidFootprintsAreRejected" fullname="Pax.Tests.PaxBlueprintTests.CardinalRotationPreservesMaterialsAndInvalidFootprintsAreRejected" methodname="CardinalRotationPreservesMaterialsAndInvalidFootprintsAreRejected" classname="Pax.Tests.PaxBlueprintTests" runstate="Runnable" seed="1344049231" result="Passed" start-time="2026-10-18 22:25:54Z" end-time="2026-10-18 22:25:55Z" duration="0.022996" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1005" name="FrontierHasExactlyTwoAuthoredAssetsSafeGhostAndUnusedEditableBindings" fullname="Pax.Tests.PaxBlueprintTests.FrontierHasExactlyTwoAuthoredAssetsSafeGhostAndUnusedEditableBindings" methodname="FrontierHasExactlyTwoAuthoredAssetsSafeGhostAndUnusedEditableBindings" classname="Pax.Tests.PaxBlueprintTests" runstate="Runnable" seed="141147171" result="Passed" start-time="2026-10-18 22:25:55Z" end-time="2026-10-18 22:25:55Z" duration="0.788753" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1006" name="TargetAuthoringIsByteIdempotentAndPriorScenesAndAssetsAreUnchanged" fullname="Pax.Tests.PaxBlueprintTests.TargetAuthoringIsByteIdempotentAndPriorScenesAndAssetsAreUnchanged" methodname="TargetAuthoringIsByteIdempotentAndPriorScenesAndAssetsAreUnchanged" classname="Pax.Tests.PaxBlueprintTests" runstate="Runnable" seed="1710623565" result="Passed" start-time="2026-10-18 22:25:55Z" end-time="2026-10-18 22:26:16Z" duration="20.969684" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+PAX_BLUEPRINT_COMMON_GIT_CONFIRMED C:\Users\user\Documents\GitHub\PAX_FYP1\.git
+PAX_BLUEPRINT_AUTHORING_OK frontier only; world geometry/slot unchanged
+PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+PAX_BLUEPRINT_COMMON_GIT_CONFIRMED C:\Users\user\Documents\GitHub\PAX_FYP1\.git
+PAX_BLUEPRINT_AUTHORING_OK frontier only; world geometry/slot unchanged
+]]></output>
+            </test-case>
+            <test-case id="1004" name="WrongProjectAndCommonGitAreRejectedBeforeAuthoring" fullname="Pax.Tests.PaxBlueprintTests.WrongProjectAndCommonGitAreRejectedBeforeAuthoring" methodname="WrongProjectAndCommonGitAreRejectedBeforeAuthoring" classname="Pax.Tests.PaxBlueprintTests" runstate="Runnable" seed="1712742723" result="Passed" start-time="2026-10-18 22:26:16Z" end-time="2026-10-18 22:26:16Z" duration="0.005814" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+PAX_BLUEPRINT_COMMON_GIT_CONFIRMED C:\Users\user\Documents\GitHub\PAX_FYP1\.git
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1007" name="PaxChartAuthoringTests" fullname="Pax.Tests.PaxChartAuthoringTests" classname="Pax.Tests.PaxChartAuthoringTests" runstate="Runnable" testcasecount="1" result="Passed" start-time="2026-10-18 22:26:16Z" end-time="2026-10-18 22:26:34Z" duration="17.697522" total="1" passed="1" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1008" name="ChartSceneIsAuthoredWiredBoundedAndIdempotent" fullname="Pax.Tests.PaxChartAuthoringTests.ChartSceneIsAuthoredWiredBoundedAndIdempotent" methodname="ChartSceneIsAuthoredWiredBoundedAndIdempotent" classname="Pax.Tests.PaxChartAuthoringTests" runstate="Runnable" seed="739510226" result="Passed" start-time="2026-10-18 22:26:17Z" end-time="2026-10-18 22:26:34Z" duration="17.032397" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+Lamplighter chart exists; preserving scene and saves.
+PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1009" name="PaxContinueAuthoringTests" fullname="Pax.Tests.PaxContinueAuthoringTests" classname="Pax.Tests.PaxContinueAuthoringTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 22:26:34Z" end-time="2026-10-18 22:26:57Z" duration="22.547537" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1010" name="CatalogExactlyMirrorsThreeAuthoredScenesAndTheirSlots" fullname="Pax.Tests.PaxContinueAuthoringTests.CatalogExactlyMirrorsThreeAuthoredScenesAndTheirSlots" methodname="CatalogExactlyMirrorsThreeAuthoredScenesAndTheirSlots" classname="Pax.Tests.PaxContinueAuthoringTests" runstate="Runnable" seed="850593301" result="Passed" start-time="2026-10-18 22:26:34Z" end-time="2026-10-18 22:26:36Z" duration="1.747316" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1011" name="ContinueAuthoringPreservesSceneCatalogPanelAndUiBytesOnRepeat" fullname="Pax.Tests.PaxContinueAuthoringTests.ContinueAuthoringPreservesSceneCatalogPanelAndUiBytesOnRepeat" methodname="ContinueAuthoringPreservesSceneCatalogPanelAndUiBytesOnRepeat" classname="Pax.Tests.PaxContinueAuthoringTests" runstate="Runnable" seed="360359406" result="Passed" start-time="2026-10-18 22:26:36Z" end-time="2026-10-18 22:26:57Z" duration="20.762525" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+PAX_CONTINUE_AUTHORING_OK three live/context validators, explicit slots, three receivers
+PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+PAX_CONTINUE_AUTHORING_OK three live/context validators, explicit slots, three receivers
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1012" name="PaxEmberAuthoringTests" fullname="Pax.Tests.PaxEmberAuthoringTests" classname="Pax.Tests.PaxEmberAuthoringTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 22:26:57Z" end-time="2026-10-18 22:27:15Z" duration="18.408239" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1014" name="EmberAuthoringPreservesAllEarlierContentAndIsByteIdempotent" fullname="Pax.Tests.PaxEmberAuthoringTests.EmberAuthoringPreservesAllEarlierContentAndIsByteIdempotent" methodname="EmberAuthoringPreservesAllEarlierContentAndIsByteIdempotent" classname="Pax.Tests.PaxEmberAuthoringTests" runstate="Runnable" seed="562805063" result="Passed" start-time="2026-10-18 22:26:57Z" end-time="2026-10-18 22:27:14Z" duration="17.673374" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+PAX_EMBER_AUTHORING_OK north/east ridge, 5 Timber + 2 Stone, three lamps
+PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+PAX_EMBER_AUTHORING_OK north/east ridge, 5 Timber + 2 Stone, three lamps
+]]></output>
+            </test-case>
+            <test-case id="1013" name="EmberHasFiniteTypedRepairsThreeNotesLampsAndDistinctSavedWiring" fullname="Pax.Tests.PaxEmberAuthoringTests.EmberHasFiniteTypedRepairsThreeNotesLampsAndDistinctSavedWiring" methodname="EmberHasFiniteTypedRepairsThreeNotesLampsAndDistinctSavedWiring" classname="Pax.Tests.PaxEmberAuthoringTests" runstate="Runnable" seed="483892583" result="Passed" start-time="2026-10-18 22:27:14Z" end-time="2026-10-18 22:27:15Z" duration="0.679324" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1015" name="PaxEntryAuthoringTests" fullname="Pax.Tests.PaxEntryAuthoringTests" classname="Pax.Tests.PaxEntryAuthoringTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 22:27:15Z" end-time="2026-10-18 22:27:35Z" duration="20.390584" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1016" name="AuthoredEntryAndBothReturnPathsAreWiredAndTruthful" fullname="Pax.Tests.PaxEntryAuthoringTests.AuthoredEntryAndBothReturnPathsAreWiredAndTruthful" methodname="AuthoredEntryAndBothReturnPathsAreWiredAndTruthful" classname="Pax.Tests.PaxEntryAuthoringTests" runstate="Runnable" seed="1740146359" result="Passed" start-time="2026-10-18 22:27:15Z" end-time="2026-10-18 22:27:16Z" duration="1.222221" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1017" name="EntryAuthoringIsByteIdempotentAcrossAllScenesAndUi" fullname="Pax.Tests.PaxEntryAuthoringTests.EntryAuthoringIsByteIdempotentAcrossAllScenesAndUi" methodname="EntryAuthoringIsByteIdempotentAcrossAllScenesAndUi" classname="Pax.Tests.PaxEntryAuthoringTests" runstate="Runnable" seed="2059294698" result="Passed" start-time="2026-10-18 22:27:16Z" end-time="2026-10-18 22:27:35Z" duration="19.137415" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+PAX_ENTRY_AUTHORING_OK selection + confirmed return, existing finite slots retained
+PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+PAX_ENTRY_AUTHORING_OK selection + confirmed return, existing finite slots retained
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1018" name="PaxExpeditionAuthoringTests" fullname="Pax.Tests.PaxExpeditionAuthoringTests" classname="Pax.Tests.PaxExpeditionAuthoringTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 22:27:35Z" end-time="2026-10-18 22:27:45Z" duration="9.964626" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1020" name="RepeatedAuthoringKeepsAllScenesAndBuildSettingsByteIdentical" fullname="Pax.Tests.PaxExpeditionAuthoringTests.RepeatedAuthoringKeepsAllScenesAndBuildSettingsByteIdentical" methodname="RepeatedAuthoringKeepsAllScenesAndBuildSettingsByteIdentical" classname="Pax.Tests.PaxExpeditionAuthoringTests" runstate="Runnable" seed="63881944" result="Passed" start-time="2026-10-18 22:27:35Z" end-time="2026-10-18 22:27:45Z" duration="9.280278" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+PAX expedition exists; preserving authored scene and saves.
+]]></output>
+            </test-case>
+            <test-case id="1019" name="SceneHasExplicitWiringEmptySupportedRepairCellsAndUniqueSlot" fullname="Pax.Tests.PaxExpeditionAuthoringTests.SceneHasExplicitWiringEmptySupportedRepairCellsAndUniqueSlot" methodname="SceneHasExplicitWiringEmptySupportedRepairCellsAndUniqueSlot" classname="Pax.Tests.PaxExpeditionAuthoringTests" runstate="Runnable" seed="970468546" result="Passed" start-time="2026-10-18 22:27:45Z" end-time="2026-10-18 22:27:45Z" duration="0.649897" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1021" name="PaxFrontierTests" fullname="Pax.Tests.PaxFrontierTests" classname="Pax.Tests.PaxFrontierTests" runstate="Runnable" testcasecount="9" result="Passed" start-time="2026-10-18 22:27:45Z" end-time="2026-10-18 22:28:17Z" duration="32.028910" total="9" passed="9" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1029" name="DefaultSceneMatchesGeneratedTilesBudgetMarkersAndExplicitReferences" fullname="Pax.Tests.PaxFrontierTests.DefaultSceneMatchesGeneratedTilesBudgetMarkersAndExplicitReferences" methodname="DefaultSceneMatchesGeneratedTilesBudgetMarkersAndExplicitReferences" classname="Pax.Tests.PaxFrontierTests" runstate="Runnable" seed="23021108" result="Passed" start-time="2026-10-18 22:27:45Z" end-time="2026-10-18 22:27:46Z" duration="0.740328" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1028" name="InvalidKnobsAndMissingSheltersFailBeforeGeneration" fullname="Pax.Tests.PaxFrontierTests.InvalidKnobsAndMissingSheltersFailBeforeGeneration" methodname="InvalidKnobsAndMissingSheltersFailBeforeGeneration" classname="Pax.Tests.PaxFrontierTests" runstate="Runnable" seed="790672721" result="Passed" start-time="2026-10-18 22:27:46Z" end-time="2026-10-18 22:27:46Z" duration="0.000673" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1031" name="NewSceneActionCreatesIdenticalAuthoredWorldWithDistinctSlotAndPreservesPriorOutputs" fullname="Pax.Tests.PaxFrontierTests.NewSceneActionCreatesIdenticalAuthoredWorldWithDistinctSlotAndPreservesPriorOutputs" methodname="NewSceneActionCreatesIdenticalAuthoredWorldWithDistinctSlotAndPreservesPriorOutputs" classname="Pax.Tests.PaxFrontierTests" runstate="Runnable" seed="980442082" result="Passed" start-time="2026-10-18 22:27:46Z" end-time="2026-10-18 22:27:56Z" duration="9.496641" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+PAX_FRONTIER_AUTHORING_OK seed=91873 tiles=2035 budget=3T/2S scene=Assets/PAX/Scenes/FrontierValidation-b03e8db1c96a42aeb5675eea3b6bea6c.unity
+]]></output>
+            </test-case>
+            <test-case id="1030" name="RepeatAndOverwriteRefusalPreserveAllScenesDefinitionsAndSettings" fullname="Pax.Tests.PaxFrontierTests.RepeatAndOverwriteRefusalPreserveAllScenesDefinitionsAndSettings" methodname="RepeatAndOverwriteRefusalPreserveAllScenesDefinitionsAndSettings" classname="Pax.Tests.PaxFrontierTests" runstate="Runnable" seed="1251695918" result="Passed" start-time="2026-10-18 22:27:56Z" end-time="2026-10-18 22:28:17Z" duration="21.490825" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+PAX frontier exists; preserving all scene edits and saves.
+PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+]]></output>
+            </test-case>
+            <test-case id="1022" name="SameDefinitionIsExactSortedAndIndependentOfUnityRandom" fullname="Pax.Tests.PaxFrontierTests.SameDefinitionIsExactSortedAndIndependentOfUnityRandom" methodname="SameDefinitionIsExactSortedAndIndependentOfUnityRandom" classname="Pax.Tests.PaxFrontierTests" runstate="Runnable" seed="1921100250" result="Passed" start-time="2026-10-18 22:28:17Z" end-time="2026-10-18 22:28:17Z" duration="0.026860" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1027" name="VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget" fullname="Pax.Tests.PaxFrontierTests.VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget" classname="Pax.Tests.PaxFrontierTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-18 22:28:17Z" end-time="2026-10-18 22:28:17Z" duration="0.242982" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1023" name="VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget(12,0,2,1,2)" fullname="Pax.Tests.PaxFrontierTests.VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget(12,0,2,1,2)" methodname="VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget" classname="Pax.Tests.PaxFrontierTests" runstate="Runnable" seed="847003699" result="Passed" start-time="2026-10-18 22:28:17Z" end-time="2026-10-18 22:28:17Z" duration="0.030523" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1024" name="VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget(12,2,4,2,5)" fullname="Pax.Tests.PaxFrontierTests.VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget(12,2,4,2,5)" methodname="VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget" classname="Pax.Tests.PaxFrontierTests" runstate="Runnable" seed="1177538512" result="Passed" start-time="2026-10-18 22:28:17Z" end-time="2026-10-18 22:28:17Z" duration="0.025779" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1025" name="VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget(16,2,3,2,3)" fullname="Pax.Tests.PaxFrontierTests.VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget(16,2,3,2,3)" methodname="VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget" classname="Pax.Tests.PaxFrontierTests" runstate="Runnable" seed="1682932033" result="Passed" start-time="2026-10-18 22:28:17Z" end-time="2026-10-18 22:28:17Z" duration="0.046641" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1026" name="VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget(16,0,4,1,4)" fullname="Pax.Tests.PaxFrontierTests.VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget(16,0,4,1,4)" methodname="VariedSeedsAndBoundsGuaranteeCachesProtectedRouteAndExactRepairBudget" classname="Pax.Tests.PaxFrontierTests" runstate="Runnable" seed="2012632335" result="Passed" start-time="2026-10-18 22:28:17Z" end-time="2026-10-18 22:28:17Z" duration="0.085183" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+          </test-suite>
+          <test-suite type="TestFixture" id="1032" name="PaxGenerationTests" fullname="Pax.Tests.PaxGenerationTests" classname="Pax.Tests.PaxGenerationTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-18 22:28:17Z" end-time="2026-10-18 22:28:24Z" duration="6.971907" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1041" name="RepeatedGenerationAndOverwriteRefusalKeepBothScenesAndBuildSettingsIdentical" fullname="Pax.Tests.PaxGenerationTests.RepeatedGenerationAndOverwriteRefusalKeepBothScenesAndBuildSettingsIdentical" methodname="RepeatedGenerationAndOverwriteRefusalKeepBothScenesAndBuildSettingsIdentical" classname="Pax.Tests.PaxGenerationTests" runstate="Runnable" seed="1098709771" result="Passed" start-time="2026-10-18 22:28:17Z" end-time="2026-10-18 22:28:23Z" duration="5.986279" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+PAX generated scene exists; preserving all authored edits.
+PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+]]></output>
+            </test-case>
+            <test-case id="1034" name="SameSeedIsExactAndDoesNotConsumeGlobalRandomState" fullname="Pax.Tests.PaxGenerationTests.SameSeedIsExactAndDoesNotConsumeGlobalRandomState" methodname="SameSeedIsExactAndDoesNotConsumeGlobalRandomState" classname="Pax.Tests.PaxGenerationTests" runstate="Runnable" seed="1249790641" result="Passed" start-time="2026-10-18 22:28:23Z" end-time="2026-10-18 22:28:23Z" duration="0.029784" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1040" name="SavedSceneMatchesDefinitionHasWiringAndSeparateSaveSlot" fullname="Pax.Tests.PaxGenerationTests.SavedSceneMatchesDefinitionHasWiringAndSeparateSaveSlot" methodname="SavedSceneMatchesDefinitionHasWiringAndSeparateSaveSlot" classname="Pax.Tests.PaxGenerationTests" runstate="Runnable" seed="345429373" result="Passed" start-time="2026-10-18 22:28:23Z" end-time="2026-10-18 22:28:24Z" duration="0.705313" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1038" name="SeedSweepHasUniqueBoundedTilesProtectedFoundationAndWalkableEntrances" fullname="Pax.Tests.PaxGenerationTests.SeedSweepHasUniqueBoundedTilesProtectedFoundationAndWalkableEntrances" classname="Pax.Tests.PaxGenerationTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 22:28:24Z" end-time="2026-10-18 22:28:24Z" duration="0.245646" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1035" name="SeedSweepHasUniqueBoundedTilesProtectedFoundationAndWalkableEntrances(12,0)" fullname="Pax.Tests.PaxGenerationTests.SeedSweepHasUniqueBoundedTilesProtectedFoundationAndWalkableEntrances(12,0)" methodname="SeedSweepHasUniqueBoundedTilesProtectedFoundationAndWalkableEntrances" classname="Pax.Tests.PaxGenerationTests" runstate="Runnable" seed="860010221" result="Passed" start-time="2026-10-18 22:28:24Z" end-time="2026-10-18 22:28:24Z" duration="0.057268" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1036" name="SeedSweepHasUniqueBoundedTilesProtectedFoundationAndWalkableEntrances(12,2)" fullname="Pax.Tests.PaxGenerationTests.SeedSweepHasUniqueBoundedTilesProtectedFoundationAndWalkableEntrances(12,2)" methodname="SeedSweepHasUniqueBoundedTilesProtectedFoundationAndWalkableEntrances" classname="Pax.Tests.PaxGenerationTests" runstate="Runnable" seed="2068915371" result="Passed" start-time="2026-10-18 22:28:24Z" end-time="2026-10-18 22:28:24Z" duration="0.055620" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1037" name="SeedSweepHasUniqueBoundedTilesProtectedFoundationAndWalkableEntrances(16,2)" fullname="Pax.Tests.PaxGenerationTests.SeedSweepHasUniqueBoundedTilesProtectedFoundationAndWalkableEntrances(16,2)" methodname="SeedSweepHasUniqueBoundedTilesProtectedFoundationAndWalkableEntrances" classname="Pax.Tests.PaxGenerationTests" runstate="Runnable" seed="2021478556" result="Passed" start-time="2026-10-18 22:28:24Z" end-time="2026-10-18 22:28:24Z" duration="0.105356" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1039" name="StructureAndTerrainSettingsChangeLayoutAndInvalidValuesFail" fullname="Pax.Tests.PaxGenerationTests.StructureAndTerrainSettingsChangeLayoutAndInvalidValuesFail" methodname="StructureAndTerrainSettingsChangeLayoutAndInvalidValuesFail" classname="Pax.Tests.PaxGenerationTests" runstate="Runnable" seed="1037468686" result="Passed" start-time="2026-10-18 22:28:24Z" end-time="2026-10-18 22:28:24Z" duration="0.001906" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1033" name="WrongUnityProjectIdentityIsRejectedBeforeAuthoring" fullname="Pax.Tests.PaxGenerationTests.WrongUnityProjectIdentityIsRejectedBeforeAuthoring" methodname="WrongUnityProjectIdentityIsRejectedBeforeAuthoring" classname="Pax.Tests.PaxGenerationTests" runstate="Runnable" seed="262710785" result="Passed" start-time="2026-10-18 22:28:24Z" end-time="2026-10-18 22:28:24Z" duration="0.001075" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1042" name="PaxGridTests" fullname="Pax.Tests.PaxGridTests" classname="Pax.Tests.PaxGridTests" runstate="Runnable" testcasecount="13" result="Passed" start-time="2026-10-18 22:28:24Z" end-time="2026-10-18 22:28:28Z" duration="3.691067" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1056" name="AuthoredSceneHasRequiredReferencesAndUniqueCells" fullname="Pax.Tests.PaxGridTests.AuthoredSceneHasRequiredReferencesAndUniqueCells" methodname="AuthoredSceneHasRequiredReferencesAndUniqueCells" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="1785272408" result="Passed" start-time="2026-10-18 22:28:24Z" end-time="2026-10-18 22:28:25Z" duration="0.625710" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1057" name="AuthoringIsIdempotentAndPreservesBuildConfig" fullname="Pax.Tests.PaxGridTests.AuthoringIsIdempotentAndPreservesBuildConfig" methodname="AuthoringIsIdempotentAndPreservesBuildConfig" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="1391745024" result="Passed" start-time="2026-10-18 22:28:25Z" end-time="2026-10-18 22:28:28Z" duration="3.020934" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PAX scene already exists. Preserving authored assets.
+]]></output>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1054" name="CellCentreRoundTrips" fullname="Pax.Tests.PaxGridTests.CellCentreRoundTrips" classname="Pax.Tests.PaxGridTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:28Z" duration="0.029349" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1051" name="CellCentreRoundTrips(-4,-3,-2)" fullname="Pax.Tests.PaxGridTests.CellCentreRoundTrips(-4,-3,-2)" methodname="CellCentreRoundTrips" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="1481838818" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:28Z" duration="0.000613" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1052" name="CellCentreRoundTrips(0,0,0)" fullname="Pax.Tests.PaxGridTests.CellCentreRoundTrips(0,0,0)" methodname="CellCentreRoundTrips" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="552535981" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:28Z" duration="0.000095" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1053" name="CellCentreRoundTrips(5,8,2)" fullname="Pax.Tests.PaxGridTests.CellCentreRoundTrips(5,8,2)" methodname="CellCentreRoundTrips" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="2143888460" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:28Z" duration="0.000058" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-suite type="ParameterizedMethod" id="1050" name="HeightLayersMatchDesign" fullname="Pax.Tests.PaxGridTests.HeightLayersMatchDesign" classname="Pax.Tests.PaxGridTests" runstate="Runnable" testcasecount="7" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:28Z" duration="0.001755" total="7" passed="7" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1043" name="HeightLayersMatchDesign(-2,1.0f)" fullname="Pax.Tests.PaxGridTests.HeightLayersMatchDesign(-2,1.0f)" methodname="HeightLayersMatchDesign" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="524826402" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:28Z" duration="0.000838" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1044" name="HeightLayersMatchDesign(-1,1.0f)" fullname="Pax.Tests.PaxGridTests.HeightLayersMatchDesign(-1,1.0f)" methodname="HeightLayersMatchDesign" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="757146778" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:28Z" duration="0.000073" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1045" name="HeightLayersMatchDesign(0,0.75f)" fullname="Pax.Tests.PaxGridTests.HeightLayersMatchDesign(0,0.75f)" methodname="HeightLayersMatchDesign" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="371781572" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:28Z" duration="0.000041" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1046" name="HeightLayersMatchDesign(1,0.5f)" fullname="Pax.Tests.PaxGridTests.HeightLayersMatchDesign(1,0.5f)" methodname="HeightLayersMatchDesign" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="1645524816" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:28Z" duration="0.000041" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1047" name="HeightLayersMatchDesign(2,0.25f)" fullname="Pax.Tests.PaxGridTests.HeightLayersMatchDesign(2,0.25f)" methodname="HeightLayersMatchDesign" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="1972563516" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:28Z" duration="0.000040" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1048" name="HeightLayersMatchDesign(3,0.1f)" fullname="Pax.Tests.PaxGridTests.HeightLayersMatchDesign(3,0.1f)" methodname="HeightLayersMatchDesign" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="58360279" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:28Z" duration="0.000040" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1049" name="HeightLayersMatchDesign(4,0.0f)" fullname="Pax.Tests.PaxGridTests.HeightLayersMatchDesign(4,0.0f)" methodname="HeightLayersMatchDesign" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="352770067" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:28Z" duration="0.000036" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1055" name="ReachIsThreeDimensionalAndIncludesBoundary" fullname="Pax.Tests.PaxGridTests.ReachIsThreeDimensionalAndIncludesBoundary" methodname="ReachIsThreeDimensionalAndIncludesBoundary" classname="Pax.Tests.PaxGridTests" runstate="Runnable" seed="893313888" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:28Z" duration="0.000274" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1058" name="PaxPaletteTests" fullname="Pax.Tests.PaxPaletteTests" classname="Pax.Tests.PaxPaletteTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:42Z" duration="13.558294" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1066" name="MalformedIdsAreRejected" fullname="Pax.Tests.PaxPaletteTests.MalformedIdsAreRejected" classname="Pax.Tests.PaxPaletteTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:28Z" duration="0.040437" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1061" name="MalformedIdsAreRejected(&quot;&quot;)" fullname="Pax.Tests.PaxPaletteTests.MalformedIdsAreRejected(&quot;&quot;)" methodname="MalformedIdsAreRejected" classname="Pax.Tests.PaxPaletteTests" runstate="Runnable" seed="829366494" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:28Z" duration="0.038223" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1062" name="MalformedIdsAreRejected(&quot;../Roof.mat&quot;)" fullname="Pax.Tests.PaxPaletteTests.MalformedIdsAreRejected(&quot;../Roof.mat&quot;)" methodname="MalformedIdsAreRejected" classname="Pax.Tests.PaxPaletteTests" runstate="Runnable" seed="337133170" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:28Z" duration="0.000557" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1063" name="MalformedIdsAreRejected(&quot;Stone&quot;)" fullname="Pax.Tests.PaxPaletteTests.MalformedIdsAreRejected(&quot;Stone&quot;)" methodname="MalformedIdsAreRejected" classname="Pax.Tests.PaxPaletteTests" runstate="Runnable" seed="1834598198" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:28Z" duration="0.000398" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1064" name="MalformedIdsAreRejected(&quot; stone&quot;)" fullname="Pax.Tests.PaxPaletteTests.MalformedIdsAreRejected(&quot; stone&quot;)" methodname="MalformedIdsAreRejected" classname="Pax.Tests.PaxPaletteTests" runstate="Runnable" seed="2052239409" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:28Z" duration="0.000364" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1065" name="MalformedIdsAreRejected(&quot;abcdefghijklmnopqrstuvwxyz1234567&quot;)" fullname="Pax.Tests.PaxPaletteTests.MalformedIdsAreRejected(&quot;abcdefghijklmnopqrstuvwxyz1234567&quot;)" methodname="MalformedIdsAreRejected" classname="Pax.Tests.PaxPaletteTests" runstate="Runnable" seed="1760631300" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:28Z" duration="0.000370" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1067" name="MissingDuplicateUnknownAttributesAndLegacyMaterialMetadataAreRejected" fullname="Pax.Tests.PaxPaletteTests.MissingDuplicateUnknownAttributesAndLegacyMaterialMetadataAreRejected" methodname="MissingDuplicateUnknownAttributesAndLegacyMaterialMetadataAreRejected" classname="Pax.Tests.PaxPaletteTests" runstate="Runnable" seed="155514147" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:28Z" duration="0.001666" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1059" name="NonDefaultWritesRequireRegistryValidationBeforeCreatingAnyFile" fullname="Pax.Tests.PaxPaletteTests.NonDefaultWritesRequireRegistryValidationBeforeCreatingAnyFile" methodname="NonDefaultWritesRequireRegistryValidationBeforeCreatingAnyFile" classname="Pax.Tests.PaxPaletteTests" runstate="Runnable" seed="2136273760" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:28Z" duration="0.001669" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1068" name="PaletteRejectsDuplicateIdsReferencesAndInvalidDefaults" fullname="Pax.Tests.PaxPaletteTests.PaletteRejectsDuplicateIdsReferencesAndInvalidDefaults" methodname="PaletteRejectsDuplicateIdsReferencesAndInvalidDefaults" classname="Pax.Tests.PaxPaletteTests" runstate="Runnable" seed="703146213" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:28Z" duration="0.029492" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1060" name="RealLegacyFixtureMigratesToExplicitDefaultIds" fullname="Pax.Tests.PaxPaletteTests.RealLegacyFixtureMigratesToExplicitDefaultIds" methodname="RealLegacyFixtureMigratesToExplicitDefaultIds" classname="Pax.Tests.PaxPaletteTests" runstate="Runnable" seed="318951970" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:28Z" duration="0.001194" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1069" name="SavedPaletteSceneHasExplicitReferencesPreviewAndIdempotentAuthoring" fullname="Pax.Tests.PaxPaletteTests.SavedPaletteSceneHasExplicitReferencesPreviewAndIdempotentAuthoring" methodname="SavedPaletteSceneHasExplicitReferencesPreviewAndIdempotentAuthoring" classname="Pax.Tests.PaxPaletteTests" runstate="Runnable" seed="1354060867" result="Passed" start-time="2026-10-18 22:28:28Z" end-time="2026-10-18 22:28:42Z" duration="13.482716" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+PAX palette expedition exists; preserving scene and saves.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1070" name="PaxPauseAuthoringTests" fullname="Pax.Tests.PaxPauseAuthoringTests" classname="Pax.Tests.PaxPauseAuthoringTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 22:28:42Z" end-time="2026-10-18 22:29:04Z" duration="22.284327" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1072" name="PauseAuthoringIsByteIdempotentAndEarlierScenesStayOptOut" fullname="Pax.Tests.PaxPauseAuthoringTests.PauseAuthoringIsByteIdempotentAndEarlierScenesStayOptOut" methodname="PauseAuthoringIsByteIdempotentAndEarlierScenesStayOptOut" classname="Pax.Tests.PaxPauseAuthoringTests" runstate="Runnable" seed="1592042942" result="Passed" start-time="2026-10-18 22:28:42Z" end-time="2026-10-18 22:29:03Z" duration="21.207407" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+PAX_PAUSE_AUTHORING_OK two finite scenes, shared authored controls, existing slots retained
+PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+PAX_PAUSE_AUTHORING_OK two finite scenes, shared authored controls, existing slots retained
+]]></output>
+            </test-case>
+            <test-case id="1071" name="TwoFiniteScenesHaveOneAuthoredPauseAndNoMissingWiring" fullname="Pax.Tests.PaxPauseAuthoringTests.TwoFiniteScenesHaveOneAuthoredPauseAndNoMissingWiring" methodname="TwoFiniteScenesHaveOneAuthoredPauseAndNoMissingWiring" classname="Pax.Tests.PaxPauseAuthoringTests" runstate="Runnable" seed="884329440" result="Passed" start-time="2026-10-18 22:29:03Z" end-time="2026-10-18 22:29:04Z" duration="1.046282" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1073" name="PaxResourceTests" fullname="Pax.Tests.PaxResourceTests" classname="Pax.Tests.PaxResourceTests" runstate="Runnable" testcasecount="10" result="Passed" start-time="2026-10-18 22:29:04Z" end-time="2026-10-18 22:29:21Z" duration="17.070263" total="10" passed="10" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1074" name="FullEnvelopeRoundTripsAndTileOnlyFormatsAreRejected" fullname="Pax.Tests.PaxResourceTests.FullEnvelopeRoundTripsAndTileOnlyFormatsAreRejected" methodname="FullEnvelopeRoundTripsAndTileOnlyFormatsAreRejected" classname="Pax.Tests.PaxResourceTests" runstate="Runnable" seed="1068846602" result="Passed" start-time="2026-10-18 22:29:04Z" end-time="2026-10-18 22:29:04Z" duration="0.009472" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1083" name="MalformedNegativeOverflowDuplicateAndStaleFormatsReject" fullname="Pax.Tests.PaxResourceTests.MalformedNegativeOverflowDuplicateAndStaleFormatsReject" classname="Pax.Tests.PaxResourceTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-18 22:29:04Z" end-time="2026-10-18 22:29:04Z" duration="0.002616" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1075" name="MalformedNegativeOverflowDuplicateAndStaleFormatsReject(&quot;count=\&quot;6\&quot;&quot;,&quot;count=\&quot;-1\&quot;&quot;)" fullname="Pax.Tests.PaxResourceTests.MalformedNegativeOverflowDuplicateAndStaleFormatsReject(&quot;count=\&quot;6\&quot;&quot;,&quot;count=\&quot;-1\&quot;&quot;)" methodname="MalformedNegativeOverflowDuplicateAndStaleFormatsReject" classname="Pax.Tests.PaxResourceTests" runstate="Runnable" seed="1313587228" result="Passed" start-time="2026-10-18 22:29:04Z" end-time="2026-10-18 22:29:04Z" duration="0.000506" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1076" name="MalformedNegativeOverflowDuplicateAndStaleFormatsReject(&quot;count=\&quot;6\&quot;&quot;,&quot;count=\&quot;2147483648\&quot;&quot;)" fullname="Pax.Tests.PaxResourceTests.MalformedNegativeOverflowDuplicateAndStaleFormatsReject(&quot;count=\&quot;6\&quot;&quot;,&quot;count=\&quot;2147483648\&quot;&quot;)" methodname="MalformedNegativeOverflowDuplicateAndStaleFormatsReject" classname="Pax.Tests.PaxResourceTests" runstate="Runnable" seed="1363904790" result="Passed" start-time="2026-10-18 22:29:04Z" end-time="2026-10-18 22:29:04Z" duration="0.000233" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1077" name="MalformedNegativeOverflowDuplicateAndStaleFormatsReject(&quot;count=\&quot;6\&quot;&quot;,&quot;count=\&quot;10001\&quot;&quot;)" fullname="Pax.Tests.PaxResourceTests.MalformedNegativeOverflowDuplicateAndStaleFormatsReject(&quot;count=\&quot;6\&quot;&quot;,&quot;count=\&quot;10001\&quot;&quot;)" methodname="MalformedNegativeOverflowDuplicateAndStaleFormatsReject" classname="Pax.Tests.PaxResourceTests" runstate="Runnable" seed="154843794" result="Passed" start-time="2026-10-18 22:29:04Z" end-time="2026-10-18 22:29:04Z" duration="0.000186" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1078" name="MalformedNegativeOverflowDuplicateAndStaleFormatsReject(&quot;id=\&quot;stone\&quot;&quot;,&quot;id=\&quot;../stone\&quot;&quot;)" fullname="Pax.Tests.PaxResourceTests.MalformedNegativeOverflowDuplicateAndStaleFormatsReject(&quot;id=\&quot;stone\&quot;&quot;,&quot;id=\&quot;../stone\&quot;&quot;)" methodname="MalformedNegativeOverflowDuplicateAndStaleFormatsReject" classname="Pax.Tests.PaxResourceTests" runstate="Runnable" seed="1917259073" result="Passed" start-time="2026-10-18 22:29:04Z" end-time="2026-10-18 22:29:04Z" duration="0.000164" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1079" name="MalformedNegativeOverflowDuplicateAndStaleFormatsReject(&quot;version=\&quot;1\&quot;&quot;,&quot;version=\&quot;99\&quot;&quot;)" fullname="Pax.Tests.PaxResourceTests.MalformedNegativeOverflowDuplicateAndStaleFormatsReject(&quot;version=\&quot;1\&quot;&quot;,&quot;version=\&quot;99\&quot;&quot;)" methodname="MalformedNegativeOverflowDuplicateAndStaleFormatsReject" classname="Pax.Tests.PaxResourceTests" runstate="Runnable" seed="1690549178" result="Passed" start-time="2026-10-18 22:29:04Z" end-time="2026-10-18 22:29:04Z" duration="0.000135" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1080" name="MalformedNegativeOverflowDuplicateAndStaleFormatsReject(&quot;&lt;/stockpile&gt;&quot;,&quot;&lt;item id=\&quot;stone\&quot; count=\&quot;1\&quot; /&gt;&lt;/stockpile&gt;&quot;)" fullname="Pax.Tests.PaxResourceTests.MalformedNegativeOverflowDuplicateAndStaleFormatsReject(&quot;&lt;/stockpile&gt;&quot;,&quot;&lt;item id=\&quot;stone\&quot; count=\&quot;1\&quot; /&gt;&lt;/stockpile&gt;&quot;)" methodname="MalformedNegativeOverflowDuplicateAndStaleFormatsReject" classname="Pax.Tests.PaxResourceTests" runstate="Runnable" seed="2115776264" result="Passed" start-time="2026-10-18 22:29:04Z" end-time="2026-10-18 22:29:04Z" duration="0.000179" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1081" name="MalformedNegativeOverflowDuplicateAndStaleFormatsReject(&quot;&lt;/harvested&gt;&quot;,&quot;&lt;cell x=\&quot;0\&quot; y=\&quot;0\&quot; z=\&quot;-1\&quot; /&gt;&lt;/harvested&gt;&quot;)" fullname="Pax.Tests.PaxResourceTests.MalformedNegativeOverflowDuplicateAndStaleFormatsReject(&quot;&lt;/harvested&gt;&quot;,&quot;&lt;cell x=\&quot;0\&quot; y=\&quot;0\&quot; z=\&quot;-1\&quot; /&gt;&lt;/harvested&gt;&quot;)" methodname="MalformedNegativeOverflowDuplicateAndStaleFormatsReject" classname="Pax.Tests.PaxResourceTests" runstate="Runnable" seed="349912528" result="Passed" start-time="2026-10-18 22:29:04Z" end-time="2026-10-18 22:29:04Z" duration="0.000165" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1082" name="MalformedNegativeOverflowDuplicateAndStaleFormatsReject(&quot;&lt;stockpile&gt;&quot;,&quot;&lt;stockpile extra=\&quot;x\&quot;&gt;&quot;)" fullname="Pax.Tests.PaxResourceTests.MalformedNegativeOverflowDuplicateAndStaleFormatsReject(&quot;&lt;stockpile&gt;&quot;,&quot;&lt;stockpile extra=\&quot;x\&quot;&gt;&quot;)" methodname="MalformedNegativeOverflowDuplicateAndStaleFormatsReject" classname="Pax.Tests.PaxResourceTests" runstate="Runnable" seed="17377142" result="Passed" start-time="2026-10-18 22:29:04Z" end-time="2026-10-18 22:29:04Z" duration="0.000154" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1084" name="ResourceSceneIsWiredWithSixNodesFiniteUiAndIdempotentAuthoring" fullname="Pax.Tests.PaxResourceTests.ResourceSceneIsWiredWithSixNodesFiniteUiAndIdempotentAuthoring" methodname="ResourceSceneIsWiredWithSixNodesFiniteUiAndIdempotentAuthoring" classname="Pax.Tests.PaxResourceTests" runstate="Runnable" seed="2024636325" result="Passed" start-time="2026-10-18 22:29:04Z" end-time="2026-10-18 22:29:21Z" duration="17.026412" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+Resource expedition exists; preserving edited scene and all saves.
+]]></output>
+            </test-case>
+          </test-suite>
+          <test-suite type="TestFixture" id="1085" name="PaxSaveFileTests" fullname="Pax.Tests.PaxSaveFileTests" classname="Pax.Tests.PaxSaveFileTests" runstate="Runnable" testcasecount="13" result="Passed" start-time="2026-10-18 22:29:21Z" end-time="2026-10-18 22:29:21Z" duration="0.195275" total="13" passed="13" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-suite type="ParameterizedMethod" id="1091" name="EmptyMalformedAndEntityDocumentsAreRejected" fullname="Pax.Tests.PaxSaveFileTests.EmptyMalformedAndEntityDocumentsAreRejected" classname="Pax.Tests.PaxSaveFileTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-10-18 22:29:21Z" end-time="2026-10-18 22:29:21Z" duration="0.011714" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1087" name="EmptyMalformedAndEntityDocumentsAreRejected(&quot;&quot;)" fullname="Pax.Tests.PaxSaveFileTests.EmptyMalformedAndEntityDocumentsAreRejected(&quot;&quot;)" methodname="EmptyMalformedAndEntityDocumentsAreRejected" classname="Pax.Tests.PaxSaveFileTests" runstate="Runnable" seed="974390493" result="Passed" start-time="2026-10-18 22:29:21Z" end-time="2026-10-18 22:29:21Z" duration="0.007251" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1088" name="EmptyMalformedAndEntityDocumentsAreRejected(&quot;&lt;broken&quot;)" fullname="Pax.Tests.PaxSaveFileTests.EmptyMalformedAndEntityDocumentsAreRejected(&quot;&lt;broken&quot;)" methodname="EmptyMalformedAndEntityDocumentsAreRejected" classname="Pax.Tests.PaxSaveFileTests" runstate="Runnable" seed="417857445" result="Passed" start-time="2026-10-18 22:29:21Z" end-time="2026-10-18 22:29:21Z" duration="0.001293" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1089" name="EmptyMalformedAndEntityDocumentsAreRejected(&quot;&lt;other /&gt;&quot;)" fullname="Pax.Tests.PaxSaveFileTests.EmptyMalformedAndEntityDocumentsAreRejected(&quot;&lt;other /&gt;&quot;)" methodname="EmptyMalformedAndEntityDocumentsAreRejected" classname="Pax.Tests.PaxSaveFileTests" runstate="Runnable" seed="2112782235" result="Passed" start-time="2026-10-18 22:29:21Z" end-time="2026-10-18 22:29:21Z" duration="0.000961" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1090" name="EmptyMalformedAndEntityDocumentsAreRejected(&quot;&lt;!DOCTYPE x [&lt;!ENTITY y 'invalid'&gt;]&gt;&lt;x&gt;&amp;y;&lt;/x&gt;&quot;)" fullname="Pax.Tests.PaxSaveFileTests.EmptyMalformedAndEntityDocumentsAreRejected(&quot;&lt;!DOCTYPE x [&lt;!ENTITY y 'invalid'&gt;]&gt;&lt;x&gt;&amp;y;&lt;/x&gt;&quot;)" methodname="EmptyMalformedAndEntityDocumentsAreRejected" classname="Pax.Tests.PaxSaveFileTests" runstate="Runnable" seed="704667814" result="Passed" start-time="2026-10-18 22:29:21Z" end-time="2026-10-18 22:29:21Z" duration="0.001281" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+            </test-suite>
+            <test-case id="1099" name="InvalidReplacementDoesNotChangeAnExistingSave" fullname="Pax.Tests.PaxSaveFileTests.InvalidReplacementDoesNotChangeAnExistingSave" methodname="InvalidReplacementDoesNotChangeAnExistingSave" classname="Pax.Tests.PaxSaveFileTests" runstate="Runnable" seed="1988697990" result="Passed" start-time="2026-10-18 22:29:21Z" end-time="2026-10-18 22:29:21Z" duration="0.020708" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1100" name="OversizedInputIsRejectedBeforeParsing" fullname="Pax.Tests.PaxSaveFileTests.OversizedInputIsRejectedBeforeParsing" methodname="OversizedInputIsRejectedBeforeParsing" classname="Pax.Tests.PaxSaveFileTests" runstate="Runnable" seed="1301796356" result="Passed" start-time="2026-10-18 22:29:21Z" end-time="2026-10-18 22:29:21Z" duration="0.087869" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1098" name="PreviousValidSaveSurvivesASecondSaveAndCorruptPrimaryRepair" fullname="Pax.Tests.PaxSaveFileTests.PreviousValidSaveSurvivesASecondSaveAndCorruptPrimaryRepair" methodname="PreviousValidSaveSurvivesASecondSaveAndCorruptPrimaryRepair" classname="Pax.Tests.PaxSaveFileTests" runstate="Runnable" seed="1747659460" result="Passed" start-time="2026-10-18 22:29:21Z" end-time="2026-10-18 22:29:21Z" duration="0.035625" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1086" name="TileDataRoundTripsWithoutSceneReferences" fullname="Pax.Tests.PaxSaveFileTests.TileDataRoundTripsWithoutSceneReferences" methodname="TileDataRoundTripsWithoutSceneReferences" classname="Pax.Tests.PaxSaveFileTests" runstate="Runnable" seed="1590693767" result="Passed" start-time="2026-10-18 22:29:21Z" end-time="2026-10-18 22:29:21Z" duration="0.001360" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-suite type="ParameterizedMethod" id="1097" name="UnsupportedOrUnknownDataIsRejectedRatherThanDiscarded" fullname="Pax.Tests.PaxSaveFileTests.UnsupportedOrUnknownDataIsRejectedRatherThanDiscarded" classname="Pax.Tests.PaxSaveFileTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-10-18 22:29:21Z" end-time="2026-10-18 22:29:21Z" duration="0.005685" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+              <properties />
+              <test-case id="1092" name="UnsupportedOrUnknownDataIsRejectedRatherThanDiscarded(&quot;version=\&quot;2\&quot;&quot;,&quot;version=\&quot;99\&quot;&quot;)" fullname="Pax.Tests.PaxSaveFileTests.UnsupportedOrUnknownDataIsRejectedRatherThanDiscarded(&quot;version=\&quot;2\&quot;&quot;,&quot;version=\&quot;99\&quot;&quot;)" methodname="UnsupportedOrUnknownDataIsRejectedRatherThanDiscarded" classname="Pax.Tests.PaxSaveFileTests" runstate="Runnable" seed="205312033" result="Passed" start-time="2026-10-18 22:29:21Z" end-time="2026-10-18 22:29:21Z" duration="0.001249" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1093" name="UnsupportedOrUnknownDataIsRejectedRatherThanDiscarded(&quot;&lt;removed /&gt;&quot;,&quot;&lt;removed /&gt;&lt;removed /&gt;&quot;)" fullname="Pax.Tests.PaxSaveFileTests.UnsupportedOrUnknownDataIsRejectedRatherThanDiscarded(&quot;&lt;removed /&gt;&quot;,&quot;&lt;removed /&gt;&lt;removed /&gt;&quot;)" methodname="UnsupportedOrUnknownDataIsRejectedRatherThanDiscarded" classname="Pax.Tests.PaxSaveFileTests" runstate="Runnable" seed="493105844" result="Passed" start-time="2026-10-18 22:29:21Z" end-time="2026-10-18 22:29:21Z" duration="0.000847" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1094" name="UnsupportedOrUnknownDataIsRejectedRatherThanDiscarded(&quot;&lt;removed /&gt;&quot;,&quot;&lt;unknown /&gt;&quot;)" fullname="Pax.Tests.PaxSaveFileTests.UnsupportedOrUnknownDataIsRejectedRatherThanDiscarded(&quot;&lt;removed /&gt;&quot;,&quot;&lt;unknown /&gt;&quot;)" methodname="UnsupportedOrUnknownDataIsRejectedRatherThanDiscarded" classname="Pax.Tests.PaxSaveFileTests" runstate="Runnable" seed="569396469" result="Passed" start-time="2026-10-18 22:29:21Z" end-time="2026-10-18 22:29:21Z" duration="0.000778" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1095" name="UnsupportedOrUnknownDataIsRejectedRatherThanDiscarded(&quot;x=\&quot;1\&quot;&quot;,&quot;x=\&quot;1.5\&quot;&quot;)" fullname="Pax.Tests.PaxSaveFileTests.UnsupportedOrUnknownDataIsRejectedRatherThanDiscarded(&quot;x=\&quot;1\&quot;&quot;,&quot;x=\&quot;1.5\&quot;&quot;)" methodname="UnsupportedOrUnknownDataIsRejectedRatherThanDiscarded" classname="Pax.Tests.PaxSaveFileTests" runstate="Runnable" seed="2130992087" result="Passed" start-time="2026-10-18 22:29:21Z" end-time="2026-10-18 22:29:21Z" duration="0.000886" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+              </test-case>
+              <test-case id="1096" name="UnsupportedOrUnknownDataIsRejectedRatherThanDiscarded(&quot;x=\&quot;1\&quot;&quot;,&quot;x=\&quot;1\&quot; extra=\&quot;unknown\&quot;&quot;)" fullname="Pax.Tests.PaxSaveFileTests.UnsupportedOrUnknownDataIsRejectedRatherThanDiscarded(&quot;x=\&quot;1\&quot;&quot;,&quot;x=\&quot;1\&quot; extra=\&quot;unknown\&quot;&quot;)" methodname="UnsupportedOrUnknownDataIsRejectedRatherThanDiscarded" classname="Pax.Tests.PaxSaveFileTests" runstate="Runnable" seed="304685774" result="Passed" start-time="2026-10-18 22:29:21Z" end-time="2026-10-18 22:29:21Z" duration="0.000814" asserts="0">
+                <properties>
+                  <property name="retryIteration" value="0" />
+                  <property name="repeatIteration" value="0" />
+                </properties>
+                <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/user/AppData/LocalLow/DefaultCompany/PAX_FYP1\TestResults.xml
+]]></output>
+              </test-case>
+            </test-suite>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

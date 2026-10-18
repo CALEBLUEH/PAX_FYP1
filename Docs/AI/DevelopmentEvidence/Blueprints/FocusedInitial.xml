@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="10" result="Failed(Child)" total="10" passed="9" failed="1" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-18 22:19:28Z" end-time="2026-10-18 22:19:37Z" duration="8.7829652">
+  <test-suite type="TestSuite" id="1124" name="PAX_FYP1" fullname="PAX_FYP1" runstate="Runnable" testcasecount="101" result="Failed" site="Child" start-time="2026-10-18 22:19:28Z" end-time="2026-10-18 22:19:37Z" duration="8.782965" total="10" passed="9" failed="1" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1119" name="Pax.PlayModeTests.dll" fullname="C:/Users/user/.codex/worktrees/pax-development/PAX_FYP1/Library/ScriptAssemblies/Pax.PlayModeTests.dll" runstate="Runnable" testcasecount="101" result="Failed" site="Child" start-time="2026-10-18 22:19:28Z" end-time="2026-10-18 22:19:37Z" duration="8.773229" total="10" passed="9" failed="1" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="83852" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1120" name="Pax" fullname="Pax" runstate="Runnable" testcasecount="101" result="Failed" site="Child" start-time="2026-10-18 22:19:28Z" end-time="2026-10-18 22:19:37Z" duration="8.772488" total="10" passed="9" failed="1" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1121" name="Tests" fullname="Pax.Tests" runstate="Runnable" testcasecount="101" result="Failed" site="Child" start-time="2026-10-18 22:19:28Z" end-time="2026-10-18 22:19:37Z" duration="8.772145" total="10" passed="9" failed="1" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1001" name="PaxBlueprintPlayTests" fullname="Pax.Tests.PaxBlueprintPlayTests" classname="Pax.Tests.PaxBlueprintPlayTests" runstate="Runnable" testcasecount="10" result="Failed" site="Child" start-time="2026-10-18 22:19:28Z" end-time="2026-10-18 22:19:37Z" duration="8.768999" total="10" passed="9" failed="1" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1002" name="AggregateShortagePlacesNothingEvenThoughOneUnitCouldBuildTheFirstCell" fullname="Pax.Tests.PaxBlueprintPlayTests.AggregateShortagePlacesNothingEvenThoughOneUnitCouldBuildTheFirstCell" methodname="AggregateShortagePlacesNothingEvenThoughOneUnitCouldBuildTheFirstCell" classname="Pax.Tests.PaxBlueprintPlayTests" runstate="Runnable" seed="301778972" result="Passed" start-time="2026-10-18 22:19:28Z" end-time="2026-10-18 22:19:30Z" duration="1.852506" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1003" name="BlockedSecondCellDoesNotPlaceOrChargeTheValidFirstCell" fullname="Pax.Tests.PaxBlueprintPlayTests.BlockedSecondCellDoesNotPlaceOrChargeTheValidFirstCell" methodname="BlockedSecondCellDoesNotPlaceOrChargeTheValidFirstCell" classname="Pax.Tests.PaxBlueprintPlayTests" runstate="Runnable" seed="542047558" result="Failed" start-time="2026-10-18 22:19:30Z" end-time="2026-10-18 22:19:31Z" duration="0.769778" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at Pax.Tests.PaxBlueprintPlayTests+<BlockedSecondCellDoesNotPlaceOrChargeTheValidFirstCell>d__21.MoveNext () [0x00063] in C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets\PAX\Tests\PlayMode\PaxBlueprintPlayTests.cs:55
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@ecf40a72f8c1\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1007" name="BodyAndBoundsRejectTheEntireFootprint" fullname="Pax.Tests.PaxBlueprintPlayTests.BodyAndBoundsRejectTheEntireFootprint" methodname="BodyAndBoundsRejectTheEntireFootprint" classname="Pax.Tests.PaxBlueprintPlayTests" runstate="Runnable" seed="458311234" result="Passed" start-time="2026-10-18 22:19:31Z" end-time="2026-10-18 22:19:32Z" duration="0.765431" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1006" name="FarSecondCellCannotBorrowTheFirstCellsReach" fullname="Pax.Tests.PaxBlueprintPlayTests.FarSecondCellCannotBorrowTheFirstCellsReach" methodname="FarSecondCellCannotBorrowTheFirstCellsReach" classname="Pax.Tests.PaxBlueprintPlayTests" runstate="Runnable" seed="8155346" result="Passed" start-time="2026-10-18 22:19:32Z" end-time="2026-10-18 22:19:33Z" duration="0.740115" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1008" name="FloatingPairCannotSelfSupport" fullname="Pax.Tests.PaxBlueprintPlayTests.FloatingPairCannotSelfSupport" methodname="FloatingPairCannotSelfSupport" classname="Pax.Tests.PaxBlueprintPlayTests" runstate="Runnable" seed="500973628" result="Passed" start-time="2026-10-18 22:19:33Z" end-time="2026-10-18 22:19:33Z" duration="0.745785" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1010" name="HeldSelectionFocusAndLoadClearPreviewWithoutClickThrough" fullname="Pax.Tests.PaxBlueprintPlayTests.HeldSelectionFocusAndLoadClearPreviewWithoutClickThrough" methodname="HeldSelectionFocusAndLoadClearPreviewWithoutClickThrough" classname="Pax.Tests.PaxBlueprintPlayTests" runstate="Runnable" seed="749431900" result="Passed" start-time="2026-10-18 22:19:33Z" end-time="2026-10-18 22:19:34Z" duration="0.821284" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1005" name="MixedMaterialsUseAggregateCostsAndInvalidMaterialOrDuplicateIsAtomic" fullname="Pax.Tests.PaxBlueprintPlayTests.MixedMaterialsUseAggregateCostsAndInvalidMaterialOrDuplicateIsAtomic" methodname="MixedMaterialsUseAggregateCostsAndInvalidMaterialOrDuplicateIsAtomic" classname="Pax.Tests.PaxBlueprintPlayTests" runstate="Runnable" seed="1099934404" result="Passed" start-time="2026-10-18 22:19:34Z" end-time="2026-10-18 22:19:35Z" duration="0.766320" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1009" name="PreviewRevalidatesAggregateBudgetAfterAnInterveningSingleCellSpend" fullname="Pax.Tests.PaxBlueprintPlayTests.PreviewRevalidatesAggregateBudgetAfterAnInterveningSingleCellSpend" methodname="PreviewRevalidatesAggregateBudgetAfterAnInterveningSingleCellSpend" classname="Pax.Tests.PaxBlueprintPlayTests" runstate="Runnable" seed="680486360" result="Passed" start-time="2026-10-18 22:19:35Z" end-time="2026-10-18 22:19:36Z" duration="0.740633" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1004" name="SupportedPairCommitsOnceAndRefundsActualMaterialsWithoutFarming" fullname="Pax.Tests.PaxBlueprintPlayTests.SupportedPairCommitsOnceAndRefundsActualMaterialsWithoutFarming" methodname="SupportedPairCommitsOnceAndRefundsActualMaterialsWithoutFarming" classname="Pax.Tests.PaxBlueprintPlayTests" runstate="Runnable" seed="1833678186" result="Passed" start-time="2026-10-18 22:19:36Z" end-time="2026-10-18 22:19:36Z" duration="0.762762" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1011" name="TypedPairSnapshotRoundTripKeepsOriginalSignatureStockAndHarvestHistory" fullname="Pax.Tests.PaxBlueprintPlayTests.TypedPairSnapshotRoundTripKeepsOriginalSignatureStockAndHarvestHistory" methodname="TypedPairSnapshotRoundTripKeepsOriginalSignatureStockAndHarvestHistory" classname="Pax.Tests.PaxBlueprintPlayTests" runstate="Runnable" seed="36593509" result="Passed" start-time="2026-10-18 22:19:36Z" end-time="2026-10-18 22:19:37Z" duration="0.790332" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/user/AppData/LocalLow/DefaultCompany/PAX_FYP1\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>
