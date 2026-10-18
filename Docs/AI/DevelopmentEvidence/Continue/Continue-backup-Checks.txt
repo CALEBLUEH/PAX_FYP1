@@ -1,0 +1,15 @@
+PASS Authored menu control fits 1280x720: select-resource
+PASS Authored menu control fits 1280x720: continue-resource
+PASS Authored menu control fits 1280x720: select-chart
+PASS Authored menu control fits 1280x720: continue-chart
+PASS Authored menu control fits 1280x720: select-ember
+PASS Authored menu control fits 1280x720: continue-ember
+PASS Separate process offers only the matching compatible Ember slot
+PASS Menu explicitly labels the compatible backup recovery
+PASS Actual authored pointer target: continue-ember
+PASS Continue transition owner is cleaned after completion/failure
+PASS Continue is read-only for current and backup files
+PASS Separate process restores exact tiles, all material stocks and once-only harvest history
+PASS Continue starts a fresh session journal at the authored camp, not the seed player's saved location
+PASS HUD identifies the actual current/previous snapshot restored
+PASS Backup recovery does not silently repair or replace the corrupt current file

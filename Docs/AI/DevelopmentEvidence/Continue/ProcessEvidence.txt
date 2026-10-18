@@ -1,0 +1,36 @@
+PAX Continue milestone, trip rotation 9, 18 October 2026
+Workspace: C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1
+Baseline: 4c3aebb55a2a08d134337e34142d8337a3327432, CodexWorkspace
+Build: Builds/PAX-Continue-Windows/PAX.exe (selection + three finite expeditions)
+Owned fixture directory: Builds/PAX-Continue-Windows/SmokeEvidence/ContinueRun-30bc3b979ce34adfbef3fbf19cbbffba
+
+Final separate Windows processes (Singapore time, UTC+8):
+Seed    PID 76364: 22/22, ended 20:48:58, ContinuePlayerSeedFinal.log
+Primary PID 64760: 41/41, ended 20:50:28, ContinuePlayerPrimary.log
+Backup  PID 66436: 15/15, ended 20:52:23, ContinuePlayerBackup.log
+Blocked PID 74576: 13/13, ended 20:55:11, ContinuePlayerBlocked.log
+Final total: 91/91. Graceful normal exits; no runtime warning/error/exception in these logs.
+Logs remain locally under Logs/PAX; exact checklists and eleven 1280x720 camera/UI captures are archived here.
+
+Seed actually mines seven caches, walks, builds one repair and F5-saves twice.
+ExpectedBackup.xml = gathered A: 5 Timber, 2 Stone, 7 harvested, no repair.
+ExpectedPrimary.xml = partial B: 4 Timber, 2 Stone, 7 harvested, one Timber repair.
+New-process primary Continue compares exact tile/material/stock/harvest content to B.
+It checks menu visits, fresh start, confirmed return and Continue leave both files byte-identical.
+It then completes all seven repairs, three newly earned notes and activation via pointer/input frames, walking and two jumps, without Warp; no autosave.
+Backup phase deliberately corrupts owned current before selection; labelled recovery restores exact A without repairing either file.
+Blocked phase deliberately writes conserved BlockedPrimary.xml before selection: B plus Timber in camp clearance, 3 Timber/2 Stone. Valid backup A remains available.
+Continue rejects valid blocked primary without fallback/teleport/partial mutation. Actual walking aside + manual F9 succeeds. Only owned fixture files are deliberately changed.
+Human persistent save folders were not read or written by diagnostics.
+
+65/65 full EditMode, 88/88 full PlayMode; final 8/8 keyboard-route and 2/2 authoring/binding reruns.
+Keyboard.xml uses actual 4/5/6 input-frame routes for the three saved slot mappings. These reruns overlap full-suite cases.
+Full suites precede the fixture-only G/target assertion correction; rebuilt Windows proof includes it.
+InitialFocused 1/8 and one diagnostic failure retained: lost catalog asset reference across authoring scene load; fixed by saving/reacquiring and transfer retention.
+Initial seed PID 63420 passed 13/18: faded cache rays selected camp terrain. Existing G input plus exact target guard fixed the probe; no mining-rule/geometry change.
+
+Validation clock: 20:02:50 start to 21:07:53 final targeted result = 1h 5m 3s, followed by archive/documentation/checkpoint work.
+Single agent, no delegation. No push/publication/download/purchases/reset/automation.
+Physical OS keyboard/mouse/focus timing and longer human play/performance remain unverified.
+Four unlimited scenes unchanged; three finite scenes add only receiver wiring. Original checkout's existing changes preserved.
+After the coherent local commit: WAIT for coordinator / AS rotation. No next PAX milestone.

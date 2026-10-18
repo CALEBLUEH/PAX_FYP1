@@ -71,32 +71,7 @@ namespace Pax
         public bool Validate(PaxResourceSnapshot data, out string reason)
         {
             reason = "Resource snapshot is incompatible or violates material conservation.";
-            if (!ready || !rules.Validate(palette, out _) || data == null || data.Rules != rules.Signature(palette) || data.Tiles == null || data.Tiles.Version != 2 || !world.ValidateEdits(data.Tiles, out _)) return false;
-            if (data.Counts.Count != rules.Entries.Count || data.Harvested.Count > PaxSaveFile.MaximumEdits) return false;
-            var expected = new Dictionary<string, long>(StringComparer.Ordinal);
-            foreach (var entry in rules.Entries)
-            {
-                if (!data.Counts.TryGetValue(entry.id, out int count) || count < 0 || count > entry.limit) return false;
-                expected.Add(entry.id, entry.start);
-            }
-            foreach (var cell in data.Harvested)
-                if (!world.TryGetAuthored(cell, out var material, out bool mineable) || !mineable || !world.TryIdentifyMaterial(material, out string id) || !expected.ContainsKey(id)) return false;
-            var removed = new HashSet<Vector3Int>(data.Tiles.Removed);
-            var placed = data.Tiles.Placed.ToDictionary(cell => cell, cell => data.Tiles.Materials.TryGetValue(cell, out string id) ? id : "default");
-            foreach (var cell in world.AuthoredCells)
-            {
-                world.TryGetAuthored(cell, out var material, out bool mineable);
-                if (!mineable) continue;
-                if (!data.Harvested.Contains(cell)) { if (removed.Contains(cell) || placed.ContainsKey(cell)) return false; continue; }
-                if (!world.TryIdentifyMaterial(material, out string original) || !expected.ContainsKey(original)) return false;
-                expected[original] += Entry(original).authoredYield;
-                string present = placed.TryGetValue(cell, out string replacement) ? replacement : !removed.Contains(cell) ? original : null;
-                if (present != null) { if (!expected.ContainsKey(present)) return false; expected[present]--; }
-            }
-            foreach (var pair in placed)
-                if (!world.TryGetAuthored(pair.Key, out _, out _)) { if (!expected.ContainsKey(pair.Value)) return false; expected[pair.Value]--; }
-            foreach (var pair in expected) if (pair.Value != data.Counts[pair.Key]) return false;
-            reason = null; return true;
+            return ready && PaxSnapshotValidation.Resources(world, rules, palette, data, out reason);
         }
         internal void RestoreValidated(PaxResourceSnapshot data)
         { counts.Clear(); foreach (var pair in data.Counts) counts.Add(pair.Key, pair.Value); harvested.Clear(); harvested.UnionWith(data.Harvested); nextRefresh = 0; }

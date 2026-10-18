@@ -1,0 +1,22 @@
+PASS Authored menu control fits 1280x720: select-resource
+PASS Authored menu control fits 1280x720: continue-resource
+PASS Authored menu control fits 1280x720: select-chart
+PASS Authored menu control fits 1280x720: continue-chart
+PASS Authored menu control fits 1280x720: select-ember
+PASS Authored menu control fits 1280x720: continue-ember
+PASS Missing owned snapshots disable all Continue controls while fresh choices remain available
+PASS Actual authored pointer target: select-ember
+PASS Real pointer-frame mine earns authored supply (0, 0, -6)
+PASS Real pointer-frame mine earns authored supply (-1, 0, -6)
+PASS Real pointer-frame mine earns authored supply (1, 0, -6)
+PASS Real pointer-frame mine earns authored supply (-2, 0, -6)
+PASS Real pointer-frame mine earns authored supply (2, 0, -6)
+PASS Real pointer-frame mine earns authored supply (-1, 0, -3)
+PASS Real pointer-frame mine earns authored supply (-2, 0, -3)
+PASS Seed process earns the exact finite cache through mining frames
+PASS Explicit F5 checkpoints gathered world, stockpile and harvest history
+PASS Seed process earns a session field note by actual walking
+PASS Real pointer-frame construction at (0, -1, -1)
+PASS Seed process earns one built crossing, 4/2 remaining units and seven harvested originals
+PASS Current built snapshot and previous gathered snapshot are distinct
+PASS Seed process exits now; later processes must read the existing files

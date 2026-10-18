@@ -24,6 +24,8 @@ namespace Pax
         {
             if (Array.IndexOf(Environment.GetCommandLineArgs(),"-paxSmoke") < 0) return;
             Application.runInBackground=true;
+            if (Array.IndexOf(Environment.GetCommandLineArgs(), "-paxContinueSmoke") >= 0)
+            { new GameObject("PAX opt-in Continue process probe").AddComponent<PaxContinueSmoke>(); return; }
             if (Array.IndexOf(Environment.GetCommandLineArgs(), "-paxEntrySmoke") >= 0)
             { new GameObject("PAX opt-in entry smoke probe").AddComponent<PaxEntrySmoke>(); return; }
             new GameObject("PAX opt-in player smoke probe").AddComponent<PaxPlayerSmoke>();

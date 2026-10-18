@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="2" result="Passed" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-18 13:07:32Z" end-time="2026-10-18 13:07:53Z" duration="21.7978497">
+  <test-suite type="TestSuite" id="1000" name="PAX_FYP1" fullname="PAX_FYP1" runstate="Runnable" testcasecount="65" result="Passed" start-time="2026-10-18 13:07:32Z" end-time="2026-10-18 13:07:53Z" duration="21.797850" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <test-suite type="Assembly" id="1085" name="Pax.EditModeTests.dll" fullname="C:/Users/user/.codex/worktrees/pax-development/PAX_FYP1/Library/ScriptAssemblies/Pax.EditModeTests.dll" runstate="Runnable" testcasecount="65" result="Passed" start-time="2026-10-18 13:07:32Z" end-time="2026-10-18 13:07:53Z" duration="21.782523" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="77724" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <test-suite type="TestSuite" id="1086" name="Pax" fullname="Pax" runstate="Runnable" testcasecount="65" result="Passed" start-time="2026-10-18 13:07:32Z" end-time="2026-10-18 13:07:53Z" duration="21.781145" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1087" name="Tests" fullname="Pax.Tests" runstate="Runnable" testcasecount="65" result="Passed" start-time="2026-10-18 13:07:32Z" end-time="2026-10-18 13:07:53Z" duration="21.780204" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1004" name="PaxContinueAuthoringTests" fullname="Pax.Tests.PaxContinueAuthoringTests" classname="Pax.Tests.PaxContinueAuthoringTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-10-18 13:07:32Z" end-time="2026-10-18 13:07:53Z" duration="21.766737" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1005" name="CatalogExactlyMirrorsThreeAuthoredScenesAndTheirSlots" fullname="Pax.Tests.PaxContinueAuthoringTests.CatalogExactlyMirrorsThreeAuthoredScenesAndTheirSlots" methodname="CatalogExactlyMirrorsThreeAuthoredScenesAndTheirSlots" classname="Pax.Tests.PaxContinueAuthoringTests" runstate="Runnable" seed="739575101" result="Passed" start-time="2026-10-18 13:07:32Z" end-time="2026-10-18 13:07:34Z" duration="2.068852" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1006" name="ContinueAuthoringPreservesSceneCatalogPanelAndUiBytesOnRepeat" fullname="Pax.Tests.PaxContinueAuthoringTests.ContinueAuthoringPreservesSceneCatalogPanelAndUiBytesOnRepeat" methodname="ContinueAuthoringPreservesSceneCatalogPanelAndUiBytesOnRepeat" classname="Pax.Tests.PaxContinueAuthoringTests" runstate="Runnable" seed="1933013795" result="Passed" start-time="2026-10-18 13:07:34Z" end-time="2026-10-18 13:07:53Z" duration="19.675365" asserts="0">
+              <properties>
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+PAX_CONTINUE_AUTHORING_OK three live/context validators, explicit slots, three receivers
+PAX_AUTHORING_PROJECT_CONFIRMED C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets
+PAX_CONTINUE_AUTHORING_OK three live/context validators, explicit slots, three receivers
+<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/user/AppData/LocalLow/DefaultCompany/PAX_FYP1\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

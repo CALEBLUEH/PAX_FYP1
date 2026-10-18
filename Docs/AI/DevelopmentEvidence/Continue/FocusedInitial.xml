@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="8" result="Failed(Child)" total="8" passed="1" failed="7" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-18 12:25:28Z" end-time="2026-10-18 12:25:37Z" duration="8.1254194">
+  <test-suite type="TestSuite" id="1109" name="PAX_FYP1" fullname="PAX_FYP1" runstate="Runnable" testcasecount="88" result="Failed" site="Child" start-time="2026-10-18 12:25:28Z" end-time="2026-10-18 12:25:37Z" duration="8.125419" total="8" passed="1" failed="7" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1104" name="Pax.PlayModeTests.dll" fullname="C:/Users/user/.codex/worktrees/pax-development/PAX_FYP1/Library/ScriptAssemblies/Pax.PlayModeTests.dll" runstate="Runnable" testcasecount="88" result="Failed" site="Child" start-time="2026-10-18 12:25:28Z" end-time="2026-10-18 12:25:37Z" duration="8.114733" total="8" passed="1" failed="7" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="68156" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1105" name="Pax" fullname="Pax" runstate="Runnable" testcasecount="88" result="Failed" site="Child" start-time="2026-10-18 12:25:28Z" end-time="2026-10-18 12:25:37Z" duration="8.113821" total="8" passed="1" failed="7" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1106" name="Tests" fullname="Pax.Tests" runstate="Runnable" testcasecount="88" result="Failed" site="Child" start-time="2026-10-18 12:25:28Z" end-time="2026-10-18 12:25:37Z" duration="8.113424" total="8" passed="1" failed="7" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1005" name="PaxContinueTests" fullname="Pax.Tests.PaxContinueTests" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" testcasecount="8" result="Failed" site="Child" start-time="2026-10-18 12:25:28Z" end-time="2026-10-18 12:25:37Z" duration="8.111004" total="8" passed="1" failed="7" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1007" name="ChartMappingRestoresExactWorldStocksAndHistory" fullname="Pax.Tests.PaxContinueTests.ChartMappingRestoresExactWorldStocksAndHistory" methodname="ChartMappingRestoresExactWorldStocksAndHistory" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" seed="941065581" result="Failed" start-time="2026-10-18 12:25:28Z" end-time="2026-10-18 12:25:30Z" duration="1.986163" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at Pax.Tests.PaxContinueTests+<Mapping>d__20.MoveNext () [0x0006f] in C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets\PAX\Tests\PlayMode\PaxContinueTests.cs:57
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@ecf40a72f8c1\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1011" name="ContinueRechecksFilesChangedAfterMenuSelectionAndKeepsFreshStateOnFailure" fullname="Pax.Tests.PaxContinueTests.ContinueRechecksFilesChangedAfterMenuSelectionAndKeepsFreshStateOnFailure" methodname="ContinueRechecksFilesChangedAfterMenuSelectionAndKeepsFreshStateOnFailure" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" seed="785498724" result="Failed" start-time="2026-10-18 12:25:30Z" end-time="2026-10-18 12:25:31Z" duration="0.774125" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at Pax.Tests.PaxContinueTests+<ContinueRechecksFilesChangedAfterMenuSelectionAndKeepsFreshStateOnFailure>d__23.MoveNext () [0x0006a] in C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets\PAX\Tests\PlayMode\PaxContinueTests.cs:82
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@ecf40a72f8c1\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1009" name="CorruptPrimaryRecoversOnlyItsCompatibleBackupWithoutAnyFileWrites" fullname="Pax.Tests.PaxContinueTests.CorruptPrimaryRecoversOnlyItsCompatibleBackupWithoutAnyFileWrites" methodname="CorruptPrimaryRecoversOnlyItsCompatibleBackupWithoutAnyFileWrites" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" seed="896683006" result="Failed" start-time="2026-10-18 12:25:31Z" end-time="2026-10-18 12:25:32Z" duration="0.766634" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at Pax.Tests.PaxContinueTests+<CorruptPrimaryRecoversOnlyItsCompatibleBackupWithoutAnyFileWrites>d__21.MoveNext () [0x00076] in C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets\PAX\Tests\PlayMode\PaxContinueTests.cs:67
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@ecf40a72f8c1\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1008" name="EmberMappingRestoresExactWorldStocksAndHistory" fullname="Pax.Tests.PaxContinueTests.EmberMappingRestoresExactWorldStocksAndHistory" methodname="EmberMappingRestoresExactWorldStocksAndHistory" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" seed="540657815" result="Failed" start-time="2026-10-18 12:25:32Z" end-time="2026-10-18 12:25:33Z" duration="0.738389" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at Pax.Tests.PaxContinueTests+<Mapping>d__20.MoveNext () [0x0006f] in C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets\PAX\Tests\PlayMode\PaxContinueTests.cs:57
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@ecf40a72f8c1\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1013" name="FocusPauseDuringContinueRequiresExplicitResumeAndHeldActionsCannotClickThrough" fullname="Pax.Tests.PaxContinueTests.FocusPauseDuringContinueRequiresExplicitResumeAndHeldActionsCannotClickThrough" methodname="FocusPauseDuringContinueRequiresExplicitResumeAndHeldActionsCannotClickThrough" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" seed="1288073050" result="Failed" start-time="2026-10-18 12:25:33Z" end-time="2026-10-18 12:25:33Z" duration="0.754050" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at Pax.Tests.PaxContinueTests+<FocusPauseDuringContinueRequiresExplicitResumeAndHeldActionsCannotClickThrough>d__25.MoveNext () [0x000bc] in C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets\PAX\Tests\PlayMode\PaxContinueTests.cs:97
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@ecf40a72f8c1\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1010" name="MissingForgedWrongWorldAndWrongRulesNeverEnableContinueOrBlockFresh" fullname="Pax.Tests.PaxContinueTests.MissingForgedWrongWorldAndWrongRulesNeverEnableContinueOrBlockFresh" methodname="MissingForgedWrongWorldAndWrongRulesNeverEnableContinueOrBlockFresh" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" seed="331814431" result="Passed" start-time="2026-10-18 12:25:33Z" end-time="2026-10-18 12:25:35Z" duration="1.161702" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1006" name="ResourceMappingRestoresExactWorldStocksAndHistory" fullname="Pax.Tests.PaxContinueTests.ResourceMappingRestoresExactWorldStocksAndHistory" methodname="ResourceMappingRestoresExactWorldStocksAndHistory" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" seed="1018980406" result="Failed" start-time="2026-10-18 12:25:35Z" end-time="2026-10-18 12:25:36Z" duration="1.148102" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at Pax.Tests.PaxContinueTests+<Mapping>d__20.MoveNext () [0x0006f] in C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets\PAX\Tests\PlayMode\PaxContinueTests.cs:57
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@ecf40a72f8c1\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1012" name="SpawnOverlapRejectsValidPrimaryWithoutFallbackThenManualF9WorksAfterWalkingAside" fullname="Pax.Tests.PaxContinueTests.SpawnOverlapRejectsValidPrimaryWithoutFallbackThenManualF9WorksAfterWalkingAside" methodname="SpawnOverlapRejectsValidPrimaryWithoutFallbackThenManualF9WorksAfterWalkingAside" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" seed="141213650" result="Failed" start-time="2026-10-18 12:25:36Z" end-time="2026-10-18 12:25:37Z" duration="0.768057" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: True
+  But was:  False
+]]></message>
+                <stack-trace><![CDATA[at Pax.Tests.PaxContinueTests+<SpawnOverlapRejectsValidPrimaryWithoutFallbackThenManualF9WorksAfterWalkingAside>d__24.MoveNext () [0x0010f] in C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets\PAX\Tests\PlayMode\PaxContinueTests.cs:87
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@ecf40a72f8c1\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/user/AppData/LocalLow/DefaultCompany/PAX_FYP1\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

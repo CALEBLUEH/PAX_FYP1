@@ -245,10 +245,16 @@ MonoBehaviour:
   resourceScenePath: Assets/PAX/Scenes/PaxResourceExpedition.unity
   chartScenePath: Assets/PAX/Scenes/PaxLamplighterChart.unity
   emberScenePath: Assets/PAX/Scenes/PaxEmberReach.unity
+  continueCatalog: {fileID: 11400000, guid: d07f060689efb454da4fac72896b141f, type: 2}
+  saveRefreshSeconds: 2
+  continueResourceKey: 52
+  continueChartKey: 53
+  continueEmberKey: 54
   emberKey: 51
   resourceKey: 49
   chartKey: 50
-  readyMessage: All three expeditions are available. Choose a fresh expedition.
+  readyMessage: 1 / 2 / 3 start fresh. 4 / 5 / 6 Continue when a compatible snapshot
+    is available.
   releaseMessage: Release held keys and mouse buttons to choose.
   focusMessage: Return to this window, then release held controls to choose.
   loadingMessage: "Opening a fresh expedition\u2026 No snapshot is loaded automatically."
@@ -265,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.UIElements.UIDocument
-  m_PanelSettings: {fileID: 11400000, guid: c871ecc7447a77c42a6edcd85b00d425, type: 2}
+  m_PanelSettings: {fileID: 11400000, guid: 9ff4bcd38ae518a49a3d1d8c100b1e2e, type: 2}
   m_ParentUI: {fileID: 0}
   sourceAsset: {fileID: 9197481963319205126, guid: 06a6cae0c8255dd4cbc2579df674ef94, type: 3}
   m_SortingOrder: 0

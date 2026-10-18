@@ -31,12 +31,16 @@ namespace Pax
         public string SelectionScenePath => selectionScenePath;
         private bool UiReady => focused && (!hardwareInput || Application.isBatchMode || Application.isFocused) && !returning && !uiAwaitingRelease && Time.frameCount > uiTransitionFrame;
         private bool paused, ownsClock, awaitingRelease, escapeWasHeld, focused = true;
+        private bool continueHold;
+        public bool CanApplyContinue => isActiveAndEnabled && continueHold && !paused && focused && (!hardwareInput || Application.isBatchMode || Application.isFocused);
+        internal void HoldContinue(bool hold)
+        { continueHold = hold; player.ClearCommand(); builder.ClearPendingActions(); if (!hold) { awaitingRelease = true; transitionFrame = Time.frameCount; } }
         private bool hardwareInput = true;
         private bool started;
         private float previousScale;
         private int transitionFrame = -1;
-        public bool IsPaused => isActiveAndEnabled && paused;
-        public bool BlocksActions => isActiveAndEnabled && (paused || !focused || awaitingRelease || Time.frameCount <= transitionFrame);
+        public bool IsPaused => isActiveAndEnabled && (paused || continueHold);
+        public bool BlocksActions => isActiveAndEnabled && (paused || continueHold || !focused || awaitingRelease || Time.frameCount <= transitionFrame);
         public bool AwaitingRelease => awaitingRelease;
         public void Configure(UIDocument ui, PaxPlayer motor, PaxBuilder interaction, string help)
         { document = ui; player = motor; builder = interaction; missionHelp = help; }
@@ -107,7 +111,7 @@ namespace Pax
             title.text = focused ? pausedMessage : focusMessage;
             helpCard.style.display = confirmingReturn ? DisplayStyle.None : DisplayStyle.Flex;
             confirmation.style.display = confirmingReturn ? DisplayStyle.Flex : DisplayStyle.None;
-            resume.SetEnabled(UiReady); returnSelection.SetEnabled(UiReady && !string.IsNullOrEmpty(selectionScenePath));
+            resume.SetEnabled(UiReady); returnSelection.SetEnabled(UiReady && !continueHold && !string.IsNullOrEmpty(selectionScenePath));
             cancelReturn.SetEnabled(UiReady); confirmReturn.SetEnabled(UiReady);
             returnStatus.text = !focused ? focusMessage : returning ? "Returning to selection… Saved files are retained." : "Only confirm if you want to discard this live expedition.";
         }
@@ -124,7 +128,7 @@ namespace Pax
         }
         public void RequestReturn()
         {
-            if (!isActiveAndEnabled || !paused || !UiReady || confirmingReturn || string.IsNullOrEmpty(selectionScenePath)) return;
+            if (!isActiveAndEnabled || !paused || !UiReady || continueHold || confirmingReturn || string.IsNullOrEmpty(selectionScenePath)) return;
             confirmingReturn = true; uiAwaitingRelease = true; uiTransitionFrame = Time.frameCount;
             builder.ClearPendingActions(); Present();
         }
@@ -160,6 +164,7 @@ namespace Pax
         {
             Unbind();
             ReleaseClock(); paused = awaitingRelease = false;
+            continueHold = false;
             confirmingReturn = returning = uiAwaitingRelease = false;
             if (player != null) player.ClearCommand();
             if (builder != null) builder.ClearPendingActions();

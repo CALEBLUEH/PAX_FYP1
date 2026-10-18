@@ -1,0 +1,41 @@
+PASS Authored menu control fits 1280x720: select-resource
+PASS Authored menu control fits 1280x720: continue-resource
+PASS Authored menu control fits 1280x720: select-chart
+PASS Authored menu control fits 1280x720: continue-chart
+PASS Authored menu control fits 1280x720: select-ember
+PASS Authored menu control fits 1280x720: continue-ember
+PASS Separate process offers only the matching compatible Ember slot
+PASS New process/menu visit preserve exact current and backup bytes
+PASS Actual authored pointer target: select-ember
+PASS Fresh launch ignores existing saved progress and starts the authored world
+PASS Fresh play never overwrites existing snapshots
+PASS Actual authored pointer target: return-confirm
+PASS Authored menu control fits 1280x720: select-resource
+PASS Authored menu control fits 1280x720: continue-resource
+PASS Authored menu control fits 1280x720: select-chart
+PASS Authored menu control fits 1280x720: continue-chart
+PASS Authored menu control fits 1280x720: select-ember
+PASS Authored menu control fits 1280x720: continue-ember
+PASS Confirmed return/menu visit still leave both saved files untouched
+PASS Actual authored pointer target: continue-ember
+PASS Continue transition owner is cleaned after completion/failure
+PASS Continue is read-only for current and backup files
+PASS Separate process restores exact tiles, all material stocks and once-only harvest history
+PASS Continue starts a fresh session journal at the authored camp, not the seed player's saved location
+PASS HUD identifies the actual current/previous snapshot restored
+PASS Cross-process harvest history survives repeated rebuild/mining without farming
+PASS Actual continued walk on crossing segment 1
+PASS Real pointer-frame construction at (0, -1, 0)
+PASS Actual continued walk on crossing segment 2
+PASS Real pointer-frame construction at (3, -1, 3)
+PASS Actual continued walk on crossing segment 3
+PASS Real pointer-frame construction at (4, -1, 3)
+PASS Actual continued walk on crossing segment 4
+PASS Real pointer-frame construction at (5, -1, 3)
+PASS Actual continued walk on crossing segment 5
+PASS Real pointer-frame construction at (7, 1, 3)
+PASS Real pointer-frame construction at (6, 0, 3)
+PASS Actual continued jump lands on ridge level 1
+PASS Actual continued jump lands on ridge level 2
+PASS Continued partial world can be physically completed with pointer repairs, two jumps and newly earned field notes, without Warp
+PASS Completing continued play does not autosave or overwrite the original partial checkpoint

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="8" result="Passed" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-18 12:31:59Z" end-time="2026-10-18 12:32:11Z" duration="11.6927513">
+  <test-suite type="TestSuite" id="1109" name="PAX_FYP1" fullname="PAX_FYP1" runstate="Runnable" testcasecount="88" result="Passed" start-time="2026-10-18 12:31:59Z" end-time="2026-10-18 12:32:11Z" duration="11.692751" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <test-suite type="Assembly" id="1104" name="Pax.PlayModeTests.dll" fullname="C:/Users/user/.codex/worktrees/pax-development/PAX_FYP1/Library/ScriptAssemblies/Pax.PlayModeTests.dll" runstate="Runnable" testcasecount="88" result="Passed" start-time="2026-10-18 12:31:59Z" end-time="2026-10-18 12:32:11Z" duration="11.682502" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="64112" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <test-suite type="TestSuite" id="1105" name="Pax" fullname="Pax" runstate="Runnable" testcasecount="88" result="Passed" start-time="2026-10-18 12:31:59Z" end-time="2026-10-18 12:32:11Z" duration="11.681620" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-suite type="TestSuite" id="1106" name="Tests" fullname="Pax.Tests" runstate="Runnable" testcasecount="88" result="Passed" start-time="2026-10-18 12:31:59Z" end-time="2026-10-18 12:32:11Z" duration="11.681079" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <test-suite type="TestFixture" id="1005" name="PaxContinueTests" fullname="Pax.Tests.PaxContinueTests" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" testcasecount="8" result="Passed" start-time="2026-10-18 12:31:59Z" end-time="2026-10-18 12:32:11Z" duration="11.678516" total="8" passed="8" failed="0" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <test-case id="1007" name="ChartMappingRestoresExactWorldStocksAndHistory" fullname="Pax.Tests.PaxContinueTests.ChartMappingRestoresExactWorldStocksAndHistory" methodname="ChartMappingRestoresExactWorldStocksAndHistory" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" seed="387005677" result="Passed" start-time="2026-10-18 12:31:59Z" end-time="2026-10-18 12:32:02Z" duration="2.331722" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1011" name="ContinueRechecksFilesChangedAfterMenuSelectionAndKeepsFreshStateOnFailure" fullname="Pax.Tests.PaxContinueTests.ContinueRechecksFilesChangedAfterMenuSelectionAndKeepsFreshStateOnFailure" methodname="ContinueRechecksFilesChangedAfterMenuSelectionAndKeepsFreshStateOnFailure" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" seed="247954733" result="Passed" start-time="2026-10-18 12:32:02Z" end-time="2026-10-18 12:32:03Z" duration="1.159609" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1009" name="CorruptPrimaryRecoversOnlyItsCompatibleBackupWithoutAnyFileWrites" fullname="Pax.Tests.PaxContinueTests.CorruptPrimaryRecoversOnlyItsCompatibleBackupWithoutAnyFileWrites" methodname="CorruptPrimaryRecoversOnlyItsCompatibleBackupWithoutAnyFileWrites" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" seed="1928172103" result="Passed" start-time="2026-10-18 12:32:03Z" end-time="2026-10-18 12:32:04Z" duration="1.157570" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1008" name="EmberMappingRestoresExactWorldStocksAndHistory" fullname="Pax.Tests.PaxContinueTests.EmberMappingRestoresExactWorldStocksAndHistory" methodname="EmberMappingRestoresExactWorldStocksAndHistory" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" seed="1328853475" result="Passed" start-time="2026-10-18 12:32:04Z" end-time="2026-10-18 12:32:05Z" duration="1.226859" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1013" name="FocusPauseDuringContinueRequiresExplicitResumeAndHeldActionsCannotClickThrough" fullname="Pax.Tests.PaxContinueTests.FocusPauseDuringContinueRequiresExplicitResumeAndHeldActionsCannotClickThrough" methodname="FocusPauseDuringContinueRequiresExplicitResumeAndHeldActionsCannotClickThrough" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" seed="84847359" result="Passed" start-time="2026-10-18 12:32:05Z" end-time="2026-10-18 12:32:07Z" duration="1.538719" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1010" name="MissingForgedWrongWorldAndWrongRulesNeverEnableContinueOrBlockFresh" fullname="Pax.Tests.PaxContinueTests.MissingForgedWrongWorldAndWrongRulesNeverEnableContinueOrBlockFresh" methodname="MissingForgedWrongWorldAndWrongRulesNeverEnableContinueOrBlockFresh" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" seed="1717426235" result="Passed" start-time="2026-10-18 12:32:07Z" end-time="2026-10-18 12:32:08Z" duration="1.228495" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1006" name="ResourceMappingRestoresExactWorldStocksAndHistory" fullname="Pax.Tests.PaxContinueTests.ResourceMappingRestoresExactWorldStocksAndHistory" methodname="ResourceMappingRestoresExactWorldStocksAndHistory" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" seed="1649020483" result="Passed" start-time="2026-10-18 12:32:08Z" end-time="2026-10-18 12:32:10Z" duration="1.832024" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1012" name="SpawnOverlapRejectsValidPrimaryWithoutFallbackThenManualF9WorksAfterWalkingAside" fullname="Pax.Tests.PaxContinueTests.SpawnOverlapRejectsValidPrimaryWithoutFallbackThenManualF9WorksAfterWalkingAside" methodname="SpawnOverlapRejectsValidPrimaryWithoutFallbackThenManualF9WorksAfterWalkingAside" classname="Pax.Tests.PaxContinueTests" runstate="Runnable" seed="143756663" result="Passed" start-time="2026-10-18 12:32:10Z" end-time="2026-10-18 12:32:11Z" duration="1.189536" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/user/AppData/LocalLow/DefaultCompany/PAX_FYP1\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

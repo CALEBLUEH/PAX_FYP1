@@ -15,6 +15,11 @@ namespace Pax
         public string Status { get; private set; } = "F5 Save edits · F9 Load · F8 Previous save";
         public string SavePath => ResolvePath(Application.persistentDataPath);
         public string BackupPath => SavePath + ".bak";
+        public string SaveFolder => saveFolder;
+        public string SaveFile => saveFile;
+        internal void ReportContinue(string text) => Status = text;
+        internal bool ContinueSaved()
+        { if (resourceSession == null) return false; bool loaded = resourceSession.Continue(out string text); Status = text; return loaded; }
         private string testDirectory;
         private PaxResourceSession resourceSession;
         public void UseResourceSession(PaxResourceSession session)
@@ -31,13 +36,15 @@ namespace Pax
         }
 
         private string ResolvePath(string baseDirectory)
+            => ResolveSlotPath(baseDirectory, saveFolder, saveFile, testDirectory);
+        public static string ResolveSlotPath(string baseDirectory, string saveFolder, string saveFile, string validationDirectory = null)
         {
             if (string.IsNullOrWhiteSpace(saveFolder) || string.IsNullOrWhiteSpace(saveFile) ||
                 saveFolder != Path.GetFileName(saveFolder) || saveFile != Path.GetFileName(saveFile) ||
                 saveFolder == "." || saveFolder == ".." || saveFile == "." || saveFile == ".." ||
                 saveFolder.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0 || saveFile.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
                 throw new ArgumentException("Save folder and filename must be simple local names.");
-            return Path.Combine(testDirectory ?? Path.Combine(baseDirectory, saveFolder), saveFile);
+            return Path.Combine(validationDirectory ?? Path.Combine(baseDirectory, saveFolder), saveFile);
         }
 
         public bool SaveEdits()

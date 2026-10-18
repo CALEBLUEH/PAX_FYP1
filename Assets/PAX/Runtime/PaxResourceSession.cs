@@ -13,6 +13,18 @@ namespace Pax
         public void Configure(PaxWorld grid, PaxPlayer motor, PaxStockpile resources, PaxPlaytestSave save)
         { world = grid; player = motor; stockpile = resources; storage = save; }
         private void Awake() => storage.UseResourceSession(this);
+        internal bool Continue(out string status)
+        {
+            if (!stockpile.Ready) { status = "Continue unavailable: resource setup is not ready. Fresh world kept."; return false; }
+            if (!PaxContinueRead.Best(storage.SavePath, data => stockpile.Validate(data, out _), out var candidate, out string reason))
+            { status = "Continue rejected; fresh world kept. " + reason; return false; }
+            // A valid primary blocked by the authored spawn must not silently fall back to older data.
+            if (!world.TryApplyEdits(candidate.Data.Tiles, player.BodyBounds, out reason))
+            { status = "Continue rejected; fresh world kept. " + reason + " Use F9 after stepping aside, or F8 for a previous snapshot."; return false; }
+            stockpile.RestoreValidated(candidate.Data);
+            status = (candidate.Previous ? "Continued previous compatible snapshot; current file kept. " : "Continued current snapshot. ") + "World + stocks + harvest history restored at camp; session journal starts fresh. No file written.";
+            return true;
+        }
         public bool Save(out string status)
         {
             try

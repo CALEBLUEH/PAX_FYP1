@@ -1,0 +1,13 @@
+PASS Authored menu control fits 1280x720: select-resource
+PASS Authored menu control fits 1280x720: continue-resource
+PASS Authored menu control fits 1280x720: select-chart
+PASS Authored menu control fits 1280x720: continue-chart
+PASS Authored menu control fits 1280x720: select-ember
+PASS Authored menu control fits 1280x720: continue-ember
+PASS Separate process offers only the matching compatible Ember slot
+PASS Actual authored pointer target: continue-ember
+PASS Continue transition owner is cleaned after completion/failure
+PASS Continue is read-only for current and backup files
+PASS Spawn-overlap rejection preserves the entire fresh world/stockpile, without loading the valid backup
+PASS Spawn rejection remains readable with a step-aside/manual-load action
+PASS Fresh play remains usable: actual walking aside then explicit F9 safely restores the blocked snapshot

@@ -1,0 +1,50 @@
+# Explicit Continue for finite expeditions
+
+18 October 2026, trip rotation 9, isolated `CodexWorkspace` from `4c3aebb`. One player-testable milestone: explicit Continue saved world/resources from selection for Quiet Shoal, Lowtide and Ember Reach. Fresh 1/2/3 and manual F9 remain available. There is no automatic load/save, profile/quest persistence or parallel player-save format.
+
+## Player contract
+
+Selection has separate authored **4 / 5 / 6 Continue** buttons/shortcuts alongside the three fresh starts. Each Continue control is enabled only when that scene's primary or recoverable previous snapshot is compatible with its world, material rules, stock counts and harvest history. Availability refreshes read-only on entry/refocus and periodically. Missing/corrupt/stale/unavailable data keeps Continue disabled while fresh play remains usable.
+
+Continue explicitly chooses the compatible current file, or a compatible previous file when current is unavailable. The card labels current versus previous recovery. After scene initialization, it rechecks the selected scene/path/world/rules and rereads/revalidates the actual file against the live world. It applies the existing coupled world + stockpile + once-only harvest snapshot using the existing body-overlap check. It never rewrites/repairs a primary or backup.
+
+The player starts at the existing authored camp spawn, not the saved player location. The mission journal/activation starts fresh; it is not part of the existing snapshot contract. A semantically valid primary that blocks camp clearance is rejected without silently loading older data or teleporting. The fresh world/resources remain unchanged, and the HUD tells the player to walk aside and explicitly F9-load, or use F8 for a previous snapshot. Focus loss pauses; returning focus does not auto-resume. Loading and held keys/mouse remain gated until completion and release.
+
+## Authored ownership and safety
+
+- `ContinueCatalog.asset` is build/authoring metadata mirroring each saved scene's bounds, authored cell/material/mineability, palette/rules references and exact existing folder/filename. It is not a player save or profile. `PaxSnapshotValidation` contains the existing signature/tile/conservation rules shared by the catalog and live world/stockpile. The `<pax-resources version="1">`/v2 tile envelope and all rule/signature semantics are unchanged.
+- `PaxContinueAuthoring.EnsureContinue` checks the independent expected root against actual `Application.dataPath`, captures all three definitions, wires one explicit receiver on each finite scene's existing HUD and assigns the catalog to selection. It saves/reacquires the asset after scene switches so no stale Unity asset reference is serialized. Repeating authoring is intended to preserve bytes; changing authored worlds/rules requires this explicit synchronization/build before shipping.
+- Each receiver has serialized storage/stockpile/world/pause references. A single short-lived Continue transfer retains the selected catalog while loading and is destroyed after success/rejection. It owns no profile, clock or static global state. Startup holds freeze player/camera/journal observation without moving the actor. The existing pause owner retains focus/clock ownership; release clears queued actions and consumes a neutral input frame.
+- Selection uses its own editable `ContinueSelectionPanel.asset` at constant pixel size and compact UXML for 1280×720. Gameplay panel assets/layouts remain unchanged. Existing 1/2/3 methods/paths are retained; three new buttons/status labels and 4/5/6 bindings are authored/serialized.
+- Diagnostics refuse to scan human save folders: Editor batch and `-paxSmoke` menus scan only after an explicit guarded validation-directory override. New tests use unique `Temp/PaxContinueTests/*` paths; the Windows proof accepts only a named child of its own build's `SmokeEvidence` directory. Normal user menu scans are read-only under the existing persistent save folder.
+
+## Validation
+
+**65/65 EditMode and 88/88 PlayMode passed.** The final strengthened input-route rerun passed **8/8** through the actual 4/5/6 frame routes; the final authoring/binding rerun passed **2/2**, including serialized key assignments. These are reruns of included cases, not extra unique tests. Evidence is in [DevelopmentEvidence/Continue](DevelopmentEvidence/Continue/).
+
+The three mapping cases earn and save finite state in each authored scene, then Continue through its corresponding menu input route. They verify exact tiles, all stocks, harvest history, fresh journal and unchanged file bytes. Other cases cover missing/corrupt/forged data, wrong world/rules, backup recovery, file changes after selection, body-blocked valid primary with a valid backup, focus-loss/explicit Resume, held commands, transition cleanup and restoration of the prior clock scale. Saved catalog/scene parity, six authored controls, explicit references and byte-idempotent reauthoring passed.
+
+The Windows x86_64 development build succeeded with **0 errors, 485 inherited inference-shader warnings**, 189,270,866 bytes and 14.5542021 seconds. Its explicit scene list is selection plus all three finite scenes. The final executable includes the corrected diagnostic targeting probe; only test assertions changed afterward. The latest full suites precede that probe-only correction, and the rebuilt player validates it directly.
+
+Four separate final Windows processes passed **91/91 checks** in a unique build-owned save directory:
+
+| Process | Checks | Proof |
+| --- | --- | --- |
+| Seed, PID 76364 | 22/22 | Real pointer-frame mining earns seven caches; actual walking, one bridge repair and explicit F5 produce partial current B (4 Timber, 2 Stone) and gathered backup A (5 Timber, 2 Stone). |
+| Current Continue, PID 64760 | 41/41 | A new process verifies menu/fresh/return preserve both files, clicks the authored Continue button, restores exact B at camp with fresh journal, prevents rebuild farming, and finishes the route with pointer repairs, walking and two jumps without Warp or autosave. |
+| Backup Continue, PID 66436 | 15/15 | Only the owned fixture primary is deliberately corrupted. Menu labels previous recovery; Continue restores exact A while leaving corrupt current and backup bytes unchanged. |
+| Spawn rejection, PID 74576 | 13/13 | Only the owned fixture primary is replaced by a conserved snapshot containing a Timber block in camp clearance. Continue rejects that valid primary without using the valid backup or moving the actor; fresh state remains intact. Actual walking aside and explicit F9 then restore it safely. |
+
+Each process exited normally. Final player logs contain no runtime warnings/errors/exceptions. The owned directory is `Builds/PAX-Continue-Windows/SmokeEvidence/ContinueRun-30bc3b979ce34adfbef3fbf19cbbffba`; no human save folders were read or written. The third/fourth fixture phases deliberately alter their owned primary before selection; the menu and Continue operations themselves are read-only. Expected A/B XML and the blocked-primary fixture are archived. Eleven actual camera/UI captures at **1280×720** were inspected, including all six menu controls, current/previous restore, fresh preservation, completed route and actionable spawn-rejection/manual-retry status.
+
+Two initial failures are retained rather than hidden. The first focused suite passed 1/8 because opening selection had invalidated an unretained catalog reference during authoring. Saving/reacquiring that asset after the scene switch and retaining it on the transient transfer resolved the issue; the focused rerun passed 8/8. A one-case diagnostic also encountered a test diagnostic dereference; it is retained separately. The first Windows seed passed 13/18: its precise rays skipped faded cache solids and dug camp ground, so later walking failed. The opt-in probe now sends the existing G input and asserts the exact target before mining. No mining rule or scene geometry changed. The rebuilt seed passed 22/22 and all subsequent phases passed.
+
+Final preservation audit: four unlimited gameplay scenes, original gameplay panel, palettes/rules and isolated Build Settings have no Git diff from `4c3aebb`. Each finite scene adds only one receiver and four serialized references on the existing HUD. PAX missing `.meta` files: **0**; duplicate GUIDs: **0**. Original checkout remains `PrototypeBranch` at `42ad020`, with its existing dirty Build Settings and coordinator-owned status file untouched. Its protected prototype/Build Settings SHA256 values still match the initial audit. Unrelated AS Editor/import workers remain untouched; no PAX validation/player process remains.
+
+Actual single-agent milestone work ran from **20:02:50 to 21:07:53 Singapore on 18 October 2026 (1h 5m 3s)** through the last targeted test, followed by evidence/documentation and local checkpoint handoff. This includes authoring/reference repair, focused diagnostics, full suites, two successful builds, the failed seed and four final separate player runs, plus the final input/binding reruns. No delegation, purchases, usage resets or external assets were used.
+
+## Review and manual limits
+
+The separate review output is `Builds/PAX-Continue-Windows/PAX.exe`, opening selection with all three finite expeditions included. Existing builds and slots remain in place. Required references and UI are saved; no packages or external assets are needed. Menu copy states saved world/resources restored at camp, fresh session journal and no exact-position claim.
+
+Automation distinguishes engine input/pointer/UI callbacks from raw OS keyboard/mouse/focus timing. Manually earn edits/resources, F5-save, quit the player, relaunch and choose the corresponding Continue. Check fresh start/menu visits do not change files, F9 remains explicit, corrupt-current recovery is labelled, spawn overlap keeps the fresh world and offers a retry, and holding controls/refocusing cannot click through. Longer play/performance remains unverified unless separately recorded. Finish this one local checkpoint and wait for coordinator rotation.

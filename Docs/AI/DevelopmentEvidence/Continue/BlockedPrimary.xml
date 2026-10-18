@@ -1,0 +1,33 @@
+<pax-resources version="1" rules="3266E7E426955B52C6DC5D08994544EF12F668D647A7A09FCE9E86AA3ECCBEC2">
+  <pax-playtest version="2" world="C03A353F650E64564E59071EBBA2AB9D52DE7AA40DB5CEE55A176F6D778DC9E3">
+    <removed>
+      <cell x="-2" y="0" z="-6" />
+      <cell x="-2" y="0" z="-3" />
+      <cell x="-1" y="0" z="-6" />
+      <cell x="-1" y="0" z="-3" />
+      <cell x="0" y="0" z="-6" />
+      <cell x="1" y="0" z="-6" />
+      <cell x="2" y="0" z="-6" />
+    </removed>
+    <placed>
+      <cell x="0" y="-1" z="-1" material="timber" />
+      <cell x="0" y="0" z="-5" material="timber" />
+    </placed>
+  </pax-playtest>
+  <stockpile>
+    <item id="default" count="0" />
+    <item id="earth" count="0" />
+    <item id="roof" count="0" />
+    <item id="stone" count="2" />
+    <item id="timber" count="3" />
+  </stockpile>
+  <harvested>
+    <cell x="-2" y="0" z="-6" />
+    <cell x="-2" y="0" z="-3" />
+    <cell x="-1" y="0" z="-6" />
+    <cell x="-1" y="0" z="-3" />
+    <cell x="0" y="0" z="-6" />
+    <cell x="1" y="0" z="-6" />
+    <cell x="2" y="0" z="-6" />
+  </harvested>
+</pax-resources>

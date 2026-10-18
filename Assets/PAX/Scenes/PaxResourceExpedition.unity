@@ -116853,6 +116853,7 @@ GameObject:
   - component: {fileID: 1307452691}
   - component: {fileID: 1307452694}
   - component: {fileID: 1307452695}
+  - component: {fileID: 1307452696}
   m_Layer: 0
   m_Name: Authored HUD
   m_TagString: Untagged
@@ -116960,6 +116961,22 @@ MonoBehaviour:
   focusMessage: Focus lost / Paused
   selectionScenePath: Assets/PAX/Scenes/PaxExpeditionSelection.unity
   returnUnavailableMessage: Selection scene unavailable; expedition kept paused.
+--- !u!114 &1307452696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307452690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf51864c7587b544aa548b2ea55fdab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Pax.Runtime::Pax.PaxContinueReceiver
+  storage: {fileID: 2126474002}
+  stockpile: {fileID: 629878446}
+  world: {fileID: 2126473999}
+  pause: {fileID: 1307452695}
 --- !u!1001 &1309182898
 PrefabInstance:
   m_ObjectHideFlags: 0
