@@ -48,7 +48,7 @@ namespace Pax.Tests
                 var property = serialized.GetIterator();
                 while (property.NextVisible(true))
                 {
-                    if (property.propertyType == SerializedPropertyType.ObjectReference && property.name != "m_Script")
+                    if (property.propertyType == SerializedPropertyType.ObjectReference && property.name != "m_Script" && property.name != "pause")
                         Assert.NotNull(property.objectReferenceValue,$"{component.GetType().Name}.{property.propertyPath}");
                 }
             }

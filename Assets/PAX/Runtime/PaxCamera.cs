@@ -4,6 +4,8 @@ namespace Pax
 {
     public sealed class PaxCamera : MonoBehaviour
     {
+        [SerializeField] private PaxPause pause;
+        public void UsePause(PaxPause owner) => pause = owner;
         [SerializeField] private Transform target;
         [SerializeField] private Camera view;
         [SerializeField] private float yaw = 45;
@@ -26,12 +28,14 @@ namespace Pax
         }
         public void Orbit(float horizontal, float vertical)
         {
+            if (pause != null && pause.BlocksActions) return;
             yaw += horizontal;
             pitch = Mathf.Clamp(pitch + vertical, 20, 65);
         }
-        public void Zoom(float amount) => view.orthographicSize = Mathf.Clamp(view.orthographicSize - amount, zoomLimits.x, zoomLimits.y);
+        public void Zoom(float amount) { if (pause == null || !pause.BlocksActions) view.orthographicSize = Mathf.Clamp(view.orthographicSize - amount, zoomLimits.x, zoomLimits.y); }
         public void ResetView()
         {
+            if (pause != null && pause.BlocksActions) return;
             yaw = defaultYaw; pitch = defaultPitch; view.orthographicSize = defaultZoom;
         }
         public void SnapToTarget()
@@ -41,6 +45,7 @@ namespace Pax
         }
         private void LateUpdate()
         {
+            if (pause != null && pause.IsPaused) return;
             Quaternion rotation = Quaternion.Euler(pitch, yaw, 0);
             float blend = 1 - Mathf.Exp(-followSharpness * Time.deltaTime);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, blend);

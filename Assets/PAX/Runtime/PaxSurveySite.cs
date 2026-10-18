@@ -17,6 +17,7 @@ namespace Pax
         public string Title => siteTitle;
         public string FieldNote => fieldNote;
         public bool Surveyed { get; private set; }
+        public float DwellSeconds => dwell;
         public float VisitRadius => visitRadius;
 
         public void Configure(string title, string note, Renderer marker)

@@ -1,7 +1,8 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:Template name="PauseHelp" src="project://database/Assets/PAX/UI/PauseHelp.uxml" />
     <ui:VisualElement name="hud" style="position: absolute; left: 16px; top: 12px; padding-left: 14px; padding-right: 14px; padding-top: 10px; padding-bottom: 10px; background-color: rgba(12, 21, 31, 0.9); border-top-left-radius: 6px; border-top-right-radius: 6px; border-bottom-left-radius: 6px; border-bottom-right-radius: 6px;" picking-mode="Ignore">
         <ui:Label text="PAX  /  Movement · Building · Cutaway" style="font-size: 20px; color: rgb(231, 245, 249); -unity-font-style: bold;" picking-mode="Ignore" />
-        <ui:Label text="WASD Move   ·   Space Hold / tap jump   ·   R Respawn" style="font-size: 14px; color: rgb(225, 235, 239); margin-top: 5px;" picking-mode="Ignore" />
+        <ui:Label text="WASD Move   ·   Space Hold / tap jump   ·   R Respawn   ·   Esc Pause / Help" style="font-size: 14px; color: rgb(225, 235, 239); margin-top: 5px;" picking-mode="Ignore" />
         <ui:Label text="LMB Mine   ·   RMB Place   ·   Left Ctrl Smart / precise   ·   G Target faded solids" style="font-size: 14px; color: rgb(225, 235, 239);" picking-mode="Ignore" />
         <ui:Label text="Q / E Rotate   ·   MMB drag Orbit / tilt   ·   Wheel Zoom   ·   Home Reset view" style="font-size: 14px; color: rgb(225, 235, 239);" picking-mode="Ignore" />
         <ui:Label text="Yellow = mine ready   ·   Red = action blocked   ·   Amber = Timber repair / Cyan = Stone repair" style="font-size: 13px; color: rgb(170, 211, 220); margin-top: 4px;" picking-mode="Ignore" />
@@ -26,4 +27,5 @@
         <ui:Label name="construction-palette" text="1 Grass · 2 Timber · 3 Stone · 4 Earth · 5 Roof" style="font-size: 14px; color: rgb(235, 242, 225); white-space: normal;" picking-mode="Ignore" />
     <ui:Label name="resource-stockpile" text="Finite stockpile: mine matching blocks first." style="font-size: 14px; color: rgb(255, 222, 167); white-space: normal; margin-top: 8px;" picking-mode="Ignore" />
     </ui:VisualElement>
+    <ui:Instance template="PauseHelp" picking-mode="Ignore" style="position: absolute; left: 0; right: 0; top: 0; bottom: 0;" />
 </ui:UXML>

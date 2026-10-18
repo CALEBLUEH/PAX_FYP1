@@ -4,6 +4,8 @@ namespace Pax
 {
     public sealed class PaxBuilder : MonoBehaviour
     {
+        [SerializeField] private PaxPause pause;
+        public void UsePause(PaxPause owner) => pause = owner;
         [SerializeField] private PaxWorld world;
         [SerializeField] private PaxPlayer player;
         [SerializeField] private Camera view;
@@ -37,6 +39,7 @@ namespace Pax
         public string SelectedMaterialId => selectedMaterialId;
         public bool TrySelectMaterial(string id)
         {
+            if (pause != null && pause.BlocksActions) return false;
             if (!world.TryResolveMaterial(id, out _)) return false;
             selectedMaterialId = id; return true;
         }
@@ -69,15 +72,18 @@ namespace Pax
             mineVisual = minePreview.GetComponent<Renderer>();
             mineMaterial = mineVisual.sharedMaterial;
         }
-        public void ToggleCursor() => smartCursor = !smartCursor;
-        public void ToggleGhostTargets() => targetHiddenSolids = !targetHiddenSolids;
+        public void ToggleCursor() { if (pause == null || !pause.BlocksActions) smartCursor = !smartCursor; }
+        public void ToggleGhostTargets() { if (pause == null || !pause.BlocksActions) targetHiddenSolids = !targetHiddenSolids; }
+        public void ClearPendingActions() { mine = place = false; }
         public void SetPointer(Vector2 screenPoint, bool minePressed, bool placePressed)
         {
+            if (pause != null && pause.BlocksActions) return;
             pointer = screenPoint; mine |= minePressed; place |= placePressed;
         }
 
         private void LateUpdate()
         {
+            if (pause != null && pause.BlocksActions) { ClearPendingActions(); return; }
             Select(pointer);
             bool changed = false;
             if (mine) changed = candidate != null ? Mine(candidate.Cell) : RejectMissingTarget("mine");
@@ -159,6 +165,7 @@ namespace Pax
         }
         public bool Mine(Vector3Int cell)
         {
+            if (pause != null && pause.BlocksActions) return false;
             var reason = EvaluateMining(cell);
             if (reason != PaxActionBlock.None) { ShowAction($"Cannot mine {cell}: {Explain(reason)}"); return false; }
             string id = null; int amount = 0;
@@ -170,6 +177,7 @@ namespace Pax
         }
         public bool Place(Vector3Int cell)
         {
+            if (pause != null && pause.BlocksActions) return false;
             var reason = EvaluatePlacement(cell);
             if (reason != PaxActionBlock.None) { ShowAction($"Cannot place {cell}: {Explain(reason)}"); return false; }
             bool changed = world.TryAdd(cell, selectedMaterialId);

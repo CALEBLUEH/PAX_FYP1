@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="8" result="Failed(Child)" total="8" passed="6" failed="2" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-10-18 01:55:57Z" end-time="2026-10-18 01:56:05Z" duration="8.1720506">
+  <test-suite type="TestSuite" id="1090" name="PAX_FYP1" fullname="PAX_FYP1" runstate="Runnable" testcasecount="72" result="Failed" site="Child" start-time="2026-10-18 01:55:57Z" end-time="2026-10-18 01:56:05Z" duration="8.172051" total="8" passed="6" failed="2" inconclusive="0" skipped="0" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <failure>
+      <message><![CDATA[One or more child tests had errors]]></message>
+    </failure>
+    <test-suite type="Assembly" id="1085" name="Pax.PlayModeTests.dll" fullname="C:/Users/user/.codex/worktrees/pax-development/PAX_FYP1/Library/ScriptAssemblies/Pax.PlayModeTests.dll" runstate="Runnable" testcasecount="72" result="Failed" site="Child" start-time="2026-10-18 01:55:57Z" end-time="2026-10-18 01:56:05Z" duration="8.159907" total="8" passed="6" failed="2" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="58496" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <failure>
+        <message><![CDATA[One or more child tests had errors]]></message>
+      </failure>
+      <test-suite type="TestSuite" id="1086" name="Pax" fullname="Pax" runstate="Runnable" testcasecount="72" result="Failed" site="Child" start-time="2026-10-18 01:55:57Z" end-time="2026-10-18 01:56:05Z" duration="8.158813" total="8" passed="6" failed="2" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <failure>
+          <message><![CDATA[One or more child tests had errors]]></message>
+        </failure>
+        <test-suite type="TestSuite" id="1087" name="Tests" fullname="Pax.Tests" runstate="Runnable" testcasecount="72" result="Failed" site="Child" start-time="2026-10-18 01:55:57Z" end-time="2026-10-18 01:56:05Z" duration="8.158128" total="8" passed="6" failed="2" inconclusive="0" skipped="0" asserts="0">
+          <properties />
+          <failure>
+            <message><![CDATA[One or more child tests had errors]]></message>
+          </failure>
+          <test-suite type="TestFixture" id="1041" name="PaxPauseTests" fullname="Pax.Tests.PaxPauseTests" classname="Pax.Tests.PaxPauseTests" runstate="Runnable" testcasecount="8" result="Failed" site="Child" start-time="2026-10-18 01:55:57Z" end-time="2026-10-18 01:56:05Z" duration="8.155887" total="8" passed="6" failed="2" inconclusive="0" skipped="0" asserts="0">
+            <properties />
+            <failure>
+              <message><![CDATA[One or more child tests had errors]]></message>
+            </failure>
+            <test-case id="1047" name="ChartAuthoredButtonConsumesClickAndRequiresRelease" fullname="Pax.Tests.PaxPauseTests.ChartAuthoredButtonConsumesClickAndRequiresRelease" methodname="ChartAuthoredButtonConsumesClickAndRequiresRelease" classname="Pax.Tests.PaxPauseTests" runstate="Runnable" seed="588319044" result="Failed" start-time="2026-10-18 01:55:57Z" end-time="2026-10-18 01:55:58Z" duration="1.640292" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: False
+  But was:  True
+]]></message>
+                <stack-trace><![CDATA[at Pax.Tests.PaxPauseTests+<ButtonAndFocus>d__22.MoveNext () [0x00187] in C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets\PAX\Tests\PlayMode\PaxPauseTests.cs:82
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@ecf40a72f8c1\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1045" name="ChartDiscoveryDwellStopsAndContinuesExactly" fullname="Pax.Tests.PaxPauseTests.ChartDiscoveryDwellStopsAndContinuesExactly" methodname="ChartDiscoveryDwellStopsAndContinuesExactly" classname="Pax.Tests.PaxPauseTests" runstate="Runnable" seed="135019904" result="Passed" start-time="2026-10-18 01:55:58Z" end-time="2026-10-18 01:56:00Z" duration="1.071543" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1043" name="ChartPauseFreezesAirborneStateAndRejectsAllActions" fullname="Pax.Tests.PaxPauseTests.ChartPauseFreezesAirborneStateAndRejectsAllActions" methodname="ChartPauseFreezesAirborneStateAndRejectsAllActions" classname="Pax.Tests.PaxPauseTests" runstate="Runnable" seed="1554205262" result="Passed" start-time="2026-10-18 01:56:00Z" end-time="2026-10-18 01:56:00Z" duration="0.873878" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1048" name="DisableRestoresOwnedNonUnitClockAndReenableDoesNotDuplicateButton" fullname="Pax.Tests.PaxPauseTests.DisableRestoresOwnedNonUnitClockAndReenableDoesNotDuplicateButton" methodname="DisableRestoresOwnedNonUnitClockAndReenableDoesNotDuplicateButton" classname="Pax.Tests.PaxPauseTests" runstate="Runnable" seed="1643844341" result="Passed" start-time="2026-10-18 01:56:00Z" end-time="2026-10-18 01:56:01Z" duration="0.417642" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1046" name="ResourceAuthoredButtonConsumesClickAndRequiresRelease" fullname="Pax.Tests.PaxPauseTests.ResourceAuthoredButtonConsumesClickAndRequiresRelease" methodname="ResourceAuthoredButtonConsumesClickAndRequiresRelease" classname="Pax.Tests.PaxPauseTests" runstate="Runnable" seed="1790723838" result="Failed" start-time="2026-10-18 01:56:01Z" end-time="2026-10-18 01:56:02Z" duration="0.708411" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <failure>
+                <message><![CDATA[  Expected: False
+  But was:  True
+]]></message>
+                <stack-trace><![CDATA[at Pax.Tests.PaxPauseTests+<ButtonAndFocus>d__22.MoveNext () [0x00187] in C:\Users\user\.codex\worktrees\pax-development\PAX_FYP1\Assets\PAX\Tests\PlayMode\PaxPauseTests.cs:82
+at UnityEngine.TestTools.TestEnumerator+<Execute>d__7.MoveNext () [0x0003a] in .\Library\PackageCache\com.unity.test-framework@ecf40a72f8c1\UnityEngine.TestRunner\NUnitExtensions\Attributes\TestEnumerator.cs:44
+]]></stack-trace>
+              </failure>
+            </test-case>
+            <test-case id="1044" name="ResourceDiscoveryDwellStopsAndContinuesExactly" fullname="Pax.Tests.PaxPauseTests.ResourceDiscoveryDwellStopsAndContinuesExactly" methodname="ResourceDiscoveryDwellStopsAndContinuesExactly" classname="Pax.Tests.PaxPauseTests" runstate="Runnable" seed="745676692" result="Passed" start-time="2026-10-18 01:56:02Z" end-time="2026-10-18 01:56:03Z" duration="1.365761" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1042" name="ResourcePauseFreezesAirborneStateAndRejectsAllActions" fullname="Pax.Tests.PaxPauseTests.ResourcePauseFreezesAirborneStateAndRejectsAllActions" methodname="ResourcePauseFreezesAirborneStateAndRejectsAllActions" classname="Pax.Tests.PaxPauseTests" runstate="Runnable" seed="423367932" result="Passed" start-time="2026-10-18 01:56:03Z" end-time="2026-10-18 01:56:04Z" duration="1.020841" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+            </test-case>
+            <test-case id="1049" name="UnloadRestoresClockAndNextFiniteSceneStartsUnpaused" fullname="Pax.Tests.PaxPauseTests.UnloadRestoresClockAndNextFiniteSceneStartsUnpaused" methodname="UnloadRestoresClockAndNextFiniteSceneStartsUnpaused" classname="Pax.Tests.PaxPauseTests" runstate="Runnable" seed="1424825499" result="Passed" start-time="2026-10-18 01:56:04Z" end-time="2026-10-18 01:56:05Z" duration="1.041606" asserts="0">
+              <properties>
+                <property name="_JOINTYPE" value="UnityCombinatorial" />
+                <property name="retryIteration" value="0" />
+                <property name="repeatIteration" value="0" />
+              </properties>
+              <output><![CDATA[<b><color=#2EA3FF>MCP-FOR-UNITY</color></b>: [TestRunnerNoThrottle] Restored Interaction Mode after test run.
+Saving results to: C:/Users/user/AppData/LocalLow/DefaultCompany/PAX_FYP1\TestResults.xml
+]]></output>
+            </test-case>
+          </test-suite>
+        </test-suite>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

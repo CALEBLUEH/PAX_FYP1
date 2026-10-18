@@ -5,6 +5,8 @@ namespace Pax
     [DefaultExecutionOrder(-100)]
     public sealed class PaxInput : MonoBehaviour
     {
+        [SerializeField] private PaxPause pause;
+        public void UsePause(PaxPause owner) => pause = owner;
         [SerializeField] private PaxPlayer player;
         [SerializeField] private PaxCamera cameraRig;
         [SerializeField] private PaxBuilder builder;
@@ -23,8 +25,7 @@ namespace Pax
         public void ConfigureSave(PaxPlaytestSave session) => playtestSave = session;
         private void Update()
         {
-            player.SetCommand(new Vector2((Input.GetKey(right) ? 1 : 0) - (Input.GetKey(left) ? 1 : 0),
-                (Input.GetKey(forward) ? 1 : 0) - (Input.GetKey(backward) ? 1 : 0)), Input.GetKeyDown(jump), Input.GetKey(jump));
+            if (pause != null && pause.BlocksActions) return;
             float orbit = ((Input.GetKey(rotateRight) ? 1 : 0) - (Input.GetKey(rotateLeft) ? 1 : 0)) * rotateSpeed * Time.deltaTime;
             float tilt = 0;
             if (Input.GetMouseButton(2))
@@ -32,18 +33,26 @@ namespace Pax
                 orbit += Input.GetAxisRaw("Mouse X") * mouseOrbitSpeed;
                 tilt -= Input.GetAxisRaw("Mouse Y") * mouseOrbitSpeed;
             }
-            cameraRig.Orbit(orbit, tilt);
-            cameraRig.Zoom(Input.mouseScrollDelta.y * zoomSpeed);
-            if (Input.GetKeyDown(resetCamera)) cameraRig.ResetView();
-            if (Input.GetKeyDown(toggleCursor)) builder.ToggleCursor();
-            if (Input.GetKeyDown(toggleGhostTargets)) builder.ToggleGhostTargets();
-            if (Input.GetKeyDown(respawn)) player.Warp(spawn.position);
-            if (Input.GetKeyDown(saveEdits)) playtestSave.SaveEdits();
-            else if (Input.GetKeyDown(loadEdits)) playtestSave.LoadEdits();
-            else if (Input.GetKeyDown(loadPrevious)) playtestSave.LoadEdits(true);
-            builder.SetPointer(Input.mousePosition, Input.GetMouseButtonDown(0), Input.GetMouseButtonDown(1));
+            ApplyFrame(new PaxInputFrame {
+                movement = new Vector2((Input.GetKey(right) ? 1 : 0) - (Input.GetKey(left) ? 1 : 0), (Input.GetKey(forward) ? 1 : 0) - (Input.GetKey(backward) ? 1 : 0)),
+                jumpPressed = Input.GetKeyDown(jump), jumpHeld = Input.GetKey(jump), orbit = orbit, tilt = tilt, zoom = Input.mouseScrollDelta.y * zoomSpeed,
+                resetCamera = Input.GetKeyDown(resetCamera), toggleCursor = Input.GetKeyDown(toggleCursor), toggleGhostTargets = Input.GetKeyDown(toggleGhostTargets), respawn = Input.GetKeyDown(respawn),
+                save = Input.GetKeyDown(saveEdits), load = Input.GetKeyDown(loadEdits), previous = Input.GetKeyDown(loadPrevious),
+                pointer = Input.mousePosition, mine = Input.GetMouseButtonDown(0), place = Input.GetMouseButtonDown(1) });
         }
-        private void OnDisable() { if (player != null) player.SetCommand(Vector2.zero, false, false); }
-        private void OnApplicationFocus(bool focus) { if (!focus) player.SetCommand(Vector2.zero, false, false); }
+        public void ApplyFrame(PaxInputFrame frame)
+        {
+            if (pause != null && pause.BlocksActions) return;
+            player.SetCommand(frame.movement, frame.jumpPressed, frame.jumpHeld);
+            cameraRig.Orbit(frame.orbit, frame.tilt); cameraRig.Zoom(frame.zoom);
+            if (frame.resetCamera) cameraRig.ResetView();
+            if (frame.toggleCursor) builder.ToggleCursor();
+            if (frame.toggleGhostTargets) builder.ToggleGhostTargets();
+            if (frame.respawn) player.Warp(spawn.position);
+            if (frame.save) playtestSave.SaveEdits(); else if (frame.load) playtestSave.LoadEdits(); else if (frame.previous) playtestSave.LoadEdits(true);
+            builder.SetPointer(frame.pointer, frame.mine, frame.place);
+        }
+        private void OnDisable() { if (player != null) player.ClearCommand(); if (builder != null) builder.ClearPendingActions(); }
+        private void OnApplicationFocus(bool focus) { if (!focus && player != null) player.ClearCommand(); }
     }
 }

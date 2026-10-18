@@ -6,6 +6,8 @@ namespace Pax
 {
     public sealed class PaxPlaytestSave : MonoBehaviour
     {
+        [SerializeField] private PaxPause pause;
+        public void UsePause(PaxPause owner) => pause = owner;
         [SerializeField] private PaxWorld world;
         [SerializeField] private PaxPlayer player;
         [SerializeField] private string saveFolder = "PAXPlaytests";
@@ -40,6 +42,7 @@ namespace Pax
 
         public bool SaveEdits()
         {
+            if (pause != null && pause.BlocksActions) return false;
             if (resourceSession != null) { bool saved = resourceSession.Save(out string status); Status = status; return saved; }
             try
             {
@@ -53,6 +56,7 @@ namespace Pax
 
         public bool LoadEdits(bool previous = false)
         {
+            if (pause != null && pause.BlocksActions) return false;
             if (resourceSession != null) { bool loaded = resourceSession.Load(previous, out string status); Status = status; return loaded; }
             try
             {

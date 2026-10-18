@@ -4282,6 +4282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0429b0eee766e24aa4e78240304bcad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Pax.Runtime::Pax.PaxCamera
+  pause: {fileID: 1307452695}
   target: {fileID: 1853066080}
   view: {fileID: 250558624}
   yaw: 45
@@ -23507,6 +23508,7 @@ GameObject:
   - component: {fileID: 1307452692}
   - component: {fileID: 1307452691}
   - component: {fileID: 1307452694}
+  - component: {fileID: 1307452695}
   m_Layer: 0
   m_Name: Authored HUD
   m_TagString: Untagged
@@ -23591,6 +23593,28 @@ MonoBehaviour:
   surveyedLabel: Surveyed
   unreadLabel: Unread
   progressFormat: "Discoveries {0}/{1}  \xB7  Matching repairs {2}/{3}"
+--- !u!114 &1307452695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307452690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bfd07fc15dd4e540bb1f0ca5770e375, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Pax.Runtime::Pax.PaxPause
+  document: {fileID: 1307452692}
+  player: {fileID: 1853066078}
+  builder: {fileID: 1640765942}
+  pauseKey: 27
+  missionHelp: 'Lowtide: gather 5 Timber + 3 Stone. Amber crossing cells require
+    Timber; cyan stairs require Stone. Cross to the mooring, climb to the lookout
+    and read all three marks. F recovers the chart. Wrong material? Mine it to refund
+    and replace it.'
+  pausedMessage: Paused / Controls
+  focusMessage: Focus lost / Paused
 --- !u!1001 &1310388722
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27027,6 +27051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b153e8142f5326049a6e9748dfd87126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Pax.Runtime::Pax.PaxExpeditionInput
+  pause: {fileID: 1307452695}
   expedition: {fileID: 1508379143}
   activate: 102
   restartSurvey: 287
@@ -27042,6 +27067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b18842322e806b04fbc58c95613d8c9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Pax.Runtime::Pax.PaxExpedition
+  pause: {fileID: 1307452695}
   player: {fileID: 1853066078}
   sites:
   - {fileID: 2041159826}
@@ -27307,6 +27333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df18243eeafff874ca72cdebd79b7899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Pax.Runtime::Pax.PaxMaterialSelection
+  pause: {fileID: 1307452695}
   world: {fileID: 2126473999}
   builder: {fileID: 1640765942}
   palette: {fileID: 11400000, guid: a50f3776894ac984984aa47fd0d90b88, type: 2}
@@ -29737,6 +29764,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e109125abfc4f248b7f0eeda44d5792, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Pax.Runtime::Pax.PaxBuilder
+  pause: {fileID: 1307452695}
   world: {fileID: 2126473999}
   player: {fileID: 1853066078}
   view: {fileID: 250558624}
@@ -32867,6 +32895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42ad8b76c7026ba46865afa3c4a497b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Pax.Runtime::Pax.PaxPlayer
+  pause: {fileID: 1307452695}
   body: {fileID: 1853066079}
   movementFrame: {fileID: 250558625}
   respawn: {fileID: 165908846}
@@ -32930,6 +32959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 987d5ce8b63a14d4dbb5c918bb78b9fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Pax.Runtime::Pax.PaxInput
+  pause: {fileID: 1307452695}
   player: {fileID: 1853066078}
   cameraRig: {fileID: 250558626}
   builder: {fileID: 1640765942}
@@ -38411,6 +38441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2c0832f031e1ea48ae330c86e88c2ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Pax.Runtime::Pax.PaxPlaytestSave
+  pause: {fileID: 1307452695}
   world: {fileID: 2126473999}
   player: {fileID: 1853066078}
   saveFolder: PAXPlaytests

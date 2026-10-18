@@ -6,6 +6,8 @@ namespace Pax
 
     public sealed class PaxExpedition : MonoBehaviour
     {
+        [SerializeField] private PaxPause pause;
+        public void UsePause(PaxPause owner) => pause = owner;
         [SerializeField] private PaxPlayer player;
         [SerializeField] private PaxSurveySite[] sites;
         [SerializeField] private PaxRepairMarker[] repairs;
@@ -56,6 +58,7 @@ namespace Pax
 
         private void Update()
         {
+            if (pause != null && pause.IsPaused) return;
             foreach (var site in sites) site.Observe(player, Time.deltaTime);
             if (activated && (SurveyedCount != sites.Length || RepairCount != repairs.Length))
             { activated = false; ActionStatus = interruptedMessage; }
@@ -63,6 +66,7 @@ namespace Pax
         }
         public bool TryActivate()
         {
+            if (pause != null && pause.BlocksActions) return false;
             if (SurveyedCount < sites.Length) { ActionStatus = missingSurveyMessage; return false; }
             if (RepairCount < repairs.Length) { activated = false; ActionStatus = missingRepairMessage; return false; }
             if (activated) { ActionStatus = alreadyActiveMessage; return true; }
@@ -71,6 +75,7 @@ namespace Pax
         }
         public void RestartSurvey()
         {
+            if (pause != null && pause.BlocksActions) return;
             foreach (var site in sites) site.ResetSurvey();
             activated = false; Present(false);
             ActionStatus = restartMessage;

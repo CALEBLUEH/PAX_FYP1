@@ -1,0 +1,59 @@
+PASS Scene components loaded
+PASS Authored HUD laid out and status updated
+PASS Player starts grounded
+PASS Pause fixture checkpoints the empty finite world in a disposable slot
+PASS Pause entered during a real ascending jump
+PASS Open overlay blocks gameplay, palette, rescue, activation, journal and save/load actions
+PASS Pause preserves exact airborne velocity, player/camera transforms, zoom and scaled clock
+PASS Pause keeps snapshot bytes, finite accounting and tool selection unchanged
+PASS Focus loss cannot be resumed while unfocused
+PASS Focus regain and held Escape never auto-resume
+PASS Authored Resume button is visible and hit-testable above the fullscreen overlay
+PASS Actual authored button pointer events resume and retain the release barrier
+PASS Resume click and held mouse/gameplay frames never click through to the world
+PASS Release rearms controls without executing queued pre-pause or overlay actions
+PASS Fresh post-release mine works and the disposable snapshot restores exact accounting
+PASS Discovery dwell remains fractional and unchanged while paused
+PASS Discovery dwell continues after explicit resume
+PASS Disabling pause restores its exact previous non-unit clock
+PASS Reenabled pause accepts a fresh Escape input frame
+PASS A fresh Escape input frame explicitly resumes
+PASS Distinct chart expedition starts with finite mixed-material objective and no discoveries
+PASS Gather authored route supply (-8, 0, -2)
+PASS Gather authored route supply (-7, 0, -2)
+PASS Gather authored route supply (-6, 0, -2)
+PASS Gather authored route supply (-5, 0, -2)
+PASS Gather authored route supply (-4, 0, -2)
+PASS Gather authored route supply (-8, 0, 2)
+PASS Gather authored route supply (-7, 0, 2)
+PASS Gather authored route supply (-6, 0, 2)
+PASS Finite camp supplies and harvested world save as one snapshot
+PASS Physical walk discovers the departure log
+PASS Pointer-frame repair material match=False at (-3, -1, 0)
+PASS Wrong-material solid does not count as a Timber repair
+PASS Wrong-material repair can be saved then mined for its actual unit
+PASS Pointer-frame repair material match=True at (-3, -1, 0)
+PASS Corrected Timber repair spends only Timber and checkpoints partial route
+PASS Actual walk on constructed Timber crossing segment 1
+PASS Pointer-frame repair material match=True at (-2, -1, 0)
+PASS Actual walk on constructed Timber crossing segment 2
+PASS Pointer-frame repair material match=True at (-1, -1, 0)
+PASS Actual walk on constructed Timber crossing segment 3
+PASS Pointer-frame repair material match=True at (0, -1, 0)
+PASS Actual walk on constructed Timber crossing segment 4
+PASS Pointer-frame repair material match=True at (1, -1, 0)
+PASS Actual walk on constructed Timber crossing segment 5
+PASS Crossing reaches the far mooring discovery
+PASS Pointer-frame repair material match=True at (5, 0, 0)
+PASS Pointer-frame repair material match=True at (5, 1, 0)
+PASS Pointer-frame repair material match=True at (4, 0, 0)
+PASS Exact Stone stairs consume three units; remote chart activation still rejects
+PASS Real held jump lands on chart route level 1
+PASS Real held jump lands on chart route level 2
+PASS Unwarped traversal recovers the chart with canopy/collision/obstruction invariants
+PASS Chart reveals an original destination and completed route saves without resource rewards
+PASS Repeated chart recovery is idempotent
+PASS Previous partial-route snapshot restores exact mixed resources and matching repairs
+PASS Rollback revokes completed route state
+PASS Repeated completed-snapshot loads do not multiply supplies and require explicit reactivation
+PASS Replay keeps route, finite stocks and snapshot bytes; only discoveries restart

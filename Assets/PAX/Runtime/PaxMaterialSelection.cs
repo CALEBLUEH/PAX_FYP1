@@ -7,6 +7,8 @@ namespace Pax
     [DefaultExecutionOrder(-200)]
     public sealed class PaxMaterialSelection : MonoBehaviour
     {
+        [SerializeField] private PaxPause pause;
+        public void UsePause(PaxPause owner) => pause = owner;
         [SerializeField] private PaxWorld world;
         [SerializeField] private PaxBuilder builder;
         [SerializeField] private PaxMaterialPalette palette;
@@ -29,6 +31,7 @@ namespace Pax
         }
         public bool SelectNumber(int number)
         {
+            if (pause != null && pause.BlocksActions) return false;
             if (!palette.Validate(out string reason) || number < 1 || number > palette.Entries.Count || !builder.TrySelectMaterial(palette.Entries[number - 1].id))
             { message = reason ?? retainedMessage; return false; }
             previewSample.sharedMaterial = palette.Entries[number - 1].material;
@@ -36,7 +39,7 @@ namespace Pax
         }
         private void Update()
         {
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 9 && (pause == null || !pause.BlocksActions); i++)
                 if (Input.GetKeyDown((KeyCode)((int)KeyCode.Alpha1 + i)) || Input.GetKeyDown((KeyCode)((int)KeyCode.Keypad1 + i)))
                 { SelectNumber(i + 1); break; }
             if (properties == null) properties = new MaterialPropertyBlock();

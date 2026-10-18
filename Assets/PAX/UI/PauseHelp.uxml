@@ -1,0 +1,18 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <ui:VisualElement name="pause-overlay" style="display: none; position: absolute; left: 0; right: 0; top: 0; bottom: 0; background-color: rgba(5, 13, 23, 0.94); align-items: center; justify-content: center;">
+        <ui:VisualElement name="pause-card" style="width: 760px; max-width: 94%; max-height: 96%; padding-left: 28px; padding-right: 28px; padding-top: 22px; padding-bottom: 22px; background-color: rgb(20, 35, 48); border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
+            <ui:Label name="pause-title" text="Paused / Controls" style="font-size: 26px; -unity-font-style: bold; color: rgb(255, 215, 145);" />
+            <ui:Label text="World, motion and discovery timers are paused. Release held controls after resuming." style="font-size: 15px; color: rgb(204, 225, 235); white-space: normal; margin-top: 8px;" />
+            <ui:Label text="MOVE &amp; VIEW" style="font-size: 14px; -unity-font-style: bold; color: rgb(137, 224, 241); margin-top: 15px;" />
+            <ui:Label text="WASD move · Space tap / hold jump · R rescue to camp (keeps stocks and builds). Q/E orbit · MMB drag orbit / tilt · Wheel zoom · Home reset view." style="font-size: 16px; color: rgb(233, 242, 246); white-space: normal; margin-top: 4px;" />
+            <ui:Label text="MINE &amp; BUILD" style="font-size: 14px; -unity-font-style: bold; color: rgb(137, 224, 241); margin-top: 15px;" />
+            <ui:Label text="LMB mine · RMB place · 1 Grass / 2 Timber / 3 Stone / 4 Earth / 5 Roof. Mine matching blocks to gather; place costs 1; mining a placed block refunds its actual material. Green outline = valid, red = blocked." style="font-size: 16px; color: rgb(233, 242, 246); white-space: normal; margin-top: 4px;" />
+            <ui:Label text="Left Ctrl toggles smart / precise cursor. Precise uses the face under the pointer. Use Q/E or MMB to expose a side face for a bridge, then RMB the last solid tile's forward face. Home resets the view for top-face building. G includes faded solid targets; collision stays active." style="font-size: 16px; color: rgb(233, 242, 246); white-space: normal; margin-top: 8px;" />
+            <ui:Label text="SAVES &amp; DISCOVERIES" style="font-size: 14px; -unity-font-style: bold; color: rgb(137, 224, 241); margin-top: 15px;" />
+            <ui:Label text="F5 saves tiles + finite stocks together. F9 loads the current snapshot; F8 recovers the previous valid snapshot. Loading may ask you to step aside from restored blocks. Saves keep construction and resources; discovery visits and activation are session-only. F6 restarts only that journal, keeping builds, stocks and saved files. Pausing does not save or load." style="font-size: 16px; color: rgb(233, 242, 246); white-space: normal; margin-top: 4px;" />
+            <ui:Label name="pause-mission" text="Scene mission help" style="font-size: 16px; color: rgb(255, 222, 167); white-space: normal; margin-top: 12px;" />
+            <ui:Button name="pause-resume" text="Resume" style="height: 44px; margin-top: 18px; font-size: 19px; -unity-font-style: bold;" />
+            <ui:Label text="Escape pauses / resumes. Focus loss pauses automatically; returning to the window requires Resume or Escape. Gameplay keys, save/load and mouse actions stay blocked while this panel is open." style="font-size: 14px; color: rgb(183, 207, 222); white-space: normal; margin-top: 8px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

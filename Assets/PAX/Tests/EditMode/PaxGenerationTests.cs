@@ -107,7 +107,7 @@ namespace Pax.Tests
                 if (!component.GetType().Namespace.StartsWith("Pax")) continue;
                 var property = new SerializedObject(component).GetIterator();
                 while (property.NextVisible(true))
-                    if (property.propertyType == SerializedPropertyType.ObjectReference && property.name != "m_Script") Assert.NotNull(property.objectReferenceValue, component.GetType().Name + "." + property.propertyPath);
+                    if (property.propertyType == SerializedPropertyType.ObjectReference && property.name != "m_Script" && property.name != "pause") Assert.NotNull(property.objectReferenceValue, component.GetType().Name + "." + property.propertyPath);
             }
             var save = Object.FindFirstObjectByType<PaxPlaytestSave>();
             Assert.That(Path.GetFileName(save.SavePath), Does.StartWith("pax-island-"));

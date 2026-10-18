@@ -1,0 +1,53 @@
+PASS Scene components loaded
+PASS Authored HUD laid out and status updated
+PASS Player starts grounded
+PASS Pause fixture checkpoints the empty finite world in a disposable slot
+PASS Pause entered during a real ascending jump
+PASS Open overlay blocks gameplay, palette, rescue, activation, journal and save/load actions
+PASS Pause preserves exact airborne velocity, player/camera transforms, zoom and scaled clock
+PASS Pause keeps snapshot bytes, finite accounting and tool selection unchanged
+PASS Focus loss cannot be resumed while unfocused
+PASS Focus regain and held Escape never auto-resume
+PASS Authored Resume button is visible and hit-testable above the fullscreen overlay
+PASS Actual authored button pointer events resume and retain the release barrier
+PASS Resume click and held mouse/gameplay frames never click through to the world
+PASS Release rearms controls without executing queued pre-pause or overlay actions
+PASS Fresh post-release mine works and the disposable snapshot restores exact accounting
+PASS Discovery dwell remains fractional and unchanged while paused
+PASS Discovery dwell continues after explicit resume
+PASS Disabling pause restores its exact previous non-unit clock
+PASS Reenabled pause accepts a fresh Escape input frame
+PASS A fresh Escape input frame explicitly resumes
+PASS Finite mode starts with deliberate five-material mapping and zero stocks
+PASS Empty stock refuses placement without changing tiles or units
+PASS Authored Stone mining awards exactly once at (0, 0, -1)
+PASS Authored Stone mining awards exactly once at (-1, 0, -1)
+PASS Authored Stone mining awards exactly once at (-2, 0, -1)
+PASS Authored Stone mining awards exactly once at (0, 0, 0)
+PASS Authored Stone mining awards exactly once at (-1, 0, 0)
+PASS Authored Stone mining awards exactly once at (-2, 0, 0)
+PASS Repeated mining cannot award the removed node again
+PASS Stocks are material-specific; wrong selected supply does not spend Stone
+PASS Protected mining and player-overlap placement leave stocks unchanged
+PASS Gathered snapshot atomically saves stockpile and removed resource tiles
+PASS House visit and cutaway/collision remain valid in finite mode
+PASS Cave visit and cutaway/collision remain valid in finite mode
+PASS Ruin visit and cutaway/collision remain valid in finite mode
+PASS Required Stone repair spends one unit only on success (0, 0, -6)
+PASS Required Stone repair spends one unit only on success (1, 0, -6)
+PASS Required Stone repair spends one unit only on success (2, 0, -6)
+PASS Required Stone repair spends one unit only on success (0, 0, -5)
+PASS Required Stone repair spends one unit only on success (1, 0, -5)
+PASS Required Stone repair spends one unit only on success (2, 0, -5)
+PASS Built snapshot records six solid repairs and spent stock together
+PASS Gather-spend-survey loop ends with real platform jump and beacon activation
+PASS Mining a placed Stone repair refunds its actual ID, not the selected Roof
+PASS Removing a finite repair revokes beacon completion
+PASS Repeated full loads restore absolute zero stock and complete tiles without multiplication
+PASS Previous full snapshot restores gathered stocks with unbuilt platform
+PASS Current full snapshot restores spent stocks with built platform
+PASS A forged extra unit rejects both states before mutation
+PASS Incompatible resource primary is archived without replacing valid combined backup
+PASS Tile-only import is explicitly refused in finite mode
+PASS Valid combined snapshot can repair the rejected tile-only primary
+PASS Survey replay keeps resources, construction and snapshot bytes unchanged

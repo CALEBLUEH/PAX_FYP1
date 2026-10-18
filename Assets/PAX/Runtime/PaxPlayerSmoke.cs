@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 namespace Pax
 {
@@ -36,6 +37,14 @@ namespace Pax
         {
             output = Path.GetFullPath(Path.Combine(Application.dataPath,"../SmokeEvidence"));
             Directory.CreateDirectory(output);
+            if (Array.IndexOf(Environment.GetCommandLineArgs(), "-paxReviewChart") >= 0)
+            { DontDestroyOnLoad(gameObject); yield return SceneManager.LoadSceneAsync("PaxLamplighterChart"); }
+            var pause = FindFirstObjectByType<PaxPause>();
+            if (pause != null)
+            {
+                pause.UseValidationInput();
+                for (int i = 0; i < 3; i++) { pause.ProcessInput(false, false); yield return null; }
+            }
             // Let the standalone splash and UI initialization finish before full-frame evidence.
             yield return new WaitForSecondsRealtime(3.5f);
             Time.captureDeltaTime=1f/60;
@@ -66,6 +75,8 @@ namespace Pax
             var status=captureDocument.rootVisualElement.Q<Label>("status");
             Check(status!=null && !string.IsNullOrWhiteSpace(status.text) && status.worldBound.width>50,"Authored HUD laid out and status updated");
             Check(player.Grounded,"Player starts grounded");
+            if (pause != null && Array.IndexOf(Environment.GetCommandLineArgs(), "-paxPauseSmoke") >= 0)
+                yield return RunPause(pause, input, player, world, builder, cameraRig);
             var chartRoute=FindFirstObjectByType<PaxChartRoute>();
             if(chartRoute!=null)
             {FindFirstObjectByType<PaxExpeditionInput>().enabled=false;yield return RunChart(chartRoute,player,world,builder,cameraRig,cutaway);Finish();yield break;}
@@ -163,6 +174,61 @@ namespace Pax
             Finish();
         }
         private static IEnumerator WaitFrames(int count) { for (int i = 0; i < count; i++) yield return null; }
+        private IEnumerator RunPause(PaxPause pause, PaxInput input, PaxPlayer player, PaxWorld world, PaxBuilder builder, PaxCamera rig)
+        {
+            var save = FindFirstObjectByType<PaxPlaytestSave>(); var stocks = FindFirstObjectByType<PaxStockpile>(); var mission = FindFirstObjectByType<PaxExpedition>();
+            FindFirstObjectByType<PaxExpeditionInput>().enabled = false;
+            save.UseValidationDirectory(Path.Combine(output, "PauseSave-" + Guid.NewGuid().ToString("N")));
+            Check(save.SaveEdits(), "Pause fixture checkpoints the empty finite world in a disposable slot");
+            string bytes = File.ReadAllText(save.SavePath), accounting = stocks.Capture().Encode(), material = builder.SelectedMaterialId, mode = builder.Mode;
+            var cache = FindFirstObjectByType<PaxResourceCache>().Cells[0];
+            player.SetCommand(Vector2.zero, true, true); yield return WaitFrames(5);
+            Check(player.VerticalSpeed > 0, "Pause entered during a real ascending jump");
+            builder.SetPointer(rig.View.WorldToScreenPoint(PaxGrid.Centre(cache)), true, true);
+            pause.ProcessInput(true, true);
+            Vector3 position = player.transform.position, cameraPosition = rig.transform.position; Quaternion rotation = rig.transform.rotation;
+            float velocity = player.VerticalSpeed, zoom = rig.View.orthographicSize, clock = Time.time; int revision = world.Revision, surveys = mission.SurveyedCount;
+            input.ApplyFrame(new PaxInputFrame { movement = Vector2.one, jumpPressed = true, jumpHeld = true, mine = true, place = true, orbit = 90, zoom = 5, resetCamera = true, toggleCursor = true, toggleGhostTargets = true, respawn = true, save = true });
+            bool rejected = !builder.Mine(cache) && !builder.Place(cache + Vector3Int.up) && !FindFirstObjectByType<PaxMaterialSelection>().SelectNumber(3) && !save.SaveEdits() && !save.LoadEdits() && !save.LoadEdits(true) && !mission.TryActivate();
+            mission.RestartSurvey(); rig.Orbit(90, 10); rig.Zoom(3); player.Warp(Vector3.one * 99);
+            yield return new WaitForSecondsRealtime(0.25f);
+            Check(pause.IsPaused && rejected && revision == world.Revision && surveys == mission.SurveyedCount, "Open overlay blocks gameplay, palette, rescue, activation, journal and save/load actions");
+            Check(position == player.transform.position && velocity == player.VerticalSpeed && clock == Time.time && cameraPosition == rig.transform.position && rotation == rig.transform.rotation && zoom == rig.View.orthographicSize, "Pause preserves exact airborne velocity, player/camera transforms, zoom and scaled clock");
+            Check(bytes == File.ReadAllText(save.SavePath) && !File.Exists(save.BackupPath) && accounting == stocks.Capture().Encode() && material == builder.SelectedMaterialId && mode == builder.Mode, "Pause keeps snapshot bytes, finite accounting and tool selection unchanged");
+            pause.ProcessFocus(false); pause.Resume(); Check(pause.IsPaused, "Focus loss cannot be resumed while unfocused"); pause.ProcessFocus(true); pause.ProcessInput(true, true);
+            Check(pause.IsPaused, "Focus regain and held Escape never auto-resume");
+            yield return new WaitForSecondsRealtime(0.2f);
+            string prefix = FindFirstObjectByType<PaxChartRoute>() != null ? "Chart" : "Resources";
+            Capture("Pause-" + prefix + "-Help.png");
+            var root = captureDocument.rootVisualElement; var button = root.Q<Button>("pause-resume"); var hit = root.panel.Pick(button.worldBound.center);
+            Check(button.worldBound.width > 100 && (hit == button || button.Contains(hit)), "Authored Resume button is visible and hit-testable above the fullscreen overlay");
+            var mouse = new Event { type = EventType.MouseDown, button = 0, mousePosition = button.worldBound.center };
+            using (var down = PointerDownEvent.GetPooled(mouse)) button.SendEvent(down);
+            mouse.type = EventType.MouseUp;
+            using (var up = PointerUpEvent.GetPooled(mouse)) button.SendEvent(up);
+            yield return null;
+            Check(!pause.IsPaused && pause.BlocksActions, "Actual authored button pointer events resume and retain the release barrier");
+            for (int i = 0; i < 5; i++) { pause.ProcessInput(false, true); input.ApplyFrame(new PaxInputFrame { mine = true, place = true, movement = Vector2.one, jumpPressed = true }); yield return null; }
+            Check(revision == world.Revision, "Resume click and held mouse/gameplay frames never click through to the world");
+            for (int i = 0; i < 3; i++) { pause.ProcessInput(false, false); yield return null; }
+            yield return WaitFrames(40);
+            Check(!pause.BlocksActions && revision == world.Revision, "Release rearms controls without executing queued pre-pause or overlay actions");
+            Check(builder.Mine(cache) && save.LoadEdits() && world.Contains(cache) && stocks.Capture().Encode() == accounting, "Fresh post-release mine works and the disposable snapshot restores exact accounting");
+            // Partial discovery dwell must pause rather than complete or reset.
+            var start = player.transform.position; player.Warp(mission.Sites[0].transform.position); yield return WaitFrames(5);
+            float dwell = mission.Sites[0].DwellSeconds; pause.Pause(); yield return new WaitForSecondsRealtime(0.5f);
+            Check(dwell > 0 && !mission.Sites[0].Surveyed && dwell == mission.Sites[0].DwellSeconds, "Discovery dwell remains fractional and unchanged while paused");
+            pause.Resume(); for (int i = 0; i < 3; i++) { pause.ProcessInput(false, false); yield return null; } yield return WaitFrames(35);
+            Check(mission.Sites[0].Surveyed, "Discovery dwell continues after explicit resume");
+            mission.RestartSurvey(); player.Warp(start); yield return WaitFrames(15);
+            Time.timeScale = 0.7f; pause.Pause(); pause.enabled = false;
+            Check(Time.timeScale == 0.7f, "Disabling pause restores its exact previous non-unit clock");
+            Time.timeScale = 1; pause.enabled = true; pause.UseValidationInput();
+            pause.ProcessInput(false, false); pause.ProcessInput(true, true); Check(pause.IsPaused, "Reenabled pause accepts a fresh Escape input frame");
+            pause.ProcessInput(false, false); pause.ProcessInput(true, true); Check(!pause.IsPaused, "A fresh Escape input frame explicitly resumes");
+            for (int i = 0; i < 3; i++) { pause.ProcessInput(false, false); yield return null; }
+            Capture("Pause-" + prefix + "-Resumed.png");
+        }
         private bool chartRouteFailed;
         private IEnumerator ChartWalk(Vector3 target,PaxPlayer player,PaxCamera rig)
         {

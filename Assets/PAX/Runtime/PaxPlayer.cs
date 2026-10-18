@@ -5,6 +5,8 @@ namespace Pax
     [RequireComponent(typeof(CharacterController))]
     public sealed class PaxPlayer : MonoBehaviour
     {
+        [SerializeField] private PaxPause pause;
+        public void UsePause(PaxPause owner) => pause = owner;
         [SerializeField] private CharacterController body;
         [SerializeField] private Transform movementFrame;
         [SerializeField] private Transform respawn;
@@ -23,6 +25,8 @@ namespace Pax
         public float StableFeetHeight { get; private set; }
         public Vector3 Chest => transform.position + Vector3.up;
         public Bounds BodyBounds => body.bounds;
+        public float VerticalSpeed => verticalSpeed;
+        public void ClearCommand() { move = Vector2.zero; pressed = held = false; }
 
         public void Configure(CharacterController controller, Transform cameraFrame, Transform spawn)
         {
@@ -33,6 +37,7 @@ namespace Pax
         private void Awake() => StableFeetHeight = transform.position.y;
         public void SetCommand(Vector2 movement, bool jumpPressed, bool jumpHeld)
         {
+            if (pause != null && pause.BlocksActions) return;
             move = Vector2.ClampMagnitude(movement, 1);
             pressed |= jumpPressed;
             held = jumpHeld;
@@ -40,6 +45,7 @@ namespace Pax
 
         private void Update()
         {
+            if (pause != null && pause.IsPaused) return;
             float dt = Time.deltaTime;
             if (Grounded && verticalSpeed <= 0)
             {
@@ -75,6 +81,7 @@ namespace Pax
 
         public void Warp(Vector3 position)
         {
+            if (pause != null && pause.BlocksActions) return;
             body.enabled = false;
             transform.position = position;
             body.enabled = true;

@@ -84,7 +84,7 @@ namespace Pax.Tests
                 Assert.NotNull(component);
                 if (!component.GetType().Namespace.StartsWith("Pax")) continue;
                 var property = new SerializedObject(component).GetIterator();
-                while (property.NextVisible(true)) if (property.propertyType == SerializedPropertyType.ObjectReference && property.name != "m_Script") Assert.NotNull(property.objectReferenceValue, component.GetType().Name + "." + property.propertyPath);
+                while (property.NextVisible(true)) if (property.propertyType == SerializedPropertyType.ObjectReference && property.name != "m_Script" && property.name != "pause") Assert.NotNull(property.objectReferenceValue, component.GetType().Name + "." + property.propertyPath);
             }
         }
     }
